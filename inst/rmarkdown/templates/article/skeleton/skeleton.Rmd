@@ -1,0 +1,227 @@
+---
+title: Titre de l'article
+author:
+  - name: Prénom Nom
+    authsuperscript: 1*
+  - name: Deuxième Auteur
+    authsuperscript: 2
+affiliation:
+  - affsuperscript: 1
+    dptuniv: UMR EcoFoG, AgroParistech, CNRS, Cirad, INRA, Université des Antilles, Université de Guyane.
+    address: >
+      Campus Agronomique,
+      97310 Kourou,
+      France.
+  - affsuperscript: 2
+    dptuniv: Department of Ecology, University of Edimburgh
+    address: >
+      Street address,
+      Zip code,
+      Country.
+corrauthor:
+    email: prenom.nom@ecofog.gf
+    url: http://www.ecofog.gf/spip.php?article47
+abstract: >
+  Résumé de l'article.
+keywords: [mot-clés, séparés par des virgules]
+journalinfo: Hal 00679993
+archive: DOI xxxx
+date: "`r format(Sys.time(), '%d %B %Y')`"
+preamble: >
+  \usepackage{amsmath}
+bibliography: references.bib
+lang: french # english
+keywordlabel: Mots-clés # Keywords
+corrauthorlabel: Contact # Corresponding author
+output:
+  EcoFoG::article:
+    keep_tex: TRUE
+---
+
+<!-- Options de knitr et de R (librairies, ...) --> 
+
+```{r Options, echo=FALSE, message=FALSE}
+knitr::opts_chunk$set(cache=TRUE, warning=FALSE, tidy=TRUE, tidy.opts=list(blank=FALSE, width.cutoff=40))
+# Installation des packages si nécessaire et chargement
+Library <- function(Packages) {
+  InstallAndLoad <- function(Package) {
+    if (!Package %in% installed.packages()[, 1]) {install.packages(Package)}
+    require(Package, character.only = TRUE)
+  }
+  invisible(sapply(Packages, InstallAndLoad))
+}
+# Ajouter les packages nécessaires ici
+# Library(c("entropart"))
+```
+
+<!-- Script Mathjax nécessaire pour la numérotation des équations en HTML --> 
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: { 
+    equationNumbers: {
+      autoNumber: "all",
+      formatNumber: function (n) {return +n}
+    } 
+  }
+});
+</script>
+<!-- Début du document ci-dessous --> 
+
+
+# Introduction
+
+Ce modèle permet la rédaction d'articles au format Markdown. Il produit directement des articles bien formatés pour l'auto-harchivage (dépôt sur HAL par exemple) et le code Markdown peut être réutilisé dans d'autres modèles pour une soumission au format Word ou Latex.
+
+# R Markdown
+
+Markdown est un langage très simple pour produire divers types de documents: HTML, PDF, et Word entre autres.
+Sa documentation est disponible sur le site de RStudio[^1].
+
+[^1]: <http://rmarkdown.rstudio.com/articles.html>
+
+
+Ce document est réalisé avec Markdown dans RStudio: knitr traite le code Markdown, le passe à Pandoc pour sa transformaton en Latex, enfin MikteX le compile en PDF.
+
+
+## Intérêt
+
+Markdown est très simple à apprendre.
+
+Markdown permet d'intégrer son code R pour un résultat *reproductible*.
+
+Markdown permet de produire, sans réécrire le texte, un document dans différents formats: article Latex ou Word par exemple.
+
+
+## Comment faire
+
+Dans RStudio, créer un nouveau document de type Document R Markdown. 
+L'assistant permet de choisir entre divers formats. Les plus intéressants sont:
+
+![Nouveau document Markdown\label{fig:nouveau}](NouveauRMarkdown.PNG)
+
+* Document: rapport simple
+
+* Presentation: diaporama
+
+* From template: à partir de modèles installés par des packages. Les modèles du package EcoFoG sont affichés (voir figure \ref{fig:nouveau}): choisir Article EcoFoG.
+
+* Ecrire le document dans RStudio.
+
+* Cliquer sur le bouton **Knit** de RStudio génère le document au format demandé.
+
+
+# Code
+
+Les principales caractéristiques de Markdown sont résumées ici.
+
+
+## Code R
+
+Le code R est inclus dans des bouts de code (*code chunks*):
+
+```{r cars, echo = TRUE}
+head(cars)
+```
+
+
+## Tableaux
+
+Les séparateurs horizontaux - et verticaux | permettent de dessiner un tableau.
+Les tableaux peuvent aussi être produits par du code R, avec le package knitr:
+
+```{r kable, results = "asis"}
+names(iris) <- c("Longueur sépales", "Largeur", "Longueur pétales", "Largeur", "Espèce")
+knitr::kable(head(iris), caption="R\\label{tab:kable}")
+```
+
+Une légende est possible et le référencement aussi (tableau \ref{tab:kable}).
+Attention, la largeur des tableaux est limitée à une colonne de texte, et les retours à la ligne dans les cellules ne sont pas pris en charge. 
+
+
+## Figures
+
+```{r pressure, fig.cap="Titre de la figure\\label{fig:plot}"}
+plot(pressure)
+```
+
+Les figures peuvent être créées par le code R (figure \ref{fig:plot}).
+
+
+
+## Listes
+
+Les listes sont indiquées par des *, + et - (trois niveaux hiérarchiques) ou des nombres 1., i. et A. (listes numérotées). 
+
+* Liste
+
+    + sous-liste
+
+* deuxième élément
+
+* Suite de la liste
+
+
+## Maths
+
+Les équations au format Latex peuvent être insérées en ligne, comme $A=\pi r^2$ ou isolées comme $$e^{i \pi} = -1.$$
+
+Elles peuvent être numérotées à condition d'utiliser l'environnement Latex:
+
+\begin{equation}\label{key}
+A=\pi r^2.
+\end{equation}
+
+
+## Bibliographie
+
+Les références bibliographiques incluses dans le fichier references.bib peuvent être appelées dans le texte, entre parenthèses \citep{Marcon2014c}, ou dans le texte, à la façon de \citet{Marcon2014c}.
+
+
+# Types de document
+
+Ce modèle est prévu pour fonctionner avec le fichier Article.tex en LaTeX et produire des documents au format PDF.
+Le code markdown peut être réutilisé par copier coller dans d'autres types de documents.
+
+## Document HTML/PDF
+
+Pour un usage quotidien: le modèle HTML simple à utiliser, son format de sortie est propre correct. Le résultat est bien plus clair que du code R commenté.
+
+Utiliser le format HTML pour commencer un travail (plus rapide, pas de sauts de pages) puis remplacer l'entête
+
+> output: html_document
+
+par 
+
+> output: pdf_document
+
+pour produire un fichier PDF à la fin.
+
+
+## Document Word
+
+Un document Word peut être produit:
+
+> output: word_document
+
+Son contenu peut être mis en forme ou copié dans un modèle. Les styles de texte standard  sont "First Paragraph" et "Corps de de texte".
+Les légendes ne sont pas numérotées, les renvois perdus et les tableaux non formatés.
+La bibliographie n'est pas gérée.
+
+
+## Présentation Beamer
+
+Utiliser le modèle *Présentation EcoFoG* proposé par le package.
+
+Le document produit est un diaporama Beamer respectant la charte graphique 2018.
+
+
+## Autres Modèles
+
+Le package rticle fournit des modèles d'articles (PLOS, PNAS, etc.). 
+Le package xaringan fournit un modèle de présentation HTML 5.
+
+Hors assistant, le package bookdown [^3] permet d'écrire des livres.
+
+[^3]: <https://bookdown.org/yihui/bookdown/>
+
+
