@@ -23,34 +23,10 @@
 %	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
 %----------------------------------------------------------------------------------------
 
-\documentclass[fleqn,10pt]{SelfArx} % Document font size and equations flushed left
+\documentclass[fleqn,10pt]{ArtEcoFoG} % Document font size and equations flushed left
 
-\setlength{\columnsep}{0.55cm} % Distance between the two columns of text
-\setlength{\fboxrule}{0.75pt} % Width of the border around the abstract
-
-\definecolor{color1}{RGB}{0,0,90} % Color of the article title and sections
-\definecolor{color2}{RGB}{0,20,20} % Color of the boxes behind the abstract and headings
-
-\newlength{\tocsep}
-\setlength\tocsep{1.5pc} % Sets the indentation of the sections in the table of contents
 \setcounter{tocdepth}{3} % Show only three levels in the table of contents section: sections, subsections and subsubsections
 
-\usepackage{natbib} % Bibliographie avancée (parenthèses, citep...)
-\usepackage[utf8]{inputenc}  % Pour les accents
-\usepackage[T1]{fontenc} % Pour les accents
-\usepackage{tabularx} % Retour à la ligne des tableaux
-\renewcommand{\arraystretch}{1.8}
-\usepackage{multirow} % Fusion des lignes dans les tableaux
-\usepackage{breqn} % Retour à la ligne des équations
-\usepackage{url} % Retour à la ligne des url
-\usepackage{hyperref} % Liens hypertextes, signets PDF
-\hypersetup{urlcolor=blue,linkcolor=black,citecolor=black,colorlinks=true}
-\usepackage{graphicx} % Figures
-  \graphicspath{{graphics/}}
-\usepackage{epstopdf} % Figures eps
-\usepackage{enumitem} % Espacement dans les listes
-	\setlist[itemize]{noitemsep,nolistsep}
-	\setlist[enumerate]{noitemsep,nolistsep}
 
 % Pandoc environments
 \usepackage{framed}

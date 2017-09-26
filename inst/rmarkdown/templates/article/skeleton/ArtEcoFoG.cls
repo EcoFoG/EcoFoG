@@ -1,11 +1,12 @@
 % ---------------------------------------------------------------------
-% Conference proceedings and article templates for
+% SelfArx : Conference proceedings and article templates for
 % personal open-archiving activities
 % September 2012
+% Modifié pour les besoins de l'UMR EcoFoG (Eric Marcon)
 % ---------------------------------------------------------------------
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{SelfArx}[25/01/2012, v1.0]
+\ProvidesClass{ArtEcoFoG}[26/09/2017, v. 1.0]
 \RequirePackage{ifthen}
 \RequirePackage{calc}
 \AtEndOfClass{\RequirePackage{microtype}}
@@ -18,28 +19,28 @@
 \RequirePackage{ifpdf}      % Needed to pick between latex and pdflatex
 
 % ---------------------------------------------------------------------
-\RequirePackage[utf8]{inputenc}
+\RequirePackage{natbib} % Bibliographie avancée (parenthèses, citep...). Avant babel.
+\RequirePackage[utf8]{inputenc} % Pour les accents
+\RequirePackage[T1]{fontenc}    % Pour les accents
 \RequirePackage{amsmath,amsfonts,amssymb}
 \RequirePackage{graphicx,xcolor}
-\RequirePackage[english, french]{babel}
-\frenchbsetup{StandardLists=true} % à inclure si on utilise \usepackage[french]{babel} ou les puces seront des tirets cadratins
 \RequirePackage{booktabs}
 % ---------------------------------------------------------------------
-
-%%%%% for abstract+authors frames 
 
 
 % ---------------------------------------------------------------------		  
 % margins		  
 \RequirePackage[left=2cm,%
                 right=2cm,%
-				top=2.25cm,%
-				bottom=2.25cm,%
-				headheight=11pt,%
-				letterpaper]{geometry}%
+                top=2.25cm,%
+                bottom=2.25cm,%
+                headheight=11pt,%
+                a4paper] %
+                {geometry}%
 \RequirePackage[labelfont={bf,sf},%
                 labelsep=period,%
-                justification=raggedright]{caption}
+                justification=raggedright] %
+                {caption}
 % ---------------------------------------------------------------------
 \RequirePackage{fancyhdr}  % Needed to define custom headers/footers
 \RequirePackage{lastpage}  % Number of pages in the document
@@ -126,6 +127,7 @@
    \let\next\relax
   \fi
 \next}
+
 	 
 \newcommand{\affiliation}[1]{%
     \global\advance\@authcnt1
@@ -152,9 +154,9 @@
 \vskip-36pt%
 {\raggedleft\small\sffamily\bfseries\@JournalInfo\\\@Archive\par}%
 \vskip20pt%
-{\raggedright\color{color1}\sffamily\bfseries\fontsize{20}{25}\selectfont \@PaperTitle\par}%
+{\raggedright\color{color1}\sffamily\bfseries\fontsize{20}{25}\selectfont\@PaperTitle\par}%
 \vskip10pt
-{\raggedright\color{color1}\sffamily\fontsize{12}{16}\selectfont  \@Authors\par}
+{\raggedright\color{color1}\sffamily\fontsize{12}{16}\selectfont\@Authors\par}
 \vskip18pt%
 \fcolorbox{color1}{white}{%
 \parbox{\textwidth-2\fboxsep-2\fboxrule}{\centering%
@@ -179,9 +181,35 @@
 }]%
 }%
 % ---------------------------------------------------------------------
-\let\oldbibliography\thebibliography
-\renewcommand{\thebibliography}[1]{%
-\addcontentsline{toc}{section}{\hspace*{-\tocsep}\refname}%
-\oldbibliography{#1}%
-\setlength\itemsep{0pt}%
-}
+
+% -------------- Personnalisation EcofoG
+\setlength{\columnsep}{0.55cm} % Distance between the two columns of text
+\setlength{\fboxrule}{0.75pt} % Width of the border around the abstract
+
+\definecolor{color1}{RGB}{0,0,90} % Color of the article title and sections
+\definecolor{color2}{RGB}{0,20,20} % Color of the boxes behind the abstract and headings
+
+\newlength{\tocsep} % Format de la table des matières 
+\setlength\tocsep{1.5pc} % Sets the indentation of the sections in the table of contents
+
+\RequirePackage{tabularx} % Retour à la ligne des tableaux
+  \renewcommand{\arraystretch}{1.8}
+\RequirePackage{multirow} % Fusion des lignes dans les tableaux
+\RequirePackage{breqn} % Retour à la ligne des équations
+\RequirePackage{url} % Retour à la ligne des url
+\RequirePackage{hyperref} % Liens hypertextes, signets PDF
+  \hypersetup{urlcolor=blue,linkcolor=black,citecolor=black,colorlinks=true} 
+
+  \graphicspath{{graphics/}} % Dossier de stockage des figures
+\RequirePackage{epstopdf} % Figures eps
+\RequirePackage{enumitem} % Espacement dans les listes
+  \setlist[itemize]{noitemsep,nolistsep}
+  \setlist[enumerate]{noitemsep,nolistsep}
+
+% code command
+\newcommand{\code}[1]{\begingroup \ttfamily #1\endgroup}
+% Variance
+\def\Var{\mathop{\mathrm{Var}}}
+
+\RequirePackage[french, english]{babel}
+  \frenchbsetup{StandardLists=true} % à inclure si on utilise \usepackage[french]{babel} ou les puces seront des tirets cadratins
