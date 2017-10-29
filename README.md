@@ -9,6 +9,6 @@ Contenu:
 
   * modèle de présentation (R Markdown)
 
-  * modèlme d'article pour l'autoarchivage (R Markdown)
+  * modèle d'article pour l'autoarchivage (R Markdown)
   
 * Accès aux données Guyafor
