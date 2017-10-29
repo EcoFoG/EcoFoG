@@ -174,7 +174,7 @@ A=\pi r^2.
 
 ## Bibliographie
 
-Les références bibliographiques incluses dans le fichier references.bib peuvent être appelées dans le texte, entre parenthèses \citep{Marcon2014c}, ou dans le texte, à la façon de \citet{Marcon2014c}.
+Les références bibliographiques incluses dans le fichier references.bib peuvent être appelées dans le texte, entre parenthèses [@Marcon2014c], ou dans le texte, à la façon de @Marcon2014c. 
 
 
 # Types de document
