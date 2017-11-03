@@ -12,3 +12,6 @@ Importation de l'ensemble des données de Paracou de la base Guyafor dans un dat
 \details{
 La fonction exécute une requête sur le serveur sql.ecofog.gf pour lire les données
 }
+\author{
+Gaëlle Jaouen, \email{gaelle.jaouen@ecofog.gf}
+}

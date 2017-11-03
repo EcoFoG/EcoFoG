@@ -3,11 +3,15 @@
 #' Importation de l'ensemble des données de la base Guyafor dans un dataframe
 #'
 #' La fonction exécute une requête sur le serveur sql.ecofog.gf pour lire les données
+#' @author Gaëlle Jaouen, \email{gaelle.jaouen@ecofog.gf}
+#' @importFrom RODBC odbcConnect
+#' @importFrom RODBC odbcClose
+#' @importFrom RODBC sqlQuery
 #' @export
 
 Guyafor2df <- function () {
   # Connection odbc à Guyafor sur serveur SQL
-  Connex <- rodbc::odbcConnect(dsn="Guyafor")
+  Connex <- RODBC::odbcConnect(dsn="Guyafor")
 
   # Sélection des données
 
@@ -20,10 +24,10 @@ Guyafor2df <- function () {
            FROM   dbo.TtGuyaforShiny INNER JOIN
                   dbo.taMesure_Corr ON dbo.TtGuyaforShiny.idMesure = dbo.taMesure_Corr.idMesure"
 
-  rodbc::sqlQuery(Connex,req1) -> dfGuyafor
+  RODBC::sqlQuery(Connex,req1) -> dfGuyafor
 
   # Clôture de la connection odbc
-  rodbc::odbcClose(Connex)
+  RODBC::odbcClose(Connex)
 }
 
 
@@ -34,11 +38,15 @@ Guyafor2df <- function () {
 #' Importation de l'ensemble des données de Paracou de la base Guyafor dans un dataframe
 #'
 #' La fonction exécute une requête sur le serveur sql.ecofog.gf pour lire les données
+#' @author Gaëlle Jaouen, \email{gaelle.jaouen@ecofog.gf}
+#' @importFrom RODBC odbcConnect
+#' @importFrom RODBC odbcClose
+#' @importFrom RODBC sqlQuery
 #' @export
 
 Paracou2df <- function () {
   # Connection odbc à Guyafor sur serveur SQL
-  Connex <- rodbc::odbcConnect(dsn="Guyafor")
+  Connex <- RODBC::odbcConnect(dsn="Guyafor")
 
   # Sélection des données
 
@@ -52,9 +60,9 @@ Paracou2df <- function () {
                   dbo.taMesure_Corr ON dbo.TtGuyaforShiny.idMesure = dbo.taMesure_Corr.idMesure
            WHERE  (dbo.TtGuyaforShiny.NomForet = N'paracou')"
 
-  rodbc::sqlQuery(Connex,req1) -> dfParacou
+  RODBC::sqlQuery(Connex,req1) -> dfParacou
 
   # Clôture de la connection odbc
-  rodbc::odbcClose(Connex)
+  RODBC::odbcClose(Connex)
 }
 

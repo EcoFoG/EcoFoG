@@ -3,3 +3,7 @@
 export(Guyafor2df)
 export(Paracou2df)
 export(article)
+importFrom(RODBC,odbcClose)
+importFrom(RODBC,odbcConnect)
+importFrom(RODBC,sqlQuery)
+importFrom(rmarkdown,pdf_document)

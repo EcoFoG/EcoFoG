@@ -11,6 +11,11 @@ NULL
 #' Formatage d'un article pour l'auto-archivage
 #'
 #' La fonction est appelée par le modèle Markdown article
+#'
+#' @param ... Arguments optionnels passés à \code{\link{pdf_document}}
+#' @param md_extensions Extensions markdodown, cf. \code{\link{pdf_document}}
+#'
+#' @importFrom rmarkdown pdf_document
 #' @export
 article <- function (..., md_extensions = c("-autolink_bare_uris")) {
   # Largement inspiré du package rticles

@@ -6,6 +6,11 @@
 \usage{
 article(..., md_extensions = c("-autolink_bare_uris"))
 }
+\arguments{
+\item{...}{Arguments optionnels passés à \code{\link{pdf_document}}}
+
+\item{md_extensions}{Extensions markdodown, cf. \code{\link{pdf_document}}}
+}
 \description{
 Formatage d'un article pour l'auto-archivage
 }

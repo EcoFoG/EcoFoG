@@ -12,3 +12,6 @@ Importation de l'ensemble des données de la base Guyafor dans un dataframe
 \details{
 La fonction exécute une requête sur le serveur sql.ecofog.gf pour lire les données
 }
+\author{
+Gaëlle Jaouen, \email{gaelle.jaouen@ecofog.gf}
+}
