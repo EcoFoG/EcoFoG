@@ -70,7 +70,7 @@ MathJax.Hub.Config({
 
 # Introduction
 
-Ce modèle permet la rédaction d'articles au format Markdown. Il produit directement des articles bien formatés pour l'auto-harchivage (dépôt sur HAL par exemple) et le code Markdown peut être réutilisé dans d'autres modèles pour une soumission au format Word ou Latex.
+Ce modèle permet la rédaction d'articles au format Markdown. Il produit directement des articles bien formatés pour l'auto-archivage (dépôt sur HAL par exemple) et le code Markdown peut être réutilisé dans d'autres modèles pour une soumission au format Word ou Latex.
 
 # R Markdown
 

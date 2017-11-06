@@ -6,7 +6,7 @@
 % ---------------------------------------------------------------------
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{ArtEcoFoG}[26/09/2017, v. 1.0]
+\ProvidesClass{ArtEcoFoG}[06/11/2017, v. 2.1]
 \RequirePackage{ifthen}
 \RequirePackage{calc}
 \AtEndOfClass{\RequirePackage{microtype}}
@@ -19,7 +19,7 @@
 \RequirePackage{ifpdf}      % Needed to pick between latex and pdflatex
 
 % ---------------------------------------------------------------------
-\RequirePackage{natbib} % Bibliographie avancée (parenthèses, citep...). Avant babel.
+\RequirePackage{natbib}         % Bibliographie avancée (parenthèses, citep...). Avant babel.
 \RequirePackage[utf8]{inputenc} % Pour les accents
 \RequirePackage[T1]{fontenc}    % Pour les accents
 \RequirePackage{amsmath,amsfonts,amssymb}
@@ -134,9 +134,6 @@
     \expandafter\gdef\csname @auth\romannumeral\the\@authcnt\endcsname
     {#1}}
 % ---------------------------------------------------------------------
-\RequirePackage{enumitem}
-%\setlist{nolistsep} % Uncomment to remove spacing between items in lists (enumerate, itemize)
-% ---------------------------------------------------------------------
 % Remove brackets from numbering in List of References
 \renewcommand{\@biblabel}[1]{\bfseries\color{color1}\textsuperscript{[#1]}}
 %\setlength{\bibitemsep}{0cm}
@@ -183,26 +180,26 @@
 % ---------------------------------------------------------------------
 
 % -------------- Personnalisation EcofoG
-\setlength{\columnsep}{0.55cm} % Distance between the two columns of text
-\setlength{\fboxrule}{0.75pt} % Width of the border around the abstract
+\setlength{\columnsep}{0.55cm}      % Distance between the two columns of text
+\setlength{\fboxrule}{0.75pt}       % Width of the border around the abstract
 
-\definecolor{color1}{RGB}{0,0,90} % Color of the article title and sections
-\definecolor{color2}{RGB}{0,20,20} % Color of the boxes behind the abstract and headings
+\definecolor{color1}{RGB}{0,0,90}   % Color of the article title and sections
+\definecolor{color2}{RGB}{0,20,20}  % Color of the boxes behind the abstract and headings
 
-\newlength{\tocsep} % Format de la table des matières 
-\setlength\tocsep{1.5pc} % Sets the indentation of the sections in the table of contents
+\newlength{\tocsep}                 % Format de la table des matières 
+\setlength\tocsep{1.5pc}            % Sets the indentation of the sections in the table of contents
 
-\RequirePackage{tabularx} % Retour à la ligne des tableaux
+\RequirePackage{tabularx}           % Retour à la ligne des tableaux
   \renewcommand{\arraystretch}{1.8}
-\RequirePackage{multirow} % Fusion des lignes dans les tableaux
-\RequirePackage{breqn} % Retour à la ligne des équations
-\RequirePackage{url} % Retour à la ligne des url
-\RequirePackage{hyperref} % Liens hypertextes, signets PDF
+\RequirePackage{multirow}           % Fusion des lignes dans les tableaux
+\RequirePackage{breqn}              % Retour à la ligne des équations
+\RequirePackage{url}                % Retour à la ligne des url
+\RequirePackage{hyperref}           % Liens hypertextes, signets PDF
   \hypersetup{urlcolor=blue,linkcolor=black,citecolor=black,colorlinks=true} 
 
-  \graphicspath{{graphics/}} % Dossier de stockage des figures
-\RequirePackage{epstopdf} % Figures eps
-\RequirePackage{enumitem} % Espacement dans les listes
+  \graphicspath{{graphics/}}        % Dossier de stockage des figures
+\RequirePackage{epstopdf}           % Figures eps
+\RequirePackage{enumitem}           % Espacement dans les listes
   \setlist[itemize]{noitemsep,nolistsep}
   \setlist[enumerate]{noitemsep,nolistsep}
 
