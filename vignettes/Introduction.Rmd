@@ -1,0 +1,77 @@
+---
+title: "Utilitaires pour EcoFoG"
+author:
+- name: Eric Marcon
+  affiliation: AgroParisTech, UMR EcoFoG
+  email: eric.marcon@ecofog.gf
+package: EcoFoG
+output:
+  BiocStyle::html_document
+abstract: |
+  Présentation du package EcoFoG.
+vignette: |
+  %\VignetteIndexEntry{Introduction}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+# Contenu du package
+
+
+Le package `r Githubpkg("rstudio/rmarkdown")` contient des outils utiles aux membres de l'UMR.
+Il est hébergé sur _GitHub_ sans vocation à être déposé sur CRAN.
+
+Il contient :
+
+* Des modèles de documents _RMarkdown_ :
+
+  - Un modèle d'article (produit au format PDF) bien formaté;
+
+  - Un modèle de présentation Beamer.
+
+* Du code :
+
+  - Des fonctions pour accéder aux données de la base Guyafor à partir du réseau local du campus de Kourou ou en VPN.
+
+
+
+# Environnement logiciel
+
+## Minimum
+
+La package est destiné à _R_, à installer de préférence dans sa [dernière version](https://cran.r-project.org/) avec [RStudio](https://www.rstudio.com/products/rstudio/download/#download) en version supérieure à 1.
+
+Pour installer le package à partir de GitHub, il faut utiliser le package _devtools_ après l'avoir lui-même installé comme tout autre package (menu _Tools/Install Packages..._).
+
+```{r Install, eval=FALSE}
+devtools::install_git("EcoFoG/EcoFoG")
+```
+
+## Production de fichiers PDF
+
+Une installation de _LaTeX_ est nécessaire pour produire des fichiers PDF avec RMarkdown.
+Sous Windows, utiliser [MikTex](https://miktex.org/download).
+
+Un bon éditeur pour _LaTeX_ est [_TeXstudio_](https://www.texstudio.org/) et un éditeur de fichiers bibliographiques est [_JabRef_](http://www.jabref.org/).
+Aucun des deux n'est indispensable pour produire des documents avec _RMarkdown_.
+
+## Développement sous R
+
+Le développement de packages R nécessite les outils de R (_RTools_), à installer en même temps que chaque mise à jour de R, dans la version de développement ([téléchargement pour Windows](https://cran.r-project.org/bin/windows/Rtools/)).
+
+La gestion des sources avec _Git_, intégrée à _RStudio_, nécessite l'installation de _git_: [téléchargement pour Windows](https://git-for-windows.github.io/).
+Installer le logiciel avec toutes les options par défaut mais désactiver l'intégration à Windows Explorer.
+Pour utiliser _git_ dans l'explorateur de Windows en plus de _RStudio_, installer [Tortoise Git](https://tortoisegit.org/download/).
+
+Les vignettes des packages peuvent être réalisées, comme celle-ci, avec le package _BiocStyle_, à installer à partir de _Bioconductor_ (et non CRAN):
+
+```{r _BiocStyle_, eval=FALSE}
+source("https://bioconductor.org/biocLite.R")
+biocLite("BiocStyle")
+```
+
+Le package nécessite [ImageMagik](https://www.imagemagick.org/) pour traiter les images, à installer.
+En absence d'_ImageMagik_, la production de chaque image par un bout de code _R_ (_R chunk_) produit une erreur.
+
+
+

@@ -1,7 +1,8 @@
 # EcoFoG
-Utilitaires pour l'UMR EcoFoG
 
-*Construction en cours*
+![stability-wip](https://img.shields.io/badge/stability-work_in_progress-lightgrey.svg)
+
+Utilitaires pour l'UMR EcoFoG
 
 Contenu:
 
