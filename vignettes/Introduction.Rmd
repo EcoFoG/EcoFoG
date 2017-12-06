@@ -51,6 +51,7 @@ devtools::install_git("EcoFoG/EcoFoG")
 
 Une installation de _LaTeX_ est nécessaire pour produire des fichiers PDF avec RMarkdown.
 Sous Windows, utiliser [MikTex](https://miktex.org/download).
+Le téléchargement automatique des packages manquants (sous Windows: MiKTeX settings, _Install missing packages=Yes_) est indispensable pour que `r Githubpkg("rstudio/bookdown")` fonctionne correctement.
 
 Un bon éditeur pour _LaTeX_ est [_TeXstudio_](https://www.texstudio.org/) et un éditeur de fichiers bibliographiques est [_JabRef_](http://www.jabref.org/).
 Aucun des deux n'est indispensable pour produire des documents avec _RMarkdown_.
