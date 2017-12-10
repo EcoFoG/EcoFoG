@@ -1,0 +1,17 @@
+---
+title: "Modèle de livre, rapport, thèse"
+author: "Eric Marcon"
+date: "10 décembre 2017"
+output: html_document
+---
+
+# Modèle d'ouvrage
+
+Ce modèle s'appuie sur _Bookdown_ pour permettre d'écrire en _R Markdown_ un livre, un rapport, une thèse de doctorat ou un mémoire d'HDR.
+
+Le fichier principal est _index.Rmd_ qui contient la description de l'ouvrage dans son entête. Tous les autres fichiers _.Rmd_ du dossier contiennent un chapitre. Le fichier _book.bib_ contient la bibliographie.
+
+Ce fichier doit être supprimé.
+
+Pour commener, ouvrir le projet R qui se trouve dans ce dossier.
+Ouvrir ensuite _index.Rmd_ et cliquer sur le bouton _Build Book_ dans la fenêtre _Build_ de Rstudio.

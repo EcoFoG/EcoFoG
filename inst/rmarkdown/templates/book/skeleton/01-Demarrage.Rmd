@@ -1,0 +1,65 @@
+# Démarrage {#Demarrage}
+
+_RStudio_ en version supérieure à 1 doit être utilisé.
+Le package **bookdown** doit être installé.
+
+Pour la création du fichier PDF, une installation de LaTeX est nécessaire.
+Sous Windows, utiliser [MikTex](https://miktex.org/download).
+Le téléchargement automatique des packages manquants (sous Windows: MiKTeX settings, _Install missing packages=Yes_) est indispensable.
+
+Le dossier complet du projet doit être décompacté et utilisé comme base de travail.
+
+Les paramètres de base du projet doivent être saisis dans les fichiers suivant.
+
+## index.Rmd
+
+Dans l'entête du fichier, saisir le titre de l'ouvrage et le nom du ou des auteurs
+
+    title: "Ouvrage Bookdown" 
+    author: "Prénom NomAuteur"
+
+Les options spécifiques à LaTeX sont :
+
+- $documentclass$: la classe de document, obligatoirement _memoir_ pour ce modèle;
+
+- fontfamily: la [police de caractère](https://en.wikibooks.org/wiki/LaTeX/Fonts#Font_families), _lmodern_ par défaut ;
+
+- linestretch: l'interlignage, 1 par défaut ;
+
+
+
+## _bookdown.yml
+
+Saisir le nom du fichier Rmd qui sera le résultat de la fusion de tous les chapitres et choisir s'il doit être détruit après usage.
+Les options par défaut conviendront à la plupart des usages.
+
+    book_filename: "_Book"
+    delete_merged_file: true
+
+
+Si le projet est hébergé sur GitHub, indiquer son adresse.
+Sinon, supprimer la ligne.
+
+    repo: "https://github.com/EcoFoG/BookTemplate"
+
+
+Il est inutile de compléter les mots-clés selon la langue de l'ouvrage.
+Les options _language_ sont prises en charge par ailleurs.
+
+    language:
+      ui:
+        chapter_name: "Chapitre "
+
+
+## _output.yml
+
+Personnaliser la table des matières au format HTML.
+
+    config:
+      toc:
+        before: |
+          <li><a href="./">Ouvrage Bookdown</a></li>
+        after: |
+          <li><a href="https://github.com/EcoFoG/ (...)
+
+

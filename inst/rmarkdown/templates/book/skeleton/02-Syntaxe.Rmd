@@ -1,0 +1,62 @@
+# Syntaxe
+
+La syntaxe de _R Mardown_ étendue par _Bookdown_ est rappelée ici, en Anglais.
+Le changement de langue est géré en LaTeX (ponctuation et césures différentes) mais pas en HTML.
+La commande `\selectlanguage{english}` est simplement ignorée en HTML.
+
+\selectlanguage{english}
+
+## Section in English
+
+You can label chapter and section titles using `{#label}` after them, e.g., we can reference Chapter \@ref(Demarrage).
+
+Figures and tables with captions will be placed in `figure` and `table` environments, respectively.
+
+```{r nice-fig, fig.cap='Here is a nice figure! It has a long, long, long, long, long, long, long, long, long, long, long, long, long, long, long, long, long, long, long, long, caption'}
+par(mar = c(4, 4, .1, .1))
+plot(pressure, type = 'b', pch = 19)
+```
+
+Reference a figure by its code chunk label with the `fig:` prefix, e.g., see Figure \@ref(fig:nice-fig). Similarly, you can reference tables generated from `knitr::kable()`, e.g., see Table \@ref(tab:nice-tab).
+
+```{r nice-tab, tidy=FALSE}
+knitr::kable(
+  head(iris, 20), caption = 'Here is a nice table!',
+  booktabs = TRUE
+)
+```
+
+You can write citations, too. For example, we are using the **bookdown** package [@R-bookdown] in this sample book, which was built on top of R Markdown and **knitr** [@xie2015].
+
+\selectlanguage{french}
+
+## A faire
+
+- Rétablir la création automatique de packages.bib.
+
+- Changer le nom de book.bib.
+
+- Documenter le YAML.
+
+- Documenter la structure du document LaTeX.
+
+- Documenter le changement de langue.
+
+- Dupliquer la doc du modèle LaTeX : équations, etc.
+
+
+
+## Documentation pour les utilisateurs
+
+- L'ouvrage [bookdown: Authoring Books and Technical Documents with R Markdown](https://bookdown.org/yihui/bookdown/) de Yihui Xie, l'auteur de **bookdown** et de **knitr**.
+
+- L'[anti-sèche de R Markdown](https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf) pour la syntaxe.
+
+
+## Documentation pour les développeurs
+
+- La [personnalisation du format du fichier LaTeX](http://rmarkdown.rstudio.com/pdf_document_format.html#advanced_customization) produit.
+
+- Le [manuel de Pandoc](https://pandoc.org/MANUAL.html) pour les options possibles dans l'entête YAML.
+
+
