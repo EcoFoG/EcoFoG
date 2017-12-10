@@ -14,7 +14,7 @@ Contenu:
   * modèle d'article pour l'autoarchivage (R Markdown):
 ![Modèle d'article](Article.png)
 
-  * ![Modèle d'ouvrage](Ouvrage.png) (Bookdown): livre, rapport, thèse.
+  *  Modèle d'ouvrage (Bookdown): livre, rapport, thèse. ![Modèle d'ouvrage](Ouvrage.png)
 
   
 * Accès aux données Guyafor
