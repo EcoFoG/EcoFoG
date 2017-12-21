@@ -2,7 +2,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % Options for packages loaded elsewhere
-\PassOptionsToPackage{unicode=true}{hyperref} 
+\PassOptionsToPackage{unicode=true}{hyperref}
 \PassOptionsToPackage{hyphens}{url}
 $if(colorlinks)$
   \PassOptionsToPackage{dvipsnames,svgnames*,x11names*}{xcolor}
@@ -65,7 +65,7 @@ $else$
   \setmathfont[$for(mathfontoptions)$$mathfontoptions$$sep$,$endfor$]{$mathfont$}
 $endif$
 $endif$
-% Chinese, Japanese, Corean fonts 
+% Chinese, Japanese, Corean fonts
 $if(CJKmainfont)$
   \usepackage{xeCJK}
   \setCJKmainfont[$for(CJKoptions)$$CJKoptions$$sep$,$endfor$]{$CJKmainfont$}
@@ -108,9 +108,9 @@ $else$
             pdfborder={0 0 0},
 $endif$
             breaklinks=true}
-            
+
 % Don't use monospace font for urls
-\urlstyle{same}  
+\urlstyle{same}
 
 $if(verbatim-in-note)$
   \VerbatimFootnotes % allows verbatim text in footnotes
@@ -260,23 +260,23 @@ $endif$
 	~\\ % Print a character or the page will not exist
 	\begin{textblock}{2}(30,10)
 		\rule{1pt}{\paperheight-20mm}
-	\end{textblock} 
+	\end{textblock}
 	\begin{textblock}{140}(50, 45)
-		\flushright 
+		\flushright
 		\begin{Spacing}{3}
 			{\fontfamily{qtm}\selectfont\fontsize{45}{45}\selectfont \textsc{\thetitle}}
 		\end{Spacing}
 	\end{textblock}
 	\begin{textblock}{140}(50, 125)
-		\flushright 
+		\flushright
 		{\fontfamily{qtm}\Large \theauthor}
-	\end{textblock} 
+	\end{textblock}
 	\begin{textblock}{120}[1, 1](225, 297)
 		\includegraphics[width=10cm]{Filigrane}
-	 \end{textblock} 
+	 \end{textblock}
 	\begin{textblock}{140}[0, 1](50, 262)
 		\normalfont	Version: \thedate
-	\end{textblock} 
+	\end{textblock}
 	\newpage
 	~\\ % Print a character or the page will not exist
 	\begin{textblock}{140}(40, 40)
@@ -288,7 +288,7 @@ $endif$
 		UMR \'Ecologie des forêts de Guyane\\
 		\url{http://www.ecofog.gf}\\[3\baselineskip]
 		Les opinions émises par les auteurs sont personnelles et n’engagent ni l’UMR EcoFoG ni ses tutelles.
-    
+
     \tiny{Photographie en couverture: Hadrien Lalagüe}
 	\end{textblock}
 	\newpage
@@ -299,7 +299,6 @@ $endif$
 
 $if(PhD-HDR)$
 \usepackage[DocType=$PhD-HDR.DocType$, ED=$PhD-HDR.ED$, Ets=$PhD-HDR.Ets$, DIS=$PhD-HDR.DIS$]{latex/pdgUniv}
-$endif$
 
 \specialty{$PhD-HDR.speciality$}
 \defencedate{$PhD-HDR.defence-date$}
@@ -308,12 +307,12 @@ $endif$
 % Setup people like your boss, the jury team and the referees
 % - First you need to define how number they will be in each category
 %   It is done with the commands \nboss{n}, \nreferee{n} and \njudge{n}.
-%   You can define more people in each category than the number given 
+%   You can define more people in each category than the number given
 %   but only the first "\npeople" will be print.
 % - Then use the command \makesomeone{<category>}{<number>}{<name>}{<status>}{<other>}
 %   where:
 %     <category> should be select in ['boss', 'referee', 'judge']
-%     <number>   is the rank for printing the person. 
+%     <number>   is the rank for printing the person.
 %                Only number <= "\npeople" will be printed
 %     <name>     First name and las name of the people
 %     <status>   Is (s)he a "charg\'e de recher" ou un "professeur d'universit\'e"...
@@ -326,6 +325,8 @@ $if(PhD-HDR.jury4)$\makesomeone{$PhD-HDR.jury4.category$}{4}{$PhD-HDR.jury4.name
 $if(PhD-HDR.jury5)$\makesomeone{$PhD-HDR.jury5.category$}{5}{$PhD-HDR.jury5.name$}{$PhD-HDR.jury5.status$}{$PhD-HDR.jury5.other$}$endif$
 $if(PhD-HDR.jury6)$\makesomeone{$PhD-HDR.jury6.category$}{6}{$PhD-HDR.jury6.name$}{$PhD-HDR.jury6.status$}{$PhD-HDR.jury6.other$}$endif$
 $if(PhD-HDR.jury7)$\makesomeone{$PhD-HDR.jury7.category$}{7}{$PhD-HDR.jury7.name$}{$PhD-HDR.jury7.status$}{$PhD-HDR.jury7.other$}$endif$
+
+$endif$
 
 
 % End of preamble
@@ -356,8 +357,6 @@ $for(include-before)$
 $include-before$
 $endfor$
 
-\clearpage
-~\\ % Provisoire. Pb: clearpage n'ouvre pas une page impaire.
 
 
 % Contents
