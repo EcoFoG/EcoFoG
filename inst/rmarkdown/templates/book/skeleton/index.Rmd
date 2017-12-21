@@ -68,11 +68,10 @@ classoption:
   - openright
 papersize: A4
 fontsize: 11pt
-verbatim-in-note: yes
 toc-depth: 3
 lang: fr
 otherlangs: [en-US, en-GB, fr]
-bibliography: [book.bib, packages.bib]
+bibliography: [MyBook.bib, packages.bib]
 biblio-style: authoryear-ibid
 cite-style: verbose-inote
 biblatexoptions:

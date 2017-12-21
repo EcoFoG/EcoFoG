@@ -30,25 +30,11 @@ You can write citations, too. For example, we are using the **bookdown** package
 
 \selectlanguage{french}
 
-## A faire
-
-- Rétablir la création automatique de packages.bib.
-
-- Changer le nom de book.bib.
-
-- Documenter le YAML.
-
-- Documenter la structure du document LaTeX.
-
-- Documenter le changement de langue.
-
-- Dupliquer la doc du modèle LaTeX : équations, etc.
-
 
 
 ## Documentation pour les utilisateurs
 
-- L'ouvrage [bookdown: Authoring Books and Technical Documents with R Markdown](https://bookdown.org/yihui/bookdown/) de Yihui Xie, l'auteur de **bookdown** et de **knitr**.
+- L'ouvrage [bookdown: Authoring Books and Technical Documents with R Markdown](https://bookdown.org/yihui/bookdown/) de Yihui Xie, l'auteur de **bookdown** et de **knitr**. Toutes les précisions nécessaires à la rédaction (écriture d'équations, références croisées, etc.) y sont données ;
 
 - L'[anti-sèche de R Markdown](https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf) pour la syntaxe.
 
@@ -58,5 +44,3 @@ You can write citations, too. For example, we are using the **bookdown** package
 - La [personnalisation du format du fichier LaTeX](http://rmarkdown.rstudio.com/pdf_document_format.html#advanced_customization) produit.
 
 - Le [manuel de Pandoc](https://pandoc.org/MANUAL.html) pour les options possibles dans l'entête YAML.
-
-
