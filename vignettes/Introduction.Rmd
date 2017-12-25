@@ -74,5 +74,5 @@ biocLite("BiocStyle")
 Le package nécessite [ImageMagik](https://www.imagemagick.org/) pour traiter les images, à installer.
 En absence d'_ImageMagik_, la production de chaque image par un bout de code _R_ (_R chunk_) produit une erreur.
 
-
-
+La vérification des packages renvoie un avertissement si [qpdf](https://sourceforge.net/projects/qpdf/) n'est pas installé.
+Télécharger le fichier zip et coller tout le contenu du dossier _bin_ dans le dossier _bin_ de _Rtools_.
