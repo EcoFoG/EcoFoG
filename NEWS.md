@@ -1,4 +1,4 @@
-# EcoFoG 0.2-0
+# EcoFoG 0.2-1
 
 ## Nouveautés
 

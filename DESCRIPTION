@@ -1,7 +1,7 @@
 Package: EcoFoG
 Type: Package
 Title: Utilitaires pour l'UMR EcoFoG
-Version: 0.2.0
+Version: 0.2.1
 Authors@R: c(
     person("Eric", "Marcon", email="eric.marcon@ecofog.gf", role=c("aut", "cre")),
     person("Gaëlle", "Jaouen", email="gaelle.jaouen@ecofog.gf", role="aut")
@@ -11,5 +11,7 @@ Description: Modèles de documents, accès aux données.
 License: GNU General Public License
 Encoding: UTF-8
 Imports: rmarkdown, RODBC
+Suggests: testthat, knitr, BiocStyle
 LazyData: true
 RoxygenNote: 6.0.1
+VignetteBuilder: knitr

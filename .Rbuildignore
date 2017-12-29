@@ -1,2 +1,14 @@
 ^.*\.Rproj$
 ^\.Rproj\.user$
+^\_sgbak$
+^\.hg$
+\.synctex\.gz$
+\.tex$
+\.log$
+\.blg$
+\.bbl$
+^\.travis\.yml$
+vignettes/figure/
+vignettes/Introduction_cache/
+vignettes/Introduction_files/
+docs/

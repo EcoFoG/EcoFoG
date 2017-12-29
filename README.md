@@ -9,12 +9,12 @@ Contenu:
 * Modèles 
 
   * modèle de présentation (R Markdown):
-![Modèle de présentation](Presentation.png)
+![Modèle de présentation](docs/Presentation.png)
   
   * modèle d'article pour l'autoarchivage (R Markdown):
-![Modèle d'article](Article.png)
+![Modèle d'article](docs/Article.png)
 
-  *  Modèle d'ouvrage (Bookdown): livre, rapport, thèse. ![Modèle d'ouvrage](Ouvrage.png)
+  *  Modèle d'ouvrage (Bookdown): livre, rapport, thèse. ![Modèle d'ouvrage](docs/Ouvrage.png)
 
   
 * Accès aux données Guyafor
