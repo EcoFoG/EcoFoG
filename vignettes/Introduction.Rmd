@@ -76,3 +76,16 @@ En absence d'_ImageMagik_, la production de chaque image par un bout de code _R_
 
 La vérification des packages renvoie un avertissement si [qpdf](https://sourceforge.net/projects/qpdf/) n'est pas installé.
 Télécharger le fichier zip et coller tout le contenu du dossier _bin_ dans le dossier _bin_ de _Rtools_.
+
+Un autre avertissement est renvoyé en absence de [Ghostscript](https://www.ghostscript.com/) à télécharger et installer.
+Copier ensuite le contenu du dossier _bin_ dans le dossier _bin_ de _Rtools_.
+
+[perl](https://www.perl.org/) est nécessaire au fonctionnement de _pdfcrop_ qui est un utilitaire installé avec les distributions de _LaTeX_ comme _MikTeX_.
+_pdfcrop_ élimine automatiquement les marges excédentaires des figures au format PDF produite par R à condition de le déclarer dans les options de _knitr_: 
+
+```{r , eval=FALSE}
+knitr::knit_hooks$set(crop = knitr::hook_pdfcrop)
+knitr::opts_chunk$set(crop=TRUE)
+```
+L'option `crop=TRUE` peut être déclatée globalement ou dans chaque bout de code qui produit une figure.
+L'appel à _pdfcrop_ ralentit la production des documents et doit être utilisé seulement pour la production finale.
