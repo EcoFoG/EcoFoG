@@ -23,15 +23,15 @@ Il est hébergé sur _GitHub_ sans vocation à être déposé sur CRAN.
 
 Il contient :
 
-* Des modèles de documents _RMarkdown_ :
+- Des modèles de documents _RMarkdown_ :
 
-  - Un modèle d'article (produit au format PDF) bien formaté;
+    - Un modèle d'article (produit au format PDF) bien formaté;
 
-  - Un modèle de présentation Beamer.
+    - Un modèle de présentation Beamer.
 
-* Du code :
+- Du code :
 
-  - Des fonctions pour accéder aux données de la base Guyafor à partir du réseau local du campus de Kourou ou en VPN.
+    - Des fonctions pour accéder aux données de la base Guyafor à partir du réseau local du campus de Kourou ou en VPN.
 
 
 

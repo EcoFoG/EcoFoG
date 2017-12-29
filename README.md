@@ -4,7 +4,7 @@
 
 Utilitaires pour l'UMR EcoFoG
 
-Contenu:
+## Contenu
 
 * Modèles 
 
@@ -18,3 +18,10 @@ Contenu:
 
   
 * Accès aux données Guyafor
+
+## Vignette
+
+Une vignette d'[introduction](https://ecofog.github.io/EcoFoG/Introduction.html) est disponible.
+Dans R, utiliser la commande `vignette("Introduction", "EcoFoG")`.
+
+
