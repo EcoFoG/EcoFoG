@@ -75,7 +75,7 @@ MathJax.Hub.Config({
 Ce modèle permet la rédaction d'articles au format Markdown. 
 Il produit directement des articles bien formatés pour l'auto-archivage (dépôt sur HAL par exemple) ou sous d'autres formats, par exemple HTML.
 
-# R Markdown
+# R Markdown{#markdown}
 
 Markdown est un langage très simple pour produire divers types de documents: HTML, PDF, et Word entre autres.
 Sa documentation est disponible sur le site de RStudio[^1].
@@ -103,13 +103,15 @@ Markdown permet de produire, sans réécrire le texte, un document dans différe
 Dans RStudio, créer un nouveau document de type Document R Markdown. 
 L'assistant permet de choisir entre divers formats. Les plus intéressants sont:
 
-![Nouveau document Markdown\label{fig:nouveau}](NouveauRMarkdown.PNG)
+```{r nouveau, fig.cap="Nouveau document", echo=FALSE}
+knitr::include_graphics("NouveauRMarkdown.PNG")
+```
 
 * Document: rapport simple
 
 * Presentation: diaporama
 
-* From template: à partir de modèles installés par des packages. Les modèles du package EcoFoG sont affichés (voir figure \ref{fig:nouveau}): choisir Article EcoFoG.
+* From template: à partir de modèles installés par des packages. Les modèles du package EcoFoG sont affichés (voir figure \@ref(fig:nouveau)): choisir Article EcoFoG.
 
 * Ecrire le document dans RStudio.
 
@@ -135,12 +137,12 @@ head(cars)
 Les séparateurs horizontaux - et verticaux | permettent de dessiner un tableau.
 Les tableaux peuvent aussi être produits par du code R, avec le package knitr:
 
-```{r kable, results = "asis"}
+```{r kable}
 names(iris) <- c("Longueur sépales", "Largeur", "Longueur pétales", "Largeur", "Espèce")
-knitr::kable(head(iris), caption="R\\label{tab:kable}")
+knitr::kable(head(iris), caption="Tableau créé par R", longtable = TRUE, booktabs = TRUE)
 ```
 
-Une légende est possible et le référencement aussi (tableau \ref{tab:kable}).
+Une légende est possible et le référencement aussi (tableau \@ref(tab:kable)).
 Attention, la largeur des tableaux est limitée à une colonne de texte, et les retours à la ligne dans les cellules ne sont pas pris en charge. 
 
 
@@ -150,10 +152,13 @@ Attention, la largeur des tableaux est limitée à une colonne de texte, et les 
 plot(pressure)
 ```
 
-Les figures peuvent être créées par le code R (figure \@ref(fig:plot)).
+Les figures peuvent être créées par le code R (figure \@ref(fig:pressure)).
 Avec Bookdown, une étiquette est associée à chaque figure: son nom est `fig:xxx` où `xxx` est le nom du bout de code R.
 Les renvois se fonct avec la commande `\@ref(fig:xxx)`.
 
+Une figure peut utiliser toute la largeur de la page en ajoutant les options suivantes dans l'entête du bout de code qui la génère: `fig.env="figure*"`et   `out.extra=""`.
+
+Les figures existantes sont intégrées dans un bout de code par la fonction `include_graphics`, voir la figure \@ref(fig:nouveau).
 
 
 ## Listes
@@ -175,10 +180,23 @@ Les équations au format Latex peuvent être insérées en ligne, comme $A=\pi r
 
 Elles peuvent être numérotées (voir équation \@ref(eq:disque)) à condition de leur attribuer une étiquette:
 
-\begin{equation}\label{key}
+\begin{equation}
 A = \pi r^2.
 (\#eq:disque)
 \end{equation}
+
+
+## Références croisées
+
+Les figures et tableaux ont une étiquette générée automatiquement, identique au nom du bout de code préfixé par `fig:` et `tab:`.
+
+Pour les équations, l'étiquette est ajoutée manuellement par le code `(\#eq:xxx)` avant la fin de l'équation.
+
+Les sections peuvent recevoir une étiquette en terminant leur titre par `{#yyy}`.
+
+Des signets peuvent aussi être placés librement dans le texte avec la commande `(ref:zzz)`.
+
+Dans tous les cas, l'appel à la référence est fait par la commande `\@ref(ref:zzz)`.
 
 
 ## Bibliographie
