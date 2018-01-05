@@ -1,0 +1,20 @@
+---
+title: "EcoFoG Documentation"
+subtitle: "Utilitaires pour l'UMR EcoFoG"
+author: "Eric Marcon"
+copyright: "Eric Marcon"
+output:
+  packagedocs::package_docs_rd:
+    toc: true
+    toc_collapse: false
+redirect: EcoFoG/EcoFoG/rd.html
+vignette: |
+  %\VignetteIndexEntry{EcoFoG Package Reference}
+  %\VignetteEngine{packagedocs::redirect}
+navpills: |
+  <li><a href='docs.html'>Docs</a></li>
+  <li class="active"><a href='rd.html'>Package Ref</a></li>
+---
+
+```{r auto-gen-child, child="auto-generated-rd.Rmd"}
+```

@@ -1,24 +1,34 @@
 ---
-title: "Utilitaires pour EcoFoG"
-author:
-- name: Eric Marcon
-  affiliation: AgroParisTech, UMR EcoFoG
-  email: eric.marcon@ecofog.gf
-package: EcoFoG
+title: "EcoFoG Documentation"
+subtitle: "Utilitaires pour l'UMR EcoFoG"
+author: "Eric Marcon"
+copyright: "Eric Marcon"
 output:
-  BiocStyle::html_document
-abstract: |
-  Présentation du package EcoFoG.
+  packagedocs::package_docs:
+    toc: true
+    toc_collapse: false
+redirect: EcoFoG/EcoFoG
 vignette: |
-  %\VignetteIndexEntry{Introduction}
-  %\VignetteEngine{knitr::rmarkdown}
-  %\VignetteEncoding{UTF-8}
+  %\VignetteIndexEntry{EcoFoG Documentation}
+  %\VignetteEngine{packagedocs::redirect}
+navpills: |
+  <li class="active"><a href='index.html'>Docs</a></li>
+  <li><a href='rd.html'>Package Ref</a></li>
+  <li><a href='https://github.com/EricMarcon/SpatDiv'>Github<i class='fa fa-github'></i></a></li>
 ---
+
+```{r global_options, include=FALSE}
+# R output pre blocks are styled by default to indicate output
+knitr::opts_chunk$set(comment = NA)
+
+# shorthand for rd_link() - see ?packagedocs::rd_link for more information
+rdl <- function(x) packagedocs::rd_link(deparse(substitute(x)))
+```
 
 # Contenu du package
 
 
-Le package `r Githubpkg("rstudio/rmarkdown")` contient des outils utiles aux membres de l'UMR.
+Le package _EcoFoG_ contient des outils utiles aux membres de l'UMR.
 Il est hébergé sur _GitHub_ sans vocation à être déposé sur CRAN.
 
 Il contient :
@@ -53,7 +63,7 @@ devtools::install_git("EcoFoG/EcoFoG")
 
 Une installation de _LaTeX_ est nécessaire pour produire des fichiers PDF avec RMarkdown.
 Sous Windows, utiliser [MikTex](https://miktex.org/download).
-Le téléchargement automatique des packages manquants (sous Windows: MiKTeX settings, _Install missing packages=Yes_) est indispensable pour que `r Githubpkg("rstudio/bookdown")` fonctionne correctement.
+Le téléchargement automatique des packages manquants (sous Windows: MiKTeX settings, _Install missing packages=Yes_) est indispensable pour que  _bookdown_ fonctionne correctement.
 
 Un bon éditeur pour _LaTeX_ est [_TeXstudio_](https://www.texstudio.org/) et un éditeur de fichiers bibliographiques est [_JabRef_](http://www.jabref.org/).
 Aucun des deux n'est indispensable pour produire des documents avec _RMarkdown_.

@@ -12,3 +12,4 @@ vignettes/figure/
 vignettes/Introduction_cache/
 vignettes/Introduction_files/
 docs/
+^_gh-pages$

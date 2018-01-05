@@ -11,7 +11,7 @@ Description: Modèles de documents, accès aux données.
 License: GNU General Public License
 Encoding: UTF-8
 Imports: rmarkdown, RODBC
-Suggests: testthat, knitr, BiocStyle, bookdown
+Suggests: testthat, knitr, packagedocs, bookdown
 LazyData: true
 RoxygenNote: 6.0.1
-VignetteBuilder: knitr
+VignetteBuilder: packagedocs
