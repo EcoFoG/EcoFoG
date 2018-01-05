@@ -29,12 +29,14 @@ archive: DOI xxxx
 date: "`r format(Sys.time(), '%d %B %Y')`"
 preamble: >
   \usepackage{amsmath}
-bibliography: references.bib
+bibliography: references #.bib
 lang: french # english
 keywordlabel: Mots-clés # Keywords
 corrauthorlabel: Contact # Corresponding author
 output:
-  EcoFoG::article:
+#  bookdown::gitbook
+  bookdown::pdf_book:
+    base_format: EcoFoG::article
     keep_tex: TRUE
 ---
 
@@ -70,7 +72,8 @@ MathJax.Hub.Config({
 
 # Introduction
 
-Ce modèle permet la rédaction d'articles au format Markdown. Il produit directement des articles bien formatés pour l'auto-archivage (dépôt sur HAL par exemple) et le code Markdown peut être réutilisé dans d'autres modèles pour une soumission au format Word ou Latex.
+Ce modèle permet la rédaction d'articles au format Markdown. 
+Il produit directement des articles bien formatés pour l'auto-archivage (dépôt sur HAL par exemple) ou sous d'autres formats, par exemple HTML.
 
 # R Markdown
 
@@ -80,7 +83,10 @@ Sa documentation est disponible sur le site de RStudio[^1].
 [^1]: <http://rmarkdown.rstudio.com/articles.html>
 
 
+Markdown est étendu par Bookdown [^2], qui permet la rédaction de livres et une syntaxe plus efficace pour les articles.
 Ce document est réalisé avec Markdown dans RStudio: knitr traite le code Markdown, le passe à Pandoc pour sa transformaton en Latex, enfin MikteX le compile en PDF.
+
+[^2]: <https://bookdown.org/yihui/bookdown/>
 
 
 ## Intérêt
@@ -140,11 +146,13 @@ Attention, la largeur des tableaux est limitée à une colonne de texte, et les 
 
 ## Figures
 
-```{r pressure, fig.cap="Titre de la figure\\label{fig:plot}"}
+```{r pressure, fig.cap="Titre de la figure"}
 plot(pressure)
 ```
 
-Les figures peuvent être créées par le code R (figure \ref{fig:plot}).
+Les figures peuvent être créées par le code R (figure \@ref(fig:plot)).
+Avec Bookdown, une étiquette est associée à chaque figure: son nom est `fig:xxx` où `xxx` est le nom du bout de code R.
+Les renvois se fonct avec la commande `\@ref(fig:xxx)`.
 
 
 
@@ -165,10 +173,11 @@ Les listes sont indiquées par des *, + et - (trois niveaux hiérarchiques) ou d
 
 Les équations au format Latex peuvent être insérées en ligne, comme $A=\pi r^2$ ou isolées comme $$e^{i \pi} = -1.$$
 
-Elles peuvent être numérotées à condition d'utiliser l'environnement Latex:
+Elles peuvent être numérotées (voir équation \@ref(eq:disque)) à condition de leur attribuer une étiquette:
 
 \begin{equation}\label{key}
-A=\pi r^2.
+A = \pi r^2.
+(\#eq:disque)
 \end{equation}
 
 
@@ -179,31 +188,21 @@ Les références bibliographiques incluses dans le fichier references.bib peuven
 
 # Types de document
 
-Ce modèle est prévu pour fonctionner avec le fichier Article.tex en LaTeX et produire des documents au format PDF.
-Le code markdown peut être réutilisé par copier coller dans d'autres types de documents.
+Ce modèle est prévu pour fonctionner avec le modèle Article d'EcoFoG en LaTeX et produire des documents au format PDF.
+En changeant l'entête du document, un fichier HTML est produit: décommenter `bookdown::gitbook` et commenter `bookdown::pdf_book:` et les deux lignes suivantes qui en dépendent; compléter le nom du fichier _.bib_ avec son extension sur la ligne `bibliography` (LaTeX attend le nom du fichier sans extension contrairement aux autres générateurs).
 
 ## Document HTML/PDF
 
 Pour un usage quotidien: le modèle HTML simple à utiliser, son format de sortie est propre correct. Le résultat est bien plus clair que du code R commenté.
 
-Utiliser le format HTML pour commencer un travail (plus rapide, pas de sauts de pages) puis remplacer l'entête
-
-> output: html_document
-
-par 
-
-> output: pdf_document
-
-pour produire un fichier PDF à la fin.
-
-
 ## Document Word
 
-Un document Word peut être produit:
+Un document Word peut être produit en commentant à la fois `bookdown::gitbook` et `bookdown::pdf_book:` et en complétant la ligne `output`:
 
 > output: word_document
 
-Son contenu peut être mis en forme ou copié dans un modèle. Les styles de texte standard  sont "First Paragraph" et "Corps de de texte".
+Son contenu peut être mis en forme ou copié dans un modèle. 
+Les styles de texte standard  sont "First Paragraph" et "Corps de de texte".
 Les légendes ne sont pas numérotées, les renvois perdus et les tableaux non formatés.
 La bibliographie n'est pas gérée.
 
@@ -220,8 +219,8 @@ Le document produit est un diaporama Beamer respectant la charte graphique 2018.
 Le package rticle fournit des modèles d'articles (PLOS, PNAS, etc.). 
 Le package xaringan fournit un modèle de présentation HTML 5.
 
-Hors assistant, le package bookdown [^3] permet d'écrire des livres.
+Le modèle Ouvrage du package EcoFoG permet d'écrire des livres.
 
-[^3]: <https://bookdown.org/yihui/bookdown/>
+La dernière ligne du modèle (bout de code R) doit être conservée pour afficher le titre _References_ (à traduire éventuellement dans la langue du document) au format HTML.
 
-
+`r if (knitr:::is_html_output()) '# References {-}'`

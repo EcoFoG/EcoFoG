@@ -27,8 +27,10 @@ Il contient :
 
     - Un modèle d'article (produit au format PDF) bien formaté;
 
-    - Un modèle de présentation Beamer.
-
+    - Un modèle de présentation Beamer;
+    
+    - Un modèle d'ouvrage (Bookdown): livre, rapport, thèse.
+    
 - Du code :
 
     - Des fonctions pour accéder aux données de la base Guyafor à partir du réseau local du campus de Kourou ou en VPN.

@@ -1,3 +1,14 @@
+# EcoFoG 0.3-0
+
+## Nouveautés
+
+* Le modèle d'article s'appuie sur bookdown.
+
+## Correction de bug
+
+* Le modèle d'ouvrage ignorait le préambule personnalisé.
+
+
 # EcoFoG 0.2-1
 
 ## Nouveautés
