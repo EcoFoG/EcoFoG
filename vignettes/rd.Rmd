@@ -12,8 +12,9 @@ vignette: |
   %\VignetteIndexEntry{EcoFoG Package Reference}
   %\VignetteEngine{packagedocs::redirect}
 navpills: |
-  <li><a href='docs.html'>Docs</a></li>
-  <li class="active"><a href='rd.html'>Package Ref</a></li>
+  <li class="active"><a href='index.html'>Docs</a></li>
+  <li><a href='rd.html'>Package Ref</a></li>
+  <li><a href='https://github.com/EricMarcon/SpatDiv'>Github<i class='fa fa-github'></i></a></li>
 ---
 
 ```{r auto-gen-child, child="auto-generated-rd.Rmd"}

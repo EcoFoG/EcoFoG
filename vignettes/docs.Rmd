@@ -11,6 +11,7 @@ redirect: EcoFoG/EcoFoG
 vignette: |
   %\VignetteIndexEntry{EcoFoG Documentation}
   %\VignetteEngine{packagedocs::redirect}
+  %\VignetteEncoding{UTF-8}
 navpills: |
   <li class="active"><a href='index.html'>Docs</a></li>
   <li><a href='rd.html'>Package Ref</a></li>
@@ -26,7 +27,6 @@ rdl <- function(x) packagedocs::rd_link(deparse(substitute(x)))
 ```
 
 # Contenu du package
-
 
 Le package _EcoFoG_ contient des outils utiles aux membres de l'UMR.
 Il est hébergé sur _GitHub_ sans vocation à être déposé sur CRAN.
