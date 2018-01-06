@@ -56,17 +56,6 @@ Library <- function(Packages) {
 # Library(c("entropart"))
 ```
 
-<!-- Script Mathjax nécessaire pour la numérotation des équations en HTML --> 
-<script type="text/x-mathjax-config">
-MathJax.Hub.Config({
-  TeX: { 
-    equationNumbers: {
-      autoNumber: "all",
-      formatNumber: function (n) {return +n}
-    } 
-  }
-});
-</script>
 <!-- Début du document ci-dessous --> 
 
 
