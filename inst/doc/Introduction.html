@@ -127,7 +127,7 @@ $(document).ready(function () {
 <p class="author-name">Eric Marcon<span class="affil-mark">1*</span></p>
 <p class="author-affiliation"><span class="affil-mark">1</span>AgroParisTech, UMR EcoFoG</p>
 <p class="author-email"><span class="affil-mark">*</span><a href="mailto:eric.marcon@ecofog.gf">eric.marcon@ecofog.gf</a></p>
-<h4 class="date"><em>5 janvier 2018</em></h4>
+<h4 class="date"><em>10 janvier 2018</em></h4>
 <h4 class="abstract">Abstract</h4>
 <p>Présentation du package EcoFoG.</p>
 <h4 class="package">Package</h4>
@@ -142,7 +142,8 @@ $(document).ready(function () {
 <li><a href="#environnement-logiciel"><span class="toc-section-number">2</span> Environnement logiciel</a><ul>
 <li><a href="#minimum"><span class="toc-section-number">2.1</span> Minimum</a></li>
 <li><a href="#production-de-fichiers-pdf"><span class="toc-section-number">2.2</span> Production de fichiers PDF</a></li>
-<li><a href="#developpement-sous-r"><span class="toc-section-number">2.3</span> Développement sous R</a></li>
+<li><a href="#publication"><span class="toc-section-number">2.3</span> Publication</a></li>
+<li><a href="#developpement-sous-r"><span class="toc-section-number">2.4</span> Développement sous R</a></li>
 </ul></li>
 </ul>
 </div>
@@ -177,8 +178,23 @@ $(document).ready(function () {
 <p>Une installation de <em>LaTeX</em> est nécessaire pour produire des fichiers PDF avec RMarkdown. Sous Windows, utiliser <a href="https://miktex.org/download">MikTex</a>. Le téléchargement automatique des packages manquants (sous Windows: MiKTeX settings, <em>Install missing packages=Yes</em>) est indispensable pour que <em><a href="https://github.com/rstudio/bookdown">bookdown</a></em> fonctionne correctement.</p>
 <p>Un bon éditeur pour <em>LaTeX</em> est <a href="https://www.texstudio.org/"><em>TeXstudio</em></a> et un éditeur de fichiers bibliographiques est <a href="http://www.jabref.org/"><em>JabRef</em></a>. Aucun des deux n’est indispensable pour produire des documents avec <em>RMarkdown</em>.</p>
 </div>
+<div id="publication" class="section level2">
+<h2><span class="header-section-number">2.3</span> Publication</h2>
+<p>Il est pratique d’utiliser une base bibliographique (fichier <em>.bib</em>) générale (par exemple, produite par <em>Mendeley</em> ou <em>Zotero</em>) pendant la phase de rédaction. Au moment de la publication d’un article, il faut alors extraire un fichier <em>.bib</em> spécifique, contenant seulement les références utilisées.</p>
+<p><a href="http://www.jabref.org/"><em>Jabref</em></a> est le bon outil pour le faire:</p>
+<ul>
+<li><p>Ouvrir le fichier <em>.tex</em> produit par RMarkdown avec un éditeur pour <em>LaTeX</em> (<em>TeXstudio</em>) ;</p></li>
+<li><p>Lancer la compilation pour produire entre autres un fichier <em>aux</em> ;</p></li>
+<li><p>Ouvrir la base bibliographique générale avec <em>Jabref</em> ;</p>
+<ul>
+<li><p>Utiliser le menu <em>Tools /New Sublibrary based on Aux file…</em> ;</p></li>
+<li><p>Sélectionner le fichier <em>aux</em> et cliquer sur <em>Generate</em>;</p></li>
+<li><p>Sauvegarder nouvelle base bibliographique et la déclarer comme dans le fichier <em>Rmd</em> de l’article.</p></li>
+</ul></li>
+</ul>
+</div>
 <div id="developpement-sous-r" class="section level2">
-<h2><span class="header-section-number">2.3</span> Développement sous R</h2>
+<h2><span class="header-section-number">2.4</span> Développement sous R</h2>
 <p>Le développement de packages R nécessite les outils de R (<em>RTools</em>), à installer en même temps que chaque mise à jour de R, dans la version de développement (<a href="https://cran.r-project.org/bin/windows/Rtools/">téléchargement pour Windows</a>).</p>
 <p>La gestion des sources avec <em>Git</em>, intégrée à <em>RStudio</em>, nécessite l’installation de <em>git</em>: <a href="https://git-for-windows.github.io/">téléchargement pour Windows</a>. Installer le logiciel avec toutes les options par défaut mais désactiver l’intégration à Windows Explorer. Pour utiliser <em>git</em> dans l’explorateur de Windows en plus de <em>RStudio</em>, installer <a href="https://tortoisegit.org/download/">Tortoise Git</a>.</p>
 <p>Les vignettes des packages peuvent être réalisées, comme celle-ci, avec le package <em>BiocStyle</em>, à installer à partir de <em>Bioconductor</em> (et non CRAN):</p>

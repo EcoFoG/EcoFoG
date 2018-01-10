@@ -58,6 +58,27 @@ Le téléchargement automatique des packages manquants (sous Windows: MiKTeX set
 Un bon éditeur pour _LaTeX_ est [_TeXstudio_](https://www.texstudio.org/) et un éditeur de fichiers bibliographiques est [_JabRef_](http://www.jabref.org/).
 Aucun des deux n'est indispensable pour produire des documents avec _RMarkdown_.
 
+
+## Publication
+
+Il est pratique d'utiliser une base bibliographique (fichier _.bib_) générale (par exemple, produite par _Mendeley_ ou _Zotero_) pendant la phase de rédaction.
+Au moment de la publication d'un article, il faut alors extraire un fichier _.bib_ spécifique, contenant seulement les références utilisées.
+
+[_Jabref_](http://www.jabref.org/) est le bon outil pour le faire:
+
+- Ouvrir le fichier _.tex_ produit par RMarkdown avec un éditeur pour _LaTeX_ (_TeXstudio_) ;
+
+- Lancer la compilation pour produire entre autres un fichier _aux_ ;
+
+- Ouvrir la base bibliographique générale avec _Jabref_ ;
+
+    - Utiliser le menu _Tools /New Sublibrary based on Aux file..._ ;
+    
+    - Sélectionner le fichier _aux_ et cliquer sur _Generate_;
+    
+    - Sauvegarder nouvelle base bibliographique et la déclarer comme dans le fichier _Rmd_ de l'article.
+
+
 ## Développement sous R
 
 Le développement de packages R nécessite les outils de R (_RTools_), à installer en même temps que chaque mise à jour de R, dans la version de développement ([téléchargement pour Windows](https://cran.r-project.org/bin/windows/Rtools/)).
