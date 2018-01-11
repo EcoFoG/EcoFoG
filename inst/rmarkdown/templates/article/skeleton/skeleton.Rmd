@@ -38,6 +38,7 @@ output:
   bookdown::pdf_book:
     base_format: EcoFoG::article
     keep_tex: TRUE
+# bookdown::word_document2
 ---
 
 <!-- Options de knitr et de R (librairies, ...) --> 
@@ -197,6 +198,9 @@ Les références bibliographiques incluses dans le fichier references.bib peuven
 
 Ce modèle est prévu pour fonctionner avec le modèle Article d'EcoFoG en LaTeX et produire des documents au format PDF.
 En changeant l'entête du document, un fichier HTML est produit: décommenter `bookdown::gitbook` et commenter `bookdown::pdf_book:` et les deux lignes suivantes qui en dépendent; compléter le nom du fichier _.bib_ avec son extension sur la ligne `bibliography` (LaTeX attend le nom du fichier sans extension contrairement aux autres générateurs).
+
+Pour produire un document Word, procéder de la même façon que pour un fichier HTML en décommentant `bookdown::word_document2`.
+Le document Word peut ensuite être modifié pour respecter les instructions aux auteurs des revues : double interlignage, police, etc.
 
 ## Document HTML/PDF
 
