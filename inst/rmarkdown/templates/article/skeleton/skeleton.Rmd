@@ -38,7 +38,7 @@ output:
   bookdown::pdf_book:
     base_format: EcoFoG::article
     keep_tex: TRUE
-# bookdown::word_document2
+#  bookdown::word_document2
 ---
 
 <!-- Options de knitr et de R (librairies, ...) --> 
@@ -233,5 +233,6 @@ Le package xaringan fournit un modèle de présentation HTML 5.
 Le modèle Ouvrage du package EcoFoG permet d'écrire des livres.
 
 La dernière ligne du modèle (bout de code R) doit être conservée pour afficher le titre _References_ (à traduire éventuellement dans la langue du document) au format HTML.
+Le titre de niveau 1 _Références_ doit être ajouté manuellement aux fichiers Word.
 
 `r if (knitr:::is_html_output()) '# References {-}'`

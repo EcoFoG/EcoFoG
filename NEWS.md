@@ -1,3 +1,10 @@
+# EcoFoG 0.3-1
+
+## Nouveautés
+
+* Le modèle d'article permet de produire un document Word.
+
+
 # EcoFoG 0.3-0
 
 ## Nouveautés
