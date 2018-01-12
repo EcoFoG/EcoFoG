@@ -168,7 +168,7 @@ Les listes sont indiquées par des *, + et - (trois niveaux hiérarchiques) ou d
 
 Les équations au format Latex peuvent être insérées en ligne, comme $A=\pi r^2$ ou isolées comme $$e^{i \pi} = -1.$$
 
-Elles peuvent être numérotées (voir équation \@ref(eq:disque)) à condition de leur attribuer une étiquette:
+Elles peuvent être numérotées (voir équation \@ref(eq:disque)) en utlisant l'environnement _equation_ :
 
 \begin{equation}
 A = \pi r^2.
@@ -191,15 +191,42 @@ Dans tous les cas, l'appel à la référence est fait par la commande `\@ref(ref
 
 ## Bibliographie
 
-Les références bibliographiques incluses dans le fichier references.bib peuvent être appelées dans le texte, entre parenthèses [@Marcon2014c], ou dans le texte, à la façon de @Marcon2014c. 
+Les références bibliographiques incluses dans le fichier references.bib peuvent être appelées dans le texte, entre parenthèses [@Marcon2014c], ou dans le texte, à la façon de @Marcon2014c.
+
+La bibliographie est traitée par Pandoc lors de la production de documents Word ou HTML.
+Le sytle bibliographique peut être précisé, en ajoutant la ligne 
+
+    csl:nom_du_fichier.csl
+    
+dans l'entête du document et en copiant le fichier de style _.csl_ dans le dossier du projet.
+Plus d'un millier de styles sont disponibles [^1].
+
+[^1]: https://github.com/citation-style-language/styles
+
+Pour les documents PDF, la bibliographie est gérée par \LaTeX: c'est pourquoi l'extension _.bib_ du fichier doit être supprimée dans la déclaration de la base bibliographique.
+Le style est inclus dans le modèle EcoFoG: c'est celui de _Methods in Ecology and Evolution_.
+Il ne peut pas être changé, pour assurer l'homogénéité des documents produits.
+
+Pour préparer la soumission d'un manuscrit à une revue, il faudra ouvrir le fichier _.tex_ intermédiaire produit par Pandoc et copier le contenu de l'environnement \{document\} dans le modèle proposé par la revue, qui se chargera du formatage.
 
 
 # Types de document
 
 Ce modèle est prévu pour fonctionner avec le modèle Article d'EcoFoG en LaTeX et produire des documents au format PDF.
-En changeant l'entête du document, un fichier HTML est produit: décommenter `bookdown::gitbook` et commenter `bookdown::pdf_book:` et les deux lignes suivantes qui en dépendent; compléter le nom du fichier _.bib_ avec son extension sur la ligne `bibliography` (LaTeX attend le nom du fichier sans extension contrairement aux autres générateurs).
+En changeant l'entête du document, un fichier HTML est produit: décommenter 
 
-Pour produire un document Word, procéder de la même façon que pour un fichier HTML en décommentant `bookdown::word_document2`.
+     bookdown::gitbook
+
+et commenter
+
+    bookdown::pdf_book:
+
+et les deux lignes suivantes qui en dépendent; compléter le nom du fichier _.bib_ avec son extension sur la ligne `bibliography` (LaTeX attend le nom du fichier sans extension contrairement aux autres générateurs).
+
+Pour produire un document Word, procéder de la même façon que pour un fichier HTML en décommentant
+
+    bookdown::word_document2.
+
 Le document Word peut ensuite être modifié pour respecter les instructions aux auteurs des revues : double interlignage, police, etc.
 
 ## Document HTML/PDF
@@ -208,14 +235,11 @@ Pour un usage quotidien: le modèle HTML simple à utiliser, son format de sorti
 
 ## Document Word
 
-Un document Word peut être produit en commentant à la fois `bookdown::gitbook` et `bookdown::pdf_book:` et en complétant la ligne `output`:
-
-> output: word_document
-
 Son contenu peut être mis en forme ou copié dans un modèle. 
 Les styles de texte standard  sont "First Paragraph" et "Corps de de texte".
-Les légendes ne sont pas numérotées, les renvois perdus et les tableaux non formatés.
-La bibliographie n'est pas gérée.
+
+L'intérêt du format Word est de produire un manuscrit pour les revues qui ne supportent pas \LaTeX.
+Le style bibliographique de la revue est très probablement disponible au format _.csl_, ce qui permet de minimiser la préparation manuelle.
 
 
 ## Présentation Beamer
