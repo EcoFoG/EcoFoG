@@ -1,10 +1,11 @@
 ---
 title: "Titre de la présentation"
 author: "Prénom Nom"
-date: "30 juin 2017"
+date: "13 janvier 2018"
 output: 
   beamer_presentation:
     df_print: kable
+    fig_caption: false
     includes:
       in_header: EcoFoGBeamer.tex
     keep_tex: yes
