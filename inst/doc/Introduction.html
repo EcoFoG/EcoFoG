@@ -127,11 +127,11 @@ $(document).ready(function () {
 <p class="author-name">Eric Marcon<span class="affil-mark">1*</span></p>
 <p class="author-affiliation"><span class="affil-mark">1</span>AgroParisTech, UMR EcoFoG</p>
 <p class="author-email"><span class="affil-mark">*</span><a href="mailto:eric.marcon@ecofog.gf">eric.marcon@ecofog.gf</a></p>
-<h4 class="date"><em>10 janvier 2018</em></h4>
+<h4 class="date"><em>26 janvier 2018</em></h4>
 <h4 class="abstract">Abstract</h4>
 <p>Présentation du package EcoFoG.</p>
 <h4 class="package">Package</h4>
-<p>EcoFoG 0.3.0</p>
+<p>EcoFoG 0.3.2</p>
 
 </div>
 
@@ -170,8 +170,17 @@ $(document).ready(function () {
 <div id="minimum" class="section level2">
 <h2><span class="header-section-number">2.1</span> Minimum</h2>
 <p>La package est destiné à <em>R</em>, à installer de préférence dans sa <a href="https://cran.r-project.org/">dernière version</a> avec <a href="https://www.rstudio.com/products/rstudio/download/#download">RStudio</a> en version supérieure à 1.</p>
-<p>Pour installer le package à partir de GitHub, il faut utiliser le package <em>devtools</em> après l’avoir lui-même installé comme tout autre package (menu <em>Tools/Install Packages…</em>).</p>
-<pre class="r"><code>devtools::install_git(&quot;EcoFoG/EcoFoG&quot;)</code></pre>
+<p>Pour installer le package à partir de GitHub, il faut utiliser le package <em>devtools</em> après l’avoir lui-même installé comme tout autre package (menu <em>Tools/Install Packages…</em>). Le script suivant, à exécuter, permet d’installer <em>devtools</em> et les packages nécessaires à <em>EcoFoG</em> avant d’installer le package lui-même:</p>
+<pre class="r"><code># Install necessary packages only
+InstallPackages &lt;- function(Packages) {
+  sapply(Packages, function(Package) if (!Package %in% installed.packages()[, 1]) {install.packages(Package)})
+}
+# Markdown
+InstallPackages(&quot;base64enc&quot;, &quot;knitr&quot;, &quot;rmarkdown&quot;, &quot;bookdown&quot;)
+# Other packages
+InstallPackages(&quot;RODBC&quot;, &quot;devtools&quot;)
+# EcoFoG
+devtools::install_git(&quot;EcoFoG/EcoFoG&quot;)</code></pre>
 </div>
 <div id="production-de-fichiers-pdf" class="section level2">
 <h2><span class="header-section-number">2.2</span> Production de fichiers PDF</h2>
