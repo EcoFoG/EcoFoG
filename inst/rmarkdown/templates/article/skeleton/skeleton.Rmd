@@ -168,7 +168,7 @@ Les listes sont indiquées par des *, + et - (trois niveaux hiérarchiques) ou d
 
 Les équations au format Latex peuvent être insérées en ligne, comme $A=\pi r^2$ ou isolées comme $$e^{i \pi} = -1.$$
 
-Elles peuvent être numérotées (voir équation \@ref(eq:disque)) en utlisant l'environnement _equation_ :
+Elles peuvent être numérotées, voir équation \@ref(eq:disque), en utlisant l'environnement `\equation`:
 
 \begin{equation}
 A = \pi r^2.
@@ -242,11 +242,13 @@ L'intérêt du format Word est de produire un manuscrit pour les revues qui ne s
 Le style bibliographique de la revue est très probablement disponible au format _.csl_, ce qui permet de minimiser la préparation manuelle.
 
 
-## Présentation Beamer
+## optimsation pour GitHub
 
-Utiliser le modèle *Présentation EcoFoG* proposé par le package.
+Le projet d'article peut être déposé sur github.
 
-Le document produit est un diaporama Beamer respectant la charte graphique 2018.
+Le script R fourni, _GithubPages.R_, permet de publier facilement l'article dans les pages web associées au dépôt en déplaçant les fichiers HTML produit par le tricotage de l'article dans le dossier _docs_.
+
+Il suffit ensuite d'activer les pages web du dépôt, d'adapter le fichier _README.md_ fourni (suivre ses instructions) et de le dupliquer dans le dossier _docs_.
 
 
 ## Autres Modèles
