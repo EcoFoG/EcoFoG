@@ -127,7 +127,7 @@ $(document).ready(function () {
 <p class="author-name">Eric Marcon<span class="affil-mark">1*</span></p>
 <p class="author-affiliation"><span class="affil-mark">1</span>AgroParisTech, UMR EcoFoG</p>
 <p class="author-email"><span class="affil-mark">*</span><a href="mailto:eric.marcon@ecofog.gf">eric.marcon@ecofog.gf</a></p>
-<h4 class="date"><em>26 janvier 2018</em></h4>
+<h4 class="date"><em>27 janvier 2018</em></h4>
 <h4 class="abstract">Abstract</h4>
 <p>Présentation du package EcoFoG.</p>
 <h4 class="package">Package</h4>
@@ -176,11 +176,11 @@ InstallPackages &lt;- function(Packages) {
   sapply(Packages, function(Package) if (!Package %in% installed.packages()[, 1]) {install.packages(Package)})
 }
 # Markdown
-InstallPackages(&quot;base64enc&quot;, &quot;knitr&quot;, &quot;rmarkdown&quot;, &quot;bookdown&quot;)
+InstallPackages(c(&quot;base64enc&quot;, &quot;knitr&quot;, &quot;rmarkdown&quot;, &quot;bookdown&quot;))
 # Other packages
-InstallPackages(&quot;RODBC&quot;, &quot;devtools&quot;)
+InstallPackages(c(&quot;RODBC&quot;, &quot;devtools&quot;))
 # EcoFoG
-devtools::install_git(&quot;EcoFoG/EcoFoG&quot;)</code></pre>
+devtools::install_github(&quot;EcoFoG/EcoFoG&quot;)</code></pre>
 </div>
 <div id="production-de-fichiers-pdf" class="section level2">
 <h2><span class="header-section-number">2.2</span> Production de fichiers PDF</h2>

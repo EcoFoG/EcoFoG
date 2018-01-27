@@ -4,11 +4,11 @@
 #    sapply(Packages, function(Package) if (!Package %in% installed.packages()[, 1]) {install.packages(Package)})
 #  }
 #  # Markdown
-#  InstallPackages("base64enc", "knitr", "rmarkdown", "bookdown")
+#  InstallPackages(c("base64enc", "knitr", "rmarkdown", "bookdown"))
 #  # Other packages
-#  InstallPackages("RODBC", "devtools")
+#  InstallPackages(c("RODBC", "devtools"))
 #  # EcoFoG
-#  devtools::install_git("EcoFoG/EcoFoG")
+#  devtools::install_github("EcoFoG/EcoFoG")
 
 ## ----_BiocStyle_, eval=FALSE-----------------------------------------------
 #  source("https://bioconductor.org/biocLite.R")
