@@ -242,7 +242,7 @@ L'intérêt du format Word est de produire un manuscrit pour les revues qui ne s
 Le style bibliographique de la revue est très probablement disponible au format _.csl_, ce qui permet de minimiser la préparation manuelle.
 
 
-## optimsation pour GitHub
+## optimisation pour GitHub
 
 Le projet d'article peut être déposé sur github.
 
