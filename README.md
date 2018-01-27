@@ -14,7 +14,7 @@ Utilitaires pour l'UMR EcoFoG
   * modèle d'[article](https://ecofog.github.io/EcoFoG/Article/Article.pdf) pour l'autoarchivage (R Markdown):
 ![Modèle d'article](https://ecofog.github.io/EcoFoG/Article.png)
 
-  *  Modèle d'[ouvrage]((https://ecofog.github.io/EcoFoG/Ouvrage/) (Bookdown): livre, rapport, thèse. ![Modèle d'ouvrage](https://ecofog.github.io/EcoFoG/Ouvrage.png)
+  *  Modèle d'[ouvrage]((https://ecofog.github.io/EcoFoG/Ouvrage/docs/index.html) (Bookdown): livre, rapport, thèse. ![Modèle d'ouvrage](https://ecofog.github.io/EcoFoG/Ouvrage.png)
 
   
 * Accès aux données Guyafor

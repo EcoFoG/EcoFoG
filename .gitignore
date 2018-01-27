@@ -44,3 +44,4 @@ src/*.dll
 .#Extra
 .Rproj.user
 /docs/Presentation/Presentation_files/
+/docs/Ouvrage/_bookdown_files/
