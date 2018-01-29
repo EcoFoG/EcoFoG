@@ -1,3 +1,12 @@
+# EcoFoG 1.0-0
+
+Première version en production
+
+## Nouveautés
+
+* Les requêtes d'accès aux données de Guyafor utilisent les noms officiels des champs, identiques à ceux du  package ForestData.
+
+
 # EcoFoG 0.3-2
 
 ## Nouveautés
