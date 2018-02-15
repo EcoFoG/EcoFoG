@@ -1,3 +1,10 @@
+# EcoFoG 1.0-1
+
+## Correction de bug
+
+Dans le modèle article, la suppression des champs `journalinfo` ou `journalinfo` générait une erreur de compilation en LaTeX.
+
+
 # EcoFoG 1.0-0
 
 Première version en production

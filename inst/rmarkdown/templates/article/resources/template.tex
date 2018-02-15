@@ -118,9 +118,13 @@ $endif$
 
 $if(journalinfo)$
 \JournalInfo{$journalinfo$} % Journal information
+$else$
+\JournalInfo{\ }
 $endif$
-$if(journalinfo)$
+$if(archive)$
 \Archive{$archive$} % Additional notes (e.g. copyright, DOI, review/research article)
+$else$
+\Archive{\ }
 $endif$
 
 \PaperTitle{$title$} % Article title
