@@ -6,6 +6,9 @@
 \usage{
 Paracou2df()
 }
+\value{
+Dataframe
+}
 \description{
 Importation de l'ensemble des données de Paracou de la base Guyafor dans un dataframe
 }

@@ -7,6 +7,7 @@
 #' @importFrom RODBC odbcConnect
 #' @importFrom RODBC odbcClose
 #' @importFrom RODBC sqlQuery
+#' @return Dataframe
 #' @export
 
 Guyafor2df <- function () {
@@ -52,6 +53,8 @@ Guyafor2df <- function () {
 
   RODBC::sqlQuery(Connex,req1) -> dfGuyafor
 
+  return(dfGuyafor)
+
   # Clôture de la connection odbc
   RODBC::odbcClose(Connex)
 }
@@ -68,6 +71,7 @@ Guyafor2df <- function () {
 #' @importFrom RODBC odbcConnect
 #' @importFrom RODBC odbcClose
 #' @importFrom RODBC sqlQuery
+#' @return Dataframe
 #' @export
 
 Paracou2df <- function () {
@@ -112,6 +116,8 @@ Paracou2df <- function () {
   WHERE (dbo.TtGuyaforShiny.NomForet = N'paracou')"
 
   RODBC::sqlQuery(Connex,req1) -> dfParacou
+
+  return(dfParacou)
 
   # Clôture de la connection odbc
   RODBC::odbcClose(Connex)

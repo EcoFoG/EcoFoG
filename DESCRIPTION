@@ -12,7 +12,7 @@ Maintainer: Eric Marcon <eric.marcon@ecofog.gf>
 Description: Modèles de documents, accès aux données.
 License: GNU General Public License
 Encoding: UTF-8
-Imports: rmarkdown, RODBC
+Imports: rmarkdown, RODBC, ggrepel, ggplot2, svglite, shiny
 Suggests: testthat, knitr, BiocStyle, bookdown
 LazyData: true
 RoxygenNote: 6.0.1

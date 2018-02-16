@@ -6,6 +6,9 @@
 \usage{
 Guyafor2df()
 }
+\value{
+Dataframe
+}
 \description{
 Importation de l'ensemble des données de la base Guyafor dans un dataframe
 }
