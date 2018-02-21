@@ -1,8 +1,15 @@
+# EcoFoG 1.1-0
+
+## Nouveautés
+
+* `Automap()` permet la création de cartes de Paracou avec une application Shiny.
+
+
 # EcoFoG 1.0-1
 
 ## Correction de bug
 
-Dans le modèle article, la suppression des champs `journalinfo` ou `journalinfo` générait une erreur de compilation en LaTeX.
+* Dans le modèle article, la suppression des champs `journalinfo` ou `journalinfo` générait une erreur de compilation en LaTeX.
 
 
 # EcoFoG 1.0-0

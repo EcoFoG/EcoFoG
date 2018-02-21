@@ -7,10 +7,10 @@
 Automap()
 }
 \description{
-Interface Shiny de création automatique de cartes de terrain
+Interface Shiny de creation automatique de cartes de terrain
 }
 \details{
-Basée sur la base de données Guyafor
+Basee sur la base de donnees Guyafor
 }
 \author{
 Elie Guedj, \email{elie.guedj@ecofog.gf}

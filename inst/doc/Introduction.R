@@ -5,6 +5,8 @@
 #  }
 #  # Markdown
 #  InstallPackages(c("base64enc", "knitr", "rmarkdown", "bookdown"))
+#  # Automap
+#  InstallPackages(c("sqldf", "ggplot2", "ggrepel", "RSQLite", "svglite", "shiny", "shinyjs", "shinycssloaders"))
 #  # Other packages
 #  InstallPackages(c("RODBC", "devtools"))
 #  # EcoFoG

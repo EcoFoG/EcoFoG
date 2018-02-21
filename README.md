@@ -18,6 +18,7 @@ Utilitaires pour l'UMR EcoFoG
 
   
 * Accès aux données Guyafor
+* Cartographie interactive de Paracou (`Automap()`)
 
 ## Vignette
 

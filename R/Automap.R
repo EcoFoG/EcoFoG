@@ -1,8 +1,8 @@
 #' AutoMap
 #'
-#' Interface Shiny de création automatique de cartes de terrain
+#' Interface Shiny de creation automatique de cartes de terrain
 #'
-#' Basée sur la base de données Guyafor
+#' Basee sur la base de donnees Guyafor
 #'
 #' @author Elie Guedj, \email{elie.guedj@ecofog.gf}
 #'
@@ -24,7 +24,7 @@ Automap <- function() {
     campagne$SubPlot <- factor(campagne$SubPlot)
     return(campagne)
   }
-  donnerCarre <- function(numeroCarre, parcelle) { parcelle[parcelle$SubPlot == numeroCarre, ] } # Choix du carré
+  donnerCarre <- function(numeroCarre, parcelle) { parcelle[parcelle$SubPlot == numeroCarre, ] } # Choix du carre
 
   ## Construction du graphique ##
   graphCarre <- function(carre, title, text_size = 7, title_size = 50, legend_size = 25, axis_size = 25, repel = TRUE) {
@@ -38,9 +38,9 @@ Automap <- function() {
       legende_texte <- geom_text_repel(size=text_size, fontface=ifelse(carre$TreeFieldNum>= 1000,"bold","plain"), force = 0.001)
     }
 
-    graph <- ggplot(carre, aes(x = Xfield, y = Yfield, label=TreeFieldNum)) +
+    graph <- ggplot(carre, aes_(x = ~Xfield, y = ~Yfield, label=~TreeFieldNum)) +
       coord_fixed(ratio = 1) +
-      geom_point(aes(x=Xfield, y=Yfield, shape=CodeAlive, size=Circ)) +
+      geom_point(aes_(x=~Xfield, y=~Yfield, shape=~CodeAlive, size=~Circ)) +
       legende_texte +
       scale_shape_manual(values=c(3,16,17), name=" ", label=c("Vivant","Mort","Recrute"), breaks=c(1,0,2)) +
       scale_size_continuous(range = c(1, 5), name = "Vivant") +
@@ -169,7 +169,7 @@ Automap <- function() {
         foretChoisie <- input$foret
         repel <- input$repel
         extension <- input$extension
-        directoryChosen <- paste(choose.dir(),"\\",sep="")
+        directoryChosen <- paste(utils::choose.dir(),"\\",sep="")
         dataCampagne <- donnerCampagne(donnerForet(foretChoisie), as.integer(campagneChoisie))
         progress <- shiny::Progress$new()
         on.exit(progress$close())
@@ -182,11 +182,11 @@ Automap <- function() {
 
           for (j in levels(dataParcelle$SubPlot)) {
 
-            progress$inc(1/as.integer(levels(dataParcelle$SubPlot)), detail = paste("Carré", j))
+            progress$inc(1/as.integer(levels(dataParcelle$SubPlot)), detail = paste("Carre", j))
 
             nomFichier <- paste(directoryChosen,"Parcelle_",i,"_carre_",j,"_",foretChoisie,campagneChoisie,".", extension, sep="")
             title <- paste(foretChoisie," - Parcelle ",i," - C",j)
-            ggsave(file=nomFichier,plot=graphCarre(donnerCarre(j, dataParcelle), title, text_size, repel = repel), width = 42, height = 29.7)
+            ggsave(filename=nomFichier,plot=graphCarre(donnerCarre(j, dataParcelle), title, text_size, repel = repel), width = 42, height = 29.7)
           }
         }
 
@@ -212,5 +212,5 @@ Automap <- function() {
 
   }
 
-  shinyApp(ui = ui, server = server)
+  shiny::shinyApp(ui = ui, server = server)
 }

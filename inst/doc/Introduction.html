@@ -127,11 +127,11 @@ $(document).ready(function () {
 <p class="author-name">Eric Marcon<span class="affil-mark">1*</span></p>
 <p class="author-affiliation"><span class="affil-mark">1</span>AgroParisTech, UMR EcoFoG</p>
 <p class="author-email"><span class="affil-mark">*</span><a href="mailto:eric.marcon@ecofog.gf">eric.marcon@ecofog.gf</a></p>
-<h4 class="date"><em>29 janvier 2018</em></h4>
+<h4 class="date"><em>21 février 2018</em></h4>
 <h4 class="abstract">Abstract</h4>
 <p>Présentation du package EcoFoG.</p>
 <h4 class="package">Package</h4>
-<p>EcoFoG 0.1.0</p>
+<p>EcoFoG 1.0.1</p>
 
 </div>
 
@@ -177,6 +177,8 @@ InstallPackages &lt;- function(Packages) {
 }
 # Markdown
 InstallPackages(c(&quot;base64enc&quot;, &quot;knitr&quot;, &quot;rmarkdown&quot;, &quot;bookdown&quot;))
+# Automap
+InstallPackages(c(&quot;sqldf&quot;, &quot;ggplot2&quot;, &quot;ggrepel&quot;, &quot;RSQLite&quot;, &quot;svglite&quot;, &quot;shiny&quot;, &quot;shinyjs&quot;, &quot;shinycssloaders&quot;))
 # Other packages
 InstallPackages(c(&quot;RODBC&quot;, &quot;devtools&quot;))
 # EcoFoG

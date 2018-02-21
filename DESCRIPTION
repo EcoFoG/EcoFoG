@@ -1,7 +1,7 @@
 Package: EcoFoG
 Type: Package
 Title: Utilitaires pour l'UMR EcoFoG
-Version: 1.0-1
+Version: 1.1-0
 Authors@R: c(
     person("Eric", "Marcon", email="eric.marcon@ecofog.gf", role=c("aut", "cre")),
     person("Gaëlle", "Jaouen", email="gaelle.jaouen@ecofog.gf", role="aut"),
@@ -12,7 +12,7 @@ Maintainer: Eric Marcon <eric.marcon@ecofog.gf>
 Description: Modèles de documents, accès aux données.
 License: GNU General Public License
 Encoding: UTF-8
-Imports: rmarkdown, RODBC, ggrepel, ggplot2, svglite, shiny
+Imports: rmarkdown, RODBC, ggrepel, ggplot2, svglite, shiny, shinyjs, shinycssloaders, utils
 Suggests: testthat, knitr, BiocStyle, bookdown
 LazyData: true
 RoxygenNote: 6.0.1
