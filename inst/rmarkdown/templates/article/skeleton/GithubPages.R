@@ -36,4 +36,4 @@ if (length(pdfFiles) > 0)
   file.rename(from=pdfFiles, to=paste("docs/", pdfFiles, sep=""))
 
 # Copy README.md to docs
-file.copy(from="README.md", to="docs/README.md")
+file.copy(from="README.md", to="docs/README.md", overwrite=TRUE)
