@@ -1,3 +1,10 @@
+# EcoFoG 1.1-1
+
+## Améliorations
+
+* Les bouts de code sont affichés en taille `\scriptsize` dans Beamer pour la compatibilité avec IOSlides.
+
+
 # EcoFoG 1.1-0
 
 ## Nouveautés
