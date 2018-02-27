@@ -44,7 +44,8 @@ output:
 <!-- Options de knitr et de R (librairies, ...) --> 
 
 ```{r Options, echo=FALSE, message=FALSE}
-knitr::opts_chunk$set(cache=TRUE, warning=FALSE, tidy=TRUE, tidy.opts=list(blank=FALSE, width.cutoff=40))
+knitr::opts_chunk$set(echo = FALSE, tidy=TRUE, tidy.opts=list(blank=FALSE, width.cutoff=50))
+options(width=50)
 # Installation des packages si nécessaire et chargement
 Library <- function(Packages) {
   InstallAndLoad <- function(Package) {
