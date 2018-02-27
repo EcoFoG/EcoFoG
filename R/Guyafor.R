@@ -2,20 +2,22 @@
 #'
 #' Importation de l'ensemble des données de la base Guyafor dans un dataframe
 #'
-#' La fonction exécute une requête sur le serveur sql.ecofog.gf pour lire les données
+#' La fonction exécute une requête sur le serveur sql.ecofog.gf pour lire les données.
+#' Un pilote ODBC pour SQL Server doit être accessible.
+#'
 #' @author Gaëlle Jaouen, \email{gaelle.jaouen@ecofog.gf}
-#' @importFrom RODBC odbcConnect
-#' @importFrom RODBC odbcClose
-#' @importFrom RODBC sqlQuery
-#' @return Dataframe
+#' @param WHERE Clause WHERE optionnelle de la requête SQL envoyée au serveur
+#' @return Un dataframe contenant le résultat de la requête ODBC
 #' @export
+#' @examples
+#' Paracou15 <- Guyafor2df(WHERE="Forest='Paracou' AND Plot='15' AND CensusYear=2016")
 
-Guyafor2df <- function () {
+Guyafor2df <- function (WHERE = NULL) {
+
   # Connection odbc à Guyafor sur serveur SQL
-  Connex <- RODBC::odbcConnect(dsn="Guyafor")
+  con <- odbc::dbConnect(odbc::odbc(), .connection_string = "Driver={SQL Server};server=sql.ecofog.gf;database=Guyafor;trusted_connection=Yes;")
 
   # Sélection des données
-
   req1 <- "SELECT
     dbo.TtGuyaforShiny.NomForet AS Forest,
     dbo.TtGuyaforShiny.n_parcelle AS Plot,
@@ -50,13 +52,21 @@ Guyafor2df <- function () {
   FROM dbo.TtGuyaforShiny
     LEFT OUTER JOIN dbo.taMesure_Corr ON dbo.TtGuyaforShiny.idMesure = dbo.taMesure_Corr.idMesure"
 
+  if (!is.null(WHERE)) {
+    # Requête imbriquée pour utiliser les alias dans les conditions WHERE (ex.: Forest='Paracou' AND Plot='15')
+    req1 <- paste("SELECT * FROM (", req1, ") AS Guyafor WHERE", WHERE)
+  }
 
-  RODBC::sqlQuery(Connex,req1) -> dfGuyafor
-
-  return(dfGuyafor)
+  # Création de la connexion
+  QueryResult <- odbc::dbSendQuery(con, req1)
+  # Lecture des données
+  dfGuyafor <- odbc::dbFetch(QueryResult)
 
   # Clôture de la connection odbc
-  RODBC::odbcClose(Connex)
+  odbc::dbClearResult(QueryResult)
+  odbc::dbDisconnect(con)
+
+  return(dfGuyafor)
 }
 
 
@@ -67,19 +77,21 @@ Guyafor2df <- function () {
 #' Importation de l'ensemble des données de Paracou de la base Guyafor dans un dataframe
 #'
 #' La fonction exécute une requête sur le serveur sql.ecofog.gf pour lire les données
+#' Un pilote ODBC pour SQL Server doit être accessible.
+#'
 #' @author Gaëlle Jaouen, \email{gaelle.jaouen@ecofog.gf}
-#' @importFrom RODBC odbcConnect
-#' @importFrom RODBC odbcClose
-#' @importFrom RODBC sqlQuery
-#' @return Dataframe
+#' @param WHERE Clause WHERE optionnelle de la requête SQL envoyée au serveur
+#' @return Un dataframe contenant le résultat de la requête ODBC
 #' @export
+#' @examples
+#' Paracou15 <- Paracou2df(WHERE="Plot='15' AND CensusYear=2016")
 
-Paracou2df <- function () {
+Paracou2df <- function (WHERE = NULL) {
+
   # Connection odbc à Guyafor sur serveur SQL
-  Connex <- RODBC::odbcConnect(dsn="Guyafor")
+  con <- odbc::dbConnect(odbc::odbc(), .connection_string = "Driver={SQL Server};server=sql.ecofog.gf;database=Guyafor;trusted_connection=Yes;")
 
   # Sélection des données
-
   req1 <- "SELECT
     dbo.TtGuyaforShiny.NomForet AS Forest,
     dbo.TtGuyaforShiny.n_parcelle AS Plot,
@@ -115,11 +127,20 @@ Paracou2df <- function () {
     LEFT OUTER JOIN dbo.taMesure_Corr ON dbo.TtGuyaforShiny.idMesure = dbo.taMesure_Corr.idMesure
   WHERE (dbo.TtGuyaforShiny.NomForet = N'paracou')"
 
-  RODBC::sqlQuery(Connex,req1) -> dfParacou
+  if (!is.null(WHERE)) {
+    # Requête imbriquée pour utiliser les alias dans les conditions WHERE (ex.: Forest='Paracou' AND Plot='15')
+    req1 <- paste("SELECT * FROM (", req1, ") AS Guyafor WHERE", WHERE)
+  }
 
-  return(dfParacou)
+  # Création de la connexion
+  QueryResult <- odbc::dbSendQuery(con, req1)
+  # Lecture des données
+  dfParacou <- odbc::dbFetch(QueryResult)
 
   # Clôture de la connection odbc
-  RODBC::odbcClose(Connex)
+  odbc::dbClearResult(QueryResult)
+  odbc::dbDisconnect(con)
+
+  return(dfParacou)
 }
 

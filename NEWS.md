@@ -1,3 +1,10 @@
+# EcoFoG 1.1-2
+
+## Améliorations
+
+* Les accès aux bases SQL utilisent le package _odbc_ au lieu de _RODBC_ et acceptent une clause WHERE.
+
+
 # EcoFoG 1.1-1
 
 ## Améliorations

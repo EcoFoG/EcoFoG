@@ -4,16 +4,23 @@
 \alias{Paracou2df}
 \title{Donnees Paracou}
 \usage{
-Paracou2df()
+Paracou2df(WHERE = NULL)
+}
+\arguments{
+\item{WHERE}{Clause WHERE optionnelle de la requête SQL envoyée au serveur}
 }
 \value{
-Dataframe
+Un dataframe contenant le résultat de la requête ODBC
 }
 \description{
 Importation de l'ensemble des données de Paracou de la base Guyafor dans un dataframe
 }
 \details{
 La fonction exécute une requête sur le serveur sql.ecofog.gf pour lire les données
+Un pilote ODBC pour SQL Server doit être accessible.
+}
+\examples{
+Paracou15 <- Paracou2df(WHERE="Plot='15' AND CensusYear=2016")
 }
 \author{
 Gaëlle Jaouen, \email{gaelle.jaouen@ecofog.gf}
