@@ -8,7 +8,7 @@
 #  # Automap
 #  InstallPackages(c("sqldf", "ggplot2", "ggrepel", "RSQLite", "svglite", "shiny", "shinyjs", "shinycssloaders"))
 #  # Other packages
-#  InstallPackages(c("RODBC", "devtools"))
+#  InstallPackages(c("odbc", "devtools"))
 #  # EcoFoG
 #  devtools::install_github("EcoFoG/EcoFoG")
 
