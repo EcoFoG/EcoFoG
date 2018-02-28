@@ -2,14 +2,17 @@
 title: "Titre de la présentation"
 author: "Prénom Nom"
 date: "13 janvier 2018"
-output: 
+output:
   beamer_presentation:
     df_print: kable
-    fig_caption: false
+    fig_caption: no
     includes:
       in_header: EcoFoGBeamer.tex
-    keep_tex: yes
+    keep_tex: no
     slide_level: 2
+  ioslides_presentation:
+    logo: EcoFoG2017.png
+  slidy_presentation: default
 ---
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
