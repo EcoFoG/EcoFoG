@@ -8,7 +8,7 @@ Utilitaires pour l'UMR EcoFoG
 
 * Modèles 
 
-  * modèle de [présentation](https://ecofog.github.io/EcoFoG/Presentation/Presentation.pdf) (R Markdown):
+  * modèle de [présentation Beamer](https://ecofog.github.io/EcoFoG/Presentation/Presentation.pdf) (R Markdown) ou [HTML (ioslides)](https://ecofog.github.io/EcoFoG/Presentation/Presentation.html):
 ![Modèle de présentation](https://ecofog.github.io/EcoFoG/Presentation.png)
   
   * modèle d'[article](https://ecofog.github.io/EcoFoG/Article/introduction.html) pour l'autoarchivage (R Markdown):
