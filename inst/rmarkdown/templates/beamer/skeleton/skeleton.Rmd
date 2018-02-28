@@ -55,8 +55,8 @@ plot(pressure)
 \begincols
   \begincol{.48\textwidth}
 
-This slide has two columns.
-This is an R Markdown presentation. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+This slide has two columns in Beamer (ignored in HTML).
+
 
   \endcol
   \begincol{.48\textwidth}
