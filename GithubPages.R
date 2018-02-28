@@ -15,4 +15,4 @@ file.copy(from=libsFiles, to=paste("docs/", libsFiles, sep = ""), overwrite=TRUE
 file.copy(from="README.md", to="docs/README.md", overwrite=TRUE)
 
 # Manual update of docs/Article, docs/Ouvrage and docs/Presentation
-# Empty the folder, New Marksown from Template, knit to html
+# Empty the folder, New Markdown from Template, knit to html
