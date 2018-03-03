@@ -1,8 +1,7 @@
-### Make github pages (master branch / docs as web site)
-# The README.md file is copied to /docs. Make a link to the main html file in it
-# html files, including figures and libs are copied to /docs
-# pdf files are copied to /docs
-# Source this file before committing
+### Préparation des pages github (master branch / docs comme site web)
+# Mise à jour des vignettes et copie dans /docs
+# Le fichier README.md est copié dans /docs.
+# Sourcer ce fichier avant de livrer.
 
 # Update vignette
 devtools::build_vignettes()
@@ -14,5 +13,5 @@ file.copy(from=libsFiles, to=paste("docs/", libsFiles, sep = ""), overwrite=TRUE
 # Copy README.md to docs
 file.copy(from="README.md", to="docs/README.md", overwrite=TRUE)
 
-# Manual update of docs/Article, docs/Ouvrage and docs/Presentation
-# Empty the folder, New Markdown from Template, knit to html
+# Mise à jour manuelle de docs/Article, docs/Ouvrage et docs/Presentation:
+# Vider chaque dossier puis New Markdown from Template, knit to html.
