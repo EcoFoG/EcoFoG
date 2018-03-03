@@ -174,7 +174,13 @@ $body$
 %----------------------------------------------------------------------------------------
 
 \bibliographystyle{mee}
-\bibliography{$bibliography$}
+\makeatletter
+% The filename has .bib extension the must be eliminated
+\filename@parse{$bibliography$}
+% parse stores the file name in base. Extension starts at the first dot, so don't use dots in file names.
+\bibliography{\filename@base}
+\makeatother
+
 
 %----------------------------------------------------------------------------------------
 

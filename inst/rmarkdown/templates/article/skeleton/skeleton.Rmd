@@ -24,27 +24,27 @@ corrauthor:
 abstract: >
   Résumé de l'article.
 keywords: [mot-clés, séparés par des virgules]
-journalinfo: Hal 00679993
+journalinfo: Hal xxx
 archive: DOI xxxx
 date: "`r format(Sys.time(), '%d %B %Y')`"
 preamble: >
   \usepackage{amsmath}
-bibliography: references #.bib
+bibliography: references.bib
 lang: french # english
 keywordlabel: Mots-clés # Keywords
 corrauthorlabel: Contact # Corresponding author
 output:
-#  bookdown::gitbook
   bookdown::pdf_book:
     base_format: EcoFoG::article
     keep_tex: TRUE
-#  bookdown::word_document2
+  bookdown::gitbook: default
+  bookdown::word_document2: default
 ---
 
 <!-- Options de knitr et de R (librairies, ...) --> 
 
 ```{r Options, echo=FALSE, message=FALSE}
-knitr::opts_chunk$set(echo = FALSE, tidy=TRUE, tidy.opts=list(blank=FALSE, width.cutoff=50))
+knitr::opts_chunk$set(echo = FALSE, tidy=TRUE, tidy.opts=list(blank=FALSE, width.cutoff=50), out.width='\\maxwidth')
 options(width=50)
 # Installation des packages si nécessaire et chargement
 Library <- function(Packages) {
@@ -92,21 +92,20 @@ Markdown permet de produire, sans réécrire le texte, un document dans différe
 ## Comment faire
 
 Dans RStudio, créer un nouveau document de type Document R Markdown. 
-L'assistant permet de choisir entre divers formats. Les plus intéressants sont:
+L'assistant permet de choisir entre divers formats.
 
 ```{r nouveau, fig.cap="Nouveau document", echo=FALSE}
 knitr::include_graphics("NouveauRMarkdown.PNG")
 ```
 
-* Document: rapport simple
+Cliquer sur _From template_: à partir de modèles installés par des packages. 
+Les modèles du package EcoFoG sont affichés (voir figure \@ref(fig:nouveau)): choisir Article EcoFoG.
 
-* Presentation: diaporama
+Ecrire le document dans RStudio.
 
-* From template: à partir de modèles installés par des packages. Les modèles du package EcoFoG sont affichés (voir figure \@ref(fig:nouveau)): choisir Article EcoFoG.
+Cliquer sur le bouton **Knit** de RStudio génère le document au format demandé.
 
-* Ecrire le document dans RStudio.
-
-* Cliquer sur le bouton **Knit** de RStudio génère le document au format demandé.
+Il est préférable de créer un projet RStudio pour bénéficier de toutes les possiblités : _File_ / _New Project_ puis utiliser l'assistant pour créer un projet à partir d'un dossier existant.
 
 
 # Code
@@ -200,9 +199,9 @@ Le sytle bibliographique peut être précisé, en ajoutant la ligne
     csl:nom_du_fichier.csl
     
 dans l'entête du document et en copiant le fichier de style _.csl_ dans le dossier du projet.
-Plus d'un millier de styles sont disponibles [^1].
+Plus d'un millier de styles sont disponibles [^2].
 
-[^1]: https://github.com/citation-style-language/styles
+[^2]: https://github.com/citation-style-language/styles
 
 Pour les documents PDF, la bibliographie est gérée par \LaTeX: c'est pourquoi l'extension _.bib_ du fichier doit être supprimée dans la déclaration de la base bibliographique.
 Le style est inclus dans le modèle EcoFoG: c'est celui de _Methods in Ecology and Evolution_.
@@ -213,26 +212,19 @@ Pour préparer la soumission d'un manuscrit à une revue, il faudra ouvrir le fi
 
 # Types de document
 
-Ce modèle est prévu pour fonctionner avec le modèle Article d'EcoFoG en LaTeX et produire des documents au format PDF.
-En changeant l'entête du document, un fichier HTML est produit: décommenter 
-
-     bookdown::gitbook
-
-et commenter
-
-    bookdown::pdf_book:
-
-et les deux lignes suivantes qui en dépendent; compléter le nom du fichier _.bib_ avec son extension sur la ligne `bibliography` (LaTeX attend le nom du fichier sans extension contrairement aux autres générateurs).
-
-Pour produire un document Word, procéder de la même façon que pour un fichier HTML en décommentant
-
-    bookdown::word_document2.
+Ce modèle est prévu pour fonctionner avec le modèle Article d'EcoFoG en LaTeX et produire des documents au format PDF, HTML ou Word.
+Utiliser la liste de choix du bouton _Knit_ pour choisir le format de sortie.
 
 Le document Word peut ensuite être modifié pour respecter les instructions aux auteurs des revues : double interlignage, police, etc.
 
-## Document HTML/PDF
+## Document PDF
 
-Pour un usage quotidien: le modèle HTML simple à utiliser, son format de sortie est propre correct. Le résultat est bien plus clair que du code R commenté.
+Le document est formaté pour l'auto-archivage d'articles bien mis en page.
+
+## Document HTML
+
+Le modèle GitBook est optimisé pour la lecture sur écran.
+Pendant toute l'écriture, préférer le tricot au format HTML pour sa vitesse d'exécution.
 
 ## Document Word
 
@@ -243,7 +235,7 @@ L'intérêt du format Word est de produire un manuscrit pour les revues qui ne s
 Le style bibliographique de la revue est très probablement disponible au format _.csl_, ce qui permet de minimiser la préparation manuelle.
 
 
-## optimisation pour GitHub
+## Optimisation pour GitHub
 
 Le projet d'article peut être déposé sur github.
 
@@ -254,12 +246,12 @@ Il suffit ensuite d'activer les pages web du dépôt, d'adapter le fichier _READ
 
 ## Autres Modèles
 
-Le package rticle fournit des modèles d'articles (PLOS, PNAS, etc.). 
-Le package xaringan fournit un modèle de présentation HTML 5.
+Le package _rticle_ fournit des modèles d'articles (PLOS, PNAS, etc.). 
+Le package _xaringan_ fournit un modèle de présentation HTML 5.
 
-Le modèle Ouvrage du package EcoFoG permet d'écrire des livres.
+Le modèle _Ouvrage_ du package EcoFoG permet d'écrire des livres.
 
 La dernière ligne du modèle (bout de code R) doit être conservée pour afficher le titre _References_ (à traduire éventuellement dans la langue du document) au format HTML.
 Le titre de niveau 1 _Références_ doit être ajouté manuellement aux fichiers Word.
 
-`r if (knitr:::is_html_output()) '# References {-}'`
+`r if (!knitr:::is_latex_output()) '# References {-}'`
