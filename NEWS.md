@@ -1,3 +1,12 @@
+# EcoFoG 1.2-0
+
+## Améliorations
+
+* Modèle article : simplification de la production. Utilisation standard du bouton _Knit_.
+
+* Modèle Présentation : script `GithubPages.R` pour la maintenance du site web.
+
+
 # EcoFoG 1.1-2
 
 ## Améliorations
