@@ -1,3 +1,14 @@
+# EcoFoG 1.2-1
+
+## Correction de bug
+
+* Modèle Présentation : tricotage Beamer impossible en absence de bout de code. Ajout de `\usepackage{fancyvrb}` dans `EcoFoGBeamer.tex`.
+
+## Améliorations
+
+* _.gitignore_ dans tous les modèles.
+
+
 # EcoFoG 1.2-0
 
 ## Améliorations

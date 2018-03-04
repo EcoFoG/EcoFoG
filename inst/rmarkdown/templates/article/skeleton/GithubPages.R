@@ -16,7 +16,7 @@ html_filesDir <- list.files(pattern="*_files")
 if (length(html_filesDir) > 0) {
   sapply(paste("docs/", html_filesDir, sep=""), dir.create)
   sapply(paste("docs/", html_filesDir, "/figure-html", sep=""), dir.create)
-  html_files <- list.files(html_filesDir, full.names = TRUE, recursive=TRUE)
+  html_files <- list.files(pattern=paste(html_filesDir, "/figure-html", sep=""), full.names = TRUE, recursive=TRUE)
   if (length(html_files) > 0)
     file.copy(from=html_files, to=paste("docs/", html_files, sep = ""), overwrite=TRUE)
 }
