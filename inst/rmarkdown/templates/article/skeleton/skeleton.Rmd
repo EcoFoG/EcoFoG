@@ -1,5 +1,5 @@
 ---
-title: Titre de l'article
+title: "Titre de l'article"
 author:
   - name: Prénom Nom
     authsuperscript: 1*
