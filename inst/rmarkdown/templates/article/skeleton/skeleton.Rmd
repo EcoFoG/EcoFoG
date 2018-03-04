@@ -199,9 +199,9 @@ Le sytle bibliographique peut être précisé, en ajoutant la ligne
     csl:nom_du_fichier.csl
     
 dans l'entête du document et en copiant le fichier de style _.csl_ dans le dossier du projet.
-Plus d'un millier de styles sont disponibles [^2].
+Plus d'un millier de styles sont disponibles [^3].
 
-[^2]: https://github.com/citation-style-language/styles
+[^3]: <https://github.com/citation-style-language/styles>
 
 Pour les documents PDF, la bibliographie est gérée par \LaTeX: c'est pourquoi l'extension _.bib_ du fichier doit être supprimée dans la déclaration de la base bibliographique.
 Le style est inclus dans le modèle EcoFoG: c'est celui de _Methods in Ecology and Evolution_.
