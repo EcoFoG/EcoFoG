@@ -5,7 +5,7 @@
 # Source this file before committing
 
 # Create the docs folder
-dir.create("docs")
+if (!dir.exists("docs")) dir.create("docs")
 
 # Copy knitted html files
 htmlFiles <- list.files(pattern="*.html")

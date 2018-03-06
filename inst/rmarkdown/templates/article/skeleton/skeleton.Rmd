@@ -28,7 +28,8 @@ journalinfo: Hal xxx
 archive: DOI xxxx
 date: "`r format(Sys.time(), '%d %B %Y')`"
 preamble: >
-  \usepackage{amsmath}
+  \usepackage{textcomp}
+  \DeclareUnicodeCharacter{B0}{\textdegree}
 bibliography: references.bib
 lang: french # english
 keywordlabel: Mots-clés # Keywords

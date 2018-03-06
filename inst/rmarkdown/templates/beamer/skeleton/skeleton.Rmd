@@ -2,6 +2,9 @@
 title: "Titre de la présentation"
 author: "Prénom Nom"
 date: "13 janvier 2018"
+preamble: >
+  \usepackage{textcomp}
+  \DeclareUnicodeCharacter{B0}{\textdegree}
 output:
   beamer_presentation:
     df_print: kable
