@@ -1,3 +1,10 @@
+# EcoFoG 1.2-2
+
+## Améliorations
+
+* Support du caractère degré : °
+
+
 # EcoFoG 1.2-1
 
 ## Correction de bug
