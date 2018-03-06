@@ -1,3 +1,10 @@
+# EcoFoG 1.2-3
+
+## Améliorations
+
+* Présentations : verbatim (PDF) de même taille que les bouts de code.
+
+
 # EcoFoG 1.2-2
 
 ## Améliorations
