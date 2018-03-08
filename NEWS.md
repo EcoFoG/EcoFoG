@@ -1,3 +1,10 @@
+# EcoFoG 1.2-4
+
+## Améliorations
+
+* Présentations : options R optimisées.
+
+
 # EcoFoG 1.2-3
 
 ## Améliorations

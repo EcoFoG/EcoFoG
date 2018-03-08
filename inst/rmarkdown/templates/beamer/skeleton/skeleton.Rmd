@@ -18,7 +18,27 @@ output:
   slidy_presentation: default
 ---
 ```{r setup, include=FALSE}
+# echo=FALSE not to display R chunk in slides. Set to TRUE if necessary.
 knitr::opts_chunk$set(echo = FALSE)
+# tidy R chunks.
+knitr::opts_chunk$set(tidy=TRUE, tidy.opts=list(blank=FALSE, width.cutoff=50))
+# R console width
+options(width=50)
+# Install necessary packages only
+InstallPackages <- function(Packages) {
+  sapply(Packages, function(Package) 
+    if (!Package %in% installed.packages()[, 1]) install.packages(Package))
+}
+InstallPackages(c("tidyverse"))
+# Tidiverse default options
+library("tidyverse")
+# Set ggplotting to bw plot default, but with transparent background elements.  
+theme_set(theme_bw(base_size=12))
+theme_update(panel.background = element_rect(fill = "transparent", colour = NA),
+             plot.background = element_rect(fill = "transparent", colour = NA))
+knitr::opts_chunk$set(dev.args=list(bg="transparent"))
+# Tibbles: 5 lines, fit to slide width
+options(tibble.print_min = 5, tibble.width = 50)
 ```
 
 # First Part
