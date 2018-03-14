@@ -20,9 +20,24 @@ La fonction exécute une requête sur le serveur sql.ecofog.gf pour lire les don
 Un pilote ODBC pour SQL Server doit être accessible.
 }
 \examples{
-if (!any(is.na(pingr::ping_port("sql.ecofog.gf", port=1433))))
-  # Si le serveur sql.ecofog.gf est accessible
-  Paracou15 <- Paracou2df(WHERE="Plot='15' AND CensusYear=2016")
+# Creation d'une communaute spatialement explicite (package SpatDiv)
+if (!any(is.na(pingr::ping_port("sql.ecofog.gf", port=1433)))) {
+ # Si le serveur sql.ecofog.gf est accessible
+ if(require(dbmss)) {
+  Paracou2df("Plot='6' AND CensusYear=2016") \%>\%
+  # Arbres vivants
+  filter(CodeAlive == TRUE) \%>\%
+  # Variables utiles
+  select(Plot, SubPlot:Yfield, Family:Species, CircCorr) \%>\%
+  # Nom complet des especes
+  unite(col = spName, Family, Genus, Species, remove = FALSE) \%>\%
+  # Champs d'un wmppp. Le poids est la surface terriere
+  mutate(X=Xfield, Y=Yfield, PointType=as.factor(spName),
+    PointWeight=pi*(CircCorr/pi/2)^2, PointName=idTree) \%>\%
+  dbmss::wmppp(window = owin(c(0,250), c(0,250),
+    unitname=c("metre", "metres"))) -> Paracou6
+ }
+}
 }
 \author{
 Gaëlle Jaouen, \email{gaelle.jaouen@ecofog.gf}

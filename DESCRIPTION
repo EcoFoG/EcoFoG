@@ -12,8 +12,9 @@ Maintainer: Eric Marcon <eric.marcon@ecofog.gf>
 Description: Modèles de documents, accès aux données.
 License: GNU General Public License
 Encoding: UTF-8
-Imports: rmarkdown, odbc, ggrepel, ggplot2, pingr, svglite, shiny, shinyjs, shinycssloaders, utils
-Suggests: testthat, knitr, BiocStyle, bookdown
+Depends: magrittr
+Imports: rmarkdown, odbc, ggplot2, ggrepel, pingr, svglite, shiny, shinyjs, shinycssloaders, utils
+Suggests: testthat, knitr, BiocStyle, bookdown, dbmss
 LazyData: true
 RoxygenNote: 6.0.1
 VignetteBuilder: knitr
