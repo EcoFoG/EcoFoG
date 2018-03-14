@@ -1,4 +1,11 @@
-# EcoFoG 1.2-4
+# EcoFoG 1.2-5
+
+## Améliorations
+
+* Exemples.
+
+* Nettoyage des importations.
+
 
 ## Améliorations
 
