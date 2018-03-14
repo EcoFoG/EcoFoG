@@ -4,6 +4,7 @@
 #'
 #' @name EcoFoG
 #' @docType package
+#' @import magrittr
 NULL
 
 #' Article
@@ -15,7 +16,6 @@ NULL
 #' @param ... Arguments optionnels passés à \code{\link{pdf_document}}
 #' @param md_extensions Extensions markdodown, cf. \code{\link{pdf_document}}
 #'
-#' @importFrom rmarkdown pdf_document
 #' @export
 article <- function (..., md_extensions = c("-autolink_bare_uris")) {
   # Largement inspiré du package rticles

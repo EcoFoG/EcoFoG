@@ -6,11 +6,7 @@
 #'
 #' @author Elie Guedj, \email{elie.guedj@ecofog.gf}
 #'
-#' @import shiny
-#' @import ggplot2
 #' @import svglite
-#' @importFrom ggrepel geom_text_repel
-#' @importFrom shinycssloaders withSpinner
 #'
 #' @export
 Automap <- function() {
@@ -33,30 +29,30 @@ Automap <- function() {
 
 
     if (repel == TRUE) {
-      legende_texte <- geom_text_repel(size=text_size, fontface=ifelse(carre$TreeFieldNum>= 1000,"bold","plain"), force = 0.3)
+      legende_texte <- ggrepel::geom_text_repel(size=text_size, fontface=ifelse(carre$TreeFieldNum>= 1000,"bold","plain"), force = 0.3)
     } else {
-      legende_texte <- geom_text_repel(size=text_size, fontface=ifelse(carre$TreeFieldNum>= 1000,"bold","plain"), force = 0.001)
+      legende_texte <- ggrepel::geom_text_repel(size=text_size, fontface=ifelse(carre$TreeFieldNum>= 1000,"bold","plain"), force = 0.001)
     }
 
-    graph <- ggplot(carre, aes_(x = ~Xfield, y = ~Yfield, label=~TreeFieldNum)) +
-      coord_fixed(ratio = 1) +
-      geom_point(aes_(x=~Xfield, y=~Yfield, shape=~CodeAlive, size=~Circ)) +
+    graph <- ggplot2::ggplot(carre, ggplot2::aes_(x = ~Xfield, y = ~Yfield, label=~TreeFieldNum)) +
+      ggplot2::coord_fixed(ratio = 1) +
+      ggplot2::geom_point(ggplot2::aes_(x=~Xfield, y=~Yfield, shape=~CodeAlive, size=~Circ)) +
       legende_texte +
-      scale_shape_manual(values=c(3,16,17), name=" ", label=c("Vivant","Mort","Recrute"), breaks=c(1,0,2)) +
-      scale_size_continuous(range = c(1, 5), name = "Vivant") +
-      theme_bw() +
-      ggtitle(title) +
-      guides(shape = guide_legend(override.aes = list(size = 5))) +
-      theme(axis.line = element_line(colour = "black"),
-            panel.grid.major = element_blank(),
-            panel.grid.minor = element_blank(),
-            panel.border = element_blank(),
-            panel.background = element_blank(),
-            plot.title = element_text(size=title_size),
-            legend.text = element_text(size=legend_size),
-            legend.title = element_text(size=30),
-            axis.text =element_text(size = axis_size),
-            axis.title =element_text(size = axis_size+10)
+      ggplot2::scale_shape_manual(values=c(3,16,17), name=" ", label=c("Vivant","Mort","Recrute"), breaks=c(1,0,2)) +
+      ggplot2::scale_size_continuous(range = c(1, 5), name = "Vivant") +
+      ggplot2::theme_bw() +
+      ggplot2::ggtitle(title) +
+      ggplot2::guides(shape = ggplot2::guide_legend(override.aes = list(size = 5))) +
+      ggplot2::theme(axis.line = ggplot2::element_line(colour = "black"),
+            panel.grid.major = ggplot2::element_blank(),
+            panel.grid.minor = ggplot2::element_blank(),
+            panel.border = ggplot2::element_blank(),
+            panel.background = ggplot2::element_blank(),
+            plot.title = ggplot2::element_text(size=title_size),
+            legend.text = ggplot2::element_text(size=legend_size),
+            legend.title = ggplot2::element_text(size=30),
+            axis.text = ggplot2::element_text(size = axis_size),
+            axis.title = ggplot2::element_text(size = axis_size+10)
       )
 
     return(graph)
@@ -71,10 +67,10 @@ Automap <- function() {
   initCampagne <- donnerCampagne(foret = donnerForet(NomForet = "Paracou"), annee = 2016)
   parcelles <- sort(unique(initCampagne$Plot))
 
-  ui <- fluidPage(
-    tags$head(
-      tags$style(
-        HTML(".shiny-notification {
+  ui <- shiny::fluidPage(
+    shiny::tags$head(
+      shiny::tags$style(
+        shiny::HTML(".shiny-notification {
              height: 100px;
              width: 800px;
              position:fixed;
@@ -88,81 +84,81 @@ Automap <- function() {
 
     shinyjs::useShinyjs(),
 
-    titlePanel("Createur de carte auto"),
+    shiny::titlePanel("Createur de carte auto"),
 
-    sidebarLayout(
+    shiny::sidebarLayout(
 
-      sidebarPanel(
+      shiny::sidebarPanel(
 
         width = 2,
 
-        selectInput(inputId = "foret",
+        shiny::selectInput(inputId = "foret",
                     label = "Foret :",
                     choices = forets,
                     selected = "Paracou",
                     multiple = FALSE),
 
-        selectInput(inputId = "campagne",
+        shiny::selectInput(inputId = "campagne",
                     label = "Campagne :",
                     choices = campagnes,
                     selected = 2016,
                     multiple = FALSE),
 
-        selectInput(inputId = "parcelles",
+        shiny::selectInput(inputId = "parcelles",
                     label = "Parcelles :",
                     choices = parcelles,
                     selected = NULL,
                     multiple = TRUE),
 
-        numericInput(inputId = "text_size",
+        shiny::numericInput(inputId = "text_size",
                      label = "Taille du texte des libelles :",
                      7),
 
-        checkboxInput(inputId = "repel",
+        shiny::checkboxInput(inputId = "repel",
                       label = "Etiquetage intelligent",
                       TRUE),
 
-        selectInput(inputId = "extension",
+        shiny::selectInput(inputId = "extension",
                     label = "Extension :",
                     choices = c("svg","png","pdf"),
                     selected = "svg",
                     multiple = FALSE),
 
 
-        actionButton("sauvegarder", label = "Sauvegarder"),
-        actionButton("apercu", label = "Apercu")
+        shiny::actionButton("sauvegarder", label = "Sauvegarder"),
+        shiny::actionButton("apercu", label = "Apercu")
 
         ),
 
 
-      mainPanel(
-        uiOutput('condPanel')
+      shiny::mainPanel(
+        shiny::uiOutput('condPanel')
       )
 
     )
   )
 
   server <- function(input, output, session) {
-    values <- reactiveValues()
+    values <- shiny::reactiveValues()
     values$show <- FALSE
 
-    output$condPanel <- renderUI({
+    output$condPanel <- shiny::renderUI({
       if (values$show){
-        withSpinner(plotOutput("apercuGraph"))
+        shinycssloaders::withSpinner(shiny::plotOutput("apercuGraph"))
       }
     })
 
-    observe({
+    shiny::observe({
         campagneChoisie <- input$campagne
         foretChoisie <- input$foret
         dataCampagne <- donnerCampagne(donnerForet(foretChoisie), as.integer(campagneChoisie))
         parcelles <- as.vector(unique(dataCampagne$Plot))
-        updateSelectInput(session, "parcelles", label = "Parcelles :", choices = parcelles)
+        shiny::updateSelectInput(session, "parcelles", label = "Parcelles :", choices = parcelles)
 
     })
 
 
-    observeEvent(input$sauvegarder, {
+    shiny::observeEvent(input$sauvegarder, {
         anneePrec <- input$anneePrec
         campagneChoisie <- input$campagne
         text_size <- input$text_size
@@ -186,14 +182,14 @@ Automap <- function() {
 
             nomFichier <- paste(directoryChosen,"Parcelle_",i,"_carre_",j,"_",foretChoisie,campagneChoisie,".", extension, sep="")
             title <- paste(foretChoisie," - Parcelle ",i," - C",j)
-            ggsave(filename=nomFichier,plot=graphCarre(donnerCarre(j, dataParcelle), title, text_size, repel = repel), width = 42, height = 29.7)
+            ggplot2::ggsave(filename=nomFichier,plot=graphCarre(donnerCarre(j, dataParcelle), title, text_size, repel = repel), width = 42, height = 29.7)
           }
         }
 
     })
 
-    observeEvent(input$apercu, {
-      output$apercuGraph <- renderPlot({ plot1 <- NULL })
+    shiny::observeEvent(input$apercu, {
+      output$apercuGraph <- shiny::renderPlot({ plot1 <- NULL })
       values$show <- TRUE
       anneePrec <- input$anneePrec
       campagneChoisie <- input$campagne
@@ -203,10 +199,10 @@ Automap <- function() {
       dataCampagne <- donnerCampagne(donnerForet(foretChoisie), as.integer(campagneChoisie))
       title <- paste(foretChoisie," - Parcelle ",input$parcelles[1]," - C",1)
       dataParcelle <- donnerParcelle(input$parcelles[1], dataCampagne)
-      output$apercuGraph <- renderPlot({ graphCarre(donnerCarre(1, dataParcelle), title = title, text_size = text_size-4, repel = repel)} , width = 1200, height = 1200)
+      output$apercuGraph <- shiny::renderPlot({ graphCarre(donnerCarre(1, dataParcelle), title = title, text_size = text_size-4, repel = repel)} , width = 1200, height = 1200)
       })
 
-    output$show <- reactive({
+    output$show <- shiny::reactive({
       return(values$show)
     })
 
