@@ -16,6 +16,9 @@
 
 Guyafor2df <- function (WHERE = NULL) {
 
+  if (any(is.na(pingr::ping_port("sql.ecofog.gf", port=1433))))
+    stop("Le serveur sql.ecofog.gf n'est pas accessible")
+
   # Connection odbc à Guyafor sur serveur SQL
   con <- odbc::dbConnect(odbc::odbc(), .connection_string = "Driver={SQL Server};server=sql.ecofog.gf;database=Guyafor;trusted_connection=Yes;")
 
@@ -105,6 +108,9 @@ Guyafor2df <- function (WHERE = NULL) {
 #'  }
 #' }
 Paracou2df <- function (WHERE = NULL) {
+
+  if (any(is.na(pingr::ping_port("sql.ecofog.gf", port=1433))))
+    stop("Le serveur sql.ecofog.gf n'est pas accessible")
 
   # Connection odbc à Guyafor sur serveur SQL
   con <- odbc::dbConnect(odbc::odbc(), .connection_string = "Driver={SQL Server};server=sql.ecofog.gf;database=Guyafor;trusted_connection=Yes;")
