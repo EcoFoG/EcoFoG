@@ -11,6 +11,9 @@
 #' @export
 Automap <- function() {
 
+  if (any(is.na(pingr::ping_port("sql.ecofog.gf", port=1433))))
+    stop("Le serveur sql.ecofog.gf n'est pas accessible")
+
   donnerForet <- function(NomForet) { return(DataGuyafor[DataGuyafor$Forest == NomForet, ])}
 
   donnerCampagne <- function(foret, annee) { foret[foret$CensusYear == annee, ] }

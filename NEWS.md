@@ -1,3 +1,10 @@
+# EcoFoG 1.2-6
+
+## Correction de bug
+
+* L'impossibilité d'atteindre le serveur SQL bloquait indéfiniment les fonctions `Paracou2df()`, `Guyafor2df()` et `Automap()`. Correction : vérification de la connectivité (_ping_) du serveur sql.ecofog.gf avant la connexion ODBC.
+
+
 # EcoFoG 1.2-5
 
 ## Améliorations
