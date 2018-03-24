@@ -30,16 +30,19 @@ date: "`r format(Sys.time(), '%d %B %Y')`"
 preamble: >
   \usepackage{textcomp}
   \DeclareUnicodeCharacter{B0}{\textdegree}
+  \usepackage{tabu}
+  \renewenvironment{table}{\begin{table*}}{\end{table*}\ignorespacesafterend}
+  \hyphenation{bio-di-ver-si-ty sap-lings}
 bibliography: references.bib
 lang: french # english
 keywordlabel: Mots-clés # Keywords
 corrauthorlabel: Contact # Corresponding author
 output:
+  bookdown::gitbook: default
+  bookdown::word_document2: default
   bookdown::pdf_book:
     base_format: EcoFoG::article
     keep_tex: TRUE
-  bookdown::gitbook: default
-  bookdown::word_document2: default
 ---
 
 <!-- Options de knitr et de R (librairies, ...) --> 
@@ -56,7 +59,7 @@ Library <- function(Packages) {
   invisible(sapply(Packages, InstallAndLoad))
 }
 # Ajouter les packages nécessaires ici
-# Library(c("entropart"))
+Library(c("kableExtra"))
 ```
 
 <!-- Début du document ci-dessous --> 
@@ -76,7 +79,7 @@ Sa documentation est disponible sur le site de RStudio[^1].
 
 
 Markdown est étendu par Bookdown [^2], qui permet la rédaction de livres et une syntaxe plus efficace pour les articles.
-Ce document est réalisé avec Markdown dans RStudio: knitr traite le code Markdown, le passe à Pandoc pour sa transformaton en Latex, enfin MikteX le compile en PDF.
+Ce document est réalisé avec Markdown dans RStudio: knitr traite le code Markdown, le passe à Pandoc pour sa transformaton en LaTeX, enfin MikteX le compile en PDF.
 
 [^2]: <https://bookdown.org/yihui/bookdown/>
 
@@ -87,7 +90,7 @@ Markdown est très simple à apprendre.
 
 Markdown permet d'intégrer son code R pour un résultat *reproductible*.
 
-Markdown permet de produire, sans réécrire le texte, un document dans différents formats: article Latex ou Word par exemple.
+Markdown permet de produire, sans réécrire le texte, un document dans différents formats: article LaTeX ou Word par exemple.
 
 
 ## Comment faire
@@ -125,16 +128,52 @@ head(cars)
 
 ## Tableaux
 
-Les séparateurs horizontaux - et verticaux | permettent de dessiner un tableau.
-Les tableaux peuvent aussi être produits par du code R, avec le package knitr:
+Les séparateurs horizontaux - et verticaux | permettent de dessiner un tableau selon la syntaxe de Markdown, mais ce n'est pas la meilleure méthode.
 
-```{r kable}
+Les tableaux peuvent aussi être produits par du code R.
+Le contenu du tableau est dans un dataframe.
+La fonction `kable` du package _knitr_ prépare le tableau pour l'affichage et passe le résultat à la fonction `kable_styling` du package _kableExtra_ pour le formatage final.
+
+```{r kable, echo=FALSE, warning=FALSE}
 names(iris) <- c("Longueur sépales", "Largeur", "Longueur pétales", "Largeur", "Espèce")
-knitr::kable(head(iris), caption="Tableau créé par R", longtable = TRUE, booktabs = TRUE)
+knitr::kable(head(iris), caption="Tableau créé par R", longtable = TRUE, booktabs = TRUE) %>%
+kableExtra::kable_styling(bootstrap_options = "striped", full_width = FALSE)
 ```
 
-Une légende est possible et le référencement aussi (tableau \@ref(tab:kable)).
-Attention, la largeur des tableaux est limitée à une colonne de texte, et les retours à la ligne dans les cellules ne sont pas pris en charge. 
+La légende est précisée par l'argument `caption` et le référencement est possible parce que le tableau reçoit une étiquette dont le nom est `tab:` suivi du nom du bout de code (tableau \@ref(tab:kable)).
+Utiliser systématiquement l'argument `booktabs = TRUE` pour que l'épaisseur des lignes de séparation soit optimale en LaTeX.
+L'option\break `bootstrap_options = "striped"` fournit des tableaux plus lisibles en HTML.
+
+En LaTeX, Les tableaux peuvent avoir la largeur de la colonne et éventuellement d'étendre sur plusieurs pages\break `longtable = TRUE` ou bien utliser la largeur de la page\break `longtable = FALSE` comme le tableau \@ref(tab:Paracou)).
+
+```{r Paracou, echo=FALSE, warning=FALSE}
+Intervention <- data.frame(
+  Treatment=c("Control", "T1", "T2", "T3"),
+  Timber=c("", 
+           "DBH $\\geq$ 50 cm, commercial species, $\\approx$ 10 trees/ha", 
+           "DBH $\\geq$ 50 cm, commercial species, $\\approx$ 10 trees/ha",
+           "DBH $\\geq$ 50 cm, commercial species, $\\approx$ 10 trees/ha"),
+  Thinning=c("", 
+             "", 
+             "DBH $\\geq$ 40 cm, non-valuable species, $\\approx$ 30 trees/ha", 
+             "DBH $\\geq$ 50 cm, non-valuable species, $\\approx$ 15 trees/ha  "),
+  Fuelwood=c("", 
+             "", 
+             "", 
+             "40 cm $\\leq$ DBH $\\leq$ 50 cm, non-valuable species, $\\approx$ 15 trees/ha"),
+  AGBLost=c(0, "$[12\\%-33\\%]$", "$[33\\%-56\\%]$", "$[35\\%-56\\%]$")
+)
+names(Intervention)[5] <- "\\%AGB lost"
+knitr::kable(Intervention, caption="Intervention table, summary of the disturbance intensity for the 4 plot treatments in Paracou.", longtable = FALSE, booktabs = TRUE, escape = FALSE) %>%
+  kableExtra::kable_styling(bootstrap_options = "striped", full_width = TRUE)
+```
+
+Ce tableau contient des mathématiques : l'option\break `escape = FALSE` est nécessaire.
+
+Enfin, l'option `full_width = FALSE` permet d'ajuster la largeur du tableau à son contenu au lieu d'occuper toute la largeur disponible.
+Elle doit être `TRUE` pour le formatage correct des tableaux sur deux colonnes en LaTeX.
+Un bug de knitr fait que le format du tableau ("html") n'est pas transmis correctement à `kable_styling` lors du tricotage au format gitbook, ce qui génère un avertissement et empêche l'option d'être prise en compte.
+
 
 
 ## Figures
@@ -147,7 +186,7 @@ Les figures peuvent être créées par le code R (figure \@ref(fig:pressure)).
 Avec Bookdown, une étiquette est associée à chaque figure: son nom est `fig:xxx` où `xxx` est le nom du bout de code R.
 Les renvois se fonct avec la commande `\@ref(fig:xxx)`.
 
-Une figure peut utiliser toute la largeur de la page en ajoutant les options suivantes dans l'entête du bout de code qui la génère: `fig.env="figure*"`et   `out.extra=""`.
+Une figure peut utiliser toute la largeur de la page en ajoutant les options suivantes dans l'entête du bout de code qui la génère: `fig.env="figure*"` et\break `out.extra=""`.
 
 Les figures existantes sont intégrées dans un bout de code par la fonction `include_graphics`, voir la figure \@ref(fig:nouveau).
 
@@ -167,7 +206,7 @@ Les listes sont indiquées par des *, + et - (trois niveaux hiérarchiques) ou d
 
 ## Maths
 
-Les équations au format Latex peuvent être insérées en ligne, comme $A=\pi r^2$ ou isolées comme $$e^{i \pi} = -1.$$
+Les équations au format LaTeX peuvent être insérées en ligne, comme $A=\pi r^2$ ou isolées comme $$e^{i \pi} = -1.$$
 
 Elles peuvent être numérotées, voir équation \@ref(eq:disque), en utlisant l'environnement `\equation`:
 
@@ -195,7 +234,7 @@ Dans tous les cas, l'appel à la référence est fait par la commande `\@ref(ref
 Les références bibliographiques incluses dans le fichier references.bib peuvent être appelées dans le texte, entre parenthèses [@Marcon2014c], ou dans le texte, à la façon de @Marcon2014c.
 
 La bibliographie est traitée par Pandoc lors de la production de documents Word ou HTML.
-Le sytle bibliographique peut être précisé, en ajoutant la ligne 
+Le style bibliographique peut être précisé, en ajoutant la ligne 
 
     csl:nom_du_fichier.csl
     
@@ -204,11 +243,58 @@ Plus d'un millier de styles sont disponibles [^3].
 
 [^3]: <https://github.com/citation-style-language/styles>
 
-Pour les documents PDF, la bibliographie est gérée par \LaTeX: c'est pourquoi l'extension _.bib_ du fichier doit être supprimée dans la déclaration de la base bibliographique.
+Pour les documents PDF, la bibliographie est gérée par LaTeX: c'est pourquoi l'extension _.bib_ du fichier doit être supprimée dans la déclaration de la base bibliographique.
 Le style est inclus dans le modèle EcoFoG: c'est celui de _Methods in Ecology and Evolution_.
 Il ne peut pas être changé, pour assurer l'homogénéité des documents produits.
 
 Pour préparer la soumission d'un manuscrit à une revue, il faudra ouvrir le fichier _.tex_ intermédiaire produit par Pandoc et copier le contenu de l'environnement \{document\} dans le modèle proposé par la revue, qui se chargera du formatage.
+
+## Préambule LaTeX
+
+Des commandes LaTeX peuvent être ajoutées dans le préambule du fichier LaTeX produit, par exemple pour charger des packages supplémentaires.
+Ces commandes sont dans la section `preamble:` de l'entête du fichier Markdown.
+
+Les commandes par défaut permettent :
+
+- d'utiliser le caractère degré (exemple: 20°C) :
+```
+\usepackage{textcomp}
+\DeclareUnicodeCharacter{B0}%
+  {\textdegree}
+```
+
+- d'obtenir des tableaux sur deux colonnes en redéfinissant l'environnement `table` et de charger le package _tabu_ nécessaire à _kableExtra_:
+```
+\usepackage{tabu}
+\renewenvironment{table}{%
+  \begin{table*}}%
+  {\end{table*}%
+  \ignorespacesafterend
+}
+```
+
+- de montrer l'utilisation de la commande de césure:
+```
+\hyphenation%
+  {bio-di-ver-si-ty sap-lings}
+```
+
+D'autres commandes peuvent être ajoutées selon les besoins.
+Attention :
+
+- les commentaires ne sont pas possibles ;
+
+- les commandes complexes (comme\break `\renewenvironment`) doivent être entrées sur une seule ligne sinon elles seront détruites par knitr au premier tricotage en HTML.
+
+
+## Forçage des coupures de ligne
+
+La césure est gérée automatiquement en LaTeX.
+Si un mot n'est pas coupé correctement, ajouter son découpage dans le préambule du fichier avec la commande `\hyphenation` (les mots sont séparés par des espaces, les emplacement de césure représentés par des tirets).
+
+Si LaTeX ne parvient pas à trouver de solution pour le retout à la ligne, par exemple pare que du code constitue un bloc insécable trop long, ajouter la commande LaTeX `\break` à l'emplacement du retour à la ligne.
+Ne pas laisser d'espace avant la commande. 
+Le document HTML ignore les commandes LaTeX.
 
 
 # Types de document
@@ -232,7 +318,7 @@ Pendant toute l'écriture, préférer le tricot au format HTML pour sa vitesse d
 Son contenu peut être mis en forme ou copié dans un modèle. 
 Les styles de texte standard  sont "First Paragraph" et "Corps de de texte".
 
-L'intérêt du format Word est de produire un manuscrit pour les revues qui ne supportent pas \LaTeX.
+L'intérêt du format Word est de produire un manuscrit pour les revues qui ne supportent pas LaTeX.
 Le style bibliographique de la revue est très probablement disponible au format _.csl_, ce qui permet de minimiser la préparation manuelle.
 
 

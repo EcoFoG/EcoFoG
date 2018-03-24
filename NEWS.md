@@ -1,3 +1,10 @@
+# EcoFoG 1.3-0
+
+## Améliorations
+
+* Formatage avancé des tableaux dans le modèle d'article.
+
+
 # EcoFoG 1.2-6
 
 ## Correction de bug
