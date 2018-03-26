@@ -53,7 +53,7 @@ options(width=50)
 # Installation des packages si nécessaire et chargement
 Library <- function(Packages) {
   InstallAndLoad <- function(Package) {
-    if (!Package %in% installed.packages()[, 1]) {install.packages(Package)}
+    if (!Package %in% installed.packages()[, 1]) {install.packages(Package, repos="https://cran.rstudio.com/")}
     require(Package, character.only = TRUE)
   }
   invisible(sapply(Packages, InstallAndLoad))

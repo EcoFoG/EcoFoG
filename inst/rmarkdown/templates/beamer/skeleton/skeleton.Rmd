@@ -27,7 +27,7 @@ options(width=50)
 # Install necessary packages only
 InstallPackages <- function(Packages) {
   sapply(Packages, function(Package) 
-    if (!Package %in% installed.packages()[, 1]) install.packages(Package))
+    if (!Package %in% installed.packages()[, 1]) install.packages(Package, repos="https://cran.rstudio.com/"))
 }
 InstallPackages(c("tidyverse"))
 # Tidiverse default options
