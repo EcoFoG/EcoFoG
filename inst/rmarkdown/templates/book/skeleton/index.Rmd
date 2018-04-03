@@ -117,13 +117,13 @@ knitr::opts_chunk$set(cache=TRUE, warning=FALSE, fig.env='SCfigure', out.width='
 # Installation of packages if necessary and loading
 Library <- function(Packages) {
   InstallAndLoad <- function(Package) {
-    if (!Package %in% installed.packages()[, 1]) {install.packages(Package)}
+    if (!Package %in% installed.packages()[, 1]) {install.packages(Package, repos="https://cran.rstudio.com/")}
     require(Package, character.only = TRUE)
   }
   invisible(sapply(Packages, InstallAndLoad))
 }
 # Add necessary packages here
-Packages <- c("bookdown", "knitr", "rmarkdown")
+Packages <- c("bookdown", "kableExtra", "knitr", "rmarkdown")
 
 # Install them and create packages.bib file to reference them as @R-package
 Library(Packages)
