@@ -27,13 +27,25 @@ Automap <- function() {
 
     carre$CodeAlive <- factor(carre$CodeAlive)
 
+    if (carre$SubPlot[1] == 1) {
+      xLim = c(0,125)
+      yLim = c(125,250)
+    } else if (carre$SubPlot[1] == 2) {
+      xLim = c(125,250)
+      yLim = c(125,250)
+    } else if (carre$SubPlot[1] == 3) {
+      xLim = c(0,125)
+      yLim = c(0,125)
+    } else if (carre$SubPlot[1] == 4) {
+      xLim = c(125,250)
+      yLim = c(0,125)
+    }
 
     if (repel == TRUE) {
       legende_texte <- ggrepel::geom_text_repel(size=text_size, fontface=ifelse(carre$TreeFieldNum>= 1000,"bold","plain"), force = 0.3)
     } else {
       legende_texte <- ggrepel::geom_text_repel(size=text_size, fontface=ifelse(carre$TreeFieldNum>= 1000,"bold","plain"), force = 0.001)
     }
-
     graph <- ggplot2::ggplot(carre, ggplot2::aes_(x = ~Xfield, y = ~Yfield, label=~TreeFieldNum)) +
       ggplot2::coord_fixed(ratio = 1) +
       ggplot2::geom_point(ggplot2::aes_(x=~Xfield, y=~Yfield, shape=~CodeAlive, size=~Circ)) +
@@ -41,6 +53,7 @@ Automap <- function() {
       ggplot2::scale_shape_manual(values=c(3,16,17), name=" ", label=c("Vivant","Mort","Recrute"), breaks=c(1,0,2)) +
       ggplot2::scale_size_continuous(range = c(1, 5), name = "Vivant") +
       ggplot2::theme_bw() +
+      ggplot2::coord_cartesian(xlim = xLim, ylim = yLim) +
       ggplot2::ggtitle(title) +
       ggplot2::guides(shape = ggplot2::guide_legend(override.aes = list(size = 5))) +
       ggplot2::theme(axis.line = ggplot2::element_line(colour = "black"),
