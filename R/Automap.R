@@ -27,7 +27,6 @@ Automap <- function() {
 
     carre$CodeAlive <- factor(carre$CodeAlive)
 
-     if (carre$Foret[1] == "Paracou" && carre$Plot[1] != "18" && carre$Plot[1] != "17") {
         if (carre$SubPlot[1] == 1) {
           xLim = c(0,125)
           yLim = c(125,250)
@@ -41,7 +40,6 @@ Automap <- function() {
           xLim = c(125,250)
           yLim = c(0,125)
         }
-     }
 
     if (repel == TRUE) {
       legende_texte <- ggrepel::geom_text_repel(size=text_size, fontface=ifelse(carre$TreeFieldNum>= 1000,"bold","plain"), force = 0.3)
