@@ -221,5 +221,7 @@ Automap <- function() {
 
   }
 
-  shiny::shinyApp(ui = ui, server = server)
+  Automap <- shiny::shinyApp(ui = ui, server = server)
+
+  runApp(Automap, port = 8080)
 }
