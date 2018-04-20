@@ -7,20 +7,28 @@
 #'
 #' @author Gaëlle Jaouen, \email{gaelle.jaouen@ecofog.gf}
 #' @param WHERE Clause WHERE optionnelle de la requête SQL envoyée au serveur
+#' @param UID Compte SQL Server utilisé pour la connexion. Par défaut, l'authentification est faite par Windows.
+#' @param PWD Mot de passe du compte SQL Server.
 #' @return Un dataframe contenant le résultat de la requête ODBC
 #' @export
 #' @examples
-#' if (!any(is.na(pingr::ping_port("sql.ecofog.gf", port=1433))))
-#'   # Si le serveur sql.ecofog.gf est accessible
-#'   Paracou15 <- Guyafor2df(WHERE="Forest='Paracou' AND Plot='15' AND CensusYear=2016")
+#' Paracou15 <- Guyafor2df(WHERE="Forest='Paracou' AND Plot='15' AND CensusYear=2016")
 
-Guyafor2df <- function (WHERE = NULL) {
+Guyafor2df <- function (WHERE = NULL, UID=NULL, PWD=NULL) {
 
   if (any(is.na(pingr::ping_port("sql.ecofog.gf", port=1433))))
     stop("Le serveur sql.ecofog.gf n'est pas accessible")
 
-  # Connection odbc à Guyafor sur serveur SQL
-  con <- odbc::dbConnect(odbc::odbc(), .connection_string = "Driver={SQL Server};server=sql.ecofog.gf;database=Guyafor;trusted_connection=Yes;")
+  # Connexion odbc à Guyafor sur serveur SQL
+  connection_string <- "Driver={SQL Server};server=sql.ecofog.gf;database=Guyafor;"
+  if (is.null(UID)) {
+    # Authentification Windows
+    connection_string <- paste(connection_string, "trusted_connection=Yes;", sep="")
+  } else {
+    # Authentification SQL Server
+    connection_string <- paste(connection_string, "UID={", UID, "};PWD={", PWD, "};", sep="")
+  }
+  con <- odbc::dbConnect(odbc::odbc(), .connection_string=connection_string)
 
   # Sélection des données
   req1 <- "SELECT

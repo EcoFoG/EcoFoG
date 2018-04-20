@@ -4,10 +4,14 @@
 \alias{Guyafor2df}
 \title{Donnees Guyafor}
 \usage{
-Guyafor2df(WHERE = NULL)
+Guyafor2df(WHERE = NULL, UID = NULL, PWD = NULL)
 }
 \arguments{
 \item{WHERE}{Clause WHERE optionnelle de la requête SQL envoyée au serveur}
+
+\item{UID}{Compte SQL Server utilisé pour la connexion. Par défaut, l'authentification est faite par Windows.}
+
+\item{PWD}{Mot de passe du compte SQL Server.}
 }
 \value{
 Un dataframe contenant le résultat de la requête ODBC
@@ -20,9 +24,7 @@ La fonction exécute une requête sur le serveur sql.ecofog.gf pour lire les don
 Un pilote ODBC pour SQL Server doit être accessible.
 }
 \examples{
-if (!any(is.na(pingr::ping_port("sql.ecofog.gf", port=1433))))
-  # Si le serveur sql.ecofog.gf est accessible
-  Paracou15 <- Guyafor2df(WHERE="Forest='Paracou' AND Plot='15' AND CensusYear=2016")
+Paracou15 <- Guyafor2df(WHERE="Forest='Paracou' AND Plot='15' AND CensusYear=2016")
 }
 \author{
 Gaëlle Jaouen, \email{gaelle.jaouen@ecofog.gf}

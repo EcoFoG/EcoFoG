@@ -4,12 +4,14 @@
 #'
 #' Basee sur la base de donnees Guyafor
 #'
+#' @inheritParams Guyafor2df
+#'
 #' @author Elie Guedj, \email{elie.guedj@ecofog.gf}
 #'
 #' @import svglite
 #'
 #' @export
-Automap <- function() {
+Automap <- function(UID=NULL, PWD=NULL) {
 
   donnerForet <- function(NomForet) { return(DataGuyafor[DataGuyafor$Forest == NomForet, ])}
 
@@ -72,7 +74,7 @@ Automap <- function() {
   }
 
   if (!exists("DataGuyafor")){
-    DataGuyafor <- Guyafor2df()
+    DataGuyafor <- Guyafor2df(UID=UID, PWD=PWD)
   }
 
   forets <- as.vector(unique(sort(DataGuyafor$Forest)))

@@ -4,7 +4,12 @@
 \alias{Automap}
 \title{AutoMap}
 \usage{
-Automap()
+Automap(UID = NULL, PWD = NULL)
+}
+\arguments{
+\item{UID}{Compte SQL Server utilisé pour la connexion. Par défaut, l'authentification est faite par Windows.}
+
+\item{PWD}{Mot de passe du compte SQL Server.}
 }
 \description{
 Interface Shiny de creation automatique de cartes de terrain
