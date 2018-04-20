@@ -102,7 +102,7 @@ Guyafor2df <- function (WHERE = NULL, UID=NULL, PWD=NULL) {
 #' # Creation d'une communaute spatialement explicite (package SpatDiv)
 #' if (!any(is.na(pingr::ping_port("sql.ecofog.gf", port=1433)))) {
 #'  # Si le serveur sql.ecofog.gf est accessible
-#'  if(require(dbmss)) {
+#'  if(require("dbmss") & require("dplyr") & require("tidyr")) {
 #'   Paracou2df("Plot='6' AND CensusYear=2016") %>%
 #'   # Arbres vivants
 #'   filter(CodeAlive == TRUE) %>%

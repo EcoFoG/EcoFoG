@@ -4,10 +4,14 @@
 \alias{Paracou2df}
 \title{Donnees Paracou}
 \usage{
-Paracou2df(WHERE = NULL)
+Paracou2df(WHERE = NULL, UID = NULL, PWD = NULL)
 }
 \arguments{
 \item{WHERE}{Clause WHERE optionnelle de la requête SQL envoyée au serveur}
+
+\item{UID}{Compte SQL Server utilisé pour la connexion. Par défaut, l'authentification est faite par Windows.}
+
+\item{PWD}{Mot de passe du compte SQL Server.}
 }
 \value{
 Un dataframe contenant le résultat de la requête ODBC
@@ -23,14 +27,14 @@ Un pilote ODBC pour SQL Server doit être accessible.
 # Creation d'une communaute spatialement explicite (package SpatDiv)
 if (!any(is.na(pingr::ping_port("sql.ecofog.gf", port=1433)))) {
  # Si le serveur sql.ecofog.gf est accessible
- if(require(dbmss)) {
+ if(require("dbmss") & require("dplyr") & require("tidyr")) {
   Paracou2df("Plot='6' AND CensusYear=2016") \%>\%
   # Arbres vivants
   filter(CodeAlive == TRUE) \%>\%
   # Variables utiles
   select(Plot, SubPlot:Yfield, Family:Species, CircCorr) \%>\%
   # Nom complet des especes
-  unite(col = spName, Family, Genus, Species, remove = FALSE) \%>\%
+  unite(col = spName, Family, Genus, Specis, remove = FALSE) \%>\%
   # Champs d'un wmppp. Le poids est la surface terriere
   mutate(X=Xfield, Y=Yfield, PointType=as.factor(spName),
     PointWeight=pi*(CircCorr/pi/2)^2, PointName=idTree) \%>\%

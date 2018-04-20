@@ -14,7 +14,7 @@ License: GNU General Public License
 Encoding: UTF-8
 Depends: magrittr
 Imports: rmarkdown, odbc, ggplot2, ggrepel, pingr, svglite, shiny, shinyjs, shinycssloaders, utils
-Suggests: testthat, knitr, BiocStyle, bookdown, dbmss, kableExtra
+Suggests: testthat, knitr, BiocStyle, bookdown, dbmss, kableExtra, dplyr, tidyr
 LazyData: true
 RoxygenNote: 6.0.1
 VignetteBuilder: knitr
