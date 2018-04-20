@@ -24,7 +24,9 @@ La fonction exécute une requête sur le serveur sql.ecofog.gf pour lire les don
 Un pilote ODBC pour SQL Server doit être accessible.
 }
 \examples{
-Paracou15 <- Guyafor2df(WHERE="Forest='Paracou' AND Plot='15' AND CensusYear=2016")
+if (!any(is.na(pingr::ping_port("sql.ecofog.gf", port=1433))))
+  # Si le serveur sql.ecofog.gf est accessible
+  Paracou15 <- Guyafor2df(WHERE="Forest='Paracou' AND Plot='15' AND CensusYear=2016")
 }
 \author{
 Gaëlle Jaouen, \email{gaelle.jaouen@ecofog.gf}

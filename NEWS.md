@@ -1,3 +1,15 @@
+# EcoFoG 1.4-0
+
+## Améliorations
+
+* Support de l'authentification SQL sur la base de données.
+
+## Correction de bug
+
+* Déclaration correcte des packages de tidyverse pour l'exemple de `Guyafor2df()`.
+
+
+
 # EcoFoG 1.3-0
 
 ## Améliorations
