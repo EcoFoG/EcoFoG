@@ -229,5 +229,5 @@ Automap <- function(UID=NULL, PWD=NULL) {
 
 
 
-  print("Chargement terminé, vous devez rafraichir la page ouverte pour utiliser le logiciel")
+  print("Chargement termine, vous devez rafraichir la page ouverte pour utiliser le logiciel")
 }
