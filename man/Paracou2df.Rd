@@ -34,7 +34,7 @@ if (!any(is.na(pingr::ping_port("sql.ecofog.gf", port=1433)))) {
   # Variables utiles
   select(Plot, SubPlot:Yfield, Family:Species, CircCorr) \%>\%
   # Nom complet des especes
-  unite(col = spName, Family, Genus, Specis, remove = FALSE) \%>\%
+  unite(col = spName, Family, Genus, Species, remove = FALSE) \%>\%
   # Champs d'un wmppp. Le poids est la surface terriere
   mutate(X=Xfield, Y=Yfield, PointType=as.factor(spName),
     PointWeight=pi*(CircCorr/pi/2)^2, PointName=idTree) \%>\%

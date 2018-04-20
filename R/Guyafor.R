@@ -12,8 +12,9 @@
 #' @return Un dataframe contenant le résultat de la requête ODBC
 #' @export
 #' @examples
-#' Paracou15 <- Guyafor2df(WHERE="Forest='Paracou' AND Plot='15' AND CensusYear=2016")
-
+#' if (!any(is.na(pingr::ping_port("sql.ecofog.gf", port=1433))))
+#'   # Si le serveur sql.ecofog.gf est accessible
+#'   Paracou15 <- Guyafor2df(WHERE="Forest='Paracou' AND Plot='15' AND CensusYear=2016")
 Guyafor2df <- function (WHERE = NULL, UID=NULL, PWD=NULL) {
 
   if (any(is.na(pingr::ping_port("sql.ecofog.gf", port=1433))))
