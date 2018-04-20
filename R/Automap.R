@@ -223,5 +223,9 @@ Automap <- function() {
 
   Automap <- shiny::shinyApp(ui = ui, server = server)
 
-  runApp(Automap, port = 8080)
+  shiny::runApp(Automap, port = 8080)
+
+
+
+  print("Chargement terminé, vous devez rafraichir la page ouverte pour utiliser le logiciel")
 }
