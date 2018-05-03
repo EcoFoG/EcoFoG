@@ -11,7 +11,7 @@
 #' @import svglite
 #'
 #' @export
-Automap <- function(UID=NULL, PWD=NULL) {
+Automap <- function(data = NULL, UID = NULL, PWD = NULL) {
 
   donnerForet <- function(NomForet) { return(DataGuyafor[DataGuyafor$Forest == NomForet, ])}
 
@@ -29,6 +29,7 @@ Automap <- function(UID=NULL, PWD=NULL) {
 
     carre$CodeAlive <- factor(carre$CodeAlive)
 
+      if (carre$Forest[1] == "Paracou" && carre$Plot[1] != 18 && carre$Plot != 16) {
         if (carre$SubPlot[1] == 1) {
           xLim = c(0,125)
           yLim = c(125,250)
@@ -42,6 +43,7 @@ Automap <- function(UID=NULL, PWD=NULL) {
           xLim = c(125,250)
           yLim = c(0,125)
         }
+      }
 
     if (repel == TRUE) {
       legende_texte <- ggrepel::geom_text_repel(size=text_size, fontface=ifelse(carre$TreeFieldNum>= 1000,"bold","plain"), force = 0.3)
@@ -55,7 +57,6 @@ Automap <- function(UID=NULL, PWD=NULL) {
       ggplot2::scale_shape_manual(values=c(3,16,17), name=" ", label=c("Vivant","Mort","Recrute"), breaks=c(1,0,2)) +
       ggplot2::scale_size_continuous(range = c(1, 5), name = "Vivant") +
       ggplot2::theme_bw() +
-      ggplot2::coord_cartesian(xlim = xLim, ylim = yLim) +
       ggplot2::ggtitle(title) +
       ggplot2::guides(shape = ggplot2::guide_legend(override.aes = list(size = 5))) +
       ggplot2::theme(axis.line = ggplot2::element_line(colour = "black"),
@@ -69,12 +70,17 @@ Automap <- function(UID=NULL, PWD=NULL) {
             axis.text = ggplot2::element_text(size = axis_size),
             axis.title = ggplot2::element_text(size = axis_size+10)
       )
-
+    if (exists("yLim") && exists("xLim")) {
+      graph <- graph + ggplot2::coord_cartesian(xlim = xLim, ylim = yLim)
+    }
     return(graph)
   }
-
-  if (!exists("DataGuyafor")){
-    DataGuyafor <- Guyafor2df(UID=UID, PWD=PWD)
+  if (is.null(data)) {
+    if (!exists("DataGuyafor")){
+      DataGuyafor <- Guyafor2df(UID=UID, PWD=PWD)
+    }
+  } else {
+    DataGuyafor <- data
   }
 
   forets <- as.vector(unique(sort(DataGuyafor$Forest)))
