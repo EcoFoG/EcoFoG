@@ -10,6 +10,12 @@
 #'
 #' @import svglite
 #'
+#' @param data Dataframe in Guyafor format
+#'
+#' @param UID Username for SQL Server connection
+#'
+#' @param PWD Password for SQL Server conenction
+#'
 #' @export
 Automap <- function(data = NULL, UID = NULL, PWD = NULL) {
 
