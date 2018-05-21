@@ -26,3 +26,9 @@
 \def\begincol{\begin{column}}
 \def\endcol{\end{column}}
 \def\endcols{\end{columns}}
+
+% Correction of caption3.sty issue
+% https://tex.stackexchange.com/questions/426088/texlive-pretest-2018-beamer-and-subfig-collide
+\makeatletter
+\let\@@magyar@captionfix\relax
+\makeatother
