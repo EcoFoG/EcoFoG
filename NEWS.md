@@ -1,3 +1,13 @@
+# EcoFog 1.5-0
+
+## Améliorations
+
+* Possibilité d'utiliser un dataframe sur Automap()
+
+## Correction de bugs
+
+* Correction d'un bug si la parcelle ne contient pas 4 carrés
+
 # EcoFoG 1.4-0
 
 ## Améliorations
@@ -7,6 +17,7 @@
 ## Correction de bug
 
 * Déclaration correcte des packages de tidyverse pour l'exemple de `Guyafor2df()`.
+* Rectification des cas où les plots ne sont pas découpés en 250*250 sur Automap()
 
 
 
