@@ -153,7 +153,7 @@ Automap <- function(data = NULL, UID = NULL, PWD = NULL) {
 
 
         shiny::actionButton("sauvegarder", label = "Sauvegarder"),
-        shiny::actionButton("apercu", label = "Apercu")
+        shiny::actionButton("apercu", label = "Apercu (affiche seulement le plot 1)")
 
         ),
 
@@ -192,7 +192,13 @@ Automap <- function(data = NULL, UID = NULL, PWD = NULL) {
         foretChoisie <- input$foret
         repel <- input$repel
         extension <- input$extension
-        directoryChosen <- paste(utils::choose.dir(),"\\",sep="")
+        repeat {
+          chooseDir <- utils::choose.dir()
+          if (!is.na(chooseDir)) {
+            break
+          }
+        }
+        directoryChosen <- paste(chooseDir,"\\",sep="")
         dataCampagne <- donnerCampagne(donnerForet(foretChoisie), as.integer(campagneChoisie))
         progress <- shiny::Progress$new()
         on.exit(progress$close())
