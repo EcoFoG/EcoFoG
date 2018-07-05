@@ -30,6 +30,10 @@ Automap <- function(data = NULL, UID = NULL, PWD = NULL) {
   }
   donnerCarre <- function(numeroCarre, parcelle) { parcelle[parcelle$SubPlot == numeroCarre, ] } # Choix du carre
 
+  donnerAnneesParForet <- function(foret) {
+    return(levels(as.factor(foret$CensusYear)))
+  }
+
   ## Construction du graphique ##
   graphCarre <- function(carre, title, text_size = 7, title_size = 50, legend_size = 25, axis_size = 25, repel = TRUE) {
 
@@ -153,7 +157,7 @@ Automap <- function(data = NULL, UID = NULL, PWD = NULL) {
 
 
         shiny::actionButton("sauvegarder", label = "Sauvegarder"),
-        shiny::actionButton("apercu", label = "Apercu (affiche seulement le plot 1)")
+        shiny::actionButton("apercu", label = "Apercu (affiche seulement le carre 1)")
 
         ),
 
@@ -176,10 +180,14 @@ Automap <- function(data = NULL, UID = NULL, PWD = NULL) {
     })
 
     shiny::observe({
-        campagneChoisie <- input$campagne
+
         foretChoisie <- input$foret
+        dataForet<- donnerForet(foretChoisie)
+        campagnes <- donnerAnneesParForet(dataForet)
+        campagneChoisie <- input$campagne
         dataCampagne <- donnerCampagne(donnerForet(foretChoisie), as.integer(campagneChoisie))
         parcelles <- as.vector(unique(dataCampagne$Plot))
+        shiny::updateSelectInput(session, "campagne", label = "Campagne :", choices = campagnes)
         shiny::updateSelectInput(session, "parcelles", label = "Parcelles :", choices = parcelles)
 
     })
