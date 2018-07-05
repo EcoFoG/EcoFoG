@@ -95,6 +95,7 @@ Automap <- function(data = NULL, UID = NULL, PWD = NULL) {
 
   forets <- as.vector(unique(sort(DataGuyafor$Forest)))
   campagnes <- sort(unique(DataGuyafor$CensusYear))
+  carreDispo <- sort(unique(DataGuyafor$SubPlot))
   initCampagne <- donnerCampagne(foret = donnerForet(NomForet = "Paracou"), annee = 2016)
   parcelles <- sort(unique(initCampagne$Plot))
 
@@ -155,9 +156,15 @@ Automap <- function(data = NULL, UID = NULL, PWD = NULL) {
                     selected = "svg",
                     multiple = FALSE),
 
+        shiny::selectInput(inputId = "carre",
+                           label = "Choix du carre pour apercu :",
+                           choices = carreDispo,
+                           selected = 1,
+                           multiple = FALSE),
 
         shiny::actionButton("sauvegarder", label = "Sauvegarder"),
-        shiny::actionButton("apercu", label = "Apercu (affiche seulement le carre 1)")
+
+        shiny::actionButton("apercu", label = "Apercu")
 
         ),
 
@@ -180,16 +187,19 @@ Automap <- function(data = NULL, UID = NULL, PWD = NULL) {
     })
 
     shiny::observe({
-
         foretChoisie <- input$foret
         dataForet<- donnerForet(foretChoisie)
-        campagnes <- donnerAnneesParForet(dataForet)
         campagneChoisie <- input$campagne
         dataCampagne <- donnerCampagne(donnerForet(foretChoisie), as.integer(campagneChoisie))
         parcelles <- as.vector(unique(dataCampagne$Plot))
-        shiny::updateSelectInput(session, "campagne", label = "Campagne :", choices = campagnes)
         shiny::updateSelectInput(session, "parcelles", label = "Parcelles :", choices = parcelles)
+    })
 
+    shiny::observeEvent(input$foret, {
+      foretChoisie <- input$foret
+      dataForet<- donnerForet(foretChoisie)
+      campagnes <- donnerAnneesParForet(dataForet)
+      shiny::updateSelectInput(session, "campagne", label = "Campagne :", choices = campagnes)
     })
 
 
@@ -221,7 +231,7 @@ Automap <- function(data = NULL, UID = NULL, PWD = NULL) {
 
             progress$inc(1/as.integer(levels(dataParcelle$SubPlot)), detail = paste("Carre", j))
 
-            nomFichier <- paste(directoryChosen,"Parcelle_",i,"_carre_",j,"_",foretChoisie,campagneChoisie,".", extension, sep="")
+            nomFichier <- paste(directoryChosen,"Parcelle_",i,"_carre_",j,"_",foretChoisie, campagneChoisie,".", extension, sep="")
             title <- paste(foretChoisie," - Parcelle ",i," - C",j)
             ggplot2::ggsave(filename=nomFichier,plot=graphCarre(donnerCarre(j, dataParcelle), title, text_size, repel = repel), width = 42, height = 29.7)
           }
@@ -234,13 +244,14 @@ Automap <- function(data = NULL, UID = NULL, PWD = NULL) {
       values$show <- TRUE
       anneePrec <- input$anneePrec
       campagneChoisie <- input$campagne
+      carreChoisi <- input$carre
       text_size <- input$text_size
       foretChoisie <- input$foret
       repel <- input$repel
       dataCampagne <- donnerCampagne(donnerForet(foretChoisie), as.integer(campagneChoisie))
-      title <- paste(foretChoisie," - Parcelle ",input$parcelles[1]," - C",1)
+      title <- paste(foretChoisie," - Parcelle ",input$parcelles[1]," - C", carreChoisi)
       dataParcelle <- donnerParcelle(input$parcelles[1], dataCampagne)
-      output$apercuGraph <- shiny::renderPlot({ graphCarre(donnerCarre(1, dataParcelle), title = title, text_size = text_size-4, repel = repel)} , width = 1200, height = 1200)
+      output$apercuGraph <- shiny::renderPlot({ graphCarre(donnerCarre(carreChoisi, dataParcelle), title = title, text_size = text_size-4, repel = repel)} , width = 1200, height = 1200)
       })
 
     output$show <- shiny::reactive({
