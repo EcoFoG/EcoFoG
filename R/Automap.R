@@ -19,7 +19,11 @@
 #' @export
 Automap <- function(data = NULL, UID = NULL, PWD = NULL) {
 
-  donnerForet <- function(NomForet) { return(DataGuyafor[DataGuyafor$Forest == NomForet, ])}
+  donnerForet <- function(NomForet) {
+    foret <- DataGuyafor[DataGuyafor$Forest == NomForet, ]
+    foret$taxon <- paste(foret$Genus, foret$Species)
+    return(foret)
+  }
 
   donnerCampagne <- function(foret, annee) { foret[foret$CensusYear == annee, ] }
 
@@ -35,9 +39,10 @@ Automap <- function(data = NULL, UID = NULL, PWD = NULL) {
   }
 
   ## Construction du graphique ##
-  graphCarre <- function(carre, title, text_size = 7, title_size = 50, legend_size = 25, axis_size = 25, repel = TRUE) {
+  graphCarre <- function(carre, title, text_size = 7, title_size = 50, legend_size = 25, axis_size = 25, repel = TRUE, especes = NULL) {
 
     carre$CodeAlive <- factor(carre$CodeAlive)
+    carre$taxon <- factor(carre$taxon)
 
       if (carre$Forest[1] == "Paracou" && carre$Plot[1] != 18 && carre$Plot != 16) {
         if (carre$SubPlot[1] == 1) {
@@ -98,6 +103,7 @@ Automap <- function(data = NULL, UID = NULL, PWD = NULL) {
   carreDispo <- sort(unique(DataGuyafor$SubPlot))
   initCampagne <- donnerCampagne(foret = donnerForet(NomForet = "Paracou"), annee = 2016)
   parcelles <- sort(unique(initCampagne$Plot))
+  taxon <- sort(unique(initCampagne$taxon))
 
   ui <- shiny::fluidPage(
     shiny::tags$head(
@@ -141,6 +147,12 @@ Automap <- function(data = NULL, UID = NULL, PWD = NULL) {
                     choices = parcelles,
                     selected = NULL,
                     multiple = TRUE),
+
+        shiny::selectInput(inputId = "especes",
+                           label = "Especes (laisser blanc pour toutes) :",
+                           choices = taxon,
+                           selected = NULL,
+                           multiple = TRUE),
 
         shiny::numericInput(inputId = "text_size",
                      label = "Taille du texte des libelles :",
@@ -247,11 +259,14 @@ Automap <- function(data = NULL, UID = NULL, PWD = NULL) {
       carreChoisi <- input$carre
       text_size <- input$text_size
       foretChoisie <- input$foret
+      especesChoisies <- input$especes
       repel <- input$repel
       dataCampagne <- donnerCampagne(donnerForet(foretChoisie), as.integer(campagneChoisie))
       title <- paste(foretChoisie," - Parcelle ",input$parcelles[1]," - C", carreChoisi)
       dataParcelle <- donnerParcelle(input$parcelles[1], dataCampagne)
-      output$apercuGraph <- shiny::renderPlot({ graphCarre(donnerCarre(carreChoisi, dataParcelle), title = title, text_size = text_size-4, repel = repel)} , width = 1200, height = 1200)
+      dataCarre <- donnerCarre(carreChoisi, dataParcelle)
+
+      output$apercuGraph <- shiny::renderPlot({ graphCarre(dataCarre, title = title, text_size = text_size-4, repel = repel, especes = especesChoisies)} , width = 1200, height = 1200)
       })
 
     output$show <- shiny::reactive({
