@@ -14,7 +14,7 @@
 #'
 #' @param UID Username for SQL Server connection
 #'
-#' @param PWD Password for SQL Server conenction
+#' @param PWD Password for SQL Server connection
 #'
 #' @export
 Automap <- function(data = NULL, UID = NULL, PWD = NULL) {
