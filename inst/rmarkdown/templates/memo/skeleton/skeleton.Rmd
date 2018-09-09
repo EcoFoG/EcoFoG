@@ -2,46 +2,22 @@
 title: "Titre de l'article"
 author:
   - name: Prénom Nom
-    authsuperscript: 1*
   - name: Deuxième Auteur
-    authsuperscript: 2
-affiliation:
-  - affsuperscript: 1
-    dptuniv: UMR EcoFoG, AgroParistech, CNRS, Cirad, INRA, Université des Antilles, Université de Guyane.
-    address: >
-      Campus Agronomique,
-      97310 Kourou,
-      France.
-  - affsuperscript: 2
-    dptuniv: Department of Ecology, University of Edimburgh
-    address: >
-      Street address,
-      Zip code,
-      Country.
-corrauthor:
-    email: prenom.nom@ecofog.gf
-    url: http://www.ecofog.gf/spip.php?article47
 abstract: >
   Résumé de l'article.
-keywords: [mot-clés, séparés par des virgules]
-journalinfo: Hal xxx
-archive: DOI xxxx
 date: "`r format(Sys.time(), '%d %B %Y')`"
+toc
 preamble: >
   \usepackage{textcomp}
   \DeclareUnicodeCharacter{B0}{\textdegree}
-  \usepackage{tabu}
-  \renewenvironment{table}{\begin{table*}}{\end{table*}\ignorespacesafterend}
   \hyphenation{bio-di-ver-si-ty sap-lings}
 bibliography: references.bib
 lang: french # english
-keywordlabel: Mots-clés # Keywords
-corrauthorlabel: Contact # Corresponding author
 output:
   bookdown::gitbook: default
   bookdown::word_document2: default
   bookdown::pdf_book:
-    base_format: EcoFoG::article
+    base_format: EcoFoG::memo
     keep_tex: TRUE
 ---
 
@@ -67,8 +43,8 @@ Library(c("kableExtra"))
 
 # Introduction
 
-Ce modèle permet la rédaction d'articles au format Markdown. 
-Il produit directement des articles bien formatés pour l'auto-archivage (dépôt sur HAL par exemple) ou sous d'autres formats, par exemple HTML.
+Ce modèle permet la rédaction de mémos au format Markdown. 
+Il produit des documents PDF formatés simplement (une colonne, proche du modèle article de LaTeX) ou sous d'autres formats, par exemple HTML.
 
 # R Markdown{#markdown}
 
@@ -103,7 +79,7 @@ knitr::include_graphics("NouveauRMarkdown.PNG")
 ```
 
 Cliquer sur _From template_: à partir de modèles installés par des packages. 
-Les modèles du package EcoFoG sont affichés (voir figure \@ref(fig:nouveau)): choisir Article EcoFoG.
+Les modèles du package EcoFoG sont affichés (voir figure \@ref(fig:nouveau)): choisir Memo EcoFoG.
 
 Ecrire le document dans RStudio.
 
@@ -144,7 +120,7 @@ La légende est précisée par l'argument `caption` et le référencement est po
 Utiliser systématiquement l'argument `booktabs = TRUE` pour que l'épaisseur des lignes de séparation soit optimale en LaTeX.
 L'option\break `bootstrap_options = "striped"` fournit des tableaux plus lisibles en HTML.
 
-En LaTeX, Les tableaux peuvent avoir la largeur de la colonne et éventuellement d'étendre sur plusieurs pages\break `longtable = TRUE` ou bien utliser la largeur de la page\break `longtable = FALSE` comme le tableau \@ref(tab:Paracou)).
+En LaTeX, Les tableaux peuvent avoir la largeur de la colonne et éventuellement d'étendre sur plusieurs pages\break `longtable = TRUE` ou bien utliser la largeur de la page\break `longtable = FALSE` comme le tableau \@ref(tab:Paracou)) (ce qui n'a pas d'effet sur un document formaté sur une seule colonne).
 
 ```{r Paracou, echo=FALSE, warning=FALSE}
 Intervention <- data.frame(
@@ -171,7 +147,6 @@ knitr::kable(Intervention, caption="Intervention table, summary of the disturban
 Ce tableau contient des mathématiques : l'option\break `escape = FALSE` est nécessaire.
 
 Enfin, l'option `full_width = FALSE` permet d'ajuster la largeur du tableau à son contenu au lieu d'occuper toute la largeur disponible.
-Elle doit être `TRUE` pour le formatage correct des tableaux sur deux colonnes en LaTeX.
 Un bug de knitr fait que le format du tableau ("html") n'est pas transmis correctement à `kable_styling` lors du tricotage au format gitbook, ce qui génère un avertissement et empêche l'option d'être prise en compte.
 
 
@@ -249,6 +224,10 @@ Il ne peut pas être changé, pour assurer l'homogénéité des documents produi
 
 Pour préparer la soumission d'un manuscrit à une revue, il faudra ouvrir le fichier _.tex_ intermédiaire produit par Pandoc et copier le contenu de l'environnement \{document\} dans le modèle proposé par la revue, qui se chargera du formatage.
 
+## Table des matières
+
+Une table des matières peut être ajoutée au début du document par l'option `toc:yes` dans l'entête du document.
+
 ## Préambule LaTeX
 
 Des commandes LaTeX peuvent être ajoutées dans le préambule du fichier LaTeX produit, par exemple pour charger des packages supplémentaires.
@@ -261,16 +240,6 @@ Les commandes par défaut permettent :
 \usepackage{textcomp}
 \DeclareUnicodeCharacter{B0}%
   {\textdegree}
-```
-
-- d'obtenir des tableaux sur deux colonnes en redéfinissant l'environnement `table` et de charger le package _tabu_ nécessaire à _kableExtra_:
-```
-\usepackage{tabu}
-\renewenvironment{table}{%
-  \begin{table*}}%
-  {\end{table*}%
-  \ignorespacesafterend
-}
 ```
 
 - de montrer l'utilisation de la commande de césure:
@@ -324,7 +293,7 @@ Le style bibliographique de la revue est très probablement disponible au format
 
 ## Optimisation pour GitHub
 
-Le projet d'article peut être déposé sur github.
+Le projet peut être déposé sur github.
 
 Le script R fourni, _GithubPages.R_, permet de publier facilement l'article dans les pages web associées au dépôt en déplaçant les fichiers HTML produit par le tricotage de l'article dans le dossier _docs_.
 
@@ -333,7 +302,7 @@ Il suffit ensuite d'activer les pages web du dépôt, d'adapter le fichier _READ
 
 ## Autres Modèles
 
-Le modèle de mémo EcoFoG est plus simple, formaté sur une seule colonne.
+Le modèle d'article EcoFoG est plus élaboré, en double colonne, optimisé pour l'auto-archivage.
 
 Le package _rticle_ fournit des modèles d'articles (PLOS, PNAS, etc.). 
 Le package _xaringan_ fournit un modèle de présentation HTML 5.

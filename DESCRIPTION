@@ -1,7 +1,7 @@
 Package: EcoFoG
 Type: Package
 Title: Utilitaires pour l'UMR EcoFoG
-Version: 1.5-0
+Version: 1.6-0
 Authors@R: c(
     person("Eric", "Marcon", email="eric.marcon@ecofog.gf", role=c("aut", "cre")),
     person("Gaëlle", "Jaouen", email="gaelle.jaouen@ecofog.gf", role="aut"),
@@ -16,5 +16,5 @@ Depends: magrittr
 Imports: rmarkdown, odbc, ggplot2, ggrepel, pingr, svglite, shiny, shinyjs, shinycssloaders, utils
 Suggests: testthat, knitr, BiocStyle, bookdown, dbmss, kableExtra, dplyr, tidyr
 LazyData: true
-RoxygenNote: 6.0.1
+RoxygenNote: 6.1.0
 VignetteBuilder: knitr

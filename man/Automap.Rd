@@ -11,7 +11,7 @@ Automap(data = NULL, UID = NULL, PWD = NULL)
 
 \item{UID}{Username for SQL Server connection}
 
-\item{PWD}{Password for SQL Server conenction}
+\item{PWD}{Password for SQL Server connection}
 }
 \description{
 Interface Shiny de creation automatique de cartes de terrain

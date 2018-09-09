@@ -1,3 +1,9 @@
+# EcoFog 1.6-0
+
+## Améliorations
+
+* Nouveau modèle : memo.
+
 # EcoFog 1.5-0
 
 ## Améliorations
