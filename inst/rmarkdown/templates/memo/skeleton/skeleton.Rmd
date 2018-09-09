@@ -1,12 +1,12 @@
 ---
-title: "Titre de l'article"
+title: "Titre du mémo"
 author:
   - name: Prénom Nom
   - name: Deuxième Auteur
 abstract: >
   Résumé de l'article.
 date: "`r format(Sys.time(), '%d %B %Y')`"
-toc
+pdftoc: no
 preamble: >
   \usepackage{textcomp}
   \DeclareUnicodeCharacter{B0}{\textdegree}
