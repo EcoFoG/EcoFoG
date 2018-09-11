@@ -8,7 +8,7 @@
 % Space between paragraphs
 \RequirePackage{parskip}
 	\abnormalparskip{3pt}
-	
+
 % Clear page and open an even one (\clearpage opens an odd one)
 \newcommand{\evenpage}{
   \clearpage
@@ -24,7 +24,7 @@
 }
 
 % Text blocks
-\RequirePackage[absolute,overlay]{textpos} 
+\RequirePackage[absolute,overlay]{textpos}
 	\setlength{\TPHorizModule}{1mm}
 	\setlength{\TPVertModule}{1mm}
 
@@ -34,7 +34,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % allow use of '-',+','/' ans '*' to make simple length computation
-\RequirePackage{calc}             
+\RequirePackage{calc}
 
 % Full-width figures utilities
 \newlength\widthw % full width
@@ -60,7 +60,7 @@
   \setlength{\widthw}{\textwidth+\marginparsep+\marginparwidth}
   \footnotesatfoot
   \chapterstyle{\MemoirChapStyle}	% Chapter and page styles must be recalled
-  \pagestyle{\MemoirPageStyle} 
+  \pagestyle{\MemoirPageStyle}
 }
 
 % 3" outer margin for the main matter
@@ -75,7 +75,7 @@
   \setlength{\widthw}{\textwidth+\marginparsep+\marginparwidth}
   \footnotesinmargin
   \chapterstyle{\MemoirChapStyle}	% Chapter and page styles must be recalled
-  \pagestyle{\MemoirPageStyle} 
+  \pagestyle{\MemoirPageStyle}
 }
 
 % Figure captions and footnotes in outer margins
@@ -105,7 +105,7 @@
 	\setunit*{\nameyeardelim}
 	\iffieldundef{labelyear}
 		{}
-		{\printtext[parens]{\printfield{labelyear}\printfield{extrayear}}.}
+		{\printtext[parens]{\printfield{labelyear}\printfield{userb}}.}
 	\ifsamepage{\the\value{instcount}}{\csuse{cbx@f@\thefield{entrykey}}}
 		{}
 		{\setunit*{\nametitledelim} \printfield[title]{labeltitle}}

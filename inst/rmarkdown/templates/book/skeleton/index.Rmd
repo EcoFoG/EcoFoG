@@ -75,7 +75,7 @@ bibliography: [MyBook.bib, packages.bib]
 biblio-style: authoryear-ibid
 cite-style: verbose-inote
 biblatexoptions:
-  - backend=bibtex
+  - backend=biber
   - citestyle=verbose-inote
   - pageref=true
   - isbn=false
