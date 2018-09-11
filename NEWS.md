@@ -1,8 +1,9 @@
-# EcoFog 1.6-0
+# EcoFog 1.6-1
 
 ## Améliorations
 
 * Nouveau modèle : memo.
+* bibliographie du modèle d'ouvrage avec biber au lieu de bibtex.
 
 # EcoFog 1.5-0
 
