@@ -96,6 +96,9 @@ img {
 .tabbed-pane {
   padding-top: 12px;
 }
+.html-widget {
+  margin-bottom: 20px;
+}
 button.code-folding-btn:focus {
   outline: none;
 }
@@ -127,11 +130,11 @@ $(document).ready(function () {
 <p class="author-name">Eric Marcon<span class="affil-mark">1*</span></p>
 <p class="author-affiliation"><span class="affil-mark">1</span>AgroParisTech, UMR EcoFoG</p>
 <p class="author-email"><span class="affil-mark">*</span><a href="mailto:eric.marcon@ecofog.gf">eric.marcon@ecofog.gf</a></p>
-<h4 class="date"><em>10 mars 2018</em></h4>
+<h4 class="date"><em>12 septembre 2018</em></h4>
 <h4 class="abstract">Abstract</h4>
 <p>Présentation du package EcoFoG.</p>
 <h4 class="package">Package</h4>
-<p>EcoFoG 1.2.4</p>
+<p>EcoFoG 1.6.0</p>
 
 </div>
 
@@ -156,6 +159,7 @@ $(document).ready(function () {
 <li><p>Des modèles de documents <em>RMarkdown</em> :</p>
 <ul>
 <li><p>Un modèle d’article (produit au format PDF) bien formaté;</p></li>
+<li><p>Un modèle de mémo (produit au format PDF) plus simple que l’article;</p></li>
 <li><p>Un modèle de présentation Beamer;</p></li>
 <li><p>Un modèle d’ouvrage (Bookdown): livre, rapport, thèse.</p></li>
 </ul></li>
@@ -203,6 +207,12 @@ devtools::install_github(&quot;EcoFoG/EcoFoG&quot;)</code></pre>
 <li><p>Sauvegarder nouvelle base bibliographique et la déclarer comme dans le fichier <em>Rmd</em> de l’article.</p></li>
 </ul></li>
 </ul>
+<p>La base produite peut être allégée en retirant les champs inutiles comme le résumé, le lien vers le fichier PDF de chaque article, les annotations :</p>
+<pre><code>- Utiliser le menu _Quality /Set-clear-append-rename fields..._ ;
+
+- Compléter le champ _Field name_ : abstract;annote;file;mendeley-tags ;
+
+- Sélectionner _All entries_,  _Clear fields_ et cliquer sur _OK_.</code></pre>
 </div>
 <div id="developpement-sous-r" class="section level2">
 <h2><span class="header-section-number">2.4</span> Développement sous R</h2>

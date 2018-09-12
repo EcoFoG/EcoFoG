@@ -27,6 +27,8 @@ Il contient :
 
     - Un modèle d'article (produit au format PDF) bien formaté;
 
+    - Un modèle de mémo (produit au format PDF) plus simple que l'article;
+
     - Un modèle de présentation Beamer;
     
     - Un modèle d'ouvrage (Bookdown): livre, rapport, thèse.
@@ -89,6 +91,14 @@ Au moment de la publication d'un article, il faut alors extraire un fichier _.bi
     - Sélectionner le fichier _aux_ et cliquer sur _Generate_;
     
     - Sauvegarder nouvelle base bibliographique et la déclarer comme dans le fichier _Rmd_ de l'article.
+    
+La base produite peut être allégée en retirant les champs inutiles comme le résumé, le lien vers le fichier PDF de chaque article, les annotations :
+
+    - Utiliser le menu _Quality /Set-clear-append-rename fields..._ ;
+    
+    - Compléter le champ _Field name_ : abstract;annote;file;mendeley-tags ;
+    
+    - Sélectionner _All entries_,  _Clear fields_ et cliquer sur _OK_.
 
 
 ## Développement sous R
