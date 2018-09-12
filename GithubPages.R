@@ -8,7 +8,7 @@ devtools::build_vignettes()
 
 # Copy vignette
 libsFiles <- list.files("inst/doc", pattern="*.html", full.names = FALSE, recursive=TRUE)
-file.copy(from=libsFiles, to=paste("docs/", libsFiles, sep = ""), overwrite=TRUE)
+file.copy(from=paste("inst/doc/", libsFiles, sep=""), to=paste("docs/", libsFiles, sep = ""), overwrite=TRUE)
 
 # Copy README.md to docs
 file.copy(from="README.md", to="docs/README.md", overwrite=TRUE)
