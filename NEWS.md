@@ -1,9 +1,11 @@
-# EcoFog 1.6-2
+# EcoFog 1.6-3
 
 ## Améliorations
 
 * Nouveau modèle : memo.
 * bibliographie du modèle d'ouvrage avec biber au lieu de bibtex.
+* meilleure gestion du placement vertical dans les marges du modèle d'ouvrage
+* suppression de l'appel au package LaTeX fixltx2e devenu inutile.
 
 # EcoFog 1.5-0
 
