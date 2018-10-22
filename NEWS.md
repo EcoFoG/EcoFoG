@@ -1,11 +1,12 @@
-# EcoFog 1.6-3
+# EcoFog 1.6-4
 
 ## Améliorations
 
-* Nouveau modèle : memo.
-* bibliographie du modèle d'ouvrage avec biber au lieu de bibtex.
-* meilleure gestion du placement vertical dans les marges du modèle d'ouvrage
-* suppression de l'appel au package LaTeX fixltx2e devenu inutile.
+* Nouveau modèle : memo
+* Bibliographie du modèle d'ouvrage avec biber au lieu de bibtex
+* Meilleure gestion du placement vertical dans les marges du modèle d'ouvrage
+* Suppression de l'appel au package LaTeX fixltx2e devenu inutile
+* Support des deux colonnes dans les présentations HTML 
 
 # EcoFog 1.5-0
 
