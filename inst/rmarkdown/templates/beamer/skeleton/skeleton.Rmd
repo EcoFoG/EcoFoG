@@ -6,6 +6,9 @@ preamble: >
   \usepackage{textcomp}
   \DeclareUnicodeCharacter{B0}{\textdegree}
 output:
+  ioslides_presentation:
+    logo: EcoFoG2017.png
+    widescreen: true
   beamer_presentation:
     df_print: kable
     fig_caption: no
@@ -13,10 +16,10 @@ output:
       in_header: EcoFoGBeamer.tex
     keep_tex: no
     slide_level: 2
-  ioslides_presentation:
-    logo: EcoFoG2017.png
   slidy_presentation: default
 ---
+<!-- Options de knitr et de R (librairies, ...) --> 
+
 ```{r setup, include=FALSE}
 # echo=FALSE not to display R chunk in slides. Set to TRUE if necessary.
 knitr::opts_chunk$set(echo = FALSE)
@@ -41,6 +44,13 @@ knitr::opts_chunk$set(dev.args=list(bg="transparent"))
 options(tibble.print_min = 5, tibble.width = 50)
 ```
 
+<!-- Commande de saut de colonne HTML --> 
+<style>
+  .forceBreak { -webkit-column-break-after: always; break-after: column; }
+</style>
+
+<!-- Début du document ci-dessous --> 
+
 # First Part
 
 ## R Markdown
@@ -54,11 +64,11 @@ Table Header | Second Header
 Table Cell | Cell 2
 Cell 3 | Cell 4
 
-## Slide with Bullets
+## Slide with Incremental Bullets
 
-- Bullet 1
-- Bullet 2
-- Bullet 3
+> - Bullet 1
+> - Bullet 2
+> - Bullet 3
 
 ## Slide with R Output
 
@@ -68,25 +78,39 @@ head(cars)
 
 # Deuxième partie
 
-## Slide with Plot
+## Slide with Plot{.flexbox .vcenter}
 ```{r pressure}
 plot(pressure)
 ```
 
-## Two Column Layout 
+## Two Column Layout{.columns-2} 
 
 \begincols
   \begincol{.48\textwidth}
 
-This slide has two columns in Beamer (ignored in HTML).
+This slide has two columns.
+
+In Beamer, each column in between `\begincol` and `\endcol`.
+
+In HTML, the `{.columns-2}` option is added to the slide title and `<p class="forceBreak"></p>` allows forcing column break.
 
 
   \endcol
   \begincol{.48\textwidth}
+  <p class="forceBreak"></p>
 
-```{r pressure2}
+```{r pressure2, out.width='90%'}
 plot(pressure)
 ```
 
   \endcol
 \endcols
+
+## Documentation
+
+See [R Markdown: The Definitive Guide](https://bookdown.org/yihui/rmarkdown/ioslides-presentation.html) for full documentation about HTML slides.
+
+Note:
+
+- `{.flexbox .vcenter}` to center the HTML Slide with Plot
+- `out.width='90%'` to reduce the size of the plot in the Two Column Layout slide.
