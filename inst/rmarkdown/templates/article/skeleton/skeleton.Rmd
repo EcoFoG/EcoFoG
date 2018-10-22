@@ -243,7 +243,7 @@ Plus d'un millier de styles sont disponibles [^3].
 
 [^3]: <https://github.com/citation-style-language/styles>
 
-Pour les documents PDF, la bibliographie est gérée par LaTeX: c'est pourquoi l'extension _.bib_ du fichier doit être supprimée dans la déclaration de la base bibliographique.
+Pour les documents PDF, la bibliographie est gérée par LaTeX.
 Le style est inclus dans le modèle EcoFoG: c'est celui de _Methods in Ecology and Evolution_.
 Il ne peut pas être changé, pour assurer l'homogénéité des documents produits.
 
