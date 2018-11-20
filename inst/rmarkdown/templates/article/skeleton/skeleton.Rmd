@@ -38,7 +38,15 @@ lang: french # english
 keywordlabel: Mots-clés # Keywords
 corrauthorlabel: Contact # Corresponding author
 output:
-  bookdown::gitbook: default
+  bookdown::html_book:
+    theme: sandstone
+    toc: yes
+    css: toc.css
+  bookdown::gitbook:
+    config:
+      download:
+      - MonFichier.pdf
+      - PDF
   bookdown::word_document2: default
   bookdown::pdf_book:
     base_format: EcoFoG::article
@@ -99,7 +107,7 @@ Dans RStudio, créer un nouveau document de type Document R Markdown.
 L'assistant permet de choisir entre divers formats.
 
 ```{r nouveau, fig.cap="Nouveau document", echo=FALSE}
-knitr::include_graphics("NouveauRMarkdown.PNG")
+knitr::include_graphics("images/NouveauRMarkdown.PNG")
 ```
 
 Cliquer sur _From template_: à partir de modèles installés par des packages. 
@@ -189,6 +197,7 @@ Les renvois se fonct avec la commande `\@ref(fig:xxx)`.
 Une figure peut utiliser toute la largeur de la page en ajoutant les options suivantes dans l'entête du bout de code qui la génère: `fig.env="figure*"` et\break `out.extra=""`.
 
 Les figures existantes sont intégrées dans un bout de code par la fonction `include_graphics`, voir la figure \@ref(fig:nouveau).
+Placer systématiquement ces fichiers dans le dossier `images` pour l'automatisation des pages GitHub.
 
 
 ## Listes
@@ -312,6 +321,9 @@ Le document est formaté pour l'auto-archivage d'articles bien mis en page.
 
 Le modèle GitBook est optimisé pour la lecture sur écran.
 Pendant toute l'écriture, préférer le tricot au format HTML pour sa vitesse d'exécution.
+Un bouton de téléchargement est disponible dans la barre de menu du document: il fonctionnera si le document est aussi tricoté au format PDF et si le nom du fichier est rensigné dans le champ download de l'entête YAML.
+
+Le modèle HMTL Book est une alternative.
 
 ## Document Word
 

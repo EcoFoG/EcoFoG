@@ -14,17 +14,25 @@ preamble: >
 bibliography: references.bib
 lang: french # english
 output:
-  bookdown::gitbook: default
+  bookdown::html_book:
+    theme: sandstone
+    toc: yes
+    css: toc.css
+  bookdown::gitbook:
+    config:
+      download:
+      - MonFichier.pdf
+      - PDF
   bookdown::word_document2: default
   bookdown::pdf_book:
     base_format: EcoFoG::memo
-    keep_tex: TRUE
+    keep_tex: yes
 ---
 
 <!-- Options de knitr et de R (librairies, ...) --> 
 
 ```{r Options, echo=FALSE, message=FALSE}
-knitr::opts_chunk$set(echo = FALSE, tidy=TRUE, tidy.opts=list(blank=FALSE, width.cutoff=50), out.width='\\maxwidth')
+knitr::opts_chunk$set(echo = FALSE, tidy=TRUE, tidy.opts=list(blank=FALSE, width.cutoff=50), out.width='.8\\maxwidth', fig.align='center')
 options(width=50)
 # Installation des packages si nécessaire et chargement
 Library <- function(Packages) {
@@ -75,7 +83,7 @@ Dans RStudio, créer un nouveau document de type Document R Markdown.
 L'assistant permet de choisir entre divers formats.
 
 ```{r nouveau, fig.cap="Nouveau document", echo=FALSE}
-knitr::include_graphics("NouveauRMarkdown.PNG")
+knitr::include_graphics("images/NouveauRMarkdown.PNG")
 ```
 
 Cliquer sur _From template_: à partir de modèles installés par des packages. 
@@ -164,6 +172,7 @@ Les renvois se fonct avec la commande `\@ref(fig:xxx)`.
 Une figure peut utiliser toute la largeur de la page en ajoutant les options suivantes dans l'entête du bout de code qui la génère: `fig.env="figure*"` et\break `out.extra=""`.
 
 Les figures existantes sont intégrées dans un bout de code par la fonction `include_graphics`, voir la figure \@ref(fig:nouveau).
+Placer systématiquement ces fichiers dans le dossier `images` pour l'automatisation des pages GitHub.
 
 
 ## Listes
@@ -268,19 +277,19 @@ Le document HTML ignore les commandes LaTeX.
 
 # Types de document
 
-Ce modèle est prévu pour fonctionner avec le modèle Article d'EcoFoG en LaTeX et produire des documents au format PDF, HTML ou Word.
 Utiliser la liste de choix du bouton _Knit_ pour choisir le format de sortie.
-
-Le document Word peut ensuite être modifié pour respecter les instructions aux auteurs des revues : double interlignage, police, etc.
 
 ## Document PDF
 
-Le document est formaté pour l'auto-archivage d'articles bien mis en page.
+Le document est formaté comme le modèle article de LaTeX.
 
 ## Document HTML
 
 Le modèle GitBook est optimisé pour la lecture sur écran.
 Pendant toute l'écriture, préférer le tricot au format HTML pour sa vitesse d'exécution.
+Un bouton de téléchargement est disponible dans la barre de menu du document: il fonctionnera si le document est aussi tricoté au format PDF et si le nom du fichier est rensigné dans le champ download de l'entête YAML.
+
+Le modèle HMTL Book est une alternative.
 
 ## Document Word
 

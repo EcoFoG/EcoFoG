@@ -7,11 +7,11 @@
 devtools::build_vignettes()
 
 # Copy vignette
-libsFiles <- list.files("inst/doc", pattern="*.html", full.names = FALSE, recursive=TRUE)
-file.copy(from=paste("inst/doc/", libsFiles, sep=""), to=paste("docs/", libsFiles, sep = ""), overwrite=TRUE)
+libsFiles <- list.files("doc", pattern="*.html", full.names = FALSE, recursive=TRUE)
+file.copy(from=paste("doc/", libsFiles, sep=""), to=paste("docs/", libsFiles, sep = ""), overwrite=TRUE)
 
 # Copy README.md to docs
 file.copy(from="README.md", to="docs/README.md", overwrite=TRUE)
 
-# Mise à jour manuelle de docs/Article, docs/Ouvrage et docs/Presentation:
+# Mise à jour manuelle de docs/Article, docs/memo, docs/Ouvrage et docs/Presentation:
 # Vider chaque dossier puis New Markdown from Template, knit to html.

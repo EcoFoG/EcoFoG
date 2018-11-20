@@ -6,7 +6,7 @@ Utilitaires pour l'UMR EcoFoG
 
 ## Contenu
 
-* Modèles 
+* Modèles : ensemble de modèles utilisant la syntaxe de [bookdown](https://bookdown.org/yihui/bookdown/), qui permet la bibliographie, les références croisées, etc.
 
   * modèle de [présentation Beamer](https://ecofog.github.io/EcoFoG/Presentation/Presentation.pdf) (R Markdown) ou [HTML (ioslides)](https://ecofog.github.io/EcoFoG/Presentation/Presentation.html):
 ![Modèle de présentation](https://ecofog.github.io/EcoFoG/Presentation.png)
