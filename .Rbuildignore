@@ -15,3 +15,5 @@ vignettes/Introduction_cache/
 vignettes/Introduction_files/
 docs/
 GithubPages.R
+.Rdata
+.Rhistory
