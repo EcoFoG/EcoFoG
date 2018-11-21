@@ -3,6 +3,7 @@ title: "Ouvrage Bookdown"
 author: "Prénom NomAuteur"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
+always_allow_html: yes
 description: "Modèle de livre écrit avec bookdown."
 maintitlepage:
   epigraph: |
