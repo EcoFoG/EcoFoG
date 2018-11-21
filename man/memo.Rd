@@ -2,7 +2,7 @@
 % Please edit documentation in R/EcofoG.R
 \name{memo}
 \alias{memo}
-\title{Mémo}
+\title{Memo}
 \usage{
 memo(..., md_extensions = c("-autolink_bare_uris"))
 }
