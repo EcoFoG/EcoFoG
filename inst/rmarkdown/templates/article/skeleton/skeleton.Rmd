@@ -37,25 +37,23 @@ bibliography: references.bib
 lang: french # english
 keywordlabel: Mots-clés # Keywords
 corrauthorlabel: Contact # Corresponding author
+always_allow_html: yes
 output:
-  bookdown::html_book:
+  bookdown::html_document2:
     theme: sandstone
     toc: yes
-    css: toc.css
+    toc_float: yes
   bookdown::gitbook:
     config:
-      download:
-      - MonFichier.pdf
-      - PDF
+      download: null
   bookdown::word_document2: default
   bookdown::pdf_book:
     base_format: EcoFoG::article
     keep_tex: TRUE
 ---
 
-<!-- Options de knitr et de R (librairies, ...) --> 
-
 ```{r Options, echo=FALSE, message=FALSE}
+### knitr and R options (packages, ...)
 knitr::opts_chunk$set(echo = FALSE, tidy=TRUE, tidy.opts=list(blank=FALSE, width.cutoff=50), out.width='\\maxwidth')
 options(width=50)
 # Installation des packages si nécessaire et chargement
@@ -69,8 +67,6 @@ Library <- function(Packages) {
 # Ajouter les packages nécessaires ici
 Library(c("kableExtra"))
 ```
-
-<!-- Début du document ci-dessous --> 
 
 
 # Introduction

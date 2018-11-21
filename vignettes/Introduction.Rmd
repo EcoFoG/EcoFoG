@@ -17,7 +17,6 @@ vignette: |
 
 # Contenu du package
 
-
 Le package `r Githubpkg("rstudio/rmarkdown")` contient des outils utiles aux membres de l'UMR.
 Il est hébergé sur _GitHub_ sans vocation à être déposé sur CRAN.
 
@@ -37,6 +36,34 @@ Il contient :
 
     - Des fonctions pour accéder aux données de la base Guyafor à partir du réseau local du campus de Kourou ou en VPN.
 
+
+# Modèles de documents
+
+Dans RStudio, créer un nouveau document de type Document R Markdown. 
+L'assistant permet de choisir entre divers formats.
+
+Cliquer sur _From template_: à partir de modèles installés par des packages. 
+Les modèles du package EcoFoG sont affichés.
+
+Ecrire le document dans RStudio : le mode d'emploi des modèles est dans leur contenu. 
+
+Cliquer sur le bouton **Knit** de RStudio génère le document au format demandé.
+
+Il est préférable de créer un projet RStudio pour bénéficier de toutes les possiblités : _File_ / _New Project_ puis utiliser l'assistant pour créer un projet à partir d'un dossier existant.
+
+
+# AutoMap
+
+Application Shiny pour la création de cartes de Paracou.
+
+Exécuter `Automap()` et compléter le formulaire pour obtenir une carte.
+
+L'application ne fonctionne que si elle peut accéder à la base de données Guyafor, ou à une copie locale.
+
+
+# Accès aux données
+
+Les fonctions `Guyafor2df()` et `Paracou2df()` produisent des dataframes à partir de la base de données Guyafor.
 
 
 # Environnement logiciel

@@ -1,13 +1,13 @@
 ---
 title: "Titre de la présentation"
 author: "Prénom Nom"
-date: "13 janvier 2018"
+date: "`r format(Sys.time(), '%d %B %Y')`"
 preamble: >
   \usepackage{textcomp}
   \DeclareUnicodeCharacter{B0}{\textdegree}
 output:
   ioslides_presentation:
-    logo: EcoFoG2017.png
+    logo: images/EcoFoG2017.png
     widescreen: true
   beamer_presentation:
     df_print: kable
@@ -18,9 +18,9 @@ output:
     slide_level: 2
   slidy_presentation: default
 ---
-<!-- Options de knitr et de R (librairies, ...) --> 
 
 ```{r setup, include=FALSE}
+### knitr and R options (packages, ...)
 # echo=FALSE not to display R chunk in slides. Set to TRUE if necessary.
 knitr::opts_chunk$set(echo = FALSE)
 # tidy R chunks.
@@ -44,14 +44,15 @@ knitr::opts_chunk$set(dev.args=list(bg="transparent"))
 options(tibble.print_min = 5, tibble.width = 50)
 ```
 
+
+# First Part
+
+<!-- Code HTML complémentaire après le titre de première partie pour éviter une diapo blache --> 
 <!-- Commande de saut de colonne HTML --> 
 <style>
   .forceBreak { -webkit-column-break-after: always; break-after: column; }
 </style>
 
-<!-- Début du document ci-dessous --> 
-
-# First Part
 
 ## R Markdown
 

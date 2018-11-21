@@ -1,6 +1,9 @@
 # Syntaxe
 
 La syntaxe de _R Mardown_ étendue par _Bookdown_ est rappelée ici, en Anglais.
+
+Les références bibliographiques [@xie2015] sont supportées.
+
 Le changement de langue est géré en LaTeX (ponctuation et césures différentes) mais pas en HTML.
 La commande `\selectlanguage{english}` est simplement ignorée en HTML.
 
@@ -17,14 +20,14 @@ par(mar = c(4, 4, .1, .1))
 plot(pressure, type = 'b', pch = 19)
 ```
 
-Reference a figure by its code chunk label with the `fig:` prefix, e.g., see Figure \@ref(fig:nice-fig). Similarly, you can reference tables generated from `knitr::kable()`, e.g., see Table \@ref(tab:nice-tab).
+Reference a figure by its code chunk label with the `fig:` prefix, e.g., see Figure \@ref(fig:nice-fig). Similarly, you can reference tables generated from `knitr::kable()`, e.g., see Table \@ref(tab:kable).
 
-```{r nice-tab, tidy=FALSE}
+```{r kable, echo=TRUE, warning=FALSE, tidy=FALSE}
 names(iris) <- c("Longueur sépales", "Largeur", 
                  "Longueur pétales", "Largeur", "Espèce")
 knitr::kable(head(iris), caption="Tableau créé par R", 
              longtable = TRUE, booktabs = TRUE) %>%
-kableExtra::kable_styling(bootstrap_options = "striped",
+kableExtra::kable_styling(bootstrap_options = "striped", 
                           full_width = FALSE)
 ```
 

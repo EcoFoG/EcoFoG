@@ -1,3 +1,14 @@
+# EcoFog 1.7-0
+
+## Améliorations
+
+* Production de documents HTML Bootstrap en plus de Gitbook à partir des modèles
+
+## Correction de bugs
+
+* Nettoyage de tous les modèles de documents
+
+
 # EcoFog 1.6-5
 
 ## Améliorations
