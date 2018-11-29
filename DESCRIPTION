@@ -10,11 +10,14 @@ Authors@R: c(
     )
 Maintainer: Eric Marcon <eric.marcon@ecofog.gf>
 Description: Modèles de documents, accès aux données.
+URL: https://github.com/EcoFoG/EcoFoG
+BugReports: https://github.com/EcoFoG/EcoFoG/issues
 License: GNU General Public License
 Encoding: UTF-8
 Depends: magrittr
 Imports: rmarkdown, odbc, ggplot2, ggrepel, pingr, svglite, shiny, shinyjs, shinycssloaders, utils
-Suggests: testthat, knitr, BiocStyle, bookdown, dbmss, kableExtra, dplyr, tidyr
+Suggests: testthat, knitr, pkgdown, bookdown, dbmss, kableExtra, dplyr, tidyr
 LazyData: true
 RoxygenNote: 6.1.1
 VignetteBuilder: knitr
+SystemRequirements: pandoc
