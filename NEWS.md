@@ -1,8 +1,9 @@
-# EcoFog 1.7-0
+# EcoFog 1.7-1
 
 ## Améliorations
 
 * Production de documents HTML Bootstrap en plus de Gitbook à partir des modèles
+* Vignette par pkgdown
 
 ## Correction de bugs
 

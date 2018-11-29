@@ -1,15 +1,7 @@
 ---
 title: "Utilitaires pour EcoFoG"
-author:
-- name: Eric Marcon
-  affiliation: AgroParisTech, UMR EcoFoG
-  email: eric.marcon@ecofog.gf
-package: EcoFoG
-output:
-  BiocStyle::html_document
-abstract: |
-  Présentation du package EcoFoG.
-vignette: |
+author: Eric Marcon
+vignette: >
   %\VignetteIndexEntry{Introduction}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
@@ -17,7 +9,7 @@ vignette: |
 
 # Contenu du package
 
-Le package `r Githubpkg("rstudio/rmarkdown")` contient des outils utiles aux membres de l'UMR.
+Ce package contient des outils utiles aux membres de l'UMR.
 Il est hébergé sur _GitHub_ sans vocation à être déposé sur CRAN.
 
 Il contient :
@@ -94,7 +86,7 @@ devtools::install_github("EcoFoG/EcoFoG")
 
 Une installation de _LaTeX_ est nécessaire pour produire des fichiers PDF avec RMarkdown.
 Sous Windows, utiliser [MikTex](https://miktex.org/download).
-Le téléchargement automatique des packages manquants (sous Windows: MiKTeX settings, _Install missing packages=Yes_) est indispensable pour que `r Githubpkg("rstudio/bookdown")` fonctionne correctement.
+Le téléchargement automatique des packages manquants (sous Windows: MiKTeX settings, _Install missing packages=Yes_) est indispensable pour que _bookdown_ fonctionne correctement.
 
 Un bon éditeur pour _LaTeX_ est [_TeXstudio_](https://www.texstudio.org/) et un éditeur de fichiers bibliographiques est [_JabRef_](http://www.jabref.org/).
 Aucun des deux n'est indispensable pour produire des documents avec _RMarkdown_.

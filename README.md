@@ -1,4 +1,4 @@
-# EcoFoG
+# EcoFoG <img src="man/figures/logo.png" align="right" alt="" width="120" />
 
 [![Travis-CI Build Status](https://travis-ci.org/EcoFoG/EcoFoG.svg?branch=master)](https://travis-ci.org/EcoFoG/EcoFoG)
 
@@ -26,5 +26,5 @@ Utilitaires pour l'UMR EcoFoG
 
 ## Vignette
 
-Une vignette d'[introduction](https://ecofog.github.io/EcoFoG/Introduction.html) est disponible.
-Dans R, utiliser la commande `vignette("Introduction", "EcoFoG")`.
+Une vignette d'[introduction](https://ecofog.github.io/EcoFoG/) est disponible.
+Dans R, utiliser la commande `vignette("EcoFoG", "EcoFoG")`.
