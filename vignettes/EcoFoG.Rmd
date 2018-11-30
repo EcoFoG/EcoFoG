@@ -1,6 +1,6 @@
 ---
 title: "Utilitaires pour EcoFoG"
-author: Eric Marcon
+output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{Introduction}
   %\VignetteEngine{knitr::rmarkdown}
