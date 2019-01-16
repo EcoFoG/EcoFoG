@@ -5,7 +5,6 @@
 ^\_sgbak$
 ^\.hg$
 \.synctex\.gz$
-\.tex$
 \.log$
 \.blg$
 \.bbl$

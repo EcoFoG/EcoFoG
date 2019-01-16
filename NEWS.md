@@ -1,4 +1,4 @@
-# EcoFog 1.7-1
+# EcoFog 1.7-2
 
 ## Améliorations
 
@@ -8,6 +8,7 @@
 ## Correction de bugs
 
 * Nettoyage de tous les modèles de documents
+* Erreur: Couldn't find template file /resources/template.tex pendant la compilation LaTeX des modèles avec R 3.5-2.
 
 
 # EcoFog 1.6-5
