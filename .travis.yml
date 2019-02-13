@@ -4,7 +4,3 @@ cache: packages
 
 r_packages:
  - devtools
-
-bioc_packages:
- - BiocStyle
-

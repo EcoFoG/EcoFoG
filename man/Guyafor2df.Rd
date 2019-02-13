@@ -4,7 +4,8 @@
 \alias{Guyafor2df}
 \title{Donnees Guyafor}
 \usage{
-Guyafor2df(WHERE = NULL, UID = NULL, PWD = NULL)
+Guyafor2df(WHERE = NULL, UID = NULL, PWD = NULL,
+  Driver = "SQL Server Native Client 10.0")
 }
 \arguments{
 \item{WHERE}{Clause WHERE optionnelle de la requête SQL envoyée au serveur}
@@ -12,6 +13,8 @@ Guyafor2df(WHERE = NULL, UID = NULL, PWD = NULL)
 \item{UID}{Compte SQL Server utilisé pour la connexion. Par défaut, l'authentification est faite par Windows.}
 
 \item{PWD}{Mot de passe du compte SQL Server.}
+
+\item{Driver}{Nom du pilote ODBC.}
 }
 \value{
 Un dataframe contenant le résultat de la requête ODBC

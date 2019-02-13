@@ -4,14 +4,17 @@
 \alias{Automap}
 \title{AutoMap}
 \usage{
-Automap(data = NULL, UID = NULL, PWD = NULL)
+Automap(data = NULL, UID = NULL, PWD = NULL,
+  Driver = "SQL Server Native Client 10.0")
 }
 \arguments{
 \item{data}{Dataframe in Guyafor format}
 
-\item{UID}{Username for SQL Server connection}
+\item{UID}{Compte SQL Server utilisé pour la connexion. Par défaut, l'authentification est faite par Windows.}
 
-\item{PWD}{Password for SQL Server connection}
+\item{PWD}{Mot de passe du compte SQL Server.}
+
+\item{Driver}{Nom du pilote ODBC.}
 }
 \description{
 Interface Shiny de creation automatique de cartes de terrain

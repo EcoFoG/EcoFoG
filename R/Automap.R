@@ -10,14 +10,11 @@
 #'
 #' @import svglite
 #'
+#' @inheritParams Guyafor2df
 #' @param data Dataframe in Guyafor format
 #'
-#' @param UID Username for SQL Server connection
-#'
-#' @param PWD Password for SQL Server connection
-#'
 #' @export
-Automap <- function(data = NULL, UID = NULL, PWD = NULL) {
+Automap <- function(data = NULL, UID = NULL, PWD = NULL, Driver="SQL Server Native Client 10.0") {
 
   donnerForet <- function(NomForet) { return(DataGuyafor[DataGuyafor$Forest == NomForet, ])}
 

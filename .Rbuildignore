@@ -16,3 +16,4 @@ docs/
 GithubPages.R
 .Rdata
 .Rhistory
+^pkgdown$
