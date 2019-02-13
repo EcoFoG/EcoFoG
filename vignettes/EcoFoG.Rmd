@@ -128,15 +128,7 @@ La gestion des sources avec _Git_, intégrée à _RStudio_, nécessite l'install
 Installer le logiciel avec toutes les options par défaut mais désactiver l'intégration à Windows Explorer.
 Pour utiliser _git_ dans l'explorateur de Windows en plus de _RStudio_, installer [Tortoise Git](https://tortoisegit.org/download/).
 
-Les vignettes des packages peuvent être réalisées, comme celle-ci, avec le package _BiocStyle_, à installer à partir de _Bioconductor_ (et non CRAN):
-
-```{r _BiocStyle_, eval=FALSE}
-source("https://bioconductor.org/biocLite.R")
-biocLite("BiocStyle")
-```
-
-Le package nécessite [ImageMagik](https://www.imagemagick.org/) pour traiter les images, à installer.
-En absence d'_ImageMagik_, la production de chaque image par un bout de code _R_ (_R chunk_) produit une erreur.
+Les vignettes des packages peuvent être réalisées, comme celle-ci, avec le package [pkgdocs](https://pkgdown.r-lib.org/).
 
 La vérification des packages renvoie un avertissement si [qpdf](https://sourceforge.net/projects/qpdf/) n'est pas installé.
 Télécharger le fichier zip et coller tout le contenu du dossier _bin_ dans le dossier _bin_ de _Rtools_.
