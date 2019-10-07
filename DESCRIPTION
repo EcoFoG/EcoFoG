@@ -15,8 +15,8 @@ BugReports: https://github.com/EcoFoG/EcoFoG/issues
 License: GNU General Public License
 Encoding: UTF-8
 Depends: magrittr
-Imports: rmarkdown, odbc, ggplot2, ggrepel, pingr, svglite, shiny, shinyjs, shinycssloaders, utils
-Suggests: testthat, knitr, pkgdown, bookdown, dbmss, kableExtra, dplyr, tidyr
+Imports: rmarkdown, bookdown, odbc, ggplot2, ggrepel, pingr, svglite, shiny, shinyjs, shinycssloaders, utils
+Suggests: testthat, knitr, pkgdown, dbmss, kableExtra, dplyr, tidyr
 LazyData: true
 RoxygenNote: 6.1.1
 VignetteBuilder: knitr
