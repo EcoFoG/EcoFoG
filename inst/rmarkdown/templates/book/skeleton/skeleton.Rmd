@@ -13,5 +13,5 @@ Le fichier principal est _index.Rmd_ qui contient la description de l'ouvrage da
 
 Ce fichier devra être supprimé, comme _01-Demarrage.Rmd_ et _02-Syntaxe.Rmd_ : ils doivent être remplacés par le contenu de l'ouvrage.
 
-Pour commencer, ouvrir le projet R qui se trouve dans ce dossier.
+Pour commencer, ouvrir le projet R **MyBook** qui se trouve dans ce dossier.
 Ouvrir ensuite _index.Rmd_ et cliquer sur le bouton _Build Book_ dans la fenêtre _Build_ de Rstudio.
