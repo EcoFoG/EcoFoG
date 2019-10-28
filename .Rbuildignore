@@ -13,7 +13,7 @@ vignettes/figure/
 vignettes/Introduction_cache/
 vignettes/Introduction_files/
 docs/
-GithubPages.R
+BuildGithubPages.R
 .Rdata
 .Rhistory
 ^pkgdown$
