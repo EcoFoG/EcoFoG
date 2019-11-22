@@ -58,16 +58,10 @@
 \newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{{#1}}}}
 \newcommand{\NormalTok}[1]{{#1}}
 
-
-% Tables
-\usepackage{longtable,booktabs, tabu}
-\usepackage{caption}
-% These lines are needed to make table captions work with longtable:
-\makeatletter
-\def\fnum@table{\tablename~\thetable}
-\makeatother
-
+% Figures
 \usepackage{graphicx,grffile}
+  \graphicspath{{graphics/}}        % Dossier de stockage des figures
+\usepackage{epstopdf}               % Figures eps
 \makeatletter
 \def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
 \def\maxheight{\ifdim\Gin@nat@height>\textheight0.8\textheight\else\Gin@nat@height\fi}
@@ -78,23 +72,28 @@
 \setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
 
 % Additional packages
-\RequirePackage{natbib}         % Bibliographie avancée (parenthèses, citep...). Avant babel.
-\RequirePackage[utf8]{inputenc} % Pour les accents
-\RequirePackage[T1]{fontenc}    % Pour les accents
+\RequirePackage{natbib}             % Bibliographie avancée (parenthèses, citep...). Avant babel.
+\RequirePackage[utf8]{inputenc}     % Pour les accents
+\RequirePackage[T1]{fontenc}        % Pour les accents
 \RequirePackage{amsmath,amsfonts,amssymb}
-\RequirePackage{tabularx}           % Retour à la ligne des tableaux
-  \renewcommand{\arraystretch}{1.8}
-\RequirePackage{multirow}           % Fusion des lignes dans les tableaux
 \RequirePackage{breqn}              % Retour à la ligne des équations
 \RequirePackage{url}                % Retour à la ligne des url
 \RequirePackage{hyperref}           % Liens hypertextes, signets PDF
   \hypersetup{urlcolor=blue,linkcolor=black,citecolor=black,colorlinks=true}
-
-  \graphicspath{{graphics/}}        % Dossier de stockage des figures
-\RequirePackage{epstopdf}           % Figures eps
 \RequirePackage{enumitem}           % Espacement dans les listes
   \setlist[itemize]{noitemsep,nolistsep}
   \setlist[enumerate]{noitemsep,nolistsep}
+
+% Tables
+\usepackage{longtable,booktabs, tabu}
+\usepackage{caption}                % Après babel
+% These lines are needed to make table captions work with longtable:
+\makeatletter
+\def\fnum@table{\tablename~\thetable}
+\makeatother
+\usepackage{tabularx}               % Retour à la ligne des tableaux
+  \renewcommand{\arraystretch}{1.8}
+\usepackage{multirow}               % Fusion des lignes dans les tableaux
 
 % code command
 \newcommand{\code}[1]{\begingroup \ttfamily #1\endgroup}
@@ -103,7 +102,6 @@
 
 \RequirePackage[french, english]{babel}
   \frenchbsetup{StandardLists=true} % à inclure si on utilise \usepackage[french]{babel} ou les puces seront des tirets cadratins
-
 
 $if(preamble)$
 % User-adder preamble
