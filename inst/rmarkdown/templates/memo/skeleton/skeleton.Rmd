@@ -270,6 +270,15 @@ Si LaTeX ne parvient pas à trouver de solution pour le retout à la ligne, par 
 Ne pas laisser d'espace avant la commande. 
 Le document HTML ignore les commandes LaTeX.
 
+## Langues
+
+L'Anglais et le Français sont supportés, à déclarer dans l'entête du document.
+
+La langue choisie n'a d'effet que dans les sorties LaTeX: un espace est ajouté devant les ponctuations doubles en Français, la taille des espaces est plus grande en début de phrase en Anglais, etc.
+
+Les modèles EcoFoG utilisent le package LaTeX _babel_ qui reconnaît les noms de langue _french_ et _english_.
+Ignorer par conséquent l'avertissement de _knitr_ qui demande d'utiliser les codes _fr-FR_ ou _en-US_.
+
 
 # Types de document
 
