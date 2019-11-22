@@ -17,7 +17,7 @@
 % - reformatage pour l'ED de l'UG
 
 \NeedsTeXFormat{LaTeX2e}          % Require recent version of LaTeX >= 2011
-\ProvidesClass{pdgUniv}[2017/05/20 Page de Garde de thèse de doctorat et mémoire d'HDR]
+\ProvidesClass{pdgUniv}[2019/11/22 Page de Garde de thèse de doctorat et mémoire d'HDR]
 
 \RequirePackage{xkeyval}          % Allow key=value option for the package
 
@@ -237,7 +237,8 @@
 	\expandafter\gdef\csname @#1L#2\endcsname{#5}
 	\expandafter\gdef\csname @#1S#2\endcsname{\showline}
 }
-% Box and background picture
+% Box and background picture.
+% 2019/11/22, EM: \linethickness with no argument can't be read any longer (returns nothing); use \@wholewidth
 \newcommand\MakeBackground{%
 	% Line thickness
 	\linethickness{1pt}
@@ -245,8 +246,8 @@
 	\setlength{\@pdgLogoUnivSize}{40mm}%
 	\setlength{\@pdgLabUnivSize}{42mm}%
 	\setlength{\@pdgMargeSize}{15mm}%
-	\setlength{\@pdgInnerBoxWidth}{\paperwidth-2\@pdgMargeSize-2\linethickness}%
-	\setlength{\@pdgInnerBoxHeight}{\paperheight-2\@pdgMargeSize-2\linethickness}%
+	\setlength{\@pdgInnerBoxWidth}{\paperwidth-2\@pdgMargeSize-2\@wholewidth}%
+	\setlength{\@pdgInnerBoxHeight}{\paperheight-2\@pdgMargeSize-2\@wholewidth}%
   % University logo
 	\put(\convertto{pt}{1.5\@pdgMargeSize},\convertto{pt}{\paperheight-4\@pdgMargeSize}){%
     \parbox[t][\paperheight]{\paperwidth}{%
