@@ -33,6 +33,8 @@ kableExtra::kable_styling(bootstrap_options = "striped",
 
 \selectlanguage{french}
 
+Remarque: si le tableau est mal formaté, supprimer le dossier `_bookdown_files` et recréer le livre.
+
 La légende est précisée par l'argument `caption` et le référencement est possible parce que le tableau reçoit une étiquette dont le nom est `tab:` suivi du nom du bout de code (tableau \@ref(tab:kable)).
 Utiliser systématiquement l'argument `booktabs = TRUE` pour que l'épaisseur des lignes de séparation soit optimale en LaTeX.
 L'option\break `bootstrap_options = "striped"` fournit des tableaux plus lisibles en HTML.
