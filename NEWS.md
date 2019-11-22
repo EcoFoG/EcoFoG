@@ -1,4 +1,4 @@
-# EcoFog 1.7-5
+# EcoFog 1.7-6
 
 ## Améliorations
 
@@ -10,6 +10,8 @@
 
 * Nettoyage de tous les modèles de documents
 * Erreur: Couldn't find template file /resources/template.tex pendant la compilation LaTeX des modèles avec R 3.5-2.
+* Modèle d'ouvrage : Evolutions de LaTeX nécessitant de mettre à jour le modèle de page de garde pdgUniv.sty
+* Modèle d'ouvrage : Bug de bookdown contourné dans latex/preamble.tex
 
 
 # EcoFog 1.6-5

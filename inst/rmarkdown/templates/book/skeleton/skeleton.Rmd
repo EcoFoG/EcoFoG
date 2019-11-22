@@ -1,13 +1,13 @@
 ---
 title: "Modèle de livre, rapport, thèse"
 author: "Eric Marcon"
-date: "10 décembre 2017"
+date: "22 novembre 2019"
 output: html_document
 ---
 
 # Modèle d'ouvrage
 
-Ce modèle s'appuie sur _Bookdown_ pour permettre d'écrire en _R Markdown_ un livre, un rapport, une thèse de doctorat ou un mémoire d'HDR.
+Ce modèle s'appuie sur _Bookdown_ pour permettre d'écrire en _R Markdown_ un livre, un rapport, une thèse de doctorat ou un mérgeur des lignesmoire d'HDR.
 
 Le fichier principal est _index.Rmd_ qui contient la description de l'ouvrage dans son entête. Tous les autres fichiers _.Rmd_ du dossier contiennent un chapitre. Le fichier _MyBook.bib_ contient la bibliographie.
 
@@ -15,3 +15,9 @@ Ce fichier devra être supprimé, comme _01-Demarrage.Rmd_ et _02-Syntaxe.Rmd_ :
 
 Pour commencer, ouvrir le projet R **MyBook** qui se trouve dans ce dossier.
 Ouvrir ensuite _index.Rmd_ et cliquer sur le bouton _Build Book_ dans la fenêtre _Build_ de Rstudio.
+
+Attention, évolutions le 22/11/2019. Deux fichiers sont à mettre à jour dans les projets existants:
+
+- Bug dans bookdown qui ne prend plus en compte les déclarations de langues "otherlangs". Le code pour contourner le bug est dans _latex/preamble.tex_, à supprimer à terme.
+
+- Mise à jour du modèle _latex/pdgUniv.sty_ après une évolution de LaTeX.
