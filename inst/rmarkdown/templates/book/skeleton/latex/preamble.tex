@@ -1,5 +1,12 @@
 %%% Complete the preamble of the LaTeX template
 %%%------------------------------------------------------------------------------
 
-%%% PACKAGES 
+%%% PACKAGES
 \usepackage{lipsum} % Dummy text.
+
+% Bug de bookdown: ne traite plus la déclaration "otherlangs" dans le préambule
+% Pour charger les langues, écriture ici en dur du produit de bookdown
+% Corrigé le 22/11/2019. A retester régulièrement: supprimer ces lignes si la compilation fonctionne sans elles.
+\usepackage{polyglossia}
+  \setmainlanguage[variant=american]{english}
+  \setotherlanguage[]{french}
