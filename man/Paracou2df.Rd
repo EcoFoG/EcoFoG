@@ -4,8 +4,12 @@
 \alias{Paracou2df}
 \title{Donnees Paracou}
 \usage{
-Paracou2df(WHERE = NULL, UID = NULL, PWD = NULL,
-  Driver = "SQL Server Native Client 10.0")
+Paracou2df(
+  WHERE = NULL,
+  UID = NULL,
+  PWD = NULL,
+  Driver = "SQL Server Native Client 10.0"
+)
 }
 \arguments{
 \item{WHERE}{Clause WHERE optionnelle de la requête SQL envoyée au serveur}

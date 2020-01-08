@@ -18,6 +18,6 @@ Depends: magrittr
 Imports: rmarkdown, bookdown, odbc, ggplot2, ggrepel, pingr, svglite, shiny, shinyjs, shinycssloaders, utils
 Suggests: testthat, knitr, pkgdown, dbmss, kableExtra, dplyr, tidyr
 LazyData: true
-RoxygenNote: 6.1.1
+RoxygenNote: 7.0.2
 VignetteBuilder: knitr
 SystemRequirements: pandoc

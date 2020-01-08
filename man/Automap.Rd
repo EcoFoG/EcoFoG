@@ -4,8 +4,12 @@
 \alias{Automap}
 \title{AutoMap}
 \usage{
-Automap(data = NULL, UID = NULL, PWD = NULL,
-  Driver = "SQL Server Native Client 10.0")
+Automap(
+  data = NULL,
+  UID = NULL,
+  PWD = NULL,
+  Driver = "SQL Server Native Client 10.0"
+)
 }
 \arguments{
 \item{data}{Dataframe in Guyafor format}

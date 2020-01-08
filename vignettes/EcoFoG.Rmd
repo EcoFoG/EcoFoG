@@ -65,22 +65,7 @@ Les fonctions `Guyafor2df()` et `Paracou2df()` produisent des dataframes à part
 La package est destiné à _R_, à installer de préférence dans sa [dernière version](https://cran.r-project.org/) avec [RStudio](https://www.rstudio.com/products/rstudio/download/#download) en version supérieure à 1.
 
 Pour installer le package à partir de GitHub, il faut utiliser le package _devtools_ après l'avoir lui-même installé comme tout autre package (menu _Tools/Install Packages..._).
-Le script suivant, à exécuter, permet d'installer _devtools_ et les packages nécessaires à _EcoFoG_ avant d'installer le package lui-même:
 
-```{r Install, eval=FALSE}
-# Install necessary packages only
-InstallPackages <- function(Packages) {
-  sapply(Packages, function(Package) if (!Package %in% installed.packages()[, 1]) {install.packages(Package)})
-}
-# Markdown
-InstallPackages(c("base64enc", "knitr", "rmarkdown", "bookdown"))
-# Automap
-InstallPackages(c("sqldf", "ggplot2", "ggrepel", "RSQLite", "svglite", "shiny", "shinyjs", "shinycssloaders"))
-# Other packages
-InstallPackages(c("odbc", "devtools"))
-# EcoFoG
-devtools::install_github("EcoFoG/EcoFoG")
-```
 
 ## Production de fichiers PDF
 
@@ -145,3 +130,8 @@ knitr::opts_chunk$set(crop=TRUE)
 ```
 L'option `crop=TRUE` peut être déclatée globalement ou dans chaque bout de code qui produit une figure.
 L'appel à _pdfcrop_ ralentit la production des documents et doit être utilisé seulement pour la production finale.
+
+
+# Documentation complète
+
+https://EcoFoG.github.io/EcoFoG/ 

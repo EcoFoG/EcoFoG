@@ -3,7 +3,6 @@
 \docType{package}
 \name{EcoFoG}
 \alias{EcoFoG}
-\alias{EcoFoG-package}
 \title{EcoFoG}
 \description{
 Package rassemblant les outils communs à l'UMR EcoFoG dans R
