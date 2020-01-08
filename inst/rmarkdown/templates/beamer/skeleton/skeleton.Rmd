@@ -7,7 +7,7 @@ preamble: >
   \DeclareUnicodeCharacter{B0}{\textdegree}
 output:
   ioslides_presentation:
-    logo: images/EcoFoG2017.png
+    logo: images/EcoFoG2020.png
     widescreen: true
   beamer_presentation:
     df_print: kable

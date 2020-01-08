@@ -1,10 +1,11 @@
-# EcoFog 1.7-6
+# EcoFog 1.7-7
 
 ## Améliorations
 
 * Production de documents HTML Bootstrap en plus de Gitbook à partir des modèles
 * Vignette par pkgdown
 * Possibilité de spécifier le nom du pilote ODBC pour les connexions au serveur SQL
+* Logo EcoFoG 2020
 
 ## Correction de bugs
 
