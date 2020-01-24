@@ -1,4 +1,4 @@
-# EcoFog 1.7-7
+# EcoFog 1.7-8
 
 ## Améliorations
 
@@ -6,6 +6,7 @@
 * Vignette par pkgdown
 * Possibilité de spécifier le nom du pilote ODBC pour les connexions au serveur SQL
 * Logo EcoFoG 2020
+* Ajout du champ `DateMesFiable` (fiabilité e la date de mesure) dans `Guyafor2df()` et `Paracou2df()`
 
 ## Correction de bugs
 
