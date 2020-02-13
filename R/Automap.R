@@ -84,7 +84,7 @@ Automap <- function(data = NULL, UID = NULL, PWD = NULL, Driver="SQL Server Nati
   }
   if (is.null(data)) {
     if (!exists("DataGuyafor")){
-      DataGuyafor <- Guyafor2df(UID=UID, PWD=PWD)
+      DataGuyafor <- Guyafor2df(UID=UID, PWD=PWD, Driver=Driver)
     }
   } else {
     DataGuyafor <- data
