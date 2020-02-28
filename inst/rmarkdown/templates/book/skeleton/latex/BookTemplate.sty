@@ -147,3 +147,15 @@
   \clearfield{urldate}%
 }%
 }
+
+
+% Part numbering, including TOC
+\renewcommand*{\thepart}{\Roman{part}}
+\renewcommand*{\cftpartname}{}
+\renewcommand*{\cftpartpresnum}{}
+\renewcommand*{\cftpartaftersnum}{.}
+\renewcommand*{\cftpartaftersnumb}{\space}
+
+
+% Image file extension priority.
+\DeclareGraphicsExtensions{.pdf,.png,.jpg}
