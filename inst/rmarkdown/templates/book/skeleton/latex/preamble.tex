@@ -10,3 +10,14 @@
 \usepackage{polyglossia}
   \setmainlanguage[variant=american]{english}
   \setotherlanguage[]{french}
+
+% Environnement "Essentiel" en début de chapitre
+\usepackage[tikz]{bclogo}
+\newenvironment{Essentiel}
+  {\begin{bclogo}[logo=\bctrombone, noborder=true, couleur=lightgray!50]{L'essentiel}\parindent0pt}
+  {\end{bclogo}}
+% Utilisation :
+%
+%```{block, type='Essentiel'}
+% Texte à mettre en valeur
+% ```
