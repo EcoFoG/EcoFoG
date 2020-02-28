@@ -114,7 +114,7 @@ fourthpagefontsize: normalsize
 
 ```{r Options, echo=FALSE, message=FALSE}
 ### knitr and R options (packages, ...)
-knitr::opts_chunk$set(cache=TRUE, warning=FALSE, fig.env='SCfigure', out.width='80%', fig.asp=.75, fig.align='center')
+knitr::opts_chunk$set(cache=TRUE, warning=FALSE, fig.env='SCfigure', out.width='80%', fig.asp=.75, fig.align='center', knitr.graphics.auto_pdf = TRUE)
 # Installation of packages if necessary and loading
 Library <- function(Packages) {
   InstallAndLoad <- function(Package) {
