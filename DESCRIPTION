@@ -4,7 +4,7 @@ Title: Utilitaires pour l'UMR EcoFoG
 Version: 1.7-10
 Authors@R: c(
     person("Eric", "Marcon", email="eric.marcon@ecofog.gf", role=c("aut", "cre"), comment = c(ORCID = "0000-0002-5249-321X")),
-    person("Gaëlle", "Jaouen", email="gaelle.jaouen@ecofog.gf", role="aut"),
+    person("Gaëlle", "Jaouen", email="gaelle.jaouen@ecofog.gf", role="aut", comment = c(ORCID = "0000-0002-5655-9044")),
     person("Elie", "Guedj", email="elie.guedj@ecofog.gf", role="aut"),
     person("Sylvain", "Schmitt", email="sylvain.schmitt@ecofog.gf", role="aut", comment = c(ORCID = "0000-0001-7759-7106"))
     )
