@@ -150,9 +150,7 @@
 
 
 
-% Part numbering, including TOC
-\renewcommand*{\thepart}{\Roman{part}}
-\renewcommand*{\cftpartname}{}
-\renewcommand*{\cftpartpresnum}{}
-\renewcommand*{\cftpartaftersnum}{.}
-\renewcommand*{\cftpartaftersnumb}{\space}
+%% Table of Contents
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% fix the typesetting of the part number
+\renewcommand\partnumberlinebox[2]{#2\ ---\ }
