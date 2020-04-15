@@ -1,5 +1,4 @@
-language: R
-sudo: false
+language: r
 cache: packages
 
 r_packages:
