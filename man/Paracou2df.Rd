@@ -18,7 +18,7 @@ Paracou2df(
 
 \item{PWD}{Mot de passe du compte SQL Server.}
 
-\item{Driver}{Nom du pilote ODBC.}
+\item{Driver}{Nom du pilote ODBC, dépendant de l'installation du système. La valeur par défaut est le nom le plus fréquent. "SQL Server" peut fonctionner si la valeur par défaut renvoie une erreur indiquant que le pilote ODBC n'existe pas.}
 }
 \value{
 Un dataframe contenant le résultat de la requête ODBC
@@ -32,9 +32,7 @@ Un pilote ODBC pour SQL Server doit être accessible.
 }
 \examples{
 # Creation d'une communaute spatialement explicite (package SpatDiv)
-if (!any(is.na(pingr::ping_port("sql.ecofog.gf", port=1433)))) {
- # Si le serveur sql.ecofog.gf est accessible
- if(require("dbmss") & require("dplyr") & require("tidyr")) {
+if(require("dbmss") & require("dplyr") & require("tidyr")) {
   Paracou2df("Plot='6' AND CensusYear=2016") \%>\%
   # Arbres vivants
   filter(CodeAlive == TRUE) \%>\%
@@ -47,9 +45,11 @@ if (!any(is.na(pingr::ping_port("sql.ecofog.gf", port=1433)))) {
     PointWeight=pi*(CircCorr/pi/2)^2, PointName=idTree) \%>\%
   dbmss::wmppp(window = owin(c(0,250), c(0,250),
     unitname=c("metre", "metres"))) -> Paracou6
- }
+  plot(Paracou6, which="PointWeight")
 }
 }
 \author{
 Gaëlle Jaouen, \email{gaelle.jaouen@ecofog.gf}
+
+Eric Marcon, \email{eric.marcon@ecofog.gf}
 }

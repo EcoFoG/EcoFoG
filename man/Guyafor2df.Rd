@@ -18,7 +18,7 @@ Guyafor2df(
 
 \item{PWD}{Mot de passe du compte SQL Server.}
 
-\item{Driver}{Nom du pilote ODBC.}
+\item{Driver}{Nom du pilote ODBC, dépendant de l'installation du système. La valeur par défaut est le nom le plus fréquent. "SQL Server" peut fonctionner si la valeur par défaut renvoie une erreur indiquant que le pilote ODBC n'existe pas.}
 }
 \value{
 Un dataframe contenant le résultat de la requête ODBC
