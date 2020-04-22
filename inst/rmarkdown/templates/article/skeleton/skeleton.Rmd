@@ -34,7 +34,8 @@ preamble: >
   \renewenvironment{table}{\begin{table*}}{\end{table*}\ignorespacesafterend}
   \hyphenation{bio-di-ver-si-ty sap-lings}
 bibliography: references.bib
-lang: french # english
+lang: fr-FR # en-US
+babel: french # english
 keywordlabel: Mots-clés # Keywords
 corrauthorlabel: Contact # Corresponding author
 always_allow_html: yes
@@ -288,7 +289,6 @@ D'autres commandes peuvent être ajoutées selon les besoins.
 Attention :
 
 - les commentaires ne sont pas possibles ;
-
 - les commandes complexes (comme\break `\renewenvironment`) doivent être entrées sur une seule ligne sinon elles seront détruites par knitr au premier tricotage en HTML.
 
 
@@ -308,7 +308,8 @@ L'Anglais et le Français sont supportés, à déclarer dans l'entête du docume
 La langue choisie n'a d'effet que dans les sorties LaTeX: un espace est ajouté devant les ponctuations doubles en Français, la taille des espaces est plus grande en début de phrase en Anglais, etc.
 
 Les modèles EcoFoG utilisent le package LaTeX _babel_ qui reconnaît les noms de langue _french_ et _english_.
-Ignorer par conséquent l'avertissement de _knitr_ qui demande d'utiliser les codes _fr-FR_ ou _en-US_.
+Pandoc utilise en revanche les codes IETF _fr-FR_ ou _en-US_ pour un support linguistique limité en HTML.
+Les deux paramètres doivent donc être saisis dans l'entête du document.
 
 
 # Types de document
