@@ -28,4 +28,4 @@ Utilitaires pour l'UMR EcoFoG
 ## Vignette
 
 Une vignette d'[introduction](https://ecofog.github.io/EcoFoG/) est disponible.
-Dans R, utiliser la commande `vignette("EcoFoG", "EcoFoG")`.
+Dans R, utiliser la commande `vignette("EcoFoG")`.
