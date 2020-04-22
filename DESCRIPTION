@@ -16,7 +16,7 @@ License: GNU General Public License
 Encoding: UTF-8
 Depends: 
     magrittr,
-    R (>= 2.10)
+    R (>= 3.5.0)
 Imports: rmarkdown, bookdown, odbc, ggplot2, ggrepel, pingr, svglite, shiny, shinyjs, shinycssloaders, utils
 Suggests: testthat, knitr, pkgdown, dbmss, kableExtra, dplyr, tidyr
 LazyData: true
