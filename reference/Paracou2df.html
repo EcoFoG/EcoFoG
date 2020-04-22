@@ -80,7 +80,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">EcoFoG</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.7-10</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.8</span>
       </span>
     </div>
 
@@ -155,7 +155,7 @@
     </tr>
     <tr>
       <th>Driver</th>
-      <td><p>Nom du pilote ODBC.</p></td>
+      <td><p>Nom du pilote ODBC, dépendant de l'installation du système. La valeur par défaut est le nom le plus fréquent. "SQL Server" peut fonctionner si la valeur par défaut renvoie une erreur indiquant que le pilote ODBC n'existe pas.</p></td>
     </tr>
     </table>
 
@@ -169,9 +169,7 @@ Un pilote ODBC pour SQL Server doit être accessible.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># Creation d'une communaute spatialement explicite (package SpatDiv)</span>
-<span class='kw'>if</span> (!<span class='fu'><a href='https://rdrr.io/r/base/any.html'>any</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/NA.html'>is.na</a></span>(<span class='kw pkg'>pingr</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/pingr/man/ping_port.html'>ping_port</a></span>(<span class='st'>"sql.ecofog.gf"</span>, <span class='kw'>port</span><span class='kw'>=</span><span class='fl'>1433</span>)))) {
- <span class='co'># Si le serveur sql.ecofog.gf est accessible</span>
- <span class='kw'>if</span>(<span class='fu'><a href='https://rdrr.io/r/base/library.html'>require</a></span>(<span class='st'>"dbmss"</span>) <span class='kw'>&amp;</span> <span class='fu'><a href='https://rdrr.io/r/base/library.html'>require</a></span>(<span class='st'>"dplyr"</span>) <span class='kw'>&amp;</span> <span class='fu'><a href='https://rdrr.io/r/base/library.html'>require</a></span>(<span class='st'>"tidyr"</span>)) {
+<span class='kw'>if</span>(<span class='fu'><a href='https://rdrr.io/r/base/library.html'>require</a></span>(<span class='st'>"dbmss"</span>) <span class='kw'>&amp;</span> <span class='fu'><a href='https://rdrr.io/r/base/library.html'>require</a></span>(<span class='st'>"dplyr"</span>) <span class='kw'>&amp;</span> <span class='fu'><a href='https://rdrr.io/r/base/library.html'>require</a></span>(<span class='st'>"tidyr"</span>)) {
   <span class='fu'>Paracou2df</span>(<span class='st'>"Plot='6' AND CensusYear=2016"</span>) <span class='kw'>%&gt;%</span>
   <span class='co'># Arbres vivants</span>
   <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span>(<span class='no'>CodeAlive</span> <span class='kw'>==</span> <span class='fl'>TRUE</span>) <span class='kw'>%&gt;%</span>
@@ -184,8 +182,25 @@ Un pilote ODBC pour SQL Server doit être accessible.</p>
     <span class='kw'>PointWeight</span><span class='kw'>=</span><span class='no'>pi</span>*(<span class='no'>CircCorr</span>/<span class='no'>pi</span>/<span class='fl'>2</span>)^<span class='fl'>2</span>, <span class='kw'>PointName</span><span class='kw'>=</span><span class='no'>idTree</span>) <span class='kw'>%&gt;%</span>
   <span class='kw pkg'>dbmss</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/dbmss/man/wmppp.html'>wmppp</a></span>(<span class='kw'>window</span> <span class='kw'>=</span> <span class='fu'>owin</span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0</span>,<span class='fl'>250</span>), <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>0</span>,<span class='fl'>250</span>),
     <span class='kw'>unitname</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"metre"</span>, <span class='st'>"metres"</span>))) <span class='kw'>-&gt;</span> <span class='no'>Paracou6</span>
- }
-}</div></pre>
+  <span class='fu'><a href='https://rdrr.io/r/graphics/plot.html'>plot</a></span>(<span class='no'>Paracou6</span>, <span class='kw'>which.marks</span><span class='kw'>=</span><span class='st'>"PointWeight"</span>, <span class='kw'>main</span><span class='kw'>=</span><span class='st'>"Surface terriÃ¨re (cm2) \n des arbres de la parcelle 6 de Paracou en 2016"</span>)
+}</div><div class='output co'>#&gt; <span class='message'>Loading required package: dbmss</span></div><div class='output co'>#&gt; <span class='message'>Loading required package: spatstat</span></div><div class='output co'>#&gt; <span class='message'>Loading required package: spatstat.data</span></div><div class='output co'>#&gt; <span class='message'>Loading required package: nlme</span></div><div class='output co'>#&gt; <span class='message'>Loading required package: rpart</span></div><div class='output co'>#&gt; <span class='message'>Registered S3 method overwritten by 'spatstat':</span>
+#&gt; <span class='message'>  method     from</span>
+#&gt; <span class='message'>  print.boxx cli </span></div><div class='output co'>#&gt; <span class='message'></span>
+#&gt; <span class='message'>spatstat 1.63-3       (nickname: ‘Wet paint’) </span>
+#&gt; <span class='message'>For an introduction to spatstat, type ‘beginner’ </span></div><div class='output co'>#&gt; <span class='message'></span>
+#&gt; <span class='message'>Note: R version 3.6.2 (2017-01-27) is more than a year old; we strongly recommend upgrading to the latest version</span></div><div class='output co'>#&gt; <span class='message'>Loading required package: Rcpp</span></div><div class='output co'>#&gt; <span class='message'>Loading required package: ggplot2</span></div><div class='output co'>#&gt; <span class='message'>Loading required package: dplyr</span></div><div class='output co'>#&gt; <span class='message'></span>
+#&gt; <span class='message'>Attaching package: ‘dplyr’</span></div><div class='output co'>#&gt; <span class='message'>The following object is masked from ‘package:nlme’:</span>
+#&gt; <span class='message'></span>
+#&gt; <span class='message'>    collapse</span></div><div class='output co'>#&gt; <span class='message'>The following objects are masked from ‘package:stats’:</span>
+#&gt; <span class='message'></span>
+#&gt; <span class='message'>    filter, lag</span></div><div class='output co'>#&gt; <span class='message'>The following objects are masked from ‘package:base’:</span>
+#&gt; <span class='message'></span>
+#&gt; <span class='message'>    intersect, setdiff, setequal, union</span></div><div class='output co'>#&gt; <span class='message'>Loading required package: tidyr</span></div><div class='output co'>#&gt; <span class='message'></span>
+#&gt; <span class='message'>Attaching package: ‘tidyr’</span></div><div class='output co'>#&gt; <span class='message'>The following object is masked from ‘package:magrittr’:</span>
+#&gt; <span class='message'></span>
+#&gt; <span class='message'>    extract</span></div><div class='output co'>#&gt; <span class='warning'>Warning: Le serveur sql.ecofog.gf n'est pas accessible.</span>
+#&gt; <span class='warning'></span>
+#&gt; <span class='warning'>            L'inventaire 2016 de la parcelle 6 de Paracou est retourné.</span></div><div class='img'><img src='Paracou2df-1.png' alt='' width='700' height='433' /></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

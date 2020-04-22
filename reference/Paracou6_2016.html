@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Memo — memo • EcoFoG</title>
+<title>Inventaire 2016 de la parcelle 6 de Paracou. — Paracou6_2016 • EcoFoG</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -46,8 +46,8 @@
 
 
 
-<meta property="og:title" content="Memo — memo" />
-<meta property="og:description" content="Formatage d'un mémo" />
+<meta property="og:title" content="Inventaire 2016 de la parcelle 6 de Paracou. — Paracou6_2016" />
+<meta property="og:description" content="Jeu de données public extrait de la base Guyafor." />
 <meta property="og:image" content="https://ecofog.github.io/ecofog/logo.png" />
 
 
@@ -122,34 +122,28 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Memo</h1>
-    <small class="dont-index">Source: <a href='https://github.com/EcoFoG/EcoFoG/blob/master/R/EcofoG.R'><code>R/EcofoG.R</code></a></small>
-    <div class="hidden name"><code>memo.Rd</code></div>
+    <h1>Inventaire 2016 de la parcelle 6 de Paracou.</h1>
+    <small class="dont-index">Source: <a href='https://github.com/EcoFoG/EcoFoG/blob/master/R/Guyafor.R'><code>R/Guyafor.R</code></a></small>
+    <div class="hidden name"><code>Paracou6_2016.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Formatage d'un mémo</p>
+    <p>Jeu de données public extrait de la base Guyafor.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>memo</span>(<span class='no'>...</span>, <span class='kw'>md_extensions</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"-autolink_bare_uris"</span>))</pre>
+    <pre class="usage"><span class='no'>Paracou6_2016</span></pre>
 
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
-    <table class="ref-arguments">
-    <colgroup><col class="name" /><col class="desc" /></colgroup>
-    <tr>
-      <th>...</th>
-      <td><p>Arguments optionnels passés à <code>pdf_document</code></p></td>
-    </tr>
-    <tr>
-      <th>md_extensions</th>
-      <td><p>Extensions markdodown, cf. <code>pdf_document</code></p></td>
-    </tr>
-    </table>
 
-    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+    <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
 
-    <p>La fonction est appelée par le modèle Markdown memo</p>
+    <p>Un tibble contenant une mesure (année 2016) d'un arbre par ligne</p>
+    <h2 class="hasAnchor" id="source"><a class="anchor" href="#source"></a>Source</h2>
 
+    <p>&lt;http://paracou.cirad.fr/&gt;</p>
+
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='co'># Nombre d'arbres</span>
+<span class='fu'><a href='https://rdrr.io/r/base/nrow.html'>nrow</a></span>(<span class='no'>Paracou6_2016</span>)</div><div class='output co'>#&gt; [1] 3620</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
