@@ -14,7 +14,7 @@ testthat::test_that("Book is knitted", {
     testthat::expect_true(endsWith(test_result, "index.html"))
     # Knit in pdf
     test_result <- bookdown::render_book("index.Rmd", "bookdown::pdf_book")
-    testthat::expect_true(endsWith(test_result, "test_book.pdf"))
+    testthat::expect_true(endsWith(test_result, "MyBook.pdf"))
     # Clean up
     setwd("..")
     unlink("test_book", recursive = TRUE)
