@@ -14,7 +14,9 @@ URL: https://github.com/EcoFoG/EcoFoG
 BugReports: https://github.com/EcoFoG/EcoFoG/issues
 License: GNU General Public License
 Encoding: UTF-8
-Depends: magrittr
+Depends: 
+    magrittr,
+    R (>= 2.10)
 Imports: rmarkdown, bookdown, odbc, ggplot2, ggrepel, pingr, svglite, shiny, shinyjs, shinycssloaders, utils
 Suggests: testthat, knitr, pkgdown, dbmss, kableExtra, dplyr, tidyr
 LazyData: true
