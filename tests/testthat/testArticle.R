@@ -1,7 +1,7 @@
 testthat::context("Article")
 
-# Check rarely used estimators
-testthat::test_that("Coverage is estimated", {
+# Knit from template
+testthat::test_that("Article is knitted", {
   testthat::skip_on_cran()
   # create an article project
   if (rmarkdown::pandoc_available()) {
@@ -12,7 +12,7 @@ testthat::test_that("Coverage is estimated", {
     test_result <- rmarkdown::render(input="test_article.Rmd", output_format=bookdown::html_document2())
     testthat::expect_true(endsWith(test_result, "test_article.html"))
     # Knit in pdf
-    test_result <- rmarkdown::render("test_article.Rmd", "pdf_book")
+    test_result <- rmarkdown::render(input="test_article.Rmd", output_format=bookdown::pdf_book())
     testthat::expect_true(endsWith(test_result, "test_article.pdf"))
     # Clean up
     setwd("..")
