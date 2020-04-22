@@ -18,6 +18,6 @@ testthat::test_that("Article is knitted", {
     # Clean up
     source("GithubPages.R")
     setwd("..")
-    # unlink("article", recursive = TRUE)
+    unlink("article", recursive = TRUE)
   }
 })

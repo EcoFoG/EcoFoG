@@ -3,6 +3,7 @@
 export(Automap)
 export(Guyafor2df)
 export(Paracou2df)
+export(TricoterTout)
 export(article)
 export(memo)
 import(magrittr)
