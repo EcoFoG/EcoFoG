@@ -1,3 +1,12 @@
+# EcoFog 1.8-0
+
+## Améliorations
+
+* Tests unitaires et intégration continue par Travis
+* Nom de champs définitifs dans `Guyafor2df`
+* Jeu de données par défaut (Paracou 6, 2016) si la base de données est inaccessible.
+
+
 # EcoFog 1.7-10
 
 ## Améliorations
