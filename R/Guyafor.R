@@ -69,7 +69,9 @@ QueryGuyafor <- function (WHERE, UID, PWD, Driver, codeWHERE = NULL) {
 
   # Vérification de la connectivité réseau
   if (any(is.na(pingr::ping_port("sql.ecofog.gf", port=1433)))) {
-    warning("Le serveur sql.ecofog.gf n'est pas accessible.\nL'inventaire 2016 de la parcelle 6 de Paracou est retourné.")
+    warning("Le serveur sql.ecofog.gf n'est pas accessible.\n
+            L'inventaire 2016 de la parcelle 6 de Paracou est retourné.")
+    utils::data(Paracou6_2016)
     return(Paracou6_2016)
   }
 
