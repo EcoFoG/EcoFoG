@@ -18,7 +18,7 @@ jobs:
         - git --work-tree=docs checkout gh-pages -- .        # Comment out for release
         - travis_wait 60 Rscript -e 'pkgdown::build_site()'
         - touch docs/.nojekyll
-        - Rscript -e 'EcoFoG::TricoterTout()'
+        - Rscript .#Extra/TricoterTout.R
       deploy:
         provider: pages
         skip_cleanup: true
