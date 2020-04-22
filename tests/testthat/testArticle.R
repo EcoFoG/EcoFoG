@@ -12,7 +12,8 @@ testthat::test_that("Article is knitted", {
     test_result <- rmarkdown::render(input="test_article.Rmd", output_format=bookdown::html_document2())
     testthat::expect_true(endsWith(test_result, "test_article.html"))
     # Knit in pdf
-    test_result <- rmarkdown::render(input="test_article.Rmd", output_format=bookdown::pdf_book())
+    test_result <- rmarkdown::render(input="test_article.Rmd",
+                                     output_format=bookdown::pdf_book(base_format = EcoFoG::article))
     testthat::expect_true(endsWith(test_result, "test_article.pdf"))
     # Clean up
     setwd("..")

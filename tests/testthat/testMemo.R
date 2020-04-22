@@ -12,7 +12,8 @@ testthat::test_that("Memo is knitted", {
     test_result <- rmarkdown::render(input="test_memo.Rmd", output_format=bookdown::html_document2())
     testthat::expect_true(endsWith(test_result, "test_memo.html"))
     # Knit in pdf
-    test_result <- rmarkdown::render(input="test_memo.Rmd", output_format=bookdown::pdf_book())
+    test_result <- rmarkdown::render(input="test_memo.Rmd",
+                                     output_format=bookdown::pdf_book(base_format = EcoFoG::memo))
     testthat::expect_true(endsWith(test_result, "test_memo.pdf"))
     # Clean up
     setwd("..")
