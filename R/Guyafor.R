@@ -153,4 +153,7 @@ QueryGuyafor <- function (WHERE, UID, PWD, Driver, codeWHERE = NULL) {
 #'
 #' @format Un tibble contenant une mesure (année 2016) d'un arbre par ligne
 #' @source <http://paracou.cirad.fr/>
+#' @examples
+#' # Nombre d'arbres
+#' nrow(Paracou6_2016)
 "Paracou6_2016"
