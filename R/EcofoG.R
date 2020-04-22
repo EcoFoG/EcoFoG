@@ -56,3 +56,4 @@ article <- function (..., md_extensions = c("-autolink_bare_uris")) {
 memo <- function (..., md_extensions = c("-autolink_bare_uris")) {
   inherit_pdf_document(..., template = find_resource("memo", "template.tex"), md_extensions = md_extensions, citation_package = "natbib")
 }
+

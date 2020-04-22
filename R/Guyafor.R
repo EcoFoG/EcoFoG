@@ -38,9 +38,7 @@ Guyafor2df <- function (WHERE = NULL, UID=NULL, PWD=NULL, Driver="SQL Server Nat
 #' @export
 #' @examples
 #' # Creation d'une communaute spatialement explicite (package SpatDiv)
-#' if (!any(is.na(pingr::ping_port("sql.ecofog.gf", port=1433)))) {
-#'  # Si le serveur sql.ecofog.gf est accessible
-#'  if(require("dbmss") & require("dplyr") & require("tidyr")) {
+#' if(require("dbmss") & require("dplyr") & require("tidyr")) {
 #'   Paracou2df("Plot='6' AND CensusYear=2016") %>%
 #'   # Arbres vivants
 #'   filter(CodeAlive == TRUE) %>%
@@ -53,11 +51,11 @@ Guyafor2df <- function (WHERE = NULL, UID=NULL, PWD=NULL, Driver="SQL Server Nat
 #'     PointWeight=pi*(CircCorr/pi/2)^2, PointName=idTree) %>%
 #'   dbmss::wmppp(window = owin(c(0,250), c(0,250),
 #'     unitname=c("metre", "metres"))) -> Paracou6
-#'  }
+#'   plot(Paracou6, which.marks="PointWeight", main="Surface terrière (cm2) \n des arbres de la parcelle 6 de Paracou en 2016")
 #' }
 Paracou2df <- function (WHERE = NULL, UID=NULL, PWD=NULL, Driver="SQL Server Native Client 10.0") {
 
- return(QueryGuyafor(WHERE, UID, PWD, Driver, "WHERE (dbo.TtGuyaforShiny.NomForet = N'paracou')"))
+ return(QueryGuyafor(WHERE, UID, PWD, Driver, "WHERE (dbo.TtGuyaforShiny.Forest = N'paracou')"))
 
 }
 
@@ -70,8 +68,11 @@ Paracou2df <- function (WHERE = NULL, UID=NULL, PWD=NULL, Driver="SQL Server Nat
 QueryGuyafor <- function (WHERE, UID, PWD, Driver, codeWHERE = NULL) {
 
   # Vérification de la connectivité réseau
-  if (any(is.na(pingr::ping_port("sql.ecofog.gf", port=1433))))
-    stop("Le serveur sql.ecofog.gf n'est pas accessible")
+  if (any(is.na(pingr::ping_port("sql.ecofog.gf", port=1433)))) {
+    warning("Le serveur sql.ecofog.gf n'est pas accessible.\nL'inventaire 2016 de la parcelle 6 de Paracou est retourné.")
+    return(Paracou6_2016)
+  }
+
 
   # Connexion odbc à Guyafor sur serveur SQL
   connection_string <- paste("Driver={", Driver, "};server=sql.ecofog.gf;database=Guyafor;", sep="")
@@ -86,41 +87,41 @@ QueryGuyafor <- function (WHERE, UID, PWD, Driver, codeWHERE = NULL) {
 
   # Sélection des données
   req1 <- "SELECT
-  dbo.TtGuyaforShiny.NomForet AS Forest,
-  dbo.TtGuyaforShiny.n_parcelle AS Plot,
-  dbo.TtGuyaforShiny.Surface AS PlotSurface,
-  dbo.TtGuyaforShiny.n_carre AS SubPlot,
-  dbo.TtGuyaforShiny.n_arbre AS TreeFieldNum,
-  dbo.TtGuyaforShiny.i_arbre AS idTree,
-  dbo.TtGuyaforShiny.Projet,
+  dbo.TtGuyaforShiny.Forest,
+  dbo.TtGuyaforShiny.Plot,
+  dbo.TtGuyaforShiny.PlotArea,
+  dbo.TtGuyaforShiny.SubPlot,
+  dbo.TtGuyaforShiny.TreeFieldNum,
+  dbo.TtGuyaforShiny.idTree,
+  dbo.TtGuyaforShiny.Project,
   dbo.TtGuyaforShiny.Protocole,
-  dbo.TtGuyaforShiny.X AS Xfield,
-  dbo.TtGuyaforShiny.Y AS Yfield,
+  dbo.TtGuyaforShiny.Xfield,
+  dbo.TtGuyaforShiny.Yfield,
   dbo.TtGuyaforShiny.Xutm,
   dbo.TtGuyaforShiny.Yutm,
   dbo.TtGuyaforShiny.UTMZone,
   dbo.TtGuyaforShiny.Lat,
   dbo.TtGuyaforShiny.Lon,
-  dbo.TtGuyaforShiny.Famille AS Family,
-  dbo.TtGuyaforShiny.Genre AS Genus,
-  dbo.TtGuyaforShiny.Espece AS Species,
-  dbo.TtGuyaforShiny.SourceBota AS BotaSource,
-  dbo.TtGuyaforShiny.indSurete AS BotaCertainty,
-  dbo.TtGuyaforShiny.n_essence,
-  dbo.TtGuyaforShiny.idPilote AS idVern,
-  dbo.TtGuyaforShiny.nomPilote AS VernName,
-  dbo.TtGuyaforShiny.Commerciale AS CommercialSp,
-  dbo.TtGuyaforShiny.campagne AS CensusYear,
-  dbo.TtGuyaforShiny.DateMesure AS CensusDate,
-  dbo.TtGuyaforShiny.DateMesFiable AS CensusDateCertainty,
-  dbo.TtGuyaforShiny.code_vivant AS CodeAlive,
-  dbo.TtGuyaforShiny.code_mesure AS CodeMeas,
-  dbo.TtGuyaforShiny.circonf AS Circ,
-  dbo.taMesure_Corr.circ_corr AS CircCorr,
-  dbo.taMesure_Corr.code_corr AS CodeCorr
+  dbo.TtGuyaforShiny.Family,
+  dbo.TtGuyaforShiny.Genus,
+  dbo.TtGuyaforShiny.Species,
+  dbo.TtGuyaforShiny.BotaSource,
+  dbo.TtGuyaforShiny.BotaCertainty,
+  dbo.TtGuyaforShiny.idVern,
+  dbo.TtGuyaforShiny.VernName,
+  dbo.TtGuyaforShiny.CommercialSp,
+  dbo.TtGuyaforShiny.CensusYear,
+  dbo.TtGuyaforShiny.CensusDate,
+  dbo.TtGuyaforShiny.CensusDateCertainty,
+  dbo.TtGuyaforShiny.CodeAlive,
+  dbo.TtGuyaforShiny.MeasCode,
+  dbo.TtGuyaforShiny.Circ,
+  dbo.TtGuyaforShiny.CircCorr,
+  dbo.TtGuyaforShiny.CorrCode
 
   FROM dbo.TtGuyaforShiny
-    LEFT OUTER JOIN dbo.taMesure_Corr ON dbo.TtGuyaforShiny.idMesure = dbo.taMesure_Corr.idMesure"
+    LEFT OUTER JOIN dbo.taMesure_Corr ON dbo.TtGuyaforShiny.idMeas = dbo.taMesure_Corr.idMesure"
+
 
   if (!is.null(codeWHERE)) {
     # ajout de la condition WHERE de la fonction appelante, typiquement le choix de la forêt
@@ -143,3 +144,13 @@ QueryGuyafor <- function (WHERE, UID, PWD, Driver, codeWHERE = NULL) {
 
   return(dfGuyafor)
 }
+
+
+
+#' Inventaire 2016 de la parcelle 6 de Paracou.
+#'
+#' Jeu de données public extrait de la base Guyafor.
+#'
+#' @format Un tibble contenant une mesure (année 2016) d'un arbre par ligne
+#' @source <http://paracou.cirad.fr/>
+"Paracou6_2016"
