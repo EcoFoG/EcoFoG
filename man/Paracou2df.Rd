@@ -45,7 +45,9 @@ if(require("dbmss") & require("dplyr") & require("tidyr")) {
     PointWeight=pi*(CircCorr/pi/2)^2, PointName=idTree) \%>\%
   dbmss::wmppp(window = owin(c(0,250), c(0,250),
     unitname=c("metre", "metres"))) -> Paracou6
-  plot(Paracou6, which.marks="PointWeight", main="Surface terriÃ¨re (cm2) \n des arbres de la parcelle 6 de Paracou en 2016")
+  plot(Paracou6, which.marks="PointWeight",
+  main="Surface terriÃ¨re (cm2) \n
+        des arbres de la parcelle 6 de Paracou en 2016")
 }
 }
 \author{
