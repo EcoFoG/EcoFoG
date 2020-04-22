@@ -51,7 +51,9 @@ Guyafor2df <- function (WHERE = NULL, UID=NULL, PWD=NULL, Driver="SQL Server Nat
 #'     PointWeight=pi*(CircCorr/pi/2)^2, PointName=idTree) %>%
 #'   dbmss::wmppp(window = owin(c(0,250), c(0,250),
 #'     unitname=c("metre", "metres"))) -> Paracou6
-#'   plot(Paracou6, which.marks="PointWeight", main="Surface terrière (cm2) \n des arbres de la parcelle 6 de Paracou en 2016")
+#'   plot(Paracou6, which.marks="PointWeight",
+#'   main="Surface terrière (cm2) \n
+#'         des arbres de la parcelle 6 de Paracou en 2016")
 #' }
 Paracou2df <- function (WHERE = NULL, UID=NULL, PWD=NULL, Driver="SQL Server Native Client 10.0") {
 
