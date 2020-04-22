@@ -18,6 +18,7 @@ jobs:
         - git --work-tree=docs checkout gh-pages -- .        # Comment out for release
         - travis_wait 60 Rscript -e 'pkgdown::build_site()'
         - touch docs/.nojekyll
+        - mv test_article/docs docs/article
       deploy:
         provider: pages
         skip_cleanup: true
