@@ -17,17 +17,20 @@
 % - reformatage pour l'ED de l'UG
 
 \NeedsTeXFormat{LaTeX2e}          % Require recent version of LaTeX >= 2011
-\ProvidesClass{pdgUniv}[2019/11/22 Page de Garde de thèse de doctorat et mémoire d'HDR]
+
+% Déclaration du chemin latex/ spécifiquement dans ce modèle pour éviter une alerte
+% LaTeX Warning: You have requested package `latex/pdgUniv', but the package provides `pdgUniv'.
+\ProvidesClass{latex/pdgUniv}[2019/11/22 Page de Garde de thèse de doctorat et mémoire d'HDR]
 
 \RequirePackage{xkeyval}          % Allow key=value option for the package
 
 % ============================================================
 % OPTION
 %emptysheetbefore => Insert two white pages (one sheet) before the flyleaf
-\newif\if@emptysheetbefore\@emptysheetbeforefalse 
+\newif\if@emptysheetbefore\@emptysheetbeforefalse
 \DeclareOptionX{emptysheetbefore}[none]{\@emptysheetbeforetrue}
 %emptypageafter => insert one page after the flyleaf
-\newif\if@emptypageafter\@emptypageafterfalse 
+\newif\if@emptypageafter\@emptypageafterfalse
 \DeclareOptionX{emptypageafter}[none]{\@emptypageaftertrue}
 %draft => Remove flyleaf page
 \newif\if@draft\@draftfalse
@@ -336,45 +339,45 @@
               \begin{center}
                   \vspace*{1.8cm}
                   {\fontfamily{pbk}\fontsize{.7cm}{1cm}\selectfont{\@doctypea}}
-                  
+
                   %%%%%%%%%%%%%%%%%
-                  
+
                   \vspace*{1.4cm}
                   %%%%% DOC %%%%%
                   {\bfseries En vue de l'obtention \ifx\@hdr\Oui{de}\else{du grade de}\fi}
-  
+
                   \vspace*{0.1cm}
                   {\fontfamily{pbk}\fontsize{.8cm}{1cm}\selectfont{\@doctypeb \@establishment}}
-              
+
                   \vspace*{0.1cm}
                   \ifx\@afficheSpe\Oui
                     {\bfseries Discipline : }\emph{\@dis}\\
                     {\bfseries Spécialité : }\emph{\@specialty}
                   \else\fi
-              
+
                   \vfill
-              
+
                   \rule{\textwidth}{2.5pt}
-       
+
                   \vspace{-2ex}
                   \rule{\textwidth}{1.2pt}
                   {\bfseries \fontfamily{cmr} Présenté\ifx\@feminin\Oui{ }\else{e }\fi et soutenu\ifx\@feminin\Oui{ }\else{e }\fi publiquement le} \textit{\@defencedate} {\bfseries \fontfamily{cmr} par :}\\
                   \settowidth{\RuleWidth}{\large\fontfamily{cmr}\fontsize{.7cm}{1cm}\textbf{\textsc{\@author}}}
-                  
+
                   \smallskip
                   {\large\fontfamily{cmr}\fontsize{.5cm}{1cm}\textbf{\textsc{\@author}}}
-                  
+
                   \vspace*{10pt}
                   ~{\color{pdgred}\rule{1.2\RuleWidth}{0.8pt}}
                   \vspace*{20pt}
-  
+
                   {\fontfamily{pbk}\fontsize{.8cm}{1cm}\selectfont{\@title}}
-                  
+
                   \rule{\textwidth}{1.2pt}
-                  
+
                   \vspace{-1.6ex}
                   \rule{\textwidth}{2.5pt}
-  	
+
                   \vfill
                   %%%% JURY %%%%
                   {\bfseries JURY}
@@ -389,7 +392,7 @@
                     }
                   \fi
                   %%%% PIED %%%%
-                  
+
                   \vfill
                   \rule{\textwidth}{1.2pt}
 
@@ -421,26 +424,26 @@
                     }
                   }
                   \else{}%
-                  \fi                  
-                  
+                  \fi
+
                   \ifx\@afficheED\Oui %
                     {\raggedright\bfseries \'Ecole doctorale n\no \@docschoolnum :} {\textit{\@docschool}}%
                    \else{}%
                   \fi
-                                       
-                                   
+
+
                   \ifx\@doubleSpe\undefined %
                     \else{\raggedright\bfseries Thèse en cotutelle :} {\textit{\@doubleSpe}} %
                   \fi
-                  
-              
+
+
                   \ifx\@afficheLabo\Oui %
                     {\raggedright\bfseries Unit\'e de Recherche :} {\textit{\@lab}} %
                    \else{}%
                   \fi
-              
+
                   \vfill
-                                  
+
               \end{center}
           \end{minipage}
           \vfill
