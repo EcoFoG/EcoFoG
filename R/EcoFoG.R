@@ -97,10 +97,14 @@ TricoterTout <- function (destination="docs") {
   rmarkdown::draft("beamer", template="beamer", package="EcoFoG", edit=FALSE)
   setwd("beamer")
   # Knit to HTML
-  rmarkdown::render(input="beamer.Rmd", output_format=rmarkdown::ioslides_presentation(), output_dir = "docs")
+  rmarkdown::render(input="beamer.Rmd",
+                    output_format=rmarkdown::ioslides_presentation(
+                      logo="images/EcoFoG2020.png", widescreen=TRUE), output_dir = "docs")
   # Knit to pdf
   rmarkdown::render(input="beamer.Rmd",
-                    output_format=rmarkdown::beamer_presentation(includes=list(in_header="EcoFoGBeamer.tex")), output_dir = "docs")
+                    output_format=rmarkdown::beamer_presentation(
+                      includes=list(in_header="EcoFoGBeamer.tex", df_print="kable",
+                                    fig_caption=FALSE, slide_level=2)), output_dir = "docs")
   # Copy to destination
   docsDirs <- list.dirs(path="docs", full.names=TRUE, recursive=TRUE)
   dir.create(paste(wd, "/", destination, "/beamer", sep = ""))
@@ -124,7 +128,7 @@ TricoterTout <- function (destination="docs") {
   bookdown::render_book("index.Rmd", "bookdown::pdf_book")
   # Copy to destination
   docsDirs <- list.dirs(path="docs", full.names=TRUE, recursive=TRUE)
-  dir.create(paste(wd, "/", destination, "/book/", sep = ""))
+  dir.create(paste(wd, "/", destination, "/book", sep = ""))
   if (length(docsDirs) > 0) {
     sapply(paste(wd, "/", destination, "/book/", docsDirs, sep=""), dir.create)
     docsFiles <- list.files("docs", full.names=TRUE, recursive=TRUE)
