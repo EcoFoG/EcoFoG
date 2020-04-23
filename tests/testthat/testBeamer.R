@@ -12,7 +12,8 @@ testthat::test_that("Beamer is knitted", {
     test_result <- rmarkdown::render(input="test_beamer.Rmd", output_format=rmarkdown::ioslides_presentation())
     testthat::expect_true(endsWith(test_result, "test_beamer.html"))
     # Knit in pdf
-    test_result <- rmarkdown::render(input="test_beamer.Rmd", output_format=rmarkdown::beamer_presentation(includes=list(in_header="EcoFoGBeamer.tex")))
+    test_result <- rmarkdown::render(input="test_beamer.Rmd",
+                                     output_format=rmarkdown::beamer_presentation(includes=list(in_header="EcoFoGBeamer.tex")))
     testthat::expect_true(endsWith(test_result, "test_beamer.pdf"))
     # Clean up
     setwd("..")
