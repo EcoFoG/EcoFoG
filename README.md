@@ -9,17 +9,13 @@ Utilitaires pour l'UMR EcoFoG
 
 * Modèles : ensemble de modèles utilisant la syntaxe de [bookdown](https://bookdown.org/yihui/bookdown/), qui permet la bibliographie, les références croisées, etc.
 
-  * modèle de [présentation Beamer](https://ecofog.github.io/EcoFoG/Presentation/Presentation.pdf) (R Markdown) ou [HTML (ioslides)](https://ecofog.github.io/EcoFoG/Presentation/Presentation.html):
-![Modèle de présentation](https://ecofog.github.io/EcoFoG/Presentation.png)
+  * modèle de [présentation Beamer](https://ecofog.github.io/EcoFoG/beamer/docs/beamer.pdf) (R Markdown) ou [HTML (ioslides)](https://ecofog.github.io/EcoFoG/beamer/docs/beamer.html).
   
-  * modèle d'[article](https://ecofog.github.io/EcoFoG/Article/introduction.html) pour l'autoarchivage (R Markdown):
-![Modèle d'article](https://ecofog.github.io/EcoFoG/Article.png)
+  * modèle de memo [HTML](https://ecofog.github.io/EcoFoG/memo/docs/memo.html) et [PDF](https://ecofog.github.io/EcoFoG/memo/docs/memo.pdf) au format simple (R Markdown).
 
-  * modèle de [memo](https://ecofog.github.io/EcoFoG/Memo/introduction.html) au format simple (R Markdown):
-![Modèle de memo](https://ecofog.github.io/EcoFoG/Memo.png)
+  * modèle d'[article](https://ecofog.github.io/EcoFoG/article/docs/article.pdf) pour l'autoarchivage en PDF (R Markdown), identique au memo en HTML.
 
-  *  Modèle d'[ouvrage](https://ecofog.github.io/EcoFoG/Ouvrage/docs/index.html) (Bookdown): livre, rapport, thèse. 
-![Modèle d'ouvrage](https://ecofog.github.io/EcoFoG/Ouvrage.png)
+  *  Modèle d'ouvrage en [HTML](https://ecofog.github.io/EcoFoG/book/docs/index.html) ou [PDF](https://ecofog.github.io/EcoFoG/book/docs/MyBook.pdf) (Bookdown): livre, rapport, thèse. 
 
   
 * Accès aux données Guyafor
@@ -27,5 +23,5 @@ Utilitaires pour l'UMR EcoFoG
 
 ## Vignette
 
-Une vignette d'[introduction](https://ecofog.github.io/EcoFoG/) est disponible.
+Une [vignette](https://ecofog.github.io/EcoFoG/) est disponible.
 Dans R, utiliser la commande `vignette("EcoFoG")`.
