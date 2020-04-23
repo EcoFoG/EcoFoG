@@ -91,6 +91,68 @@ TricoterTout <- function (destination="docs") {
   # Clean up
   setwd(wd)
   unlink(paste(tmpdir, "/article", sep = ""), recursive = TRUE)
+
+  # Beamer
+  setwd(tmpdir)
+  rmarkdown::draft("beamer", template="beamer", package="EcoFoG", edit=FALSE)
+  setwd("beamer")
+  # Knit to HTML
+  rmarkdown::render(input="beamer.Rmd", output_format=rmarkdown::ioslides_presentation(), output_dir = "docs")
+  # Knit to pdf
+  rmarkdown::render(input="beamer.Rmd",
+                    output_format=rmarkdown::beamer_presentation(includes=list(in_header="EcoFoGBeamer.tex")), output_dir = "docs")
+  # Copy to destination
+  docsDirs <- list.dirs(path="docs", full.names=TRUE, recursive=TRUE)
+  dir.create(paste(wd, "/", destination, "/beamer", sep = ""))
+  if (length(docsDirs) > 0) {
+    sapply(paste(wd, "/", destination, "/beamer/", docsDirs, sep=""), dir.create)
+    docsFiles <- list.files("docs", full.names=TRUE, recursive=TRUE)
+    file.copy(from=docsFiles, to=paste(wd, "/", destination, "/beamer/", docsFiles, sep = ""), overwrite=TRUE)
+  }
+  # Clean up
+  setwd(wd)
+  unlink(paste(tmpdir, "/beamer", sep = ""), recursive = TRUE)
+
+  # Book
+  setwd(tmpdir)
+  rmarkdown::draft("book", template="book", package="EcoFoG", edit=FALSE)
+  setwd("book")
+  unlink("book.Rmd")
+  # Knit to HTML
+  bookdown::render_book("index.Rmd", "bookdown::gitbook")
+  # Knit to pdf
+  bookdown::render_book("index.Rmd", "bookdown::pdf_book")
+  # Copy to destination
+  docsDirs <- list.dirs(path="docs", full.names=TRUE, recursive=TRUE)
+  dir.create(paste(wd, "/", destination, "/book/", sep = ""))
+  if (length(docsDirs) > 0) {
+    sapply(paste(wd, "/", destination, "/book/", docsDirs, sep=""), dir.create)
+    docsFiles <- list.files("docs", full.names=TRUE, recursive=TRUE)
+    file.copy(from=docsFiles, to=paste(wd, "/", destination, "/book/", docsFiles, sep = ""), overwrite=TRUE)
+  }
+  # Clean up
+  setwd(wd)
+  unlink(paste(tmpdir, "/beamer", sep = ""), recursive = TRUE)
+
+  # Memo
+  setwd(tmpdir)
+  rmarkdown::draft("memo", template="memo", package="EcoFoG", edit=FALSE)
+  setwd("memo")
+  # Knit to HTML
+  rmarkdown::render(input="memo.Rmd", output_format=bookdown::html_document2(), output_dir = "docs")
+  # Knit to pdf
+  rmarkdown::render(input="memo.Rmd", output_format=bookdown::pdf_book(base_format = EcoFoG::memo), output_dir = "docs")
+  # Copy to destination
+  docsDirs <- list.dirs(path="docs", full.names=TRUE, recursive=TRUE)
+  dir.create(paste(wd, "/", destination, "/memo", sep = ""))
+  if (length(docsDirs) > 0) {
+    sapply(paste(wd, "/", destination, "/memo/", docsDirs, sep=""), dir.create)
+    docsFiles <- list.files("docs", full.names=TRUE, recursive=TRUE)
+    file.copy(from=docsFiles, to=paste(wd, "/", destination, "/memo/", docsFiles, sep = ""), overwrite=TRUE)
+  }
+  # Clean up
+  setwd(wd)
+  unlink(paste(tmpdir, "/memo", sep = ""), recursive = TRUE)
 }
 
 
