@@ -69,16 +69,22 @@ memo <- function (..., md_extensions = c("-autolink_bare_uris")) {
 #'
 #' @export
 TricoterTout <- function (destination="docs") {
-  # Article
+  # Préparation
+  knitr_table_format <- options("knitr.table.format")
   OriginalWD <- getwd()
   tmpdir <- tempdir()
+  # Article
   setwd(tmpdir)
   unlink("article", recursive = TRUE)
   rmarkdown::draft("article", template="article", package="EcoFoG", edit=FALSE)
   setwd("article")
   # Knit to HTML
-  rmarkdown::render(input="article.Rmd", output_format=bookdown::html_document2(), output_dir = "docs")
+  options(knitr.table.format = 'html')
+  rmarkdown::render(input="article.Rmd",
+                    output_format=bookdown::html_document2(theme="sandstone", toc=TRUE, toc_float=TRUE),
+                    output_dir = "docs")
   # Knit to pdf
+  options(knitr.table.format = 'latex')
   rmarkdown::render(input="article.Rmd", output_format=bookdown::pdf_book(base_format = EcoFoG::article), output_dir = "docs")
   # Copy to destination
   docsDirs <- list.dirs(path="docs", full.names=TRUE, recursive=TRUE)
@@ -99,14 +105,17 @@ TricoterTout <- function (destination="docs") {
   rmarkdown::draft("beamer", template="beamer", package="EcoFoG", edit=FALSE)
   setwd("beamer")
   # Knit to HTML
+  options(knitr.table.format = 'html')
   rmarkdown::render(input="beamer.Rmd",
                     output_format=rmarkdown::ioslides_presentation(
                       logo="images/EcoFoG2020.png", widescreen=TRUE), output_dir = "docs")
   # Knit to pdf
+  options(knitr.table.format = 'latex')
   rmarkdown::render(input="beamer.Rmd",
                     output_format=rmarkdown::beamer_presentation(
-                      includes=list(in_header="EcoFoGBeamer.tex", df_print="kable",
-                                    fig_caption=FALSE, slide_level=2)), output_dir = "docs")
+                      includes=list(in_header="EcoFoGBeamer.tex"),
+                      df_print="kable", fig_caption=FALSE, slide_level=2),
+                    output_dir = "docs")
   # Copy to destination
   docsDirs <- list.dirs(path="docs", full.names=TRUE, recursive=TRUE)
   dir.create(paste(OriginalWD, "/", destination, "/beamer", sep = ""))
@@ -126,8 +135,10 @@ TricoterTout <- function (destination="docs") {
   setwd("book")
   unlink("book.Rmd")
   # Knit to HTML
+  options(knitr.table.format = 'html')
   bookdown::render_book("index.Rmd", "bookdown::gitbook")
   # Knit to pdf
+  options(knitr.table.format = 'latex')
   bookdown::render_book("index.Rmd", "bookdown::pdf_book")
   # Copy to destination
   docsDirs <- list.dirs(path="docs", full.names=TRUE, recursive=TRUE)
@@ -147,8 +158,10 @@ TricoterTout <- function (destination="docs") {
   rmarkdown::draft("memo", template="memo", package="EcoFoG", edit=FALSE)
   setwd("memo")
   # Knit to HTML
+  options(knitr.table.format = 'html')
   rmarkdown::render(input="memo.Rmd", output_format=bookdown::html_document2(), output_dir = "docs")
   # Knit to pdf
+  options(knitr.table.format = 'latex')
   rmarkdown::render(input="memo.Rmd", output_format=bookdown::pdf_book(base_format = EcoFoG::memo), output_dir = "docs")
   # Copy to destination
   docsDirs <- list.dirs(path="docs", full.names=TRUE, recursive=TRUE)
@@ -161,6 +174,7 @@ TricoterTout <- function (destination="docs") {
   # Clean up
   setwd(OriginalWD)
   unlink(paste(tmpdir, "/memo", sep = ""), recursive = TRUE)
+  options(knitr.table.format = knitr_table_format)
 }
 
 
