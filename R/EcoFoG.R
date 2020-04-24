@@ -70,7 +70,7 @@ memo <- function (..., md_extensions = c("-autolink_bare_uris")) {
 #' @export
 TricoterTout <- function (destination="docs") {
   # Article
-  wd <- getwd()
+  OriginalWD <- getwd()
   tmpdir <- tempdir()
   setwd(tmpdir)
   unlink("article", recursive = TRUE)
@@ -82,15 +82,15 @@ TricoterTout <- function (destination="docs") {
   rmarkdown::render(input="article.Rmd", output_format=bookdown::pdf_book(base_format = EcoFoG::article), output_dir = "docs")
   # Copy to destination
   docsDirs <- list.dirs(path="docs", full.names=TRUE, recursive=TRUE)
-  dir.create(paste(wd, "/", destination, sep = ""))
-  dir.create(paste(wd, "/", destination, "/article", sep = ""))
+  dir.create(paste(OriginalWD, "/", destination, sep = ""))
+  dir.create(paste(OriginalWD, "/", destination, "/article", sep = ""))
   if (length(docsDirs) > 0) {
-    sapply(paste(wd, "/", destination, "/article/", docsDirs, sep=""), dir.create)
+    sapply(paste(OriginalWD, "/", destination, "/article/", docsDirs, sep=""), dir.create)
     docsFiles <- list.files("docs", full.names=TRUE, recursive=TRUE)
-    file.copy(from=docsFiles, to=paste(wd, "/", destination, "/article/", docsFiles, sep = ""), overwrite=TRUE)
+    file.copy(from=docsFiles, to=paste(OriginalWD, "/", destination, "/article/", docsFiles, sep = ""), overwrite=TRUE)
   }
   # Clean up
-  setwd(wd)
+  setwd(OriginalWD)
   unlink(paste(tmpdir, "/article", sep = ""), recursive = TRUE)
 
   # Beamer
@@ -109,14 +109,14 @@ TricoterTout <- function (destination="docs") {
                                     fig_caption=FALSE, slide_level=2)), output_dir = "docs")
   # Copy to destination
   docsDirs <- list.dirs(path="docs", full.names=TRUE, recursive=TRUE)
-  dir.create(paste(wd, "/", destination, "/beamer", sep = ""))
+  dir.create(paste(OriginalWD, "/", destination, "/beamer", sep = ""))
   if (length(docsDirs) > 0) {
-    sapply(paste(wd, "/", destination, "/beamer/", docsDirs, sep=""), dir.create)
+    sapply(paste(OriginalWD, "/", destination, "/beamer/", docsDirs, sep=""), dir.create)
     docsFiles <- list.files("docs", full.names=TRUE, recursive=TRUE)
-    file.copy(from=docsFiles, to=paste(wd, "/", destination, "/beamer/", docsFiles, sep = ""), overwrite=TRUE)
+    file.copy(from=docsFiles, to=paste(OriginalWD, "/", destination, "/beamer/", docsFiles, sep = ""), overwrite=TRUE)
   }
   # Clean up
-  setwd(wd)
+  setwd(OriginalWD)
   unlink(paste(tmpdir, "/beamer", sep = ""), recursive = TRUE)
 
   # Book
@@ -131,14 +131,14 @@ TricoterTout <- function (destination="docs") {
   bookdown::render_book("index.Rmd", "bookdown::pdf_book")
   # Copy to destination
   docsDirs <- list.dirs(path="docs", full.names=TRUE, recursive=TRUE)
-  dir.create(paste(wd, "/", destination, "/book", sep = ""))
+  dir.create(paste(OriginalWD, "/", destination, "/book", sep = ""))
   if (length(docsDirs) > 0) {
-    sapply(paste(wd, "/", destination, "/book/", docsDirs, sep=""), dir.create)
+    sapply(paste(OriginalWD, "/", destination, "/book/", docsDirs, sep=""), dir.create)
     docsFiles <- list.files("docs", full.names=TRUE, recursive=TRUE)
-    file.copy(from=docsFiles, to=paste(wd, "/", destination, "/book/", docsFiles, sep = ""), overwrite=TRUE)
+    file.copy(from=docsFiles, to=paste(OriginalWD, "/", destination, "/book/", docsFiles, sep = ""), overwrite=TRUE)
   }
   # Clean up
-  setwd(wd)
+  setwd(OriginalWD)
   unlink(paste(tmpdir, "/beamer", sep = ""), recursive = TRUE)
 
   # Memo
@@ -152,14 +152,14 @@ TricoterTout <- function (destination="docs") {
   rmarkdown::render(input="memo.Rmd", output_format=bookdown::pdf_book(base_format = EcoFoG::memo), output_dir = "docs")
   # Copy to destination
   docsDirs <- list.dirs(path="docs", full.names=TRUE, recursive=TRUE)
-  dir.create(paste(wd, "/", destination, "/memo", sep = ""))
+  dir.create(paste(OriginalWD, "/", destination, "/memo", sep = ""))
   if (length(docsDirs) > 0) {
-    sapply(paste(wd, "/", destination, "/memo/", docsDirs, sep=""), dir.create)
+    sapply(paste(OriginalWD, "/", destination, "/memo/", docsDirs, sep=""), dir.create)
     docsFiles <- list.files("docs", full.names=TRUE, recursive=TRUE)
-    file.copy(from=docsFiles, to=paste(wd, "/", destination, "/memo/", docsFiles, sep = ""), overwrite=TRUE)
+    file.copy(from=docsFiles, to=paste(OriginalWD, "/", destination, "/memo/", docsFiles, sep = ""), overwrite=TRUE)
   }
   # Clean up
-  setwd(wd)
+  setwd(OriginalWD)
   unlink(paste(tmpdir, "/memo", sep = ""), recursive = TRUE)
 }
 
