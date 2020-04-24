@@ -73,6 +73,7 @@ TricoterTout <- function (destination="docs") {
   wd <- getwd()
   tmpdir <- tempdir()
   setwd(tmpdir)
+  unlink("article", recursive = TRUE)
   rmarkdown::draft("article", template="article", package="EcoFoG", edit=FALSE)
   setwd("article")
   # Knit to HTML
@@ -94,6 +95,7 @@ TricoterTout <- function (destination="docs") {
 
   # Beamer
   setwd(tmpdir)
+  unlink("beamer", recursive = TRUE)
   rmarkdown::draft("beamer", template="beamer", package="EcoFoG", edit=FALSE)
   setwd("beamer")
   # Knit to HTML
@@ -119,6 +121,7 @@ TricoterTout <- function (destination="docs") {
 
   # Book
   setwd(tmpdir)
+  unlink("book", recursive = TRUE)
   rmarkdown::draft("book", template="book", package="EcoFoG", edit=FALSE)
   setwd("book")
   unlink("book.Rmd")
@@ -140,6 +143,7 @@ TricoterTout <- function (destination="docs") {
 
   # Memo
   setwd(tmpdir)
+  unlink("memo", recursive = TRUE)
   rmarkdown::draft("memo", template="memo", package="EcoFoG", edit=FALSE)
   setwd("memo")
   # Knit to HTML
