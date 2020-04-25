@@ -64,7 +64,7 @@ Les fonctions `Guyafor2df()` et `Paracou2df()` produisent des dataframes à part
 
 La package est destiné à _R_, à installer de préférence dans sa [dernière version](https://cran.r-project.org/) avec [RStudio](https://www.rstudio.com/products/rstudio/download/#download) en version supérieure à 1.
 
-Pour installer le package à partir de GitHub, il faut utiliser le package _devtools_ après l'avoir lui-même installé comme tout autre package (menu _Tools/Install Packages..._).
+Pour installer le package à partir de GitHub, il faut utiliser le package _remotes_ après l'avoir lui-même installé comme tout autre package (menu _Tools/Install Packages..._).
 
 
 ## Production de fichiers PDF
