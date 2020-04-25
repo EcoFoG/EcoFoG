@@ -169,7 +169,7 @@ TricoterOuvrage <- function (destination="docs") {
   unlink("book.Rmd")
   # Knit to HTML
   options(knitr.table.format = 'html')
-  bookdown::render_book("index.Rmd", "bookdown::gitbook")
+  bookdown::render_book("index.Rmd", "bookdown::gitbook", clean_envir=FALSE)
   # Knit to pdf
   options(knitr.table.format = 'latex')
   bookdown::render_book("index.Rmd", "bookdown::pdf_book", clean_envir=FALSE)
