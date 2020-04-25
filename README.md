@@ -3,7 +3,7 @@
 [![Travis-CI Build Status](https://travis-ci.org/EcoFoG/EcoFoG.svg?branch=master)](https://travis-ci.org/EcoFoG/EcoFoG)
 [![codecov](https://codecov.io/github/EcoFoG/EcoFoG/branch/master/graphs/badge.svg)](https://codecov.io/github/EcoFoG/EcoFoG) 
 
-Utilitaires pour l'UMR EcoFoG
+Utilitaires pour l'UMR EcoFoG (package R)
 
 ## Contenu
 
@@ -16,6 +16,12 @@ Utilitaires pour l'UMR EcoFoG
 
 * Accès aux données Guyafor: `Guyafor2df()` et `Paracou2df()`.
 * Cartographie interactive de Paracou: `Automap()`.
+
+
+## Installation
+
+Dans R : `remotes::install_github("EcoFoG/EcoFoG", build_vignettes = TRUE)`
+
 
 ## Vignette
 
