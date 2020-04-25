@@ -172,7 +172,7 @@ TricoterOuvrage <- function (destination="docs") {
   bookdown::render_book("index.Rmd", "bookdown::gitbook")
   # Knit to pdf
   options(knitr.table.format = 'latex')
-  bookdown::render_book("index.Rmd", "bookdown::pdf_book")
+  bookdown::render_book("index.Rmd", "bookdown::pdf_book", clean_envir=FALSE)
   # Copy to destination
   docsDirs <- list.dirs(path="docs", full.names=TRUE, recursive=TRUE)
   dir.create(paste(OriginalWD, "/", destination, sep = ""))
