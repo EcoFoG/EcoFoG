@@ -59,7 +59,7 @@ memo <- function (..., md_extensions = c("-autolink_bare_uris")) {
 
 
 
-#' TricoterTout
+#' Tricoter
 #'
 #' Création des tous les documents à partir des modèles
 #'
@@ -67,9 +67,23 @@ memo <- function (..., md_extensions = c("-autolink_bare_uris")) {
 #'
 #' @param destination Dossier de destination des documents
 #'
+#' @name Tricoter
+NULL
+
+
+#' @rdname Tricoter
 #' @export
 TricoterTout <- function (destination="docs") {
-  # Préparation
+  TricoterArticle(destination=destination)
+  TricoterPresentation(destination=destination)
+  TricoterOuvrage(destination=destination)
+  TricoterMemo(destination=destination)
+}
+
+#' @rdname Tricoter
+#' @export
+TricoterArticle <- function (destination="docs") {
+  # Preparation
   knitr_table_format <- options("knitr.table.format")
   OriginalWD <- getwd()
   tmpdir <- tempdir()
@@ -98,7 +112,16 @@ TricoterTout <- function (destination="docs") {
   # Clean up
   setwd(OriginalWD)
   unlink(paste(tmpdir, "/article", sep = ""), recursive = TRUE)
+  options(knitr.table.format = knitr_table_format)
+}
 
+#' @rdname Tricoter
+#' @export
+TricoterPresentation <- function (destination="docs") {
+  # Preparation
+  knitr_table_format <- options("knitr.table.format")
+  OriginalWD <- getwd()
+  tmpdir <- tempdir()
   # Beamer
   setwd(tmpdir)
   unlink("beamer", recursive = TRUE)
@@ -118,6 +141,7 @@ TricoterTout <- function (destination="docs") {
                     output_dir = "docs")
   # Copy to destination
   docsDirs <- list.dirs(path="docs", full.names=TRUE, recursive=TRUE)
+  dir.create(paste(OriginalWD, "/", destination, sep = ""))
   dir.create(paste(OriginalWD, "/", destination, "/beamer", sep = ""))
   if (length(docsDirs) > 0) {
     sapply(paste(OriginalWD, "/", destination, "/beamer/", docsDirs, sep=""), dir.create)
@@ -127,7 +151,16 @@ TricoterTout <- function (destination="docs") {
   # Clean up
   setwd(OriginalWD)
   unlink(paste(tmpdir, "/beamer", sep = ""), recursive = TRUE)
+  options(knitr.table.format = knitr_table_format)
+}
 
+#' @rdname Tricoter
+#' @export
+TricoterOuvrage <- function (destination="docs") {
+  # Preparation
+  knitr_table_format <- options("knitr.table.format")
+  OriginalWD <- getwd()
+  tmpdir <- tempdir()
   # Book
   setwd(tmpdir)
   unlink("book", recursive = TRUE)
@@ -142,6 +175,7 @@ TricoterTout <- function (destination="docs") {
   bookdown::render_book("index.Rmd", "bookdown::pdf_book")
   # Copy to destination
   docsDirs <- list.dirs(path="docs", full.names=TRUE, recursive=TRUE)
+  dir.create(paste(OriginalWD, "/", destination, sep = ""))
   dir.create(paste(OriginalWD, "/", destination, "/book", sep = ""))
   if (length(docsDirs) > 0) {
     sapply(paste(OriginalWD, "/", destination, "/book/", docsDirs, sep=""), dir.create)
@@ -150,8 +184,17 @@ TricoterTout <- function (destination="docs") {
   }
   # Clean up
   setwd(OriginalWD)
-  unlink(paste(tmpdir, "/beamer", sep = ""), recursive = TRUE)
+  unlink(paste(tmpdir, "/book", sep = ""), recursive = TRUE)
+  options(knitr.table.format = knitr_table_format)
+}
 
+#' @rdname Tricoter
+#' @export
+TricoterMemo <- function (destination="docs") {
+  # Preparation
+  knitr_table_format <- options("knitr.table.format")
+  OriginalWD <- getwd()
+  tmpdir <- tempdir()
   # Memo
   setwd(tmpdir)
   unlink("memo", recursive = TRUE)
@@ -165,6 +208,7 @@ TricoterTout <- function (destination="docs") {
   rmarkdown::render(input="memo.Rmd", output_format=bookdown::pdf_book(base_format = EcoFoG::memo), output_dir = "docs")
   # Copy to destination
   docsDirs <- list.dirs(path="docs", full.names=TRUE, recursive=TRUE)
+  dir.create(paste(OriginalWD, "/", destination, sep = ""))
   dir.create(paste(OriginalWD, "/", destination, "/memo", sep = ""))
   if (length(docsDirs) > 0) {
     sapply(paste(OriginalWD, "/", destination, "/memo/", docsDirs, sep=""), dir.create)
@@ -176,5 +220,3 @@ TricoterTout <- function (destination="docs") {
   unlink(paste(tmpdir, "/memo", sep = ""), recursive = TRUE)
   options(knitr.table.format = knitr_table_format)
 }
-
-
