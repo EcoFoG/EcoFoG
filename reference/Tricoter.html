@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Function reference • EcoFoG</title>
+<title>Tricoter — Tricoter • EcoFoG</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -46,7 +46,8 @@
 
 
 
-<meta property="og:title" content="Function reference" />
+<meta property="og:title" content="Tricoter — Tricoter" />
+<meta property="og:description" content="Création des tous les documents à partir des modèles" />
 <meta property="og:image" content="https://ecofog.github.io/ecofog/logo.png" />
 
 
@@ -66,7 +67,7 @@
   </head>
 
   <body data-spy="scroll" data-target="#toc">
-    <div class="container template-reference-index">
+    <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -119,84 +120,41 @@
       </header>
 
 <div class="row">
-  <div class="contents col-md-9">
+  <div class="col-md-9 contents">
     <div class="page-header">
-      <h1>Reference</h1>
+    <h1>Tricoter</h1>
+    <small class="dont-index">Source: <a href='https://github.com/EcoFoG/EcoFoG/blob/master/R/EcoFoG.R'><code>R/EcoFoG.R</code></a></small>
+    <div class="hidden name"><code>Tricoter.Rd</code></div>
     </div>
 
-    <table class="ref-index">
+    <div class="ref-description">
+    <p>Création des tous les documents à partir des modèles</p>
+    </div>
 
-    <colgroup>
-      
-      <col class="alias" />
-      <col class="title" />
-    </colgroup>
+    <pre class="usage"><span class='fu'>TricoterTout</span>(<span class='kw'>destination</span> <span class='kw'>=</span> <span class='st'>"docs"</span>)
 
-    <tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-all-functions" class="hasAnchor"><a href="#section-all-functions" class="anchor"></a>All functions</h2>
-          <p class="section-desc"></p>
-        </th>
-      </tr>
-      
-      
-    </tbody><tbody>
-      
-      
-      <tr>
-        
-        <td>
-          <p><code><a href="Automap.html">Automap()</a></code> </p>
-        </td>
-        <td><p>AutoMap</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="EcoFoG.html">EcoFoG</a></code> </p>
-        </td>
-        <td><p>EcoFoG</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="Guyafor2df.html">Guyafor2df()</a></code> </p>
-        </td>
-        <td><p>Donnees Guyafor</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="Paracou2df.html">Paracou2df()</a></code> </p>
-        </td>
-        <td><p>Donnees Paracou</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="Paracou6_2016.html">Paracou6_2016</a></code> </p>
-        </td>
-        <td><p>Inventaire 2016 de la parcelle 6 de Paracou.</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="Tricoter.html">TricoterTout()</a></code> <code><a href="Tricoter.html">TricoterArticle()</a></code> <code><a href="Tricoter.html">TricoterPresentation()</a></code> <code><a href="Tricoter.html">TricoterOuvrage()</a></code> <code><a href="Tricoter.html">TricoterMemo()</a></code> </p>
-        </td>
-        <td><p>Tricoter</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="article.html">article()</a></code> </p>
-        </td>
-        <td><p>Article</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="memo.html">memo()</a></code> </p>
-        </td>
-        <td><p>Memo</p></td>
-      </tr>
-    </tbody>
+<span class='fu'>TricoterArticle</span>(<span class='kw'>destination</span> <span class='kw'>=</span> <span class='st'>"docs"</span>)
+
+<span class='fu'>TricoterPresentation</span>(<span class='kw'>destination</span> <span class='kw'>=</span> <span class='st'>"docs"</span>)
+
+<span class='fu'>TricoterOuvrage</span>(<span class='kw'>destination</span> <span class='kw'>=</span> <span class='st'>"docs"</span>)
+
+<span class='fu'>TricoterMemo</span>(<span class='kw'>destination</span> <span class='kw'>=</span> <span class='st'>"docs"</span>)</pre>
+
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>destination</th>
+      <td><p>Dossier de destination des documents</p></td>
+    </tr>
     </table>
-  </div>
 
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>Utilisé pour vérifier le bon fonctionnement des modèles</p>
+
+  </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
       <h2 data-toc-skip>Contents</h2>
