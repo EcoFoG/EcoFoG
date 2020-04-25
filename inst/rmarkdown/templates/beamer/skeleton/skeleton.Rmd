@@ -36,7 +36,7 @@ Library <- function(Packages) {
   invisible(sapply(Packages, InstallAndLoad))
 }
 # Ajouter les packages nécessaires ici
-Library(c("kableExtra", "tidyverse"))
+Library(c("kableExtra", "formatR", "tidyverse"))
 # Set ggplotting to bw plot default, but with transparent background elements.  
 theme_set(theme_bw(base_size=12))
 theme_update(panel.background = element_rect(fill = "transparent", colour = NA),

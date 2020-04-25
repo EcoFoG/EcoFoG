@@ -42,7 +42,7 @@ Library <- function(Packages) {
   invisible(sapply(Packages, InstallAndLoad))
 }
 # Ajouter les packages nécessaires ici
-Library(c("kableExtra"))
+Library(c("kableExtra", "formatR"))
 ```
 
 
