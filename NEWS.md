@@ -1,4 +1,4 @@
-# EcoFog 1.8-0
+# EcoFog 1.8-1
 
 ## Améliorations
 
