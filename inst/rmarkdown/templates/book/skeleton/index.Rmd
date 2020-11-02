@@ -129,7 +129,7 @@ InstallPackages <- function(Packages) {
 
 # Basic packages
 InstallPackages(c("bookdown", "devtools", "kableExtra", "knitr", "rmarkdown"))
-library("kableExtra", "formatR") # Mandatory to load css and more
+library("kableExtra") # Mandatory to load css and more
 
 # Chunk font size hook: allows size='small' or any valid Latex font size in chunk options
 def.chunk.hook  <- knitr::knit_hooks$get("chunk")
@@ -142,7 +142,7 @@ knitr::knit_hooks$set(chunk = function(x, options) {
 
 ```{r Options, echo=FALSE, message=FALSE}
 ### Customized options for this book
-# Add necessary packages here
+# Add necessary CRAN packages here
 Packages <- c("tidyverse", "magrittr", "gridExtra")
 # Install them if necessary
 InstallPackages(Packages)
