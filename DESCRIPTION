@@ -20,6 +20,6 @@ Depends:
 Imports: rmarkdown, bookdown, odbc, ggplot2, ggrepel, pingr, svglite, shiny, shinyjs, shinycssloaders, utils
 Suggests: testthat, knitr, pkgdown, dbmss, kableExtra, dplyr, tidyr
 LazyData: true
-RoxygenNote: 7.1.0
+RoxygenNote: 7.1.1
 VignetteBuilder: knitr
 SystemRequirements: pandoc
