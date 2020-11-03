@@ -1,4 +1,8 @@
 language: r
+os: linux
+dist: xenial
+pandoc_version: 2.7.3
+
 warnings_are_errors: false    # Commentaires en francais avec accents
 cache: packages
 
