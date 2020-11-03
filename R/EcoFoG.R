@@ -102,10 +102,10 @@ TricoterArticle <- function (destination="docs") {
   rmarkdown::render(input="article.Rmd", output_format=bookdown::pdf_book(base_format = EcoFoG::article), output_dir = "docs")
   # Copy to destination
   docsDirs <- list.dirs(path="docs", full.names=TRUE, recursive=TRUE)
-  dir.create(paste(OriginalWD, "/", destination, sep = ""))
-  dir.create(paste(OriginalWD, "/", destination, "/article", sep = ""))
+  dir.create(paste(OriginalWD, "/", destination, sep = ""), showWarnings=FALSE)
+  dir.create(paste(OriginalWD, "/", destination, "/article", sep = ""), showWarnings=FALSE)
   if (length(docsDirs) > 0) {
-    sapply(paste(OriginalWD, "/", destination, "/article/", docsDirs, sep=""), dir.create)
+    sapply(paste(OriginalWD, "/", destination, "/article/", docsDirs, sep=""), dir.create, showWarnings=FALSE)
     docsFiles <- list.files("docs", full.names=TRUE, recursive=TRUE)
     file.copy(from=docsFiles, to=paste(OriginalWD, "/", destination, "/article/", docsFiles, sep = ""), overwrite=TRUE)
   }
@@ -141,10 +141,10 @@ TricoterPresentation <- function (destination="docs") {
                     output_dir = "docs")
   # Copy to destination
   docsDirs <- list.dirs(path="docs", full.names=TRUE, recursive=TRUE)
-  dir.create(paste(OriginalWD, "/", destination, sep = ""))
-  dir.create(paste(OriginalWD, "/", destination, "/beamer", sep = ""))
+  dir.create(paste(OriginalWD, "/", destination, sep = ""), showWarnings=FALSE)
+  dir.create(paste(OriginalWD, "/", destination, "/beamer", sep = ""), showWarnings=FALSE)
   if (length(docsDirs) > 0) {
-    sapply(paste(OriginalWD, "/", destination, "/beamer/", docsDirs, sep=""), dir.create)
+    sapply(paste(OriginalWD, "/", destination, "/beamer/", docsDirs, sep=""), dir.create, showWarnings=FALSE)
     docsFiles <- list.files("docs", full.names=TRUE, recursive=TRUE)
     file.copy(from=docsFiles, to=paste(OriginalWD, "/", destination, "/beamer/", docsFiles, sep = ""), overwrite=TRUE)
   }
@@ -175,10 +175,10 @@ TricoterOuvrage <- function (destination="docs") {
   bookdown::render_book("index.Rmd", "bookdown::pdf_book")
   # Copy to destination
   docsDirs <- list.dirs(path="docs", full.names=TRUE, recursive=TRUE)
-  dir.create(paste(OriginalWD, "/", destination, sep = ""))
-  dir.create(paste(OriginalWD, "/", destination, "/book", sep = ""))
+  dir.create(paste(OriginalWD, "/", destination, sep = ""), showWarnings=FALSE)
+  dir.create(paste(OriginalWD, "/", destination, "/book", sep = ""), showWarnings=FALSE)
   if (length(docsDirs) > 0) {
-    sapply(paste(OriginalWD, "/", destination, "/book/", docsDirs, sep=""), dir.create)
+    sapply(paste(OriginalWD, "/", destination, "/book/", docsDirs, sep=""), dir.create, showWarnings=FALSE)
     docsFiles <- list.files("docs", full.names=TRUE, recursive=TRUE)
     file.copy(from=docsFiles, to=paste(OriginalWD, "/", destination, "/book/", docsFiles, sep = ""), overwrite=TRUE)
   }
@@ -208,10 +208,10 @@ TricoterMemo <- function (destination="docs") {
   rmarkdown::render(input="memo.Rmd", output_format=bookdown::pdf_book(base_format = EcoFoG::memo), output_dir = "docs")
   # Copy to destination
   docsDirs <- list.dirs(path="docs", full.names=TRUE, recursive=TRUE)
-  dir.create(paste(OriginalWD, "/", destination, sep = ""))
-  dir.create(paste(OriginalWD, "/", destination, "/memo", sep = ""))
+  dir.create(paste(OriginalWD, "/", destination, sep = ""), showWarnings=FALSE)
+  dir.create(paste(OriginalWD, "/", destination, "/memo", sep = ""), showWarnings=FALSE)
   if (length(docsDirs) > 0) {
-    sapply(paste(OriginalWD, "/", destination, "/memo/", docsDirs, sep=""), dir.create)
+    sapply(paste(OriginalWD, "/", destination, "/memo/", docsDirs, sep=""), dir.create, showWarnings=FALSE)
     docsFiles <- list.files("docs", full.names=TRUE, recursive=TRUE)
     file.copy(from=docsFiles, to=paste(OriginalWD, "/", destination, "/memo/", docsFiles, sep = ""), overwrite=TRUE)
   }
