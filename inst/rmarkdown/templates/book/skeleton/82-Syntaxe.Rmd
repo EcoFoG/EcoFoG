@@ -15,7 +15,12 @@ You can label chapter and section titles using `{#label}` after them, e.g., we c
 
 Figures and tables with captions will be placed in `figure` and `table` environments, respectively.
 
-```{r nice-fig, fig.cap='Here is a nice figure! It has a long, long, long, long, long, long, long, long, long, long, long, long, long, long, long, long, long, long, long, long, caption'}
+Figure captions can be set into a paragraph starting with `(ref:FigName)` where `FigName` is the name of the figure code chunk.
+These caption allow any format (even though they are limited to a single paragraph), whilst captions in code chunk headers must be plain text.
+In the code chunk header, the caption is called by `fig.cap='(ref:FigName)'.
+
+(ref:nice-fig) Here is a nice figure! It has a long, long, *long*, **long**, long, long, long, long, long, long, long, long, long, long, long, long, long, long, long, long, caption in full Markdown, including maths : $\pi$ .
+```{r nice-fig, fig.cap='(ref:nice-fig)'}
 plot(pressure, type = 'b', pch = 19)
 ```
 
