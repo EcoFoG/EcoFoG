@@ -1,5 +1,7 @@
 testthat::context("Tricot")
 
+Sys.setlocale('LC_ALL','C')
+
 # Knit from template
 testthat::test_that("Templates are knitted", {
   testthat::skip_on_cran()
