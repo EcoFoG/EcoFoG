@@ -117,7 +117,7 @@ fourthpagefontsize: normalsize
 
 ```{r Parameters, echo=FALSE, message=FALSE}
 ### Utilities. Do not modify.
-# Installation of packages if necessary and loading
+# Installation of packages if necessary
 InstallPackages <- function(Packages) {
   InstallPackage <- function(Package) {
     if (!Package %in% installed.packages()[, 1]) {
