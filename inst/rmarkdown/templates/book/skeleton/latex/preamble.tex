@@ -3,13 +3,9 @@
 
 %%% PACKAGES
 \usepackage{lipsum} % Dummy text.
+% Utilisation :
+% Ajouter ici d'éventuels packages LaTeX
 
-% Bug de bookdown: ne traite plus la déclaration "otherlangs" dans le préambule
-% Pour charger les langues, écriture ici en dur du produit de bookdown
-% Corrigé le 22/11/2019. A retester régulièrement: supprimer ces lignes si la compilation fonctionne sans elles.
-\usepackage{polyglossia}
-  \setmainlanguage[variant=american]{english}
-  \setotherlanguage[]{french}
 
 % Environnement "Essentiel" en début de chapitre
 \usepackage[tikz]{bclogo}
@@ -21,3 +17,11 @@
 %```{block, type='Essentiel'}
 % Texte à mettre en valeur
 % ```
+
+% Blocs de code taille scriptsize
+\let\oldverbatim\verbatim
+\def\verbatim{\oldverbatim\scriptsize}
+% Utilisation :
+% S'applique aux blocs de code et résultats du code R
+% opts_chunk$set(size="scriptsize") s'applique au code et ses résultats
+% Si désaccord sur les résultats, \def\verbatim{...} est prioritaire
