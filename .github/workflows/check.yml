@@ -15,6 +15,10 @@ jobs:
       - uses: r-lib/actions/setup-r@v1
       - name: Install pandoc
         uses: r-lib/actions/setup-pandoc@v1
+      - name: brew packages for dependencies
+        run: |
+          # cairo for package gdtools
+          brew install cairo
       - name: Install dependencies
         run: |
           install.packages(c("remotes", "rcmdcheck", "covr", "pkgdown"))
