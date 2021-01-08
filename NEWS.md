@@ -1,3 +1,12 @@
+# EcoFog 1.9-0
+
+## Améliorations
+
+* Tests unitaires et intégration continue par Github Actions
+* Code de taille script dans le modèle book
+* Logo EcoFoG 2021
+
+
 # EcoFog 1.8-2
 
 ## Améliorations
