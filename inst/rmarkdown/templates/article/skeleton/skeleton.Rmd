@@ -28,8 +28,6 @@ journalinfo: Hal xxx
 archive: DOI xxxx
 date: "`r format(Sys.time(), '%d %B %Y')`"
 preamble: >
-  \usepackage{textcomp}
-  \DeclareUnicodeCharacter{B0}{\textdegree}
   \usepackage{tabu}
   \renewenvironment{table}{\begin{table*}}{\end{table*}\ignorespacesafterend}
   \hyphenation{bio-di-ver-si-ty sap-lings}
@@ -50,6 +48,7 @@ output:
   bookdown::word_document2: default
   bookdown::pdf_book:
     base_format: EcoFoG::article
+    latex_engine: xelatex
     keep_tex: TRUE
 ---
 
