@@ -20,7 +20,7 @@
 
 % ---------------------------------------------------------------------
 \RequirePackage{natbib}         % Bibliographie avancée (parenthèses, citep...). Avant babel.
-\RequirePackage[utf8]{inputenc} % Pour les accents
+%\RequirePackage[utf8]{inputenc} % Pour les accents
 \RequirePackage[T1]{fontenc}    % Pour les accents
 \RequirePackage{amsmath,amsfonts,amssymb}
 \RequirePackage{graphicx,xcolor}
@@ -28,8 +28,8 @@
 % ---------------------------------------------------------------------
 
 
-% ---------------------------------------------------------------------		  
-% margins		  
+% ---------------------------------------------------------------------
+% margins
 \RequirePackage[left=2cm,%
                 right=2cm,%
                 top=2.25cm,%
@@ -69,7 +69,7 @@
   {}
   {0em}
   {\colorbox{color2!10}{\parbox{\dimexpr\linewidth-2\fboxsep\relax}{\centering#1}}}
-  []  
+  []
 \titleformat{\subsection}
   {\color{color1}\sffamily\bfseries}
   {\thesubsection}
@@ -81,12 +81,12 @@
   {\thesubsubsection}
   {0.5em}
   {#1}
-  []    
+  []
 \titleformat{\paragraph}[runin]
   {\sffamily\small\bfseries}
   {}
   {0em}
-  {#1} 
+  {#1}
 \titlespacing*{\section}{0pc}{3ex \@plus4pt \@minus3pt}{5pt}
 \titlespacing*{\subsection}{0pc}{2.5ex \@plus3pt \@minus2pt}{0pt}
 \titlespacing*{\subsubsection}{0pc}{2ex \@plus2.5pt \@minus1.5pt}{0pt}
@@ -112,8 +112,8 @@
   {}
   {}
   {}
-  [\ \textbullet\ ]  
-% ---------------------------------------------------------------------  
+  [\ \textbullet\ ]
+% ---------------------------------------------------------------------
 % Get the multiple author set
 \newcount\@authcnt
 \newcount\@tmpcnt\@tmpcnt\z@
@@ -128,7 +128,7 @@
   \fi
 \next}
 
-	 
+
 \newcommand{\affiliation}[1]{%
     \global\advance\@authcnt1
     \expandafter\gdef\csname @auth\romannumeral\the\@authcnt\endcsname
@@ -186,7 +186,7 @@
 \definecolor{color1}{RGB}{0,0,90}   % Color of the article title and sections
 \definecolor{color2}{RGB}{0,20,20}  % Color of the boxes behind the abstract and headings
 
-\newlength{\tocsep}                 % Format de la table des matières 
+\newlength{\tocsep}                 % Format de la table des matières
 \setlength\tocsep{1.5pc}            % Sets the indentation of the sections in the table of contents
 
 \RequirePackage{tabularx}           % Retour à la ligne des tableaux
@@ -195,10 +195,10 @@
 \RequirePackage{breqn}              % Retour à la ligne des équations
 \RequirePackage{url}                % Retour à la ligne des url
 \RequirePackage{hyperref}           % Liens hypertextes, signets PDF
-  \hypersetup{urlcolor=blue,linkcolor=black,citecolor=black,colorlinks=true} 
+  \hypersetup{urlcolor=blue,linkcolor=black,citecolor=black,colorlinks=true}
 
   \graphicspath{{graphics/}}        % Dossier de stockage des figures
-\RequirePackage{epstopdf}           % Figures eps
+%\RequirePackage{epstopdf}           % Figures eps
 \RequirePackage{enumitem}           % Espacement dans les listes
   \setlist[itemize]{noitemsep,nolistsep}
   \setlist[enumerate]{noitemsep,nolistsep}
