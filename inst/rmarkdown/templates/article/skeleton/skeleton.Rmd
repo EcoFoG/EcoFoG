@@ -261,13 +261,6 @@ Ces commandes sont dans la section `preamble:` de l'entête du fichier Markdown.
 
 Les commandes par défaut permettent :
 
-- d'utiliser le caractère degré (exemple: 20°C) :
-```
-\usepackage{textcomp}
-\DeclareUnicodeCharacter{B0}%
-  {\textdegree}
-```
-
 - d'obtenir des tableaux sur deux colonnes en redéfinissant l'environnement `table` et de charger le package _tabu_ nécessaire à _kableExtra_:
 ```
 \usepackage{tabu}
@@ -277,7 +270,6 @@ Les commandes par défaut permettent :
   \ignorespacesafterend
 }
 ```
-
 - de montrer l'utilisation de la commande de césure:
 ```
 \hyphenation%
