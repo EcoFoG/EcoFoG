@@ -16,8 +16,6 @@ Ce fichier devra être supprimé, comme _81-Demarrage.Rmd_ et _82-Syntaxe.Rmd_ :
 Pour commencer, créer un nouveau projet R à partir de ce dossier.
 Ouvrir ensuite _index.Rmd_ et cliquer sur le bouton _Build Book_ dans la fenêtre _Build_ de Rstudio.
 
-Attention, évolutions le 11/04/2019. Deux fichiers sont à mettre à jour dans les projets existants:
-
-- Bug dans bookdown qui ne prend plus en compte les déclarations de langues "otherlangs". Le code pour contourner le bug est dans _latex/preamble.tex_, à supprimer à terme.
+Attention, évolutions le 11/04/2019. Un fichier est à mettre à jour dans les projets existants:
 
 - Mise à jour du modèle _latex/pdgUniv.sty_ après une évolution de LaTeX.
