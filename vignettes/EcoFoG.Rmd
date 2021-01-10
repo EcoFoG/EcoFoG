@@ -14,18 +14,13 @@ Il est hébergé sur _GitHub_ sans vocation à être déposé sur CRAN.
 
 Il contient :
 
-- Des modèles de documents _RMarkdown_ :
+- Des modèles de documents _RMarkdown_:
 
     - Un modèle d'article (produit au format PDF) bien formaté;
-
     - Un modèle de mémo (produit au format PDF) plus simple que l'article;
-
     - Un modèle de présentation Beamer;
-    
     - Un modèle d'ouvrage (Bookdown): livre, rapport, thèse.
-    
 - Du code :
-
     - Des fonctions pour accéder aux données de la base Guyafor à partir du réseau local du campus de Kourou ou en VPN.
 
 
@@ -41,7 +36,9 @@ Ecrire le document dans RStudio : le mode d'emploi des modèles est dans leur co
 
 Cliquer sur le bouton **Knit** de RStudio génère le document au format demandé.
 
-Il est préférable de créer un projet RStudio pour bénéficier de toutes les possiblités : _File_ / _New Project_ puis utiliser l'assistant pour créer un projet à partir d'un dossier existant.
+Il est préférable de créer un projet RStudio pour bénéficier de toutes les possibilités : _File_ / _New Project_ puis utiliser l'assistant pour créer un projet à partir d'un dossier existant.
+
+Voir la [documentation détaillée](https://ericmarcon.github.io/travailleR/chap-rediger.html).
 
 
 # AutoMap
@@ -56,81 +53,6 @@ L'application ne fonctionne que si elle peut accéder à la base de données Guy
 # Accès aux données
 
 Les fonctions `Guyafor2df()` et `Paracou2df()` produisent des dataframes à partir de la base de données Guyafor.
-
-
-# Environnement logiciel
-
-## Minimum
-
-La package est destiné à _R_, à installer de préférence dans sa [dernière version](https://cran.r-project.org/) avec [RStudio](https://www.rstudio.com/products/rstudio/download/#download) en version supérieure à 1.
-
-Pour installer le package à partir de GitHub, il faut utiliser le package _remotes_ après l'avoir lui-même installé comme tout autre package (menu _Tools/Install Packages..._).
-
-
-## Production de fichiers PDF
-
-Une installation de _LaTeX_ est nécessaire pour produire des fichiers PDF avec RMarkdown.
-Sous Windows, utiliser [MikTex](https://miktex.org/download).
-Le téléchargement automatique des packages manquants (sous Windows: MiKTeX settings, _Install missing packages=Yes_) est indispensable pour que _bookdown_ fonctionne correctement.
-
-Un bon éditeur pour _LaTeX_ est [_TeXstudio_](https://www.texstudio.org/) et un éditeur de fichiers bibliographiques est [_JabRef_](http://www.jabref.org/).
-Aucun des deux n'est indispensable pour produire des documents avec _RMarkdown_.
-
-
-## Publication
-
-Il est pratique d'utiliser une base bibliographique (fichier _.bib_) générale (par exemple, produite par _Mendeley_ ou _Zotero_) pendant la phase de rédaction.
-Au moment de la publication d'un article, il faut alors extraire un fichier _.bib_ spécifique, contenant seulement les références utilisées.
-
-[_Jabref_](http://www.jabref.org/) est le bon outil pour le faire:
-
-- Ouvrir le fichier _.tex_ produit par RMarkdown avec un éditeur pour _LaTeX_ (_TeXstudio_) ;
-
-- Lancer la compilation pour produire entre autres un fichier _aux_ ;
-
-- Ouvrir la base bibliographique générale avec _Jabref_ ;
-
-    - Utiliser le menu _Tools /New Sublibrary based on Aux file..._ ;
-    
-    - Sélectionner le fichier _aux_ et cliquer sur _Generate_;
-    
-    - Sauvegarder nouvelle base bibliographique et la déclarer comme dans le fichier _Rmd_ de l'article.
-    
-La base produite peut être allégée en retirant les champs inutiles comme le résumé, le lien vers le fichier PDF de chaque article, les annotations :
-
-- Utiliser le menu _Quality /Set-clear-append-rename fields..._ ;
-
-- Compléter le champ _Field name_ : abstract;annote;file;mendeley-tags ;
-
-- Sélectionner _All entries_,  _Clear fields_ et cliquer sur _OK_.
-
-
-## Développement sous R
-
-Le développement de packages R nécessite les outils de R (_RTools_), à installer en même temps que chaque mise à jour de R, dans la version de développement ([téléchargement pour Windows](https://cran.r-project.org/bin/windows/Rtools/)).
-
-La gestion des sources avec _Git_, intégrée à _RStudio_, nécessite l'installation de _git_: [téléchargement pour Windows](https://git-for-windows.github.io/).
-Installer le logiciel avec toutes les options par défaut mais désactiver l'intégration à Windows Explorer.
-Pour utiliser _git_ dans l'explorateur de Windows en plus de _RStudio_, installer [Tortoise Git](https://tortoisegit.org/download/).
-
-Les vignettes des packages peuvent être réalisées, comme celle-ci, avec le package [pkgdocs](https://pkgdown.r-lib.org/).
-
-La vérification des packages renvoie un avertissement si [qpdf](https://sourceforge.net/projects/qpdf/) n'est pas installé.
-Télécharger le fichier zip et coller tout le contenu du dossier _bin_ dans le dossier _bin_ de _Rtools_.
-
-Un autre avertissement est renvoyé en absence de [Ghostscript](https://www.ghostscript.com/) à télécharger et installer.
-Copier ensuite le contenu du dossier _bin_ dans le dossier _bin_ de _Rtools_.
-
-[perl](https://www.perl.org/) est nécessaire au fonctionnement de _pdfcrop_ qui est un utilitaire installé avec les distributions de _LaTeX_ comme _MikTeX_.
-_pdfcrop_ élimine automatiquement les marges excédentaires des figures au format PDF produite par R à condition de le déclarer dans les options de _knitr_: 
-
-```{r , eval=FALSE}
-knitr::knit_hooks$set(crop = knitr::hook_pdfcrop)
-knitr::opts_chunk$set(crop=TRUE)
-```
-L'option `crop=TRUE` peut être déclatée globalement ou dans chaque bout de code qui produit une figure.
-L'appel à _pdfcrop_ ralentit la production des documents et doit être utilisé seulement pour la production finale.
-
 
 # Documentation complète
 
