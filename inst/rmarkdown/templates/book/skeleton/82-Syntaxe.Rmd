@@ -54,7 +54,7 @@ L'option `longtable = FALSE` du modèle d'article pour afficher les tableaux en 
 - L'[anti-sèche de R Markdown](https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf) pour la syntaxe.
 
 
-## Documentation pour les développeurs
+## Documentation pour les développeurs {#sec:docdev}
 
 - La [personnalisation du format du fichier LaTeX](http://rmarkdown.rstudio.com/pdf_document_format.html#advanced_customization) produit.
 
