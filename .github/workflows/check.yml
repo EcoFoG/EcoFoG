@@ -22,6 +22,7 @@ jobs:
       - name: Install dependencies
         run: |
           install.packages(c("remotes", "rcmdcheck", "covr", "pkgdown", "tinytex"))
+          tinytex::install_tinytex()
           remotes::install_deps(dependencies = TRUE)
         shell: Rscript {0}
       - name: Check
