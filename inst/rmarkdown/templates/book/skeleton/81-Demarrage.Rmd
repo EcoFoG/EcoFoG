@@ -19,43 +19,26 @@ Dans l'entête du fichier, saisir le titre de l'ouvrage et le nom du ou des aute
 Les options spécifiques à LaTeX sont:
 
 - _documentclass_ la classe de document, obligatoirement _memoir_ pour ce modèle. Les options de la classe _memoir_ sont énumérer, à ne pas modifier normalement;
-
 - _fontfamily_: la [police de caractère](https://en.wikibooks.org/wiki/LaTeX/Fonts#Font_families), _lmodern_ par défaut;
-
 - _linestretch_: l'interlignage, 1 par défaut;
-
 - _papersize_: A4;
-
 - _fontsize_: 11pt;
-
 - _toc-depth_: nombre de niveaux dans la table des matières, 3 par défaut;
-
 - _lang_: fr ou en-US ou en-GB, la langue principale;
-
 - _otherlangs_: les autres langues utilisées dans le document, par défaut [en-US, en-GB, fr];
-
 - _graphics_: yes obligatoirement pour utiliser le package _graphics_ nécessaire aux figures;
-
 - *fig_crop*: yes pour autoriser le rognage des marges excédentaires des figures;
-
 - La quatrième de couverture affichera le résumé en Français et en Anglais et les mots-clés associés si les instructions _resume_, _mots-cles_, _abstract_ et _keywords_ sont présentes;
-
 - _fourthpagefontsize_ donne la taille de la police de caractère de la quatrième de couverture, normalsize par défaut, à adapter selon la longueur des résumés. La commande doit être reconnue par LaTeX.
-
 
 
 Les paramètres de la bibliographie sont:
 
 - _bibliography_: fichiers contenant les références, [MyBook.bib, packages.bib] par défaut. _package.bib_ est créé par le premier bout de code du document: il permet de citer les packages déclarés avec les identifiants de la forme `@R-package`. R lui-même est cité par `@R-base`;
-
 - _biblio-style_: le style bibliographique, authoryear-ibid par défaut;
-
 - _cite-style_: le style des citations dans le document LaTeX, verbose-inote par défaut;
-
 - _biblatexoptions_ contient la liste des options de biblatex, utilisées pour la production du document PDF;
-
 - _link-citations_: yes pour que les citations soient des liens hypertexte;
-
 - _colorlinks_: yes pour que les liens hypertexte soient affichés en couleur.
 
 
@@ -63,35 +46,10 @@ Les paramètres de la bibliographie sont:
 La couverture sera:
 
 - au format livre si l'instruction _maintitlepage_ est présente. Le contenu de _epigraph_ sera écrit en page 2;
+- absente sinon.
 
-- au format thèse si l'instruction _PhD-HDR_ est présente. Préciser alors:
-
-    - DocType: type de document, thèse (PhD) ou HDR;
-  
-    - ED: école doctorale (UG ou UA);
-  
-    - Ets: étalissement délivrant le diplôme (UG, UA ou APT);
-  
-    - DIS: discipline (ST, SAN, ALL, DSE, SHS pour Sciences et Technologies; Santé; Arts, Lettres, Langues; Droit, Sciences Économiques et Gestion; Sciences Humaines et Sociales);
-  
-    - speciality: texte libre, par exemple Écologie, mais la spécialité doit être validée par l'Ecole doctorale;
-  
-    - defence-date: date de soutenance, en toutes lettres;
-  
-    - lab:  nom de l'unité de recherche, par exemple Écologie des Forêts de Guyane;
-  
-    - njudge: Nombre de membres du jury, à énumérer ensuite:
-
-    - jury1: (numéroter le jury)
-  
-        - category: judge obligatoirement dans l'organisation actuelle;
-
-        - name: Prénom et Nom du membre du jury;
-
-        - status: Texte libre, par exemple Professeur d'Université;
-
-        - other: rôle dans le jury: Membre du Jury, Président, Raporteur...
-
+La création de pages de gardes de thèses n'est plus supportée.
+Pour des couvertures différentes, créer un fichier PDF d'une page au format A4 et l'attacher en tête du document produit.
 
 
 ## _bookdown.yml

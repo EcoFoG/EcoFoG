@@ -18,50 +18,6 @@ maintitlepage:
       \item R (\url{http://www.r-project.org/}) et RStudio (\url{http://www.rstudio.com/})
       \item bookdown (\url{http://bookdown.org/})
     \end{itemize}
-PhD-HDR:
-  DocType: PhD
-  ED: UG
-  Ets: UG
-  DIS: ST
-  speciality: Écologie
-  defence-date: 1er janvier 2018
-  lab:  Écologie des Forêts de Guyane
-  njudge: 7
-  jury1:
-    category: judge
-    name: Prénom NomJury1
-    status: Professeur d'Université
-    other: Membre du Jury
-  jury2:
-    category: judge
-    name: Prénom NomJury2
-    status: Professeur d'Université
-    other: Membre du Jury
-  jury3:
-    category: judge
-    name: Prénom NomJury3
-    status: Professeur d'Université
-    other: Membre du Jury
-  jury4:
-    category: judge
-    name: Prénom NomJury4
-    status: Professeur d'Université
-    other: Membre du Jury
-  jury5:
-    category: judge
-    name: Prénom NomJury5
-    status: Professeur d'Université
-    other: Membre du Jury
-  jury6:
-    category: judge
-    name: Prénom NomJury6
-    status: Professeur d'Université
-    other: Membre du Jury
-  jury7:
-    category: judge
-    name: Prénom NomJury7
-    status: Professeur d'Université
-    other: Membre du Jury
 documentclass: memoir
 classoption:
   - extrafontsizes
