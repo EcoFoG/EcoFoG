@@ -133,7 +133,8 @@ TricoterPresentation <- function (destination="docs") {
   options(knitr.table.format='html')
   rmarkdown::render(input="beamer.Rmd",
                     output_format=rmarkdown::ioslides_presentation(
-                      logo="images/EcoFoG2020.png", widescreen=TRUE), output_dir=destination)
+                      logo="images/EcoFoG2021.png", widescreen=TRUE),
+                    output_dir=destination)
   # Knit to pdf
   options(knitr.table.format='latex')
   rmarkdown::render(input="beamer.Rmd",
