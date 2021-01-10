@@ -28,6 +28,8 @@ journalinfo: Hal xxx
 archive: DOI xxxx
 date: "`r format(Sys.time(), '%d %B %Y')`"
 preamble: >
+  \usepackage{textcomp}
+  \DeclareUnicodeCharacter{B0}{\textdegree}
   \usepackage{tabu}
   \renewenvironment{table}{\begin{table*}}{\end{table*}\ignorespacesafterend}
   \hyphenation{bio-di-ver-si-ty sap-lings}
@@ -83,7 +85,7 @@ Sa documentation est disponible sur le site de RStudio[^1].
 
 
 Markdown est étendu par Bookdown [^2], qui permet la rédaction de livres et une syntaxe plus efficace pour les articles.
-Ce document est réalisé avec Markdown dans RStudio: knitr traite le code Markdown, le passe à Pandoc pour sa transformaton en LaTeX, enfin MikteX le compile en PDF.
+Ce document est réalisé avec Markdown dans RStudio: knitr traite le code Markdown, le passe à Pandoc pour sa transformation en LaTeX, enfin LateX le compile en PDF.
 
 [^2]: <https://bookdown.org/yihui/bookdown/>
 
@@ -201,11 +203,8 @@ Placer systématiquement ces fichiers dans le dossier `images` pour l'automatisa
 Les listes sont indiquées par des *, + et - (trois niveaux hiérarchiques) ou des nombres 1., i. et A. (listes numérotées). 
 
 * Liste
-
     + sous-liste
-
 * deuxième élément
-
 * Suite de la liste
 
 
@@ -213,7 +212,7 @@ Les listes sont indiquées par des *, + et - (trois niveaux hiérarchiques) ou d
 
 Les équations au format LaTeX peuvent être insérées en ligne, comme $A=\pi r^2$ ou isolées comme $$e^{i \pi} = -1.$$
 
-Elles peuvent être numérotées, voir équation \@ref(eq:disque), en utlisant l'environnement `\equation`:
+Elles peuvent être numérotées, voir équation \@ref(eq:disque), en utilisant l'environnement `\equation`:
 
 \begin{equation}
 A = \pi r^2.
@@ -261,6 +260,11 @@ Ces commandes sont dans la section `preamble:` de l'entête du fichier Markdown.
 
 Les commandes par défaut permettent :
 
+- d'utiliser le caractère degré (exemple: 20°C) :
+```
+\usepackage{textcomp}
+\DeclareUnicodeCharacter{B0}{\textdegree}
+```
 - d'obtenir des tableaux sur deux colonnes en redéfinissant l'environnement `table` et de charger le package _tabu_ nécessaire à _kableExtra_:
 ```
 \usepackage{tabu}

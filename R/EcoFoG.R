@@ -100,7 +100,7 @@ TricoterArticle <- function (destination="docs") {
   # Knit to pdf
   options(knitr.table.format='latex')
   rmarkdown::render(input="article.Rmd",
-                    output_format=bookdown::pdf_book(base_format=EcoFoG::article, latex_engine="xelatex"),
+                    output_format=bookdown::pdf_book(base_format=EcoFoG::article),
                     output_dir=destination)
   # Copy to destination
   docsDirs <- list.dirs(path=destination, full.names=TRUE, recursive=TRUE)

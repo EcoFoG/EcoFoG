@@ -20,7 +20,7 @@
 
 % ---------------------------------------------------------------------
 \RequirePackage{natbib}         % Bibliographie avancée (parenthèses, citep...). Avant babel.
-%\RequirePackage[utf8]{inputenc} % Pour les accents
+\RequirePackage[utf8]{inputenc} % Pour les accents
 \RequirePackage[T1]{fontenc}    % Pour les accents
 \RequirePackage{amsmath,amsfonts,amssymb}
 \RequirePackage{graphicx,xcolor}
@@ -198,7 +198,7 @@
   \hypersetup{urlcolor=blue,linkcolor=black,citecolor=black,colorlinks=true}
 
   \graphicspath{{graphics/}}        % Dossier de stockage des figures
-%\RequirePackage{epstopdf}           % Figures eps
+\RequirePackage{epstopdf}           % Figures eps
 \RequirePackage{enumitem}           % Espacement dans les listes
   \setlist[itemize]{noitemsep,nolistsep}
   \setlist[enumerate]{noitemsep,nolistsep}
