@@ -16,40 +16,86 @@ lang: fr-FR # en-US
 babel: french # english
 always_allow_html: yes
 output:
-  bookdown::html_document2:
-    theme: sandstone
-    toc: yes
-    toc_float: yes
+  bookdown::pdf_book:
+    base_format: EcoFoG::memo
+    keep_tex: yes
   bookdown::gitbook:
     config:
       download: null
   bookdown::word_document2: default
-  bookdown::pdf_book:
-    base_format: EcoFoG::memo
-    keep_tex: yes
+  bookdown::html_document2:
+    theme: sandstone
+    toc: yes
+    toc_float: yes
 ---
 
-```{r Options, echo=FALSE, message=FALSE}
-### knitr and R options (packages, ...)
-knitr::opts_chunk$set(echo = FALSE, tidy=TRUE, tidy.opts=list(blank=FALSE, width.cutoff=50), out.width='.8\\maxwidth', fig.align='center')
-options(width=50)
-# Installation des packages si nécessaire et chargement
-Library <- function(Packages) {
-  InstallAndLoad <- function(Package) {
-    if (!Package %in% installed.packages()[, 1]) {install.packages(Package, repos="https://cran.rstudio.com/")}
-    require(Package, character.only = TRUE)
+```{r DoNotModify, include=FALSE}
+### Utilities. Do not modify.
+# Installation of packages if necessary
+InstallPackages <- function(Packages) {
+  InstallPackage <- function(Package) {
+    if (!Package %in% installed.packages()[, 1]) {
+      install.packages(Package, repos="https://cran.rstudio.com/")
+    }
   }
-  invisible(sapply(Packages, InstallAndLoad))
+  invisible(sapply(Packages, InstallPackage))
 }
-# Ajouter les packages nécessaires ici
-Library(c("kableExtra", "formatR"))
+
+# Basic packages
+InstallPackages(c("bookdown", "formatR", "kableExtra", "ragg"))
+library("kableExtra") # Mandatory to load css and more
+
+# Chunk font size hook: allows size='small' or any valid Latex font size in chunk options
+def.chunk.hook  <- knitr::knit_hooks$get("chunk")
+knitr::knit_hooks$set(chunk = function(x, options) {
+  x <- def.chunk.hook(x, options)
+  ifelse(options$size != "normalsize", paste0("\n \\", options$size,"\n\n", x, "\n\n \\normalsize"), x)
+})
+```
+
+```{r Options, include=FALSE}
+### Customized options for this document
+# Add necessary packages here
+Packages <- c( "tidyverse")
+# Install them
+InstallPackages(Packages)
+
+# knitr options
+knitr::opts_chunk$set(
+  cache=FALSE, # Cache chunk results
+  echo = TRUE, # Show R chunks
+  warning=FALSE, # Hide warnings
+  # Books only: figures with side captions
+  # fig.env='SCfigure', fig.asp=.75,
+  # Figure alignment and size
+  fig.align='center', out.width='80%',
+  # Graphic device
+  dev = "ragg_png",
+  # Code chunk format
+  tidy=TRUE, tidy.opts=list(blank=FALSE, width.cutoff=50),
+  size="scriptsize", knitr.graphics.auto_pdf = TRUE
+  )
+options(width=50)
+
+# ggplot style
+library("tidyverse")
+theme_set(theme_bw())
+theme_update(panel.background=element_rect(fill="transparent", colour=NA),
+             plot.background=element_rect(fill="transparent", colour=NA))
+knitr::opts_chunk$set(dev.args=list(bg="transparent"))
+
+# Random seed
+set.seed(973)
 ```
 
 
 # Introduction
 
-Ce modèle permet la rédaction de mémos au format Markdown. 
+Ce modèle permet la rédaction de mémos au format Markdown[^4]. 
 Il produit des documents PDF formatés simplement (une colonne, proche du modèle article de LaTeX) ou sous d'autres formats, par exemple HTML.
+
+[^4]: <https://ericmarcon.github.io/travailleR/chap-rediger.html>
+
 
 # R Markdown{#markdown}
 
@@ -90,7 +136,7 @@ Ecrire le document dans RStudio.
 
 Cliquer sur le bouton **Knit** de RStudio génère le document au format demandé.
 
-Il est préférable de créer un projet RStudio pour bénéficier de toutes les possiblités : _File_ / _New Project_ puis utiliser l'assistant pour créer un projet à partir d'un dossier existant.
+Il est préférable de créer un projet RStudio pour bénéficier de toutes les possibilités : _File_ / _New Project_ puis utiliser l'assistant pour créer un projet à partir d'un dossier existant.
 
 
 # Code
@@ -125,7 +171,7 @@ La légende est précisée par l'argument `caption` et le référencement est po
 Utiliser systématiquement l'argument `booktabs = TRUE` pour que l'épaisseur des lignes de séparation soit optimale en LaTeX.
 L'option\break `bootstrap_options = "striped"` fournit des tableaux plus lisibles en HTML.
 
-En LaTeX, Les tableaux peuvent avoir la largeur de la colonne et éventuellement d'étendre sur plusieurs pages\break `longtable = TRUE` ou bien utliser la largeur de la page\break `longtable = FALSE` comme le tableau \@ref(tab:Paracou)) (ce qui n'a pas d'effet sur un document formaté sur une seule colonne).
+En LaTeX, Les tableaux peuvent avoir la largeur de la colonne et éventuellement d'étendre sur plusieurs pages\break `longtable = TRUE` ou bien utiliser la largeur de la page\break `longtable = FALSE` comme le tableau \@ref(tab:Paracou)) (ce qui n'a pas d'effet sur un document formaté sur une seule colonne).
 
 ```{r Paracou, echo=FALSE, warning=FALSE}
 Intervention <- data.frame(
@@ -177,11 +223,8 @@ Placer systématiquement ces fichiers dans le dossier `images` pour l'automatisa
 Les listes sont indiquées par des *, + et - (trois niveaux hiérarchiques) ou des nombres 1., i. et A. (listes numérotées). 
 
 * Liste
-
     + sous-liste
-
 * deuxième élément
-
 * Suite de la liste
 
 
@@ -247,7 +290,6 @@ Les commandes par défaut permettent :
 \DeclareUnicodeCharacter{B0}%
   {\textdegree}
 ```
-
 - de montrer l'utilisation de la commande de césure:
 ```
 \hyphenation%
@@ -258,7 +300,6 @@ D'autres commandes peuvent être ajoutées selon les besoins.
 Attention :
 
 - les commentaires ne sont pas possibles ;
-
 - les commandes complexes (comme\break `\renewenvironment`) doivent être entrées sur une seule ligne sinon elles seront détruites par knitr au premier tricotage en HTML.
 
 
@@ -309,11 +350,17 @@ Le style bibliographique de la revue est très probablement disponible au format
 
 ## Optimisation pour GitHub
 
-Le projet peut être déposé sur github.
+Le projet peut être déposé sur Github[^5].
+
+[^5]: <https://ericmarcon.github.io/travailleR/chap-git.html>
 
 Le script R fourni, _GithubPages.R_, permet de publier facilement l'article dans les pages web associées au dépôt en déplaçant les fichiers HTML produit par le tricotage de l'article dans le dossier _docs_.
 
 Il suffit ensuite d'activer les pages web du dépôt, d'adapter le fichier _README.md_ fourni (suivre ses instructions) et de le dupliquer dans le dossier _docs_.
+
+Les pages web peuvent être produites par intégration continue[^6].
+
+[^6]: <https://ericmarcon.github.io/travailleR/chap-ci.html>
 
 
 ## Autres Modèles
