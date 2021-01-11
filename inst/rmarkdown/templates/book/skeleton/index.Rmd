@@ -26,9 +26,8 @@ classoption:
 papersize: A4
 fontsize: 11pt
 toc-depth: 3
-lang: fr
-otherlangs: [en-US, en-GB, fr]
-bibliography: [MyBook.bib, packages.bib]
+lang: fr-FR #en-US ou en-GB
+bibliography: MyBook.bib
 biblio-style: authoryear-ibid
 cite-style: verbose-inote
 biblatexoptions:

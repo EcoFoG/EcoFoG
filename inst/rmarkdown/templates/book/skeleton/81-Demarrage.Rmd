@@ -24,13 +24,15 @@ Les options spécifiques à LaTeX sont:
 - _papersize_: A4;
 - _fontsize_: 11pt;
 - _toc-depth_: nombre de niveaux dans la table des matières, 3 par défaut;
-- _lang_: fr ou en-US ou en-GB, la langue principale;
-- _otherlangs_: les autres langues utilisées dans le document, par défaut [en-US, en-GB, fr];
+- _lang_: fr-FR, en-US ou en-GB (ou n'importe quel code valide[^1]), la langue principale;
+- _otherlangs_: ignoré depuis la version 2 de pandoc[^2];
 - _graphics_: yes obligatoirement pour utiliser le package _graphics_ nécessaire aux figures;
 - *fig_crop*: yes pour autoriser le rognage des marges excédentaires des figures;
 - La quatrième de couverture affichera le résumé en Français et en Anglais et les mots-clés associés si les instructions _resume_, _mots-cles_, _abstract_ et _keywords_ sont présentes;
 - _fourthpagefontsize_ donne la taille de la police de caractère de la quatrième de couverture, normalsize par défaut, à adapter selon la longueur des résumés. La commande doit être reconnue par LaTeX.
 
+[^1]: https://mirrors.ircam.fr/pub/CTAN/macros/unicodetex/latex/polyglossia/polyglossia.pdf
+[^2]: https://github.com/jgm/pandoc/issues/4072
 
 Les paramètres de la bibliographie sont:
 
@@ -85,3 +87,25 @@ Personnaliser la table des matières au format HTML.
           <li><a href="./">Ouvrage Bookdown</a></li>
         after: |
           <li><a href="https://github.com/EcoFoG/ (...)
+
+
+## Documents multilingues
+
+Seule la langue principale du document est déclarée dans l'entête.
+Les titres seront écrits dans cette langue (ex.: Chapitre / Chapter).
+
+Pour utiliser d'autres langues ponctuellement dans le texte, elles doivent être activées dans `preamble.tex` dans le dossier `latex`.
+L'Anglais américain et le Français sont activés par défaut.
+
+Les changements de langue n'ont aucun effet en HTML mais modifient la ponctuation, les césures... dans les sorties en PDF.
+
+Pour passer en Anglais, insérer le code suivant dans le texte:
+```
+\selectlanguage{english}
+```
+
+Le changement de langue au format markdown de base, 
+```
+::: {lang=en-US}
+```
+n'est pas supporté par R Markdown.

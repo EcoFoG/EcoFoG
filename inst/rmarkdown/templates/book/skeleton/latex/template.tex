@@ -165,24 +165,11 @@ $endfor$
 \usepackage{enumitem}
 
 $if(lang)$
-$if(babel-newcommands)$
-  $babel-newcommands$
-$endif$
-% load polyglossia as late as possible as it *could* call bidi if RTL lang (e.g. Hebrew or Arabic)
 \usepackage{polyglossia}
 \setmainlanguage[$polyglossia-lang.options$]{$polyglossia-lang.name$}
 $for(polyglossia-otherlangs)$
 \setotherlanguage[$polyglossia-otherlangs.options$]{$polyglossia-otherlangs.name$}
 $endfor$
-$endif$
-
-$if(dir)$
-% load bidi as late as possible as it modifies e.g. graphicx
-$if(latex-dir-rtl)$
-\usepackage[RTLdocument]{bidi}
-$else$
-\usepackage{bidi}
-$endif$
 $endif$
 
 $if(natbib)$
@@ -317,14 +304,6 @@ $endif$
 $if(maintitlepage)$
 \MainTitlePage[$maintitlepage.epigraph$]
 $endif$
-
-$if(PhD-HDR)$
-\makeflyleaf
-\newpage
-~
-\newpage
-$endif$
-
 
 
 
