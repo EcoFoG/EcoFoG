@@ -197,27 +197,33 @@ $endif$
 % Specific commands for EcoFoG style. Must come after biblatex.
 \usepackage{latex/BookTemplate}
 
+% PDF title page to insert
+$if(pdftitlepage)$
+\usepackage{pdfpages}
+\cleardoublepage
+$endif$
+
 % Hyperref comes last
 \usepackage{hyperref}
 \hypersetup{
 $if(title-meta)$
-            pdftitle={$title-meta$},
+  pdftitle={$title-meta$},
 $endif$
 $if(author-meta)$
-            pdfauthor={$author-meta$},
+  pdfauthor={$author-meta$},
 $endif$
 $if(keywords)$
-            pdfkeywords={$for(keywords)$$keywords$$sep$, $endfor$},
+  pdfkeywords={$for(keywords)$$keywords$$sep$, $endfor$},
 $endif$
 $if(colorlinks)$
-            colorlinks=true,
-            linkcolor=$if(linkcolor)$$linkcolor$$else$Maroon$endif$,
-            citecolor=$if(citecolor)$$citecolor$$else$Blue$endif$,
-            urlcolor=$if(urlcolor)$$urlcolor$$else$Blue$endif$,
+  colorlinks=true,
+  linkcolor=$if(linkcolor)$$linkcolor$$else$Maroon$endif$,
+  citecolor=$if(citecolor)$$citecolor$$else$Blue$endif$,
+  urlcolor=$if(urlcolor)$$urlcolor$$else$Blue$endif$,
 $else$
-            pdfborder={0 0 0},
+  pdfborder={0 0 0},
 $endif$
-            breaklinks=true}
+  breaklinks=true}
 
 % Don't use monospace font for urls
 \urlstyle{same}
@@ -283,7 +289,7 @@ $endif$
     \includegraphics[width=5cm]{Logo-Lab}\\ \bigskip
 		UMR \'Ecologie des forêts de Guyane\\
 		\url{http://www.ecofog.gf}\\[3\baselineskip]
-		Les opinions émises par les auteurs sont personnelles et n’engagent ni l’UMR EcoFoG ni ses tutelles.
+		Les opinions émises par les auteurs sont personnelles et n'engagent ni l'UMR EcoFoG ni ses tutelles.
 
     \tiny{Photographie en couverture: Hadrien Lalagüe}
 	\end{textblock}
@@ -301,10 +307,13 @@ $endif$
 % Title page
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+$if(pdftitlepage)$
+\includepdf[pages=1]{$pdftitlepage$}
+$endif$
+
 $if(maintitlepage)$
 \MainTitlePage[$maintitlepage.epigraph$]
 $endif$
-
 
 
 % Before Body

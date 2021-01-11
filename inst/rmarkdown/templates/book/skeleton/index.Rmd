@@ -18,6 +18,7 @@ maintitlepage:
       \item R (\url{http://www.r-project.org/}) et RStudio (\url{http://www.rstudio.com/})
       \item bookdown (\url{http://bookdown.org/})
     \end{itemize}
+pdftitlepage: images/cover.pdf
 documentclass: memoir
 classoption:
   - extrafontsizes

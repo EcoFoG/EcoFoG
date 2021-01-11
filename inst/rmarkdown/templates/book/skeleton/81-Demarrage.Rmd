@@ -43,15 +43,16 @@ Les paramètres de la bibliographie sont:
 - _link-citations_: yes pour que les citations soient des liens hypertexte;
 - _colorlinks_: yes pour que les liens hypertexte soient affichés en couleur.
 
-
-
 La couverture sera:
 
 - au format livre si l'instruction _maintitlepage_ est présente. Le contenu de _epigraph_ sera écrit en page 2;
-- absente sinon.
+- la première page du fichier PDF déclaré dans l'instruction _pdftitlepage_ si elle est présente.
 
-La création de pages de gardes de thèses n'est plus supportée.
-Pour des couvertures différentes, créer un fichier PDF d'une page au format A4 et l'attacher en tête du document produit.
+Supprimer une des deux instructions dans l'entête.
+
+Pour un mémoire d'étudiant, préparer la page de couverture avec Word, Powerpoint ou un logiciel de PAO et l'enregistrer au format PDF, en taille A4.
+Seule la première page du PDF est utilisée.
+La création directe de pages de gardes de thèses n'est plus supportée.
 
 
 ## _bookdown.yml
