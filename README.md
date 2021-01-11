@@ -27,3 +27,7 @@ Dans R : `remotes::install_github("EcoFoG/EcoFoG", build_vignettes = TRUE)`
 
 Une [vignette](https://ecofog.github.io/EcoFoG/) est disponible.
 Dans R, utiliser la commande `vignette("EcoFoG")`.
+
+## Voir aussi
+
+[Travailler avec R](https://ericmarcon.github.io/travailleR/)
