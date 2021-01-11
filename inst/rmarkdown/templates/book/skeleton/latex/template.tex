@@ -200,7 +200,6 @@ $endif$
 % PDF title page to insert
 $if(pdftitlepage)$
 \usepackage{pdfpages}
-\cleardoublepage
 $endif$
 
 % Hyperref comes last
@@ -309,6 +308,7 @@ $endif$
 
 $if(pdftitlepage)$
 \includepdf[pages=1]{$pdftitlepage$}
+\cleardoublepage
 $endif$
 
 $if(maintitlepage)$
