@@ -1,7 +1,7 @@
 Package: EcoFoG
 Type: Package
 Title: Utilitaires pour l'UMR EcoFoG
-Version: 1.9-0
+Version: 1.9-1
 Authors@R: c(
     person("Eric", "Marcon", email="eric.marcon@ecofog.gf", role=c("aut", "cre"), comment = c(ORCID = "0000-0002-5249-321X")),
     person("Gaëlle", "Jaouen", email="gaelle.jaouen@ecofog.gf", role="aut", comment = c(ORCID = "0000-0002-5655-9044")),

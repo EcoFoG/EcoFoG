@@ -1,6 +1,6 @@
 # EcoFoG <img src="man/figures/logo.png" align="right" alt="" width="120" />
 
-[![Travis-CI Build Status](https://travis-ci.org/EcoFoG/EcoFoG.svg?branch=master)](https://travis-ci.org/EcoFoG/EcoFoG)
+![R-CMD-check](https://github.com/EcoFoG/EcoFoG/workflows/R-CMD-check/badge.svg)
 [![codecov](https://codecov.io/github/EcoFoG/EcoFoG/branch/master/graphs/badge.svg)](https://codecov.io/github/EcoFoG/EcoFoG) 
 
 Utilitaires pour l'UMR EcoFoG (package R)

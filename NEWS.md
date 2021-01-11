@@ -1,10 +1,13 @@
-# EcoFog 1.9-0
+# EcoFog 1.9-1
 
 ## Améliorations
 
 * Tests unitaires et intégration continue par Github Actions
-* Code de taille script dans le modèle book
+* Code de taille script et bibliographie sur deux colonnes dans le modèle book
 * Logo EcoFoG 2021
+* Standardisation des .gitignore des modèles
+* Standardisation des options des bouts de code des modèles
+* Gestion plus propre des ouvrages multilingues
 
 
 # EcoFog 1.8-2
