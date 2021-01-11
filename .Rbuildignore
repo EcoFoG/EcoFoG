@@ -17,3 +17,4 @@ BuildGithubPages.R
 .Rdata
 .Rhistory
 ^pkgdown$
+^.github$
