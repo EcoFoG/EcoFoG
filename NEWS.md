@@ -1,4 +1,4 @@
-# EcoFog 1.9-1
+# EcoFog 1.9-2
 
 ## Améliorations
 
@@ -8,6 +8,7 @@
 * Standardisation des .gitignore des modèles
 * Standardisation des options des bouts de code des modèles
 * Gestion plus propre des ouvrages multilingues
+* Insertion possible d'une couverture quelconque dans le modèle d'ouvrage
 
 
 # EcoFog 1.8-2
