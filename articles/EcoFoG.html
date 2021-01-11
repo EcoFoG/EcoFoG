@@ -38,7 +38,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">EcoFoG</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.8.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.9-1</span>
       </span>
     </div>
 
@@ -46,7 +46,7 @@
       <ul class="nav navbar-nav">
 <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -63,7 +63,7 @@
 <ul class="nav navbar-nav navbar-right">
 <li>
   <a href="https://github.com/EcoFoG/EcoFoG/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -77,8 +77,7 @@
 
       
 
-      </header><script src="EcoFoG_files/accessible-code-block-0.0.1/empty-anchor.js"></script><link href="EcoFoG_files/anchor-sections-1.0/anchor-sections.css" rel="stylesheet">
-<script src="EcoFoG_files/anchor-sections-1.0/anchor-sections.js"></script><div class="row">
+      </header><script src="EcoFoG_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Utilitaires pour EcoFoG</h1>
@@ -98,12 +97,12 @@
 <p>Il contient :</p>
 <ul>
 <li>
-<p>Des modèles de documents <em>RMarkdown</em> :</p>
+<p>Des modèles de documents <em>RMarkdown</em>:</p>
 <ul>
-<li><p>Un modèle d’article (produit au format PDF) bien formaté;</p></li>
-<li><p>Un modèle de mémo (produit au format PDF) plus simple que l’article;</p></li>
-<li><p>Un modèle de présentation Beamer;</p></li>
-<li><p>Un modèle d’ouvrage (Bookdown): livre, rapport, thèse.</p></li>
+<li>Un modèle d’article (produit au format PDF) bien formaté;</li>
+<li>Un modèle de mémo (produit au format PDF) plus simple que l’article;</li>
+<li>Un modèle de présentation Beamer;</li>
+<li>Un modèle d’ouvrage (Bookdown): livre, rapport, thèse.</li>
 </ul>
 </li>
 <li>
@@ -121,7 +120,8 @@
 <p>Cliquer sur <em>From template</em>: à partir de modèles installés par des packages. Les modèles du package EcoFoG sont affichés.</p>
 <p>Ecrire le document dans RStudio : le mode d’emploi des modèles est dans leur contenu.</p>
 <p>Cliquer sur le bouton <strong>Knit</strong> de RStudio génère le document au format demandé.</p>
-<p>Il est préférable de créer un projet RStudio pour bénéficier de toutes les possiblités : <em>File</em> / <em>New Project</em> puis utiliser l’assistant pour créer un projet à partir d’un dossier existant.</p>
+<p>Il est préférable de créer un projet RStudio pour bénéficier de toutes les possibilités : <em>File</em> / <em>New Project</em> puis utiliser l’assistant pour créer un projet à partir d’un dossier existant.</p>
+<p>Voir la <a href="https://ericmarcon.github.io/travailleR/chap-rediger.html">documentation détaillée</a>.</p>
 </div>
 <div id="automap" class="section level1">
 <h1 class="hasAnchor">
@@ -134,60 +134,6 @@
 <h1 class="hasAnchor">
 <a href="#acc%C3%A8s-aux-donn%C3%A9es" class="anchor"></a>Accès aux données</h1>
 <p>Les fonctions <code><a href="../reference/Guyafor2df.html">Guyafor2df()</a></code> et <code><a href="../reference/Paracou2df.html">Paracou2df()</a></code> produisent des dataframes à partir de la base de données Guyafor.</p>
-</div>
-<div id="environnement-logiciel" class="section level1">
-<h1 class="hasAnchor">
-<a href="#environnement-logiciel" class="anchor"></a>Environnement logiciel</h1>
-<div id="minimum" class="section level2">
-<h2 class="hasAnchor">
-<a href="#minimum" class="anchor"></a>Minimum</h2>
-<p>La package est destiné à <em>R</em>, à installer de préférence dans sa <a href="https://cran.r-project.org/">dernière version</a> avec <a href="https://www.rstudio.com/products/rstudio/download/#download">RStudio</a> en version supérieure à 1.</p>
-<p>Pour installer le package à partir de GitHub, il faut utiliser le package <em>remotes</em> après l’avoir lui-même installé comme tout autre package (menu <em>Tools/Install Packages…</em>).</p>
-</div>
-<div id="production-de-fichiers-pdf" class="section level2">
-<h2 class="hasAnchor">
-<a href="#production-de-fichiers-pdf" class="anchor"></a>Production de fichiers PDF</h2>
-<p>Une installation de <em>LaTeX</em> est nécessaire pour produire des fichiers PDF avec RMarkdown. Sous Windows, utiliser <a href="https://miktex.org/download">MikTex</a>. Le téléchargement automatique des packages manquants (sous Windows: MiKTeX settings, <em>Install missing packages=Yes</em>) est indispensable pour que <em>bookdown</em> fonctionne correctement.</p>
-<p>Un bon éditeur pour <em>LaTeX</em> est <a href="https://www.texstudio.org/"><em>TeXstudio</em></a> et un éditeur de fichiers bibliographiques est <a href="http://www.jabref.org/"><em>JabRef</em></a>. Aucun des deux n’est indispensable pour produire des documents avec <em>RMarkdown</em>.</p>
-</div>
-<div id="publication" class="section level2">
-<h2 class="hasAnchor">
-<a href="#publication" class="anchor"></a>Publication</h2>
-<p>Il est pratique d’utiliser une base bibliographique (fichier <em>.bib</em>) générale (par exemple, produite par <em>Mendeley</em> ou <em>Zotero</em>) pendant la phase de rédaction. Au moment de la publication d’un article, il faut alors extraire un fichier <em>.bib</em> spécifique, contenant seulement les références utilisées.</p>
-<p><a href="http://www.jabref.org/"><em>Jabref</em></a> est le bon outil pour le faire:</p>
-<ul>
-<li><p>Ouvrir le fichier <em>.tex</em> produit par RMarkdown avec un éditeur pour <em>LaTeX</em> (<em>TeXstudio</em>) ;</p></li>
-<li><p>Lancer la compilation pour produire entre autres un fichier <em>aux</em> ;</p></li>
-<li>
-<p>Ouvrir la base bibliographique générale avec <em>Jabref</em> ;</p>
-<ul>
-<li><p>Utiliser le menu <em>Tools /New Sublibrary based on Aux file…</em> ;</p></li>
-<li><p>Sélectionner le fichier <em>aux</em> et cliquer sur <em>Generate</em>;</p></li>
-<li><p>Sauvegarder nouvelle base bibliographique et la déclarer comme dans le fichier <em>Rmd</em> de l’article.</p></li>
-</ul>
-</li>
-</ul>
-<p>La base produite peut être allégée en retirant les champs inutiles comme le résumé, le lien vers le fichier PDF de chaque article, les annotations :</p>
-<ul>
-<li><p>Utiliser le menu <em>Quality /Set-clear-append-rename fields…</em> ;</p></li>
-<li><p>Compléter le champ <em>Field name</em> : abstract;annote;file;mendeley-tags ;</p></li>
-<li><p>Sélectionner <em>All entries</em>, <em>Clear fields</em> et cliquer sur <em>OK</em>.</p></li>
-</ul>
-</div>
-<div id="développement-sous-r" class="section level2">
-<h2 class="hasAnchor">
-<a href="#d%C3%A9veloppement-sous-r" class="anchor"></a>Développement sous R</h2>
-<p>Le développement de packages R nécessite les outils de R (<em>RTools</em>), à installer en même temps que chaque mise à jour de R, dans la version de développement (<a href="https://cran.r-project.org/bin/windows/Rtools/">téléchargement pour Windows</a>).</p>
-<p>La gestion des sources avec <em>Git</em>, intégrée à <em>RStudio</em>, nécessite l’installation de <em>git</em>: <a href="https://git-for-windows.github.io/">téléchargement pour Windows</a>. Installer le logiciel avec toutes les options par défaut mais désactiver l’intégration à Windows Explorer. Pour utiliser <em>git</em> dans l’explorateur de Windows en plus de <em>RStudio</em>, installer <a href="https://tortoisegit.org/download/">Tortoise Git</a>.</p>
-<p>Les vignettes des packages peuvent être réalisées, comme celle-ci, avec le package <a href="https://pkgdown.r-lib.org/">pkgdocs</a>.</p>
-<p>La vérification des packages renvoie un avertissement si <a href="https://sourceforge.net/projects/qpdf/">qpdf</a> n’est pas installé. Télécharger le fichier zip et coller tout le contenu du dossier <em>bin</em> dans le dossier <em>bin</em> de <em>Rtools</em>.</p>
-<p>Un autre avertissement est renvoyé en absence de <a href="https://www.ghostscript.com/">Ghostscript</a> à télécharger et installer. Copier ensuite le contenu du dossier <em>bin</em> dans le dossier <em>bin</em> de <em>Rtools</em>.</p>
-<p><a href="https://www.perl.org/">perl</a> est nécessaire au fonctionnement de <em>pdfcrop</em> qui est un utilitaire installé avec les distributions de <em>LaTeX</em> comme <em>MikTeX</em>. <em>pdfcrop</em> élimine automatiquement les marges excédentaires des figures au format PDF produite par R à condition de le déclarer dans les options de <em>knitr</em>:</p>
-<div class="sourceCode" id="cb1"><pre class="downlit">
-<span class="fu">knitr</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/knitr/man/knit_hooks.html">knit_hooks</a></span><span class="op">$</span><span class="fu">set</span><span class="op">(</span>crop <span class="op">=</span> <span class="fu">knitr</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/knitr/man/chunk_hook.html">hook_pdfcrop</a></span><span class="op">)</span>
-<span class="fu">knitr</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/knitr/man/opts_chunk.html">opts_chunk</a></span><span class="op">$</span><span class="fu">set</span><span class="op">(</span>crop<span class="op">=</span><span class="cn">TRUE</span><span class="op">)</span></pre></div>
-<p>L’option <code>crop=TRUE</code> peut être déclatée globalement ou dans chaque bout de code qui produit une figure. L’appel à <em>pdfcrop</em> ralentit la production des documents et doit être utilisé seulement pour la production finale.</p>
-</div>
 </div>
 <div id="documentation-complète" class="section level1">
 <h1 class="hasAnchor">
