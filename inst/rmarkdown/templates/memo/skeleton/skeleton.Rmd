@@ -210,7 +210,7 @@ plot(pressure)
 
 Les figures peuvent être créées par le code R (figure \@ref(fig:pressure)).
 Avec Bookdown, une étiquette est associée à chaque figure: son nom est `fig:xxx` où `xxx` est le nom du bout de code R.
-Les renvois se fonct avec la commande `\@ref(fig:xxx)`.
+Les renvois se font avec la commande `\@ref(fig:xxx)`.
 
 Une figure peut utiliser toute la largeur de la page en ajoutant les options suivantes dans l'entête du bout de code qui la génère: `fig.env="figure*"` et\break `out.extra=""`.
 
@@ -308,7 +308,7 @@ Attention :
 La césure est gérée automatiquement en LaTeX.
 Si un mot n'est pas coupé correctement, ajouter son découpage dans le préambule du fichier avec la commande `\hyphenation` (les mots sont séparés par des espaces, les emplacement de césure représentés par des tirets).
 
-Si LaTeX ne parvient pas à trouver de solution pour le retout à la ligne, par exemple pare que du code constitue un bloc insécable trop long, ajouter la commande LaTeX `\break` à l'emplacement du retour à la ligne.
+Si LaTeX ne parvient pas à trouver de solution pour le retour à la ligne, par exemple parce que du code constitue un bloc insécable trop long, ajouter la commande LaTeX `\break` à l'emplacement du retour à la ligne.
 Ne pas laisser d'espace avant la commande. 
 Le document HTML ignore les commandes LaTeX.
 
