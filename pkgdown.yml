@@ -3,7 +3,7 @@ pkgdown: 1.6.1
 pkgdown_sha: ~
 articles:
   EcoFoG: EcoFoG.html
-last_built: 2021-03-10T17:40Z
+last_built: 2021-10-25T21:43Z
 urls:
   reference: https://ecofog.github.io/ecofog//reference
   article: https://ecofog.github.io/ecofog//articles
