@@ -86,7 +86,19 @@ QueryGuyafor <- function (WHERE, UID, PWD, Driver, codeWHERE = NULL) {
     # Authentification SQL Server
     connection_string <- paste(connection_string, "UID={", UID, "};PWD={", PWD, "};", sep="")
   }
-  con <- odbc::dbConnect(odbc::odbc(), .connection_string=connection_string)
+  # Tentative de connexion
+  con <- NA
+  tryCatch(con <- odbc::dbConnect(odbc::odbc(), .connection_string=connection_string),
+           error = function(e) e)
+  if (is.na(con)) {
+    warning(paste("La connexion à la base Guyafor a échoué.\n
+    Vérifiez que le pilote ODBC",
+    Driver,
+    "est installé sur votre ordinateur (ou déclarez le pilote installé dans l'argument 'Driver')
+    et que vous avez les droits suffisants.\n
+    L'inventaire 2016 de la parcelle 6 de Paracou est retourné par défaut."))
+    return(EcoFoG::Paracou6_2016)
+  }
 
   # Sélection des données
   req1 <- "SELECT

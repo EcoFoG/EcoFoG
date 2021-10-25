@@ -1,4 +1,4 @@
-# EcoFog 1.9-2
+# EcoFog 1.9-3
 
 ## Améliorations
 
@@ -9,6 +9,11 @@
 * Standardisation des options des bouts de code des modèles
 * Gestion plus propre des ouvrages multilingues
 * Insertion possible d'une couverture quelconque dans le modèle d'ouvrage
+
+## Correction de bugs
+
+* Gestion de l'erreur renvoyée par en cas d'échec de la connexion au serveur sql.ecofog.gf.
+
 
 
 # EcoFog 1.8-2
