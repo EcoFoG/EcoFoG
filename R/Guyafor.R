@@ -87,10 +87,10 @@ QueryGuyafor <- function (WHERE, UID, PWD, Driver, codeWHERE = NULL) {
     connection_string <- paste(connection_string, "UID={", UID, "};PWD={", PWD, "};", sep="")
   }
   # Tentative de connexion
-  con <- NA
+  con <- NULL
   tryCatch(con <- odbc::dbConnect(odbc::odbc(), .connection_string=connection_string),
            error = function(e) e)
-  if (is.na(con)) {
+  if (is.null(con)) {
     warning(paste("La connexion à la base Guyafor a échoué.\n
     Vérifiez que le pilote ODBC",
     Driver,

@@ -35,3 +35,4 @@ src/*.so
 src/*.dll
 # pkgdown by GH Actions
 docs/
+.DS_Store
