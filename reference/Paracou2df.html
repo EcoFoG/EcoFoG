@@ -172,39 +172,60 @@ Un pilote ODBC pour SQL Server doit être accessible.</p>
 <p>Eric Marcon, <a href='mailto:eric.marcon@ecofog.gf'>eric.marcon@ecofog.gf</a></p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'># Creation d'une communaute spatialement explicite (package SpatDiv)</span>
-<span class='kw'>if</span><span class='op'>(</span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>require</a></span><span class='op'>(</span><span class='st'><a href='https://github.com/EricMarcon/dbmss'>"dbmss"</a></span><span class='op'>)</span> <span class='op'>&amp;</span> <span class='kw'><a href='https://rdrr.io/r/base/library.html'>require</a></span><span class='op'>(</span><span class='st'><a href='https://dplyr.tidyverse.org'>"dplyr"</a></span><span class='op'>)</span> <span class='op'>&amp;</span> <span class='kw'><a href='https://rdrr.io/r/base/library.html'>require</a></span><span class='op'>(</span><span class='st'><a href='https://tidyr.tidyverse.org'>"tidyr"</a></span><span class='op'>)</span><span class='op'>)</span> <span class='op'>{</span>
-  <span class='fu'>Paracou2df</span><span class='op'>(</span><span class='st'>"Plot='6' AND CensusYear=2016"</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
-  <span class='co'># Arbres vivants</span>
-  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>CodeAlive</span> <span class='op'>==</span> <span class='cn'>TRUE</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
-  <span class='co'># Variables utiles</span>
-  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/select.html'>select</a></span><span class='op'>(</span><span class='va'>Plot</span>, <span class='va'>SubPlot</span><span class='op'>:</span><span class='va'>Yfield</span>, <span class='va'>Family</span><span class='op'>:</span><span class='va'>Species</span>, <span class='va'>CircCorr</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
-  <span class='co'># Nom complet des especes</span>
-  <span class='fu'><a href='https://tidyr.tidyverse.org/reference/unite.html'>unite</a></span><span class='op'>(</span>col <span class='op'>=</span> <span class='va'>spName</span>, <span class='va'>Family</span>, <span class='va'>Genus</span>, <span class='va'>Species</span>, remove <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
-  <span class='co'># Champs d'un wmppp. Le poids est la surface terriere</span>
-  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>X<span class='op'>=</span><span class='va'>Xfield</span>, Y<span class='op'>=</span><span class='va'>Yfield</span>, PointType<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/factor.html'>as.factor</a></span><span class='op'>(</span><span class='va'>spName</span><span class='op'>)</span>,
-    PointWeight<span class='op'>=</span><span class='va'>pi</span><span class='op'>*</span><span class='op'>(</span><span class='va'>CircCorr</span><span class='op'>/</span><span class='va'>pi</span><span class='op'>/</span><span class='fl'>2</span><span class='op'>)</span><span class='op'>^</span><span class='fl'>2</span>, PointName<span class='op'>=</span><span class='va'>idTree</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
-  <span class='fu'>dbmss</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/dbmss/man/wmppp.html'>wmppp</a></span><span class='op'>(</span>window <span class='op'>=</span> <span class='fu'>owin</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0</span>,<span class='fl'>250</span><span class='op'>)</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0</span>,<span class='fl'>250</span><span class='op'>)</span>,
-    unitname<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"metre"</span>, <span class='st'>"metres"</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>-&gt;</span> <span class='va'>Paracou6</span>
-  <span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span><span class='op'>(</span><span class='va'>Paracou6</span>, which.marks<span class='op'>=</span><span class='st'>"PointWeight"</span>,
-  main<span class='op'>=</span><span class='st'>"Surface terriÃ¨re (cm2) \n
-        des arbres de la parcelle 6 de Paracou en 2016"</span><span class='op'>)</span>
-<span class='op'>}</span>
-</div><div class='output co'>#&gt; <span class='message'>Loading required package: dbmss</span></div><div class='output co'>#&gt; <span class='message'>Loading required package: spatstat.core</span></div><div class='output co'>#&gt; <span class='message'>Loading required package: spatstat.data</span></div><div class='output co'>#&gt; <span class='message'>Loading required package: spatstat.geom</span></div><div class='output co'>#&gt; <span class='message'>Registered S3 method overwritten by 'spatstat.geom':</span>
-#&gt; <span class='message'>  method     from</span>
-#&gt; <span class='message'>  print.boxx cli </span></div><div class='output co'>#&gt; <span class='message'>spatstat.geom 2.3-0</span></div><div class='output co'>#&gt; <span class='message'>Loading required package: nlme</span></div><div class='output co'>#&gt; <span class='message'>Loading required package: rpart</span></div><div class='output co'>#&gt; <span class='message'>spatstat.core 2.3-0</span></div><div class='output co'>#&gt; <span class='message'>Loading required package: Rcpp</span></div><div class='output co'>#&gt; <span class='message'>Loading required package: ggplot2</span></div><div class='output co'>#&gt; <span class='message'>Loading required package: dplyr</span></div><div class='output co'>#&gt; <span class='message'></span>
-#&gt; <span class='message'>Attaching package: ‘dplyr’</span></div><div class='output co'>#&gt; <span class='message'>The following object is masked from ‘package:nlme’:</span>
-#&gt; <span class='message'></span>
-#&gt; <span class='message'>    collapse</span></div><div class='output co'>#&gt; <span class='message'>The following objects are masked from ‘package:stats’:</span>
-#&gt; <span class='message'></span>
-#&gt; <span class='message'>    filter, lag</span></div><div class='output co'>#&gt; <span class='message'>The following objects are masked from ‘package:base’:</span>
-#&gt; <span class='message'></span>
-#&gt; <span class='message'>    intersect, setdiff, setequal, union</span></div><div class='output co'>#&gt; <span class='message'>Loading required package: tidyr</span></div><div class='output co'>#&gt; <span class='message'></span>
-#&gt; <span class='message'>Attaching package: ‘tidyr’</span></div><div class='output co'>#&gt; <span class='message'>The following object is masked from ‘package:magrittr’:</span>
-#&gt; <span class='message'></span>
-#&gt; <span class='message'>    extract</span></div><div class='output co'>#&gt; <span class='warning'>Warning: Le serveur sql.ecofog.gf n'est pas accessible.</span>
-#&gt; <span class='warning'></span>
-#&gt; <span class='warning'>            L'inventaire 2016 de la parcelle 6 de Paracou est retourné par défaut.</span></div><div class='img'><img src='Paracou2df-1.png' alt='' width='700' height='433' /></div></pre>
+    <pre class="examples"><span class='r-in'><span class='co'># Creation d'une communaute spatialement explicite (package SpatDiv)</span></span>
+<span class='r-in'><span class='kw'>if</span><span class='op'>(</span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>require</a></span><span class='op'>(</span><span class='st'><a href='https://github.com/EricMarcon/dbmss'>"dbmss"</a></span><span class='op'>)</span> <span class='op'>&amp;</span> <span class='kw'><a href='https://rdrr.io/r/base/library.html'>require</a></span><span class='op'>(</span><span class='st'><a href='https://dplyr.tidyverse.org'>"dplyr"</a></span><span class='op'>)</span> <span class='op'>&amp;</span> <span class='kw'><a href='https://rdrr.io/r/base/library.html'>require</a></span><span class='op'>(</span><span class='st'><a href='https://tidyr.tidyverse.org'>"tidyr"</a></span><span class='op'>)</span><span class='op'>)</span> <span class='op'>{</span></span>
+<span class='r-in'>  <span class='fu'>Paracou2df</span><span class='op'>(</span><span class='st'>"Plot='6' AND CensusYear=2016"</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span></span>
+<span class='r-in'>  <span class='co'># Arbres vivants</span></span>
+<span class='r-in'>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>CodeAlive</span> <span class='op'>==</span> <span class='cn'>TRUE</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span></span>
+<span class='r-in'>  <span class='co'># Variables utiles</span></span>
+<span class='r-in'>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/select.html'>select</a></span><span class='op'>(</span><span class='va'>Plot</span>, <span class='va'>SubPlot</span><span class='op'>:</span><span class='va'>Yfield</span>, <span class='va'>Family</span><span class='op'>:</span><span class='va'>Species</span>, <span class='va'>CircCorr</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span></span>
+<span class='r-in'>  <span class='co'># Nom complet des especes</span></span>
+<span class='r-in'>  <span class='fu'><a href='https://tidyr.tidyverse.org/reference/unite.html'>unite</a></span><span class='op'>(</span>col <span class='op'>=</span> <span class='va'>spName</span>, <span class='va'>Family</span>, <span class='va'>Genus</span>, <span class='va'>Species</span>, remove <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span></span>
+<span class='r-in'>  <span class='co'># Champs d'un wmppp. Le poids est la surface terriere</span></span>
+<span class='r-in'>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>X<span class='op'>=</span><span class='va'>Xfield</span>, Y<span class='op'>=</span><span class='va'>Yfield</span>, PointType<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/factor.html'>as.factor</a></span><span class='op'>(</span><span class='va'>spName</span><span class='op'>)</span>,</span>
+<span class='r-in'>    PointWeight<span class='op'>=</span><span class='va'>pi</span><span class='op'>*</span><span class='op'>(</span><span class='va'>CircCorr</span><span class='op'>/</span><span class='va'>pi</span><span class='op'>/</span><span class='fl'>2</span><span class='op'>)</span><span class='op'>^</span><span class='fl'>2</span>, PointName<span class='op'>=</span><span class='va'>idTree</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span></span>
+<span class='r-in'>  <span class='fu'>dbmss</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/dbmss/man/wmppp.html'>wmppp</a></span><span class='op'>(</span>window <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/pkg/spatstat.geom/man/owin.html'>owin</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0</span>,<span class='fl'>250</span><span class='op'>)</span>, <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0</span>,<span class='fl'>250</span><span class='op'>)</span>,</span>
+<span class='r-in'>    unitname<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"metre"</span>, <span class='st'>"metres"</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>-&gt;</span> <span class='va'>Paracou6</span></span>
+<span class='r-in'>  <span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span><span class='op'>(</span><span class='va'>Paracou6</span>, which.marks<span class='op'>=</span><span class='st'>"PointWeight"</span>,</span>
+<span class='r-in'>  main<span class='op'>=</span><span class='st'>"Surface terriÃ¨re (cm2) \n</span>
+<span class='r-in'>        des arbres de la parcelle 6 de Paracou en 2016"</span><span class='op'>)</span></span>
+<span class='r-in'><span class='op'>}</span></span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> Loading required package: dbmss</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> Loading required package: spatstat.core</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> Loading required package: spatstat.data</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> Loading required package: spatstat.geom</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> Registered S3 method overwritten by 'spatstat.geom':</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span>   method     from</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span>   print.boxx cli </span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> spatstat.geom 2.3-0</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> Loading required package: nlme</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> Loading required package: rpart</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> spatstat.core 2.3-1</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> Loading required package: Rcpp</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> Loading required package: ggplot2</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> Loading required package: dplyr</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> Attaching package: ‘dplyr’</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> The following object is masked from ‘package:nlme’:</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span>     collapse</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> The following objects are masked from ‘package:stats’:</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span>     filter, lag</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> The following objects are masked from ‘package:base’:</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span>     intersect, setdiff, setequal, union</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> Loading required package: tidyr</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> Attaching package: ‘tidyr’</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> The following object is masked from ‘package:magrittr’:</span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-msg co'><span class='r-pr'>#&gt;</span>     extract</span>
+<span class='r-wrn co'><span class='r-pr'>#&gt;</span> <span class='warning'>Warning: </span>Le serveur sql.ecofog.gf n'est pas accessible.</span>
+<span class='r-wrn co'><span class='r-pr'>#&gt;</span> </span>
+<span class='r-wrn co'><span class='r-pr'>#&gt;</span>             L'inventaire 2016 de la parcelle 6 de Paracou est retourné par défaut.</span>
+<span class='r-plt img'><img src='Paracou2df-1.png' alt='' width='700' height='433' /></span>
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
