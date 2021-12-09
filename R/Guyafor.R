@@ -135,7 +135,8 @@ QueryGuyafor <- function (WHERE, UID, PWD, Driver, codeWHERE = NULL) {
   dbo.TtGuyaforShiny.CorrCode
 
   FROM dbo.TtGuyaforShiny
-    LEFT OUTER JOIN dbo.taMesure_Corr ON dbo.TtGuyaforShiny.idMeas = dbo.taMesure_Corr.idMesure"
+    LEFT OUTER JOIN dbo.taMesure_Corr ON dbo.TtGuyaforShiny.idMeas = dbo.taMesure_Corr.idMesure
+WHERE     (dbo.TtGuyaforShiny.Project = guyafor)"
 
 
   if (!is.null(codeWHERE)) {
