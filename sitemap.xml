@@ -1,33 +1,48 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://ecofog.github.io/ecofog//index.html</loc>
+    <loc>https://ecofog.github.io/ecofog/404.html</loc>
   </url>
   <url>
-    <loc>https://ecofog.github.io/ecofog//reference/Automap.html</loc>
+    <loc>https://ecofog.github.io/ecofog/articles/EcoFoG.html</loc>
   </url>
   <url>
-    <loc>https://ecofog.github.io/ecofog//reference/EcoFoG.html</loc>
+    <loc>https://ecofog.github.io/ecofog/articles/index.html</loc>
   </url>
   <url>
-    <loc>https://ecofog.github.io/ecofog//reference/Guyafor2df.html</loc>
+    <loc>https://ecofog.github.io/ecofog/authors.html</loc>
   </url>
   <url>
-    <loc>https://ecofog.github.io/ecofog//reference/Paracou2df.html</loc>
+    <loc>https://ecofog.github.io/ecofog/index.html</loc>
   </url>
   <url>
-    <loc>https://ecofog.github.io/ecofog//reference/Paracou6_2016.html</loc>
+    <loc>https://ecofog.github.io/ecofog/news/index.html</loc>
   </url>
   <url>
-    <loc>https://ecofog.github.io/ecofog//reference/Tricoter.html</loc>
+    <loc>https://ecofog.github.io/ecofog/reference/Automap.html</loc>
   </url>
   <url>
-    <loc>https://ecofog.github.io/ecofog//reference/article.html</loc>
+    <loc>https://ecofog.github.io/ecofog/reference/EcoFoG.html</loc>
   </url>
   <url>
-    <loc>https://ecofog.github.io/ecofog//reference/memo.html</loc>
+    <loc>https://ecofog.github.io/ecofog/reference/Guyafor2df.html</loc>
   </url>
   <url>
-    <loc>https://ecofog.github.io/ecofog//articles/EcoFoG.html</loc>
+    <loc>https://ecofog.github.io/ecofog/reference/Paracou2df.html</loc>
+  </url>
+  <url>
+    <loc>https://ecofog.github.io/ecofog/reference/Paracou6_2016.html</loc>
+  </url>
+  <url>
+    <loc>https://ecofog.github.io/ecofog/reference/Tricoter.html</loc>
+  </url>
+  <url>
+    <loc>https://ecofog.github.io/ecofog/reference/article.html</loc>
+  </url>
+  <url>
+    <loc>https://ecofog.github.io/ecofog/reference/index.html</loc>
+  </url>
+  <url>
+    <loc>https://ecofog.github.io/ecofog/reference/memo.html</loc>
   </url>
 </urlset>
