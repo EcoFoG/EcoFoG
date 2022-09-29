@@ -85,6 +85,12 @@ QueryGuyafor <- function (WHERE, UID, PWD, Driver, codeWHERE = NULL) {
   } else {
     # Authentification SQL Server
     connection_string <- paste(connection_string, "UID={", UID, "};PWD={", PWD, "};", sep="")
+
+    #### TEMPORAIRE ####
+    # Gestion de l'erreur de vérification du certificat :"certificate verify failed:self signed certificate" quand le Nom d'utilisateur
+    # et le mot de passe sont spécifiés
+    connection_string <- paste(connection_string, "TrustServerCertificate=yes;", sep="") # Gestion de l'erreur de vérification
+    #### TEMPORAIRE ####
   }
   # Tentative de connexion
   con <- NULL
@@ -136,7 +142,7 @@ QueryGuyafor <- function (WHERE, UID, PWD, Driver, codeWHERE = NULL) {
 
   FROM dbo.TtGuyaforShiny
     LEFT OUTER JOIN dbo.taMesure_Corr ON dbo.TtGuyaforShiny.idMeas = dbo.taMesure_Corr.idMesure
-WHERE     (dbo.TtGuyaforShiny.Project = guyafor)"
+WHERE     (dbo.TtGuyaforShiny.Project = N'Guyafor')"
 
 
   if (!is.null(codeWHERE)) {
