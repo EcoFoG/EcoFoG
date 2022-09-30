@@ -85,13 +85,13 @@ QueryGuyafor <- function (WHERE, UID, PWD, Driver, codeWHERE = NULL) {
   } else {
     # Authentification SQL Server
     connection_string <- paste(connection_string, "UID={", UID, "};PWD={", PWD, "};", sep="")
-
-    #### TEMPORAIRE ####
-    # Gestion de l'erreur de vérification du certificat :"certificate verify failed:self signed certificate" quand le Nom d'utilisateur
-    # et le mot de passe sont spécifiés
-    connection_string <- paste(connection_string, "TrustServerCertificate=yes;", sep="") # Gestion de l'erreur de vérification
-    #### TEMPORAIRE ####
   }
+  #### TEMPORAIRE ####
+  # Gestion de l'erreur de vérification du certificat :"certificate verify failed:self signed certificate" quand le Nom d'utilisateur
+  # et le mot de passe sont spécifiés
+  connection_string <- paste(connection_string, "TrustServerCertificate=yes;", sep="") # Gestion de l'erreur de vérification
+  #### TEMPORAIRE ####
+
   # Tentative de connexion
   con <- NULL
   tryCatch(con <- odbc::dbConnect(odbc::odbc(), .connection_string=connection_string),
