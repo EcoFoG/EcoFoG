@@ -56,28 +56,37 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">Paracou2df</span><span class="op">(</span>
-  WHERE <span class="op">=</span> <span class="cn">NULL</span>,
-  UID <span class="op">=</span> <span class="cn">NULL</span>,
-  PWD <span class="op">=</span> <span class="cn">NULL</span>,
-  Driver <span class="op">=</span> <span class="st">"SQL Server Native Client 10.0"</span>
-<span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">Paracou2df</span><span class="op">(</span></span>
+<span>  WHERE <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  UID <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  PWD <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  Driver <span class="op">=</span> <span class="st">"SQL Server Native Client 10.0"</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>WHERE</dt>
 <dd><p>Clause WHERE optionnelle de la requête SQL envoyée au serveur</p></dd>
+
+
 <dt>UID</dt>
 <dd><p>Compte SQL Server utilisé pour la connexion. Par défaut, l'authentification est faite par Windows.</p></dd>
+
+
 <dt>PWD</dt>
 <dd><p>Mot de passe du compte SQL Server.</p></dd>
+
+
 <dt>Driver</dt>
 <dd><p>Nom du pilote ODBC, dépendant de l'installation du système. La valeur par défaut est le nom le plus fréquent. "SQL Server" peut fonctionner si la valeur par défaut renvoie une erreur indiquant que le pilote ODBC n'existe pas.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>Un dataframe contenant le résultat de la requête ODBC</p>
+    
+
+<p>Un dataframe contenant le résultat de la requête ODBC</p>
     </div>
     <div id="details">
     <h2>Details</h2>
@@ -92,37 +101,35 @@ Un pilote ODBC pour SQL Server doit être accessible.</p>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="co"># Creation d'une communaute spatialement explicite (package SpatDiv)</span></span>
-<span class="r-in"><span class="kw">if</span><span class="op">(</span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">require</a></span><span class="op">(</span><span class="st"><a href="https://github.com/EricMarcon/dbmss" class="external-link">"dbmss"</a></span><span class="op">)</span> <span class="op">&amp;</span> <span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">require</a></span><span class="op">(</span><span class="st"><a href="https://dplyr.tidyverse.org" class="external-link">"dplyr"</a></span><span class="op">)</span> <span class="op">&amp;</span> <span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">require</a></span><span class="op">(</span><span class="st"><a href="https://tidyr.tidyverse.org" class="external-link">"tidyr"</a></span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
-<span class="r-in">  <span class="fu">Paracou2df</span><span class="op">(</span><span class="st">"Plot='6' AND CensusYear=2016"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
-<span class="r-in">  <span class="co"># Arbres vivants</span></span>
-<span class="r-in">  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">CodeAlive</span> <span class="op">==</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
-<span class="r-in">  <span class="co"># Variables utiles</span></span>
-<span class="r-in">  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="va">Plot</span>, <span class="va">SubPlot</span><span class="op">:</span><span class="va">Yfield</span>, <span class="va">Family</span><span class="op">:</span><span class="va">Species</span>, <span class="va">CircCorr</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
-<span class="r-in">  <span class="co"># Nom complet des especes</span></span>
-<span class="r-in">  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/unite.html" class="external-link">unite</a></span><span class="op">(</span>col <span class="op">=</span> <span class="va">spName</span>, <span class="va">Family</span>, <span class="va">Genus</span>, <span class="va">Species</span>, remove <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
-<span class="r-in">  <span class="co"># Champs d'un wmppp. Le poids est la surface terriere</span></span>
-<span class="r-in">  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>X<span class="op">=</span><span class="va">Xfield</span>, Y<span class="op">=</span><span class="va">Yfield</span>, PointType<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">as.factor</a></span><span class="op">(</span><span class="va">spName</span><span class="op">)</span>,</span>
-<span class="r-in">    PointWeight<span class="op">=</span><span class="va">pi</span><span class="op">*</span><span class="op">(</span><span class="va">CircCorr</span><span class="op">/</span><span class="va">pi</span><span class="op">/</span><span class="fl">2</span><span class="op">)</span><span class="op">^</span><span class="fl">2</span>, PointName<span class="op">=</span><span class="va">idTree</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
-<span class="r-in">  <span class="fu">dbmss</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/dbmss/man/wmppp.html" class="external-link">wmppp</a></span><span class="op">(</span>window <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/spatstat.geom/man/owin.html" class="external-link">owin</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">250</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">250</span><span class="op">)</span>,</span>
-<span class="r-in">    unitname<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"metre"</span>, <span class="st">"metres"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">-&gt;</span> <span class="va">Paracou6</span></span>
-<span class="r-in">  <span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">Paracou6</span>, which.marks<span class="op">=</span><span class="st">"PointWeight"</span>,</span>
-<span class="r-in">  main<span class="op">=</span><span class="st">"Surface terriÃ¨re (cm2) \n</span>
-<span class="r-in">        des arbres de la parcelle 6 de Paracou en 2016"</span><span class="op">)</span></span>
-<span class="r-in"><span class="op">}</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># Creation d'une communaute spatialement explicite (package SpatDiv)</span></span></span>
+<span class="r-in"><span><span class="kw">if</span><span class="op">(</span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">require</a></span><span class="op">(</span><span class="st"><a href="https://github.com/EricMarcon/dbmss" class="external-link">"dbmss"</a></span><span class="op">)</span> <span class="op">&amp;</span> <span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">require</a></span><span class="op">(</span><span class="st"><a href="https://dplyr.tidyverse.org" class="external-link">"dplyr"</a></span><span class="op">)</span> <span class="op">&amp;</span> <span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">require</a></span><span class="op">(</span><span class="st"><a href="https://tidyr.tidyverse.org" class="external-link">"tidyr"</a></span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span></span>
+<span class="r-in"><span>  <span class="fu">Paracou2df</span><span class="op">(</span><span class="st">"Plot='6' AND CensusYear=2016"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span></span>
+<span class="r-in"><span>  <span class="co"># Arbres vivants</span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">CodeAlive</span> <span class="op">==</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span></span>
+<span class="r-in"><span>  <span class="co"># Variables utiles</span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="va">Plot</span>, <span class="va">SubPlot</span><span class="op">:</span><span class="va">Yfield</span>, <span class="va">Family</span><span class="op">:</span><span class="va">Species</span>, <span class="va">CircCorr</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span></span>
+<span class="r-in"><span>  <span class="co"># Nom complet des especes</span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/unite.html" class="external-link">unite</a></span><span class="op">(</span>col <span class="op">=</span> <span class="va">spName</span>, <span class="va">Family</span>, <span class="va">Genus</span>, <span class="va">Species</span>, remove <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span></span>
+<span class="r-in"><span>  <span class="co"># Champs d'un wmppp. Le poids est la surface terriere</span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>X<span class="op">=</span><span class="va">Xfield</span>, Y<span class="op">=</span><span class="va">Yfield</span>, PointType<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">as.factor</a></span><span class="op">(</span><span class="va">spName</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>    PointWeight<span class="op">=</span><span class="va">pi</span><span class="op">*</span><span class="op">(</span><span class="va">CircCorr</span><span class="op">/</span><span class="va">pi</span><span class="op">/</span><span class="fl">2</span><span class="op">)</span><span class="op">^</span><span class="fl">2</span>, PointName<span class="op">=</span><span class="va">idTree</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span></span>
+<span class="r-in"><span>  <span class="fu">dbmss</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/dbmss/man/wmppp.html" class="external-link">wmppp</a></span><span class="op">(</span>window <span class="op">=</span> <span class="fu">owin</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">250</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">250</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>    unitname<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"metre"</span>, <span class="st">"metres"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">-&gt;</span> <span class="va">Paracou6</span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">Paracou6</span>, which.marks<span class="op">=</span><span class="st">"PointWeight"</span>,</span></span>
+<span class="r-in"><span>  main<span class="op">=</span><span class="st">"Surface terriÃ¨re (cm2) \n</span></span></span>
+<span class="r-in"><span><span class="st">        des arbres de la parcelle 6 de Paracou en 2016"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">}</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Loading required package: dbmss</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Loading required package: Rcpp</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Loading required package: spatstat.core</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Loading required package: spatstat.data</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Loading required package: spatstat.geom</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Registered S3 method overwritten by 'spatstat.geom':</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>   method     from</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span>   print.boxx cli </span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> spatstat.geom 2.3-0</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> spatstat.geom 2.4-0</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Loading required package: spatstat.random</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> spatstat.random 2.2-0</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Loading required package: nlme</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Loading required package: rpart</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> spatstat.core 2.3-2</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Loading required package: Rcpp</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> Loading required package: ggplot2</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> spatstat.core 2.4-4</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Loading required package: dplyr</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> Attaching package: ‘dplyr’</span>
@@ -159,7 +166,7 @@ Un pilote ODBC pour SQL Server doit être accessible.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.1.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>
